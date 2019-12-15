@@ -5,12 +5,8 @@ cache:
   directories:
     - "node_modules"
 
-services:
-  - mongodb
+install:
+  - npm install
 
-before_script:
-  - sleep 15
-  - mongo mydb_test --eval 'db.createUser({user:"petar",pwd:"admin",roles:["readWrite"]});'
-
-before_script:
-  - mongo mydb_test --eval 'db.createUser({user:"petar",pwd:"admin",roles:["readWrite"]});'
+script:
+  - npm test
