@@ -4,7 +4,7 @@ import HeroImage from '../../Assets/hero.jpg';
 
 const HeroBanner = styled.div`
 width: 100%;
-height: 500px;
+height: 480px;
 background: url(${HeroImage});
 background-size: cover;
 display flex;
@@ -40,6 +40,14 @@ flex-direction: row-reverse;
         width: 14rem;
         height: 4rem;
         border-radius: 3px;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+        opacity: 0.5;
+        transition: opacity 0.3s ease-in-out;
+        }
     }
 }
 `
