@@ -2,11 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Box = styled.div`
-width: 290px;
-height: 290px;
+max-width: 290px;
 margin: 12px;
 position: relative;
 
+@media(max-width: 628px)
+{
+  width: 94%;
+  max-width: 94%;
+}
 img {
     max-width: 100%;
     height: auto;

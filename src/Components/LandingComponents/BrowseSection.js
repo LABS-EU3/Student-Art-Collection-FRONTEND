@@ -28,8 +28,17 @@ const BrowseContainer = styled.div`
      max-width: 1300px;
      margin: 1.5rem auto;
      display: flex;
-     flex-wrap: wrap;
      justify-content: space-evenly;
+
+     @media(max-width: 930px){   
+         flex-wrap: wrap;
+    }
+
+     @media(max-width: 628px){  
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center; 
+    }
 
         a {
         text-decoration: none;
