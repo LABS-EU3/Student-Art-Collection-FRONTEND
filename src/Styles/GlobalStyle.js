@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+// https://www.styled-components.com/docs/api#createglobalstyle
+
 const GlobalStyle = createGlobalStyle`
 
 	/* http://meyerweb.com/eric/tools/css/reset/ 
