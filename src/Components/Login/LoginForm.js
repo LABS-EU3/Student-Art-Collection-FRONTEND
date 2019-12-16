@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
 
 const LoginForm = () => {
   return (
@@ -11,12 +11,14 @@ const LoginForm = () => {
           placeholder="username"
           data-testid="usernameField"
         />
+        <ErrorMessage name="username" component="div" />
         <Field
           name="password"
           type="password"
           placeholder="password"
           data-testid="passwordField"
         />
+        <ErrorMessage name="password" component="div" />
         <button type="submit">Login</button>
       </Form>
     </div>

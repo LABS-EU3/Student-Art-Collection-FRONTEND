@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
+import * as yup from 'yup';
 
 // COMPONENTS
 
@@ -14,6 +15,11 @@ const initialValues = {
 };
 
 const loginEndpoint = 'http://localhost:4000/auth/login';
+
+const validationSchema = yup.object().shape({
+  username: yup.string().required().min(5),
+  password: yup.string().required().min(8)
+});
 
 const Login = props => {
   const onLoginHandle = (values, action) => {
@@ -34,6 +40,7 @@ const Login = props => {
   return (
     <div>
       <Formik
+        validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={onLoginHandle}
         component={LoginForm}
