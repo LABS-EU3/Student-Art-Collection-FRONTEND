@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import LoginForm from '../Components/LoginForm';
+import LoginForm from '../Components/Login/LoginForm';
 
 const initialValues = {
   username: '',
