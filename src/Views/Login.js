@@ -17,18 +17,17 @@ const loginEndpoint = 'http://localhost:4000/auth/login';
 
 const Login = props => {
   const onLoginHandle = (values, action) => {
-    debugger;
     console.log(values);
     axios
       .post(loginEndpoint, values)
       .then(res => {
-        debugger;
         localStorage.setItem('authorization', res.data.token);
         props.history.push('/');
         action.resetForm();
       })
       .catch(error => {
-        debugger;
+        alert(error);
+        // set error message state when redux file structure has been clarified
       });
   };
 

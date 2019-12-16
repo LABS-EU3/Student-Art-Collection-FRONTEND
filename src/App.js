@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 // IMPORT COMPONENTS
 
 import Login from './Views/Login';
+import PrivateRoute from './Components/PrivateRoute';
 
 function App() {
   return (
