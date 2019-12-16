@@ -17,20 +17,16 @@ img {
     height: auto;
     margin-bottom: 1rem;
 }
-
 h2 {
     font-size: 1.5rem;
     font-weight: 550;
     margin-bottom: 0.8rem;
 }
-
 h3 {
     opacity: 0.5;
     margin-bottom: 0.4rem;
     font-size: 1.2rem;
 }
-
-
 `
 
 function RecentCard(props) {
