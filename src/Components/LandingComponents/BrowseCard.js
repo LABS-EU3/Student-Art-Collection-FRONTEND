@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Box = styled.div`
-width: 330px;
-height: 330px;
-margin: 10px;
+width: 290px;
+height: 290px;
+margin: 12px;
 position: relative;
 
 img {
@@ -20,7 +20,7 @@ img {
     right: 0;
     height: 100%;
     width: 100%;
-    opacity: 0;
+    opacity: 0.5;
     transition: .5s ease;
     background-color: rgba(0,0,0, 0.6);
 
