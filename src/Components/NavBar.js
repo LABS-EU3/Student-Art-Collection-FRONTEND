@@ -121,6 +121,7 @@ function NavBar() {
                     <div></div>
                     <div></div>
                 </Hamburger>
+                <Link to='/auth/login'>Login</Link>
             </div>
         </NavContainer>
     )
