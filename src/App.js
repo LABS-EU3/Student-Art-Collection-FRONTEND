@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 // IMPORT COMPONENTS
 
 import Login from './Views/Login';
+// private route component ready to be used for components that need to be displayed only to users logged in
 import PrivateRoute from './Components/PrivateRoute';
 
 function App() {

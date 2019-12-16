@@ -14,12 +14,18 @@ const initialValues = {
   password: ''
 };
 
+// login endpoint pending build of real endpoint in the backend repo
+
 const loginEndpoint = 'http://localhost:4000/auth/login';
+
+// validation schema by yup plugged into formik
 
 const validationSchema = yup.object().shape({
   username: yup.string().required().min(5),
   password: yup.string().required().min(8)
 });
+
+// login handler when login form is submitted
 
 const Login = props => {
   const onLoginHandle = (values, action) => {
@@ -27,6 +33,8 @@ const Login = props => {
     axios
       .post(loginEndpoint, values)
       .then(res => {
+        // this won't work as there is no login endpoint in the backend yet
+
         localStorage.setItem('authorization', res.data.token);
         props.history.push('/');
         action.resetForm();
