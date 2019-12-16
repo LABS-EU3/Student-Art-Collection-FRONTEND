@@ -27,7 +27,7 @@ describe('Login component', () => {
   test('renders link in the password reset text', () => {
     expect(wrapper.getByText('here').closest('a')).toHaveAttribute('href', '/auth/resetPassword')
   })
-  test('renders username and password field', () => {
+  test('renders email and password field', () => {
     expect(wrapper.getByTestId('emailField')).toBeInTheDocument();
     expect(wrapper.getByTestId('passwordField')).toBeInTheDocument();
   });
