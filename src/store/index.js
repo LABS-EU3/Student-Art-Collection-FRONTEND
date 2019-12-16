@@ -6,7 +6,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // connecting reducers and middleware to the store
 const store = createStore(
-    combineReducers({}),
+    combineReducers({
+        // inesert you reducer here
+        user: (state= {user: 'vincent'}, action) =>{
+            return state
+        }
+    }),
     composeEnhancers(applyMiddleware(thunk))
 );
 
