@@ -20,7 +20,7 @@ img {
 
 h2 {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 550;
     margin-bottom: 0.8rem;
 }
 

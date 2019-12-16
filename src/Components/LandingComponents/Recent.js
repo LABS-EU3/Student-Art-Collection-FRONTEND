@@ -51,7 +51,7 @@ function Recent() {
             <RecentContainer>
             <h1>Recently Listed Artwork</h1>
                 <div className="container-full">
-                    <Link to='/painting'>
+                    <Link to='/#'>
                         <RecentCard
                             image={Recent1}
                             alt={"Man in corner"}
@@ -60,7 +60,7 @@ function Recent() {
                             dimensions='45H x 45W'
                             price="£50" />
                     </Link>
-                    <Link to='/photography'>
+                    <Link to='/#'>
                         <RecentCard
                             image={Recent2}
                             alt={"Homeless man"}
@@ -69,7 +69,7 @@ function Recent() {
                             dimensions='20H x 45W'
                             price="£100"  />
                     </Link>
-                    <Link to='/sculpture'>
+                    <Link to='/#'>
                         <RecentCard
                             image={Recent4}
                             alt={"Reflection of petrol puddle"}
@@ -78,7 +78,7 @@ function Recent() {
                             dimensions='45H x 45W'
                             price="£50"  />
                     </Link>
-                    <Link to='/drawing'>
+                    <Link to='/#'>
                         <RecentCard
                             image={Recent3}
                             alt={"Apple"}
