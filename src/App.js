@@ -12,8 +12,9 @@ const theme = {
   backgroundGrey: '#C4C4C4',
   orangeCancelButton: '#FFA439',
   greenSaveButton: 'rgba(49, 215, 21, 0.68)',
-  orangeChangePic: '#FD7135',
-  red: 'red'
+  orangeChangePic: '#FD7135'
+  //   line below is to show how to use theme variable inside any styled component
+  //   red: 'red'
 };
 
 function App() {
