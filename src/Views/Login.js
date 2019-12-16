@@ -1,5 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import axios from 'axios';
+import { Route } from 'react-router-dom';
 
 // COMPONENTS
 
@@ -11,10 +13,25 @@ const initialValues = {
   password: ''
 };
 
+const loginEndpoint = 'http://localhost:4000/auth/login';
+
 const Login = props => {
-  const onLoginHandle = values => {
+  const onLoginHandle = (values, action) => {
+    debugger;
     console.log(values);
+    axios
+      .post(loginEndpoint, values)
+      .then(res => {
+        debugger;
+        localStorage.setItem('authorization', res.data.token);
+        props.history.push('/');
+        action.resetForm();
+      })
+      .catch(error => {
+        debugger;
+      });
   };
+
   return (
     <div>
       <Formik
