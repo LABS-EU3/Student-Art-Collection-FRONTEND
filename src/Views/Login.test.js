@@ -16,7 +16,19 @@ beforeEach(() => {
 afterEach(rtl.cleanup);
 
 describe('Login component', () => {
-  test('renders form with username, password and submit button', () => {
+  test('renders submit button', () => {
     expect(wrapper.queryByText(/login/i)).toBeInTheDocument();
+  });
+  test('renders line of text to reset password', () => {
+    expect(
+      wrapper.queryByText(/if you forgot your password/i)
+    ).toBeInTheDocument();
+  });
+  test('renders link in the password reset text', () => {
+    expect(wrapper.getByText('here').closest('a')).toHaveAttribute('href', '/auth/resetPassword')
+  })
+  test('renders username and password field', () => {
+    expect(wrapper.getByTestId('usernameField')).toBeInTheDocument();
+    expect(wrapper.getByTestId('passwordField')).toBeInTheDocument();
   });
 });

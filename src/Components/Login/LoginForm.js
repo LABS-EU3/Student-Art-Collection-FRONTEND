@@ -5,8 +5,18 @@ const LoginForm = () => {
   return (
     <div>
       <Form>
-        <Field name="username" type="text" placeholder="username" />
-        <Field name="password" type="password" placeholder="password" />
+        <Field
+          name="username"
+          type="text"
+          placeholder="username"
+          data-testid="usernameField"
+        />
+        <Field
+          name="password"
+          type="password"
+          placeholder="password"
+          data-testid="passwordField"
+        />
         <button type="submit">Login</button>
       </Form>
     </div>
