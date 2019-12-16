@@ -6,12 +6,12 @@ const LoginForm = () => {
     <div>
       <Form>
         <Field
-          name="username"
-          type="text"
-          placeholder="username"
-          data-testid="usernameField"
+          name="email"
+          type="email"
+          placeholder="email"
+          data-testid="emailField"
         />
-        <ErrorMessage name="username" component="div" />
+        <ErrorMessage name="email" component="div" />
         <Field
           name="password"
           type="password"

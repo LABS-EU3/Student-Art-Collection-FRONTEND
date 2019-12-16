@@ -1,7 +1,6 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
 import * as yup from 'yup';
 
 // COMPONENTS
@@ -10,7 +9,7 @@ import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
 
 const initialValues = {
-  username: '',
+  email: '',
   password: ''
 };
 
@@ -21,8 +20,14 @@ const loginEndpoint = 'http://localhost:4000/auth/login';
 // validation schema by yup plugged into formik
 
 const validationSchema = yup.object().shape({
-  username: yup.string().required().min(5),
-  password: yup.string().required().min(8)
+  email: yup
+    .string()
+    .email()
+    .required(),
+  password: yup
+    .string()
+    .required()
+    .min(8)
 });
 
 // login handler when login form is submitted
