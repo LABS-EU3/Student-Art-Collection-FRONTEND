@@ -1,6 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+
+// COMPONENTS
+
 import LoginForm from '../Components/Login/LoginForm';
+import ResetPassword from '../Components/Login/ResetPassword';
 
 const initialValues = {
   username: '',
@@ -18,6 +22,7 @@ const Login = props => {
         onSubmit={onLoginHandle}
         component={LoginForm}
       />
+      <ResetPassword />
     </div>
   );
 };
