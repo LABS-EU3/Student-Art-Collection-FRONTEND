@@ -5,6 +5,7 @@ import NavBar from './NavBar'
 
 test('renders correct title in NavBar', () => {
 	const { getByText } = render(<Router><NavBar /></Router>)
+    const { getByText } = render(<Router><NavBar /></Router>)
     const mainTitle = getByText(/artFunder/i)
     expect(mainTitle).toBeInTheDocument()
 })
@@ -13,4 +14,11 @@ test('navigation class exists', () => {
     const { container } = render(<Router><NavBar /></Router>)
     const navigation = container.querySelector('.navigation')
     expect(navigation).not.toBe(null)
+})
+
+test('nav element has five children', () => {
+    const { container } = render(<Router><NavBar /></Router>)
+    const navigation = container.querySelector('nav')
+    expect(navigation.children.length).toBe(5)
+
 })
