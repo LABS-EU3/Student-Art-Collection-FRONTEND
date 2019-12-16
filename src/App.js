@@ -5,7 +5,7 @@ import LandingPage from './Views/LandingPage';
 
 const theme = {
   grayDark: '#7B7A7A',
-  grayDark: '#A5A5A5',
+  grayLight: '#A5A5A5',
   black: '#000000',
   backgroundGreen: '#0F9D58',
   backgroundGreyForm: 'rgba(196, 196, 196, 0.2)',
@@ -17,9 +17,21 @@ const theme = {
   //   red: 'red'
 };
 
+// https://www.styled-components.com/docs/api#createglobalstyle
+
+const GlobalStyle = createGlobalStyle`
+	html {
+		box-sizing: border-box;
+	}
+	*, *:before, *:after {
+		box-sizing: inherit
+	}
+`;
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <LandingPage />
     </ThemeProvider>
   );
