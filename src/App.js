@@ -10,7 +10,7 @@ function App() {
 		<>
 		<Navbar />
 		<Route exact path='/' component={LandingPage} />
-		<Route exact path='/myaccount' component={BuyerDashboard} />
+		<Route path='/myaccount' component={BuyerDashboard} />
 		</>
 	)
 }
