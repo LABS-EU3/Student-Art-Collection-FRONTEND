@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
+import MobileNav from './MobileNav'
 // import SearchIcon from '../Assets/magnifying-glass.png'
 // import UserIcon from '../Assets/user.png'
 
@@ -100,46 +102,6 @@ div {
 }
 `
 
-const MobileNav = styled.div`
-    font-family: 'Roboto', sans-serif;
-    width: 0px;
-    overflow: hidden;
-    height : 100vh;
-    background-color: black;
-    color: white;
-    opacity: 0.8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 3;
-    transition: width 0.5s ease-in-out;
-
-.side-nav-bar{
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    justify-content: space-evenly;
-    margin-top: 5rem;
-
-    a:hover{
-        color: darkgrey;
-    }
-}
-
-.close {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 2rem;
-    margin-left: 2rem;
-    cursor: pointer;
-}
-`
-
 function NavBar() {
     const [menuStyle, changeMenuStyle] = useState(null);
 
@@ -171,17 +133,7 @@ function NavBar() {
                     <div></div>
                     <div></div>
                 </Hamburger>
-                <MobileNav style={menuStyle}>
-                    <div className="close" onClick={closeMobileNav}> X</div>
-                    <div className="side-nav-bar">
-                        <Link onClick={closeMobileNav} to='/about'>About</Link>
-                        <Link onClick={closeMobileNav} to='/browse'>Browse</Link>
-                        <Link onClick={closeMobileNav} to='/schools'>Schools</Link>
-                        <Link onClick={closeMobileNav} to='/contact'>Contact</Link>
-                        <Link onClick={closeMobileNav} to='/myaccount'> Login</Link>
-
-                    </div>
-                </MobileNav>
+               <MobileNav styling={menuStyle} closeNav={closeMobileNav}/>
             </div>
         </NavContainer>
     )
