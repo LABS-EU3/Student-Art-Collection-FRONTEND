@@ -1,31 +1,41 @@
 import React from "react";
-// import styled from "styled-components";
-import { Formik } from "formik";
+import styled from "styled-components";
 import axios from "axios";
 import * as Yup from "yup";
-import Error from "../helpers/Error";
+import { RegisterForm } from "./RegisterForm";
+
+export default function Register() {
+  return (
+    <Container>
+      <div>
+        <h1>Register</h1>
+        <div>
+          <h1>Buyer</h1>
+          <h1>School</h1>
+        </div>
+      </div>
+      <RegisterForm />
+    </Container >
+  );
+}
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 1px red
+`;
 
 const registerApi = "enter url here";
 
-const initalSignupForm = {
+export const initalSignupForm = {
   firstName: "",
   lastName: "",
   email: "",
   password: ""
 };
 
-export default function Register() {
-
-  return (
-    <>
-      <h1>Register</h1>
-      <h1>Buyer School</h1>
-      <RegisterForm />
-    </>
-  );
-}
-
-const validationSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(3, "must be at least 3 charaters")
     .max(127, "must be shorter than 127")
@@ -44,111 +54,27 @@ const validationSchema = Yup.object().shape({
     .required("this is a required field")
 });
 
-function RegisterForm() {
-  return (
-    <Formik
-      validationSchema={validationSchema}
-      initialValues={initalSignupForm}
-      onSubmit={(values, actions) => {
-        const newUser = {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-          password: values.password
-        };
-        actions.setSubmitting(true);
-        console.log(newUser);
-        // axios
-        //   .post(registerApi, newUser)
-        //   .then(res => {
-        //     actions.resetForm();
-        //     actions.Submitting(false);
-        //   })
-        //   .catch(err => {
-        //     debugger;
-        //   });
-        actions.resetForm();
-        actions.setSubmitting(false);
-      }}
-    >
-      {({
-        values,
-        errors,
-        handleBlur,
-        handleChange,
-        touched,
-        handleSubmit,
-        isSubmitting
-      }) => (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="Enter your first name"
-              id="firstName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.firstName}
-              className={
-                touched.firstName && errors.firstName ? "has-error" : null
-              }
-            />
-            <Error touched={touched.firstName} message={errors.firstName} />
-          </div>
-          <div>
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              name="lastName"
-              type="text"
-              placeholder="Enter your last name"
-              id="lastName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastName}
-              className={
-                touched.lastName && errors.lastName ? "has-error" : null
-              }
-            />
-            <Error touched={touched.lastName} message={errors.lastName} />
-          </div>
-          <div>
-            <label htmlFor="email">email</label>
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              id="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              className={touched.email && errors.email ? "has-error" : null}
-            />
-            <Error touched={touched.email} message={errors.email} />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              type="text"
-              placeholder="Enter your password"
-              id="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              className={
-                touched.password && errors.password ? "has-error" : null
-              }
-            />
-            <Error touched={touched.password} message={errors.password} />
-          </div>
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
-        </form>
-      )}
-    </Formik>
-  );
-}
+  .inputField {
+    margin: 2px 0
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .has-error {
+    border: solid 0.5px red;
+  }
+  .invalid {
+    font-size: 1rem;
+    color: red;
+  }
+  .valid {
+    font-size: 1rem;
+    color: green;
+  }
+`;
