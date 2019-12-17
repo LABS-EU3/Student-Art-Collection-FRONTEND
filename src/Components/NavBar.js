@@ -7,8 +7,7 @@ import UserIcon from '../Assets/user.png'
 
 const NavContainer = styled.div`
 width: 100vw;
-height: 6rem;
-border-bottom: 1px solid rgba(0,0,0, 0.1);
+height: 8vh;
 
 .navigation {
     height: 100%;
