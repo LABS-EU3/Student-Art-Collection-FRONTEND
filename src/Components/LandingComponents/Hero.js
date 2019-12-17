@@ -48,6 +48,10 @@ flex-direction: row-reverse;
         opacity: 0.5;
         transition: opacity 0.3s ease-in-out;
         }
+
+        &:focus {
+         outline:0;
+        }
     }
 }
 `

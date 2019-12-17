@@ -68,6 +68,10 @@ const MissionContainer = styled.div`
             opacity: 1;
             transition: opacity 0.3s ease-in-out;
             }
+
+            &:focus {
+                outline:0;
+               }
         }
 
         @media(max-width: 940px) {
@@ -85,8 +89,8 @@ function Mission() {
             <div className="mission-left">
                 <h2>Our Mission</h2>
                 <p>A metal cast of a balloon dog recently sold for $91,000,000. A Banksy print could set you back a further $3,000,000. Meanwhile, art programs in schools around the world are chronically underfunded with many stating that they have adjusted their curriculum specifically to avoid using materials that need to be replaced.</p><p>
-                Artfunder was set up to kill two birds with one stone: to get art into your living room without needing to remortgage, and to provide precious capital to schools for buying supplies, organise trips and helping to  cultivate the next generation of creatives at the source.</p><p>
-                We provide a platform for schools to sell students art and put 100% of the profit directly back into the arts programs. </p>
+                    Artfunder was set up to kill two birds with one stone: to get art into your living room without needing to remortgage, and to provide precious capital to schools for buying supplies, organise trips and helping to  cultivate the next generation of creatives at the source.</p><p>
+                    We provide a platform for schools to sell students art and put 100% of the profit directly back into the arts programs. </p>
                 <button>Learn More</button>
             </div>
             <div className="mission-right">
