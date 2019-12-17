@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import axios from 'axios';
 import * as yup from 'yup';
+import styled from 'styled-components';
 
 // COMPONENTS
 
@@ -30,9 +31,17 @@ const validationSchema = yup.object().shape({
     .min(8)
 });
 
-// login handler when login form is submitted
+const StyledForm = styled.div`
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Login = props => {
+  // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
     console.log(values);
     axios
@@ -51,7 +60,7 @@ const Login = props => {
   };
 
   return (
-    <div>
+    <StyledForm>
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
@@ -59,7 +68,7 @@ const Login = props => {
         component={LoginForm}
       />
       <ResetPassword />
-    </div>
+    </StyledForm>
   );
 };
 
