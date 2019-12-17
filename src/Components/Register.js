@@ -1,6 +1,6 @@
 import React from "react";
 // import styled from "styled-components";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import Error from "../helpers/Error";
@@ -15,28 +15,12 @@ const initalSignupForm = {
 };
 
 export default function Register() {
-  const sendUser = (formValues, actions) => {
-    const newUser = {
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      email: formValues.email,
-      password: formValues.password
-    };
-    axios
-      .post(registerApi, newUser)
-      .then(res => {
-        actions.resetForm();
-      })
-      .catch(err => {
-        debugger;
-      });
-  };
 
   return (
     <>
       <h1>Register</h1>
       <h1>Buyer School</h1>
-      <RegisterForm onSubmit={sendUser} />
+      <RegisterForm />
     </>
   );
 }
@@ -51,7 +35,7 @@ const validationSchema = Yup.object().shape({
     .max(127, "must be shorter than 127")
     .required("this is a required field"),
   email: Yup.string()
-    .email('must be a valid email address')
+    .email("must be a valid email address")
     .max(127, "must be shorter than 127")
     .required("this is a required field"),
   password: Yup.string()
@@ -60,16 +44,31 @@ const validationSchema = Yup.object().shape({
     .required("this is a required field")
 });
 
-function RegisterForm({ sendUser }) {
+function RegisterForm() {
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={initalSignupForm}
-      onSubmit={(values, sendUser, {setSubmitting, resetForm}) => {
-        setSubmitting(true)
-        // call axios function
-        resetForm()
-        setSubmitting(false)
+      onSubmit={(values, actions) => {
+        const newUser = {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          password: values.password
+        };
+        actions.setSubmitting(true);
+        console.log(newUser);
+        // axios
+        //   .post(registerApi, newUser)
+        //   .then(res => {
+        //     actions.resetForm();
+        //     actions.Submitting(false);
+        //   })
+        //   .catch(err => {
+        //     debugger;
+        //   });
+        actions.resetForm();
+        actions.setSubmitting(false);
       }}
     >
       {({
@@ -81,8 +80,7 @@ function RegisterForm({ sendUser }) {
         handleSubmit,
         isSubmitting
       }) => (
-        <Form onSubmit={handleSubmit}>
-          {/* {JSON.stringify(values)} */}
+        <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="firstName">First Name</label>
             <input
@@ -146,8 +144,10 @@ function RegisterForm({ sendUser }) {
             <Error touched={touched.password} message={errors.password} />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>Submit</button>
-        </Form>
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+        </form>
       )}
     </Formik>
   );
