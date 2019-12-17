@@ -1,8 +1,38 @@
 import React from "react";
+import styled from "styled-components";
 import { Formik } from "formik";
 import Error from "../helpers/Error";
-import { validationSchema, initalSignupForm, Form } from "./Register";
-export function RegisterForm() {
+import * as Yup from "yup";
+
+const registerApi = "enter url here";
+
+const initalSignupForm = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: ""
+};
+
+const validationSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(3, "must be at least 3 charaters")
+    .max(127, "must be shorter than 127")
+    .required("this is a required field"),
+  lastName: Yup.string()
+    .min(3, "must be at least 3 charaters")
+    .max(127, "must be shorter than 127")
+    .required("this is a required field"),
+  email: Yup.string()
+    .email("must be a valid email address")
+    .max(127, "must be shorter than 127")
+    .required("this is a required field"),
+  password: Yup.string()
+    .min(8, "must be at least 8 charaters")
+    .max(127, "must be shorter than 127")
+    .required("this is a required field")
+});
+
+export function RegisterBuyerForm() {
   return (
     <Formik
       validationSchema={validationSchema}
@@ -110,3 +140,28 @@ export function RegisterForm() {
     </Formik>
   );
 }
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  .inputField {
+    margin: 2px 0
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .has-error {
+    border: solid 0.5px red;
+  }
+  .invalid {
+    font-size: 1rem;
+    color: red;
+  }
+  .valid {
+    font-size: 1rem;
+    color: green;
+  }
+`;

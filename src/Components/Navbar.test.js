@@ -19,5 +19,4 @@ test('nav element has five children', () => {
     const { container } = render(<Router><NavBar /></Router>)
     const navigation = container.querySelector('nav')
     expect(navigation.children.length).toBe(5)
-
 })
