@@ -84,7 +84,9 @@ function Mission() {
         <MissionContainer>
             <div className="mission-left">
                 <h2>Our Mission</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum at varius vel pharetra vel turpis nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus. In est ante in nibh mauris cursus mattis molestie. Morbi non arcu risus quis varius quam. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. Magna fringilla urna porttitor rhoncus dolor purus non enim. Non sodales neque sodales ut etiam. Curabitur vitae nunc sed velit dignissim. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Egestas diam in arcu cursus. Euismod </p>
+                <p>A metal cast of a balloon dog recently sold for $91,000,000. A Banksy print could set you back a further $3,000,000. Meanwhile, art programs in schools around the world are chronically underfunded with many stating that they have adjusted their curriculum specifically to avoid using materials that need to be replaced.</p><p>
+                Artfunder was set up to kill two birds with one stone: to get art into your living room without needing to remortgage, and to provide precious capital to schools for buying supplies, organise trips and helping to  cultivate the next generation of creatives at the source.</p><p>
+                We provide a platform for schools to sell students art and put 100% of the profit directly back into the arts programs. </p>
                 <button>Learn More</button>
             </div>
             <div className="mission-right">
