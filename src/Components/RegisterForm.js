@@ -19,7 +19,11 @@ export default function RegisterForm(props) {
   const showSchool = props.isSchool ? "flex" : "none";
   const showBuyer = !props.isSchool ? "flex" : "none";
   
-  const validationSchema = Yup.object().shape({
+  const validationSchemaSchool = Yup.object().shape({
+    schoolName: Yup.string()
+      .min(3, "must be at least 3 charaters")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
     email: Yup.string()
       .email("must be a valid email address")
       .max(127, "must be shorter than 127")
@@ -28,10 +32,9 @@ export default function RegisterForm(props) {
       .min(8, "must be at least 8 charaters")
       .max(127, "must be shorter than 127")
       .required("this is a required field"),
-    schoolName: Yup.string()
-      .min(3, "must be at least 3 charaters")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
+  });
+
+  const validationSchemaBuyer = Yup.object().shape({
     firstName: Yup.string()
       .min(3, "must be at least 3 charaters")
       .max(127, "must be shorter than 127")
@@ -39,12 +42,20 @@ export default function RegisterForm(props) {
     lastName: Yup.string()
       .min(3, "must be at least 3 charaters")
       .max(127, "must be shorter than 127")
-      .required("this is a required field")
+      .required("this is a required field"),
+    email: Yup.string()
+      .email("must be a valid email address")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
+    password: Yup.string()
+      .min(8, "must be at least 8 charaters")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
   });
 
   return (
     <Formik
-      validationSchema={validationSchema}
+      validationSchema={ props.isSchool ? validationSchemaSchool : validationSchemaBuyer}
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         const newUser = {
