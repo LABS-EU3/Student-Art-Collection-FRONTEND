@@ -46,7 +46,7 @@ const MobileNavStyle = styled.div`
 function MobileNav({ styling, closeNav}) {
     return (
         <MobileNavStyle style={styling}>
-            <div className="close" onClick={closeNav}> X</div>
+            <div className="close" onClick={closeNav}>x</div>
             <div className="side-nav-bar">
                 <Link onClick={closeNav} to='/about'>About</Link>
                 <Link onClick={closeNav} to='/browse'>Browse</Link>

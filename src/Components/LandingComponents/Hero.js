@@ -62,7 +62,7 @@ function Hero() {
         <HeroBanner>
             <div className="heroText">
                 <h1 className="topRow">BUY ART</h1>
-                <h1 className="bottonRow">SUPORT SCHOOLS</h1>
+                <h1 className="bottonRow">SUPPORT SCHOOLS</h1>
                 <Link to='/signup'><button to='/signup'>Get Started</button></Link>
             </div>
         </HeroBanner>
