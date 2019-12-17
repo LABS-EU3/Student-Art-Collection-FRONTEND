@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import SearchIcon from '../Assets/magnifying-glass.png'
-import UserIcon from '../Assets/user.png'
+// import SearchIcon from '../Assets/magnifying-glass.png'
+// import UserIcon from '../Assets/user.png'
 
 const NavContainer = styled.div`
 width: 100vw;
@@ -164,7 +164,6 @@ function NavBar() {
                         {/* <Link to='/search'> <img src={SearchIcon} alt='Search icon' /></Link> */}
                         {/* <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link> */}
                         <Link to='/myaccount'> Login</Link>
-
                     </div>
                 </nav>
                 <Hamburger onClick={openMobileNav}>

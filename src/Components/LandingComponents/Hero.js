@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
 import HeroImage from '../../Assets/hero.jpg';
 
 const HeroBanner = styled.div`
@@ -61,7 +63,7 @@ function Hero() {
             <div className="heroText">
                 <h1 className="topRow">BUY ART</h1>
                 <h1 className="bottonRow">SUPORT SCHOOLS</h1>
-                <button>Get Started</button>
+                <Link to='/signup'><button to='/signup'>Get Started</button></Link>
             </div>
         </HeroBanner>
     )
