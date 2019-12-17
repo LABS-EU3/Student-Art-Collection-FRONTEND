@@ -113,6 +113,8 @@ function NavBar() {
         changeMenuStyle(null);
     }
 
+    window.addEventListener('resize', closeMobileNav);
+
     return (
         <NavContainer>
             <div className='navigation'>
