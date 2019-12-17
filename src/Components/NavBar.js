@@ -88,6 +88,14 @@ width: 25px;
 height: 20px;
 display: none;
 margin-top: 4px;
+cursor: pointer;
+opacity: 1;
+transition: opacity 0.2s ease-in-out;
+
+&:hover {
+    opacity: 0.3;
+    transition: opacity 0.2s ease-in-out;
+}
 
 div {
     width: 100%;
@@ -134,7 +142,7 @@ function NavBar() {
                     <div></div>
                     <div></div>
                 </Hamburger>
-               <MobileNav styling={menuStyle} closeNav={closeMobileNav}/>
+                <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
             </div>
         </NavContainer>
     )

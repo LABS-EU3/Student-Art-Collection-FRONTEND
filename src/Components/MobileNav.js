@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const MobileNavStyle = styled.div`
     font-family: 'Roboto', sans-serif;
@@ -40,6 +40,15 @@ const MobileNavStyle = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
+
+    &:hover{
+        opacity: 0.5;
+    }
+
+}
+
+.active {
+    color: orange;
 }
 `
 
@@ -48,11 +57,11 @@ function MobileNav({ styling, closeNav}) {
         <MobileNavStyle style={styling}>
             <div className="close" onClick={closeNav}>x</div>
             <div className="side-nav-bar">
-                <Link onClick={closeNav} to='/about'>About</Link>
-                <Link onClick={closeNav} to='/browse'>Browse</Link>
-                <Link onClick={closeNav} to='/schools'>Schools</Link>
-                <Link onClick={closeNav} to='/contact'>Contact</Link>
-                <Link onClick={closeNav} to='/myaccount'> Login</Link>
+                <NavLink onClick={closeNav} to='/about'>About</NavLink>
+                <NavLink onClick={closeNav} to='/browse'>Browse</NavLink>
+                <NavLink onClick={closeNav} to='/schools'>Schools</NavLink>
+                <NavLink onClick={closeNav} to='/contact'>Contact</NavLink>
+                <NavLink onClick={closeNav} to='/myaccount'> Login</NavLink>
             </div>
         </MobileNavStyle>
     )
