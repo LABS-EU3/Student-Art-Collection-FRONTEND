@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import SearchIcon from '../Assets/magnifying-glass.png'
 import UserIcon from '../Assets/user.png'
 
-
 const NavContainer = styled.div`
 width: 100vw;
 height: 6rem;
@@ -102,6 +101,7 @@ div {
 `
 
 const MobileNav = styled.div`
+    font-family: 'Roboto', sans-serif;
     width: 0px;
     overflow: hidden;
     height : 100vh;
@@ -141,12 +141,14 @@ const MobileNav = styled.div`
 `
 
 function NavBar() {
-    const [menuStatus, changeMenuStatus] = useState(false);
+    const [menuStyle, changeMenuStyle] = useState(null);
 
-    const testFunc = () => {
-        if(menuStatus){
-            
-        }
+    const openMobileNav = () => {
+        changeMenuStyle({ 'width': '50vw' });
+    }
+
+    const closeMobileNav = () => {
+        changeMenuStyle(null);
     }
 
     return (
@@ -159,16 +161,28 @@ function NavBar() {
                     <Link to='/schools'>Schools</Link>
                     <Link to='/contact'>Contact</Link>
                     <div className='icons'>
-                        <Link to='/search'> <img src={SearchIcon} alt='Search icon' /></Link>
-                        <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link>
+                        {/* <Link to='/search'> <img src={SearchIcon} alt='Search icon' /></Link> */}
+                        {/* <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link> */}
+                        <Link to='/myaccount'> Login</Link>
+
                     </div>
                 </nav>
-                <Hamburger onClick={testFunc}>
+                <Hamburger onClick={openMobileNav}>
                     <div></div>
                     <div></div>
                     <div></div>
                 </Hamburger>
-                <MobileNav/>
+                <MobileNav style={menuStyle}>
+                    <div className="close" onClick={closeMobileNav}> X</div>
+                    <div className="side-nav-bar">
+                        <Link onClick={closeMobileNav} to='/about'>About</Link>
+                        <Link onClick={closeMobileNav} to='/browse'>Browse</Link>
+                        <Link onClick={closeMobileNav} to='/schools'>Schools</Link>
+                        <Link onClick={closeMobileNav} to='/contact'>Contact</Link>
+                        <Link onClick={closeMobileNav} to='/myaccount'> Login</Link>
+
+                    </div>
+                </MobileNav>
             </div>
         </NavContainer>
     )
