@@ -146,6 +146,7 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  width: 80%
 
   .inputField {
     margin: 2px 0
