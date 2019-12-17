@@ -1,33 +1,34 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { RegisterBuyerForm } from "../Components/RegisterBuyerForm";
-import { is } from "@babel/types";
+import RegisterForm from "../Components/RegisterForm";
 
 export default function Register() {
   const [isSchool, setIsSchool] = useState(false);
 
-  console.log(isSchool);
+  // console.log(isSchool);
 
   return (
     <Container>
       <div className="title">
         <h1>Register</h1>
         <div className="toggleButton" onClick={() => setIsSchool(!isSchool)}>
-          <h2 className={(isSchool) ? 'greyButton' : 'greenButton'}>Buyer</h2>
-          <h2 className={(!isSchool) ? 'greyButton' : 'greenButton'}>School</h2>
+          <h3 className={(isSchool) ? 'greyButton' : 'greenButton'}>Buyer</h3>
+          <h3 className={(!isSchool) ? 'greyButton' : 'greenButton'}>School</h3>
         </div>
       </div>
-      { // check which form to render based on state
+      <RegisterForm isSchool={isSchool}/>
+      {/* { // check which form to render based on state
         (isSchool)
           ? <h1>School Form Goes Here</h1> 
-          : <RegisterBuyerForm /> 
-      }
+          : <RegisterForm /> 
+      } */}
 
     </Container>
   );
 }
 
 const Container = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,19 +45,41 @@ const Container = styled.div`
   .toggleButton {
     display flex;
     flex-direction row;
-    justify-content: space-between
+    justify-content: space-between;
+    cursor: pointer;
   }
-
+  
   .greyButton {
     background-color: lightgrey
+    border-radius: 5px
   }
-
+  
   .greenButton {
+    border-radius: 5px
     background-color: green
   }
-
+  
   div {
     // border: solid 1px red
   }
+  
+  h1 {
+    font-size: 3rem
+  }
+  
+  h2 {
+    font-size: 2.5rem
+    padding: 0.6rem 1.6rem
+  }
+  
+  h3 {
+    font-size: 2rem
+    padding: 0.6rem 1.6rem
+  }
+  
+  h4 {
+    font-size: 1.5rem
+  }
+  
 
 `;

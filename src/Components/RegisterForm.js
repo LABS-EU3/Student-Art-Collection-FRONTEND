@@ -7,38 +7,48 @@ import * as Yup from "yup";
 const registerApi = "enter url here";
 
 const initalSignupForm = {
+  schoolName: "",
   firstName: "",
   lastName: "",
   email: "",
   password: ""
 };
 
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(3, "must be at least 3 charaters")
-    .max(127, "must be shorter than 127")
-    .required("this is a required field"),
-  lastName: Yup.string()
-    .min(3, "must be at least 3 charaters")
-    .max(127, "must be shorter than 127")
-    .required("this is a required field"),
-  email: Yup.string()
-    .email("must be a valid email address")
-    .max(127, "must be shorter than 127")
-    .required("this is a required field"),
-  password: Yup.string()
-    .min(8, "must be at least 8 charaters")
-    .max(127, "must be shorter than 127")
-    .required("this is a required field")
-});
+export default function RegisterForm(props) {
 
-export function RegisterBuyerForm() {
+  const showSchool = props.isSchool ? "flex" : "none";
+  const showBuyer = !props.isSchool ? "flex" : "none";
+  
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("must be a valid email address")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
+    password: Yup.string()
+      .min(8, "must be at least 8 charaters")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
+    schoolName: Yup.string()
+      .min(3, "must be at least 3 charaters")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
+    firstName: Yup.string()
+      .min(3, "must be at least 3 charaters")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field"),
+    lastName: Yup.string()
+      .min(3, "must be at least 3 charaters")
+      .max(127, "must be shorter than 127")
+      .required("this is a required field")
+  });
+
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         const newUser = {
+          schoolName: values.schoolName,
           firstName: values.firstName,
           lastName: values.lastName,
           email: values.email,
@@ -69,7 +79,23 @@ export function RegisterBuyerForm() {
         isSubmitting
       }) => (
         <Form onSubmit={handleSubmit}>
-          <div className="inputField">
+          <div className="inputField" style={{ display: showSchool }}>
+            <label htmlFor="schoolName">School Name</label>
+            <input
+              name="schoolName"
+              type="text"
+              placeholder="Enter your school name"
+              id="schoolName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.schoolName}
+              className={
+                touched.schoolName && errors.schoolName ? "has-error" : null
+              }
+            />
+            <Error touched={touched.schoolName} message={errors.schoolName} />
+          </div>
+          <div className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="firstName">First Name</label>
             <input
               name="firstName"
@@ -85,7 +111,7 @@ export function RegisterBuyerForm() {
             />
             <Error touched={touched.firstName} message={errors.firstName} />
           </div>
-          <div className="inputField">
+          <div className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="lastName">Last Name</label>
             <input
               name="lastName"
@@ -145,13 +171,13 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-  width: 80%
+  margin-top: 40px;
+  width: 80%;
 
   .inputField {
-    margin: 2px 0
     display: flex;
     flex-direction: column;
+    margin: 2px 0;
     width: 100%;
   }
   .has-error {
@@ -164,5 +190,25 @@ const Form = styled.form`
   .valid {
     font-size: 1rem;
     color: green;
+  }
+
+  label {
+    font-size: 2rem
+    padding: 15px 0 10px 0
+  }
+
+  input {
+    font-size: 1.5rem
+    padding: 10px
+    border-radius: 5px
+    border: solid 0.5px lightgrey
+  }
+
+  button {
+    margin-top: 40px
+    background-color: green
+    border-radius: 10px
+    font-size: 2rem
+    padding: 0.6rem 1.6rem
   }
 `;

@@ -10,7 +10,7 @@ function App() {
 		<Router >
 			<Navbar />
 			<Route exact path='/' component={LandingPage} />
-			<Route exact ='/register' component={Register} />
+			<Route path ='/register' component={Register} />
 		</Router >
 	)
 }
