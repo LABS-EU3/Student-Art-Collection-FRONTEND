@@ -7,7 +7,7 @@ test('renders all 6 sub components', () => {
     const { container, getByText } = render(<Router><LandingPage /></Router>)
     const heroText = getByText(/BUY ART/i)
     
-    expect(container.children.length).toBe(6);
+    expect(container.children.length).toBe(5);
     expect(heroText).toBeInTheDocument();
 })
 
