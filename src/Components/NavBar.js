@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import SearchIcon from '../Assets/magnifying-glass.png'
@@ -101,7 +101,54 @@ div {
 }
 `
 
+const MobileNav = styled.div`
+    width: 0px;
+    overflow: hidden;
+    height : 100vh;
+    background-color: black;
+    color: white;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    transition: width 0.5s ease-in-out;
+
+.side-nav-bar{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+
+    a:hover{
+        color: darkgrey;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+`
+
 function NavBar() {
+    const [menuStatus, changeMenuStatus] = useState(false);
+
+    const testFunc = () => {
+        if(menuStatus){
+            
+        }
+    }
+
     return (
         <NavContainer>
             <div className='navigation'>
@@ -116,11 +163,12 @@ function NavBar() {
                         <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link>
                     </div>
                 </nav>
-                <Hamburger>
+                <Hamburger onClick={testFunc}>
                     <div></div>
                     <div></div>
                     <div></div>
                 </Hamburger>
+                <MobileNav/>
             </div>
         </NavContainer>
     )
