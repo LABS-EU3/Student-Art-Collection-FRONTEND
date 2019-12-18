@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
+import axios from "axios";
 import Error from "../helpers/Error";
-import * as Yup from "yup";
+import {
+  validationSchemaSchool,
+  validationSchemaBuyer
+} from "../helpers/validationSchema";
 
 const registerApi = "enter url here";
 
@@ -15,50 +19,19 @@ const initalSignupForm = {
 };
 
 export default function RegisterForm(props) {
-
+  // const type = (props.isSchool)
   const showSchool = props.isSchool ? "flex" : "none";
   const showBuyer = !props.isSchool ? "flex" : "none";
-  
-  const validationSchemaSchool = Yup.object().shape({
-    schoolName: Yup.string()
-      .min(3, "must be at least 3 charaters")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-    email: Yup.string()
-      .email("must be a valid email address")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-    password: Yup.string()
-      .min(8, "must be at least 8 charaters")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-  });
-
-  const validationSchemaBuyer = Yup.object().shape({
-    firstName: Yup.string()
-      .min(3, "must be at least 3 charaters")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-    lastName: Yup.string()
-      .min(3, "must be at least 3 charaters")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-    email: Yup.string()
-      .email("must be a valid email address")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-    password: Yup.string()
-      .min(8, "must be at least 8 charaters")
-      .max(127, "must be shorter than 127")
-      .required("this is a required field"),
-  });
 
   return (
     <Formik
-      validationSchema={ props.isSchool ? validationSchemaSchool : validationSchemaBuyer}
+      validationSchema={
+        props.isSchool ? validationSchemaSchool : validationSchemaBuyer
+      }
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         const newUser = {
+          type: props.isSchool ? "School" : "Buyer",
           schoolName: values.schoolName,
           firstName: values.firstName,
           lastName: values.lastName,
@@ -75,7 +48,11 @@ export default function RegisterForm(props) {
         //   })
         //   .catch(err => {
         //     debugger;
+        //   })
+        //   .finally(() => {
+
         //   });
+
         actions.resetForm();
         actions.setSubmitting(false);
       }}
@@ -139,7 +116,7 @@ export default function RegisterForm(props) {
             <Error touched={touched.lastName} message={errors.lastName} />
           </div>
           <div className="inputField">
-            <label htmlFor="email">email</label>
+            <label htmlFor="email">e-mail</label>
             <input
               name="email"
               type="email"
@@ -218,8 +195,15 @@ const Form = styled.form`
   button {
     margin-top: 40px
     background-color: green
-    border-radius: 10px
+    color: white
+    border: none
+    border-radius: 5px
     font-size: 2rem
-    padding: 0.6rem 1.6rem
+    padding: 0.6rem 10rem
+
+    &:hover{
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
+  }
   }
 `;

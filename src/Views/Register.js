@@ -17,21 +17,17 @@ export default function Register() {
         </div>
       </div>
       <RegisterForm isSchool={isSchool}/>
-      {/* { // check which form to render based on state
-        (isSchool)
-          ? <h1>School Form Goes Here</h1> 
-          : <RegisterForm /> 
-      } */}
-
     </Container>
   );
 }
 
 const Container = styled.div`
-  margin-top: 50px;
+  max-width: 800px;
+  margin: 50px Auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  // justify-content: center;
   font-family: ‘Roboto’, sans-serif
   // border: solid 1px red
 
@@ -55,6 +51,7 @@ const Container = styled.div`
   }
   
   .greenButton {
+    color: white
     border-radius: 5px
     background-color: green
   }
@@ -67,14 +64,9 @@ const Container = styled.div`
     font-size: 3rem
   }
   
-  h2 {
-    font-size: 2.5rem
-    padding: 0.6rem 1.6rem
-  }
-  
   h3 {
     font-size: 2rem
-    padding: 0.6rem 1.6rem
+    padding: 0.6rem 2.6rem
   }
   
   h4 {
