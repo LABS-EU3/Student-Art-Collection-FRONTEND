@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../state/actionCreators';
+import * as actionCreators from '../store/Actions/actionCreators';
 
 const Counter = ({ count, increment, decrement, reset }) => {
   return (

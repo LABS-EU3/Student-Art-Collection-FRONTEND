@@ -1,19 +1,16 @@
 import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import * as reducers from '../state/reducers';
+import * as reducers from '../store/Reducer/reducers';
 
-// add your slices of state here
-const masterReducer = combineReducers({
-  count: reducers.countReducer
-});
+// configuring react-devtools
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// store
+// connecting reducers and middleware to the store
 const store = createStore(
-  masterReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  combineReducers({
+    count: reducers.countReducer
+  }),
+  composeEnhancers(applyMiddleware(thunk))
 );
 
 export default store;
