@@ -14,6 +14,8 @@ const initialValues = {
   password: ''
 };
 
+// make it an env variable
+
 // login endpoint pending build of real endpoint in the backend repo
 
 const loginEndpoint = 'http://localhost:4000/auth/login';
