@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Route } from 'react-router-dom'
+import { connect } from 'react-redux';
+import * as actions from '../store/Actions/actionCreators'
 
 import DashNav from '../Components/BuyerDashboardComponents/DashNav'
 
@@ -19,10 +21,16 @@ align-items: center;
         box-shadow: 0px 13px 13px rgba(0, 0, 0, 0.04);
         border-radius: 5px;
         display: flex;
-    }
 
+        .right-side{
+            width: 50%;
+            background-color: dodgerblue;
+            color: red;
+            font-size: 5rem;
+        }
+    }
 `
-function BuyerDashboard() {
+function BuyerDashboard(props) {
 
     return (
         <DashboardContainer>
@@ -33,4 +41,4 @@ function BuyerDashboard() {
     )
 }
 
-export default BuyerDashboard;
+export default connect(state => state, actions)(BuyerDashboard);
