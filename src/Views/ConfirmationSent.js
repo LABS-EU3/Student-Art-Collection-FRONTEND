@@ -8,6 +8,10 @@ height: 60vh;
 margin: 0 auto;
 margin-top: 8rem;
 // box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.04);
+
+    @media(max-width: 800px){
+        width: 80vw;
+    }
  
     .img-cont {
         margin: 0 auto;
@@ -32,6 +36,10 @@ margin-top: 8rem;
             width: 80%;
             font-size: 2.5rem;
             text-align: center;
+
+            @media(max-width: 350px) {
+                font-size: 2rem;
+            }
         }
 
         p {
@@ -41,7 +49,13 @@ margin-top: 8rem;
             text-align: center;
             color: rgba(0,0,0,0.8);
             line-height: 1.3;
+
+            @media(max-width: 350px) {
+                font-size: 1.3rem;
+            }
         }
+
+        
     }
 `
 
