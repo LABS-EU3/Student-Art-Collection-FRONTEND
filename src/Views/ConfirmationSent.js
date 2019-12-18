@@ -54,8 +54,6 @@ margin-top: 8rem;
                 font-size: 1.3rem;
             }
         }
-
-        
     }
 `
 
