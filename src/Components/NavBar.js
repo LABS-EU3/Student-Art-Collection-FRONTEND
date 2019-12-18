@@ -1,8 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import SearchIcon from '../Assets/magnifying-glass.png';
-import UserIcon from '../Assets/user.png';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+import MobileNav from './MobileNav'
+import SearchIcon from '../Assets/magnifying-glass.png'
+import UserIcon from '../Assets/user.png'
 
 const NavContainer = styled.div`
   width: 100vw;
@@ -83,10 +85,25 @@ const NavContainer = styled.div`
 `;
 
 const Hamburger = styled.div`
+<<<<<<< HEAD
   width: 25px;
   height: 20px;
   display: none;
   margin-top: 4px;
+=======
+width: 25px;
+height: 20px;
+display: none;
+margin-top: 4px;
+cursor: pointer;
+opacity: 1;
+transition: opacity 0.2s ease-in-out;
+
+&:hover {
+    opacity: 0.3;
+    transition: opacity 0.2s ease-in-out;
+}
+>>>>>>> e05ce378ed74c0e958af6dfa83dca0f17d6da3bf
 
   div {
     width: 100%;
@@ -102,6 +119,7 @@ const Hamburger = styled.div`
 `;
 
 function NavBar() {
+<<<<<<< HEAD
   return (
     <NavContainer>
       <div className="navigation">
@@ -133,6 +151,44 @@ function NavBar() {
       </div>
     </NavContainer>
   );
+=======
+    const [menuStyle, changeMenuStyle] = useState(null);
+
+    const openMobileNav = () => {
+        changeMenuStyle({ 'width': '50vw' });
+    }
+
+    const closeMobileNav = () => {
+        changeMenuStyle(null);
+    }
+
+    window.addEventListener('resize', closeMobileNav);
+
+    return (
+        <NavContainer>
+            <div className='navigation'>
+                <Link to='/'> <h1>artFunder</h1> </Link>
+                <nav>
+                    <Link to='/about'>About</Link>
+                    <Link to='/browse'>Browse</Link>
+                    <Link to='/schools'>Schools</Link>
+                    <Link to='/contact'>Contact</Link>
+                    <div className='icons'>
+                        <Link to='/search'> <img src={SearchIcon} alt='Search icon' /></Link>
+                        <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link>
+                    </div>
+                </nav>
+                <Hamburger onClick={openMobileNav}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </Hamburger>
+                <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
+            </div>
+        </NavContainer>
+    )
+
+>>>>>>> e05ce378ed74c0e958af6dfa83dca0f17d6da3bf
 }
 
 export default NavBar;
