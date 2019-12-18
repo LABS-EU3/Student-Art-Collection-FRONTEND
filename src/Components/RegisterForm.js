@@ -72,6 +72,7 @@ export default function RegisterForm(props) {
           <div className="inputField" style={{ display: showSchool }}>
             <label htmlFor="name">School Name</label>
             <input
+              id="name"
               name="name"
               type="text"
               placeholder="Enter your school name"
@@ -87,9 +88,11 @@ export default function RegisterForm(props) {
           </div>
           <div className="inputField" style={{ display: showSchool }}>
             <label htmlFor="description">School Description</label>
-            <input
+            <textarea
+              id="description"
               name="description"
               type="text"
+              multiline={true}
               placeholder="Enter your school description"
               id="description"
               onChange={handleChange}
@@ -104,6 +107,7 @@ export default function RegisterForm(props) {
           <div className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="firstName">First Name</label>
             <input
+              id="firstName"
               name="firstName"
               type="text"
               placeholder="Enter your first name"
@@ -120,6 +124,7 @@ export default function RegisterForm(props) {
           <div className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="lastName">Last Name</label>
             <input
+              id="lastName"
               name="lastName"
               type="text"
               placeholder="Enter your last name"
@@ -136,6 +141,7 @@ export default function RegisterForm(props) {
           <div className="inputField">
             <label htmlFor="email">e-mail</label>
             <input
+              id="email"
               name="email"
               type="email"
               placeholder="Enter your email"
@@ -150,6 +156,7 @@ export default function RegisterForm(props) {
           <div className="inputField">
             <label htmlFor="password">Password</label>
             <input
+              id="password"
               name="password"
               type="text"
               placeholder="Enter your password"
@@ -208,6 +215,14 @@ const Form = styled.form`
     padding: 10px
     border-radius: 5px
     border: solid 0.5px lightgrey
+  }
+
+  textarea {
+    font-size: 1.5rem
+    padding: 10px
+    border-radius: 5px
+    border: solid 0.5px lightgrey
+    height: 80px
   }
 
   button {

@@ -43,6 +43,11 @@ const Container = styled.div`
     flex-direction row;
     justify-content: space-between;
     cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
+    }
   }
   
   .greyButton {
