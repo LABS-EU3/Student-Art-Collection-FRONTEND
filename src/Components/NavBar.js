@@ -85,12 +85,6 @@ const NavContainer = styled.div`
 `;
 
 const Hamburger = styled.div`
-<<<<<<< HEAD
-  width: 25px;
-  height: 20px;
-  display: none;
-  margin-top: 4px;
-=======
 width: 25px;
 height: 20px;
 display: none;
@@ -103,7 +97,6 @@ transition: opacity 0.2s ease-in-out;
     opacity: 0.3;
     transition: opacity 0.2s ease-in-out;
 }
->>>>>>> e05ce378ed74c0e958af6dfa83dca0f17d6da3bf
 
   div {
     width: 100%;
@@ -119,39 +112,6 @@ transition: opacity 0.2s ease-in-out;
 `;
 
 function NavBar() {
-<<<<<<< HEAD
-  return (
-    <NavContainer>
-      <div className="navigation">
-        <Link to="/">
-          {' '}
-          <h1>artFunder</h1>{' '}
-        </Link>
-        <nav>
-          <Link to="/about">About</Link>
-          <Link to="/browse">Browse</Link>
-          <Link to="/schools">Schools</Link>
-          <Link to="/contact">Contact</Link>
-          <div className="icons">
-            <Link to="/search">
-              {' '}
-              <img src={SearchIcon} alt="Search icon" />
-            </Link>
-            <Link to="/myaccount">
-              {' '}
-              <img src={UserIcon} alt="Search icon" />
-            </Link>
-          </div>
-        </nav>
-        <Hamburger>
-          <div></div>
-          <div></div>
-          <div></div>
-        </Hamburger>
-      </div>
-    </NavContainer>
-  );
-=======
     const [menuStyle, changeMenuStyle] = useState(null);
 
     const openMobileNav = () => {
@@ -188,7 +148,6 @@ function NavBar() {
         </NavContainer>
     )
 
->>>>>>> e05ce378ed74c0e958af6dfa83dca0f17d6da3bf
 }
 
 export default NavBar;
