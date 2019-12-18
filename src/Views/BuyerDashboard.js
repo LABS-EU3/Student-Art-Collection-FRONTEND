@@ -18,9 +18,12 @@ align-items: center;
         background-color: white;
         box-shadow: 0px 13px 13px rgba(0, 0, 0, 0.04);
         border-radius: 5px;
+        display: flex;
     }
+
 `
 function BuyerDashboard() {
+
     return (
         <DashboardContainer>
             <div className="dashboard">

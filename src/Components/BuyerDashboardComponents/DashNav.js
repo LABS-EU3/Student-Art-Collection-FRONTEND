@@ -31,13 +31,15 @@ const DashNavStyle = styled.div`
 
         a {
             width: 60%;
-            padding-bottom: 1rem;
+            padding: 0.5rem;
             text-align: center;
-            transition: 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+            border-bottom: 1px solid white;
+
 
             &:hover {
                 color: rgba(0,0,0,0.8);
-                transition: 0.2s ease-in-out;
+                transition: color 0.2s ease-in-out;
             }
         }
     }
