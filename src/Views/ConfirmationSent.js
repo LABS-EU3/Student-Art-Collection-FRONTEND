@@ -7,7 +7,7 @@ width: 50vw;
 height: 60vh;
 margin: 0 auto;
 margin-top: 8rem;
-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.04);
+// box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.04);
  
     .img-cont {
         margin: 0 auto;
@@ -53,7 +53,7 @@ function ConfirmationSent() {
             </div>
             <div className="text-cont">
                 <h3>A verification link has been sent to your email account</h3>
-                <p>Please click on that link to verify your email and continue the registration process. </p>
+                <p>Please click on that link to verify your email and finish the registration process. </p>
             </div>
         </ConfirmationContainer>
     )
