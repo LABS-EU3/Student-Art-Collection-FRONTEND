@@ -11,7 +11,8 @@ import {
 const registerApi = "enter url here";
 
 const initalSignupForm = {
-  schoolName: "",
+  name: "",
+  description: "",
   firstName: "",
   lastName: "",
   email: "",
@@ -32,9 +33,10 @@ export default function RegisterForm(props) {
       onSubmit={(values, actions) => {
         const newUser = {
           type: props.isSchool ? "School" : "Buyer",
-          schoolName: values.schoolName,
-          firstName: values.firstName,
-          lastName: values.lastName,
+          name: values.name,
+          description: values.description,
+          firstname: values.firstName,
+          lastname: values.lastName,
           email: values.email,
           password: values.password
         };
@@ -68,20 +70,36 @@ export default function RegisterForm(props) {
       }) => (
         <Form onSubmit={handleSubmit}>
           <div className="inputField" style={{ display: showSchool }}>
-            <label htmlFor="schoolName">School Name</label>
+            <label htmlFor="name">School Name</label>
             <input
-              name="schoolName"
+              name="name"
               type="text"
               placeholder="Enter your school name"
-              id="schoolName"
+              id="name"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.schoolName}
+              value={values.name}
               className={
-                touched.schoolName && errors.schoolName ? "has-error" : null
+                touched.name && errors.name ? "has-error" : null
               }
             />
-            <Error touched={touched.schoolName} message={errors.schoolName} />
+            <Error touched={touched.name} message={errors.name} />
+          </div>
+          <div className="inputField" style={{ display: showSchool }}>
+            <label htmlFor="description">School Description</label>
+            <input
+              name="description"
+              type="text"
+              placeholder="Enter your school description"
+              id="description"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.description}
+              className={
+                touched.description && errors.description ? "has-error" : null
+              }
+            />
+            <Error touched={touched.description} message={errors.description} />
           </div>
           <div className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="firstName">First Name</label>

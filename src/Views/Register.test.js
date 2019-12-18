@@ -40,19 +40,19 @@ test('checks the button changes buyer form to school form', () => {
   expect(buyerButton).toHaveClass('greyButton')
 })
 
-// test('checks the button changes buyer form to school form', () => {
-//   const { container, getByText } = rtl.render(<Router><Register /></Router>)
-//   const toggleButton = container.querySelector('.toggleButton')
-//   const emailField = getByText(/e-mail/i)
-//   const passwordField = getByText(/password/i)
-//   const firstName = getByText(/First Name/i)
-//   const lastName = getByText(/Last Name/i)
+test('checks the button changes buyer form to school form', () => {
+  const { container, getByText } = rtl.render(<Router><Register /></Router>)
+  const toggleButton = container.querySelector('.toggleButton')
+  const emailField = getByText(/e-mail/i)
+  const passwordField = getByText(/password/i)
+  const firstName = getByText(/First Name/i)
+  const lastName = getByText(/Last Name/i)
 
-//   rtl.fireEvent.click(toggleButton)
+  rtl.fireEvent.click(toggleButton)
   
-//   // expect(firstName).not.toBeInTheDocument();
-//   // expect(lastName).not.toBeInTheDocument();
-//   expect(schoolName).toBeInTheDocument();
-//   expect(emailField).toBeInTheDocument();
-//   expect(passwordField).toBeInTheDocument();
-// })
+  // expect(firstName).not.toBeInTheDocument();
+  // expect(lastName).not.toBeInTheDocument();
+  expect(schoolName).toBeInTheDocument();
+  expect(emailField).toBeInTheDocument();
+  expect(passwordField).toBeInTheDocument();
+})
