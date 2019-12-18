@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
+import MobileNav from './MobileNav'
 import SearchIcon from '../Assets/magnifying-glass.png'
 import UserIcon from '../Assets/user.png'
-
 
 const NavContainer = styled.div`
 width: 100vw;
@@ -87,6 +88,14 @@ width: 25px;
 height: 20px;
 display: none;
 margin-top: 4px;
+cursor: pointer;
+opacity: 1;
+transition: opacity 0.2s ease-in-out;
+
+&:hover {
+    opacity: 0.3;
+    transition: opacity 0.2s ease-in-out;
+}
 
 div {
     width: 100%;
@@ -102,6 +111,18 @@ div {
 `
 
 function NavBar() {
+    const [menuStyle, changeMenuStyle] = useState(null);
+
+    const openMobileNav = () => {
+        changeMenuStyle({ 'width': '50vw' });
+    }
+
+    const closeMobileNav = () => {
+        changeMenuStyle(null);
+    }
+
+    window.addEventListener('resize', closeMobileNav);
+
     return (
         <NavContainer>
             <div className='navigation'>
@@ -116,11 +137,12 @@ function NavBar() {
                         <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link>
                     </div>
                 </nav>
-                <Hamburger>
+                <Hamburger onClick={openMobileNav}>
                     <div></div>
                     <div></div>
                     <div></div>
                 </Hamburger>
+                <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
             </div>
         </NavContainer>
     )
