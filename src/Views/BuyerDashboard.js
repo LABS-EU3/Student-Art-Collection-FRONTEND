@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../store/Actions/actionCreators'
 
 import DashNav from '../Components/BuyerDashboardComponents/DashNav'
+import BuyerProfile from '../Components/BuyerDashboardComponents/BuyerProfile'
 
 const DashboardContainer = styled.div`
 width: 100vw;
@@ -22,20 +23,23 @@ align-items: center;
         border-radius: 5px;
         display: flex;
 
-        .right-side{
-            width: 50%;
-            background-color: dodgerblue;
-            color: red;
-            font-size: 5rem;
+        .right-side {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 `
-function BuyerDashboard(props) {
+function BuyerDashboard() {
 
     return (
         <DashboardContainer>
             <div className="dashboard">
                 <Route path='/myaccount' component={DashNav} />
+                <div className='right-side'>
+                    <Route exact path='/myaccount' component={BuyerProfile} />
+                </div>
             </div>
         </DashboardContainer>
     )
