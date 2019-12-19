@@ -70,9 +70,9 @@ const Login = ({
             case 'please check your email address to confirm account':
               history.push('/confirmation');
               break;
-            case 'Invalid credentials':
-              errorLogin(res.data.message);
-              break;
+            // case 'Invalid credentials':
+            //   errorLogin(res.data.message);
+            //   break;
             default:
               console.log('weird');
           }
