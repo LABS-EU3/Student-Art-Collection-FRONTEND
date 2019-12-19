@@ -8,7 +8,7 @@ import {
   validationSchemaBuyer
 } from "../helpers/validationSchema";
 
-const registerApi = process.env.URL || "http://localhost:9000/signup"
+const registerApi = process.env.URL || "http://localhost:9000/signup";
 
 const initalSignupForm = {
   name: "",
@@ -19,11 +19,10 @@ const initalSignupForm = {
   password: ""
 };
 
-export default function RegisterForm(props) {
-
+function RegisterForm(props) {
   const showSchool = props.isSchool ? "flex" : "none";
   const showBuyer = !props.isSchool ? "flex" : "none";
-console.log(props);
+  // console.log(props);
 
   return (
     <Formik
@@ -32,6 +31,8 @@ console.log(props);
       }
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
+        props.loadingStarted()
+        // debugger
         const newUser = {
           type: props.isSchool ? "school" : "buyer",
           name: values.name,
@@ -42,13 +43,12 @@ console.log(props);
           password: values.password
         };
         actions.setSubmitting(true);
-        debugger;
-        console.log(newUser);
         axios
           .post(registerApi, newUser)
           .then(res => {
             actions.resetForm();
             actions.setSubmitting(false);
+            props.loadingFinished();
             props.history.push("/confirmation");
           })
           .catch(err => {
@@ -57,6 +57,7 @@ console.log(props);
           .finally(() => {
             actions.resetForm();
             actions.setSubmitting(false);
+            props.loadingFinished()
           });
 
         actions.resetForm();
@@ -195,6 +196,8 @@ console.log(props);
   );
 }
 
+export default RegisterForm
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -241,7 +244,7 @@ const StyledForm = styled.form`
   }
 
   button {
-    margin-top: 40px
+    margin: 40px
     background-color: green
     color: white
     border: none

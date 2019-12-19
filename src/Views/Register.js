@@ -1,25 +1,40 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import RegisterForm from "../Components/RegisterForm";
-
-export default function Register(props) {
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/Actions/actionCreators';
+import Spinner from "../Components/Spinner";
+import { Link } from 'react-router-dom';
+function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
 
   // console.log(isSchool);
 
-  return (
-    <Container>
-      <div className="title">
-        <h1>Register</h1>
-        <div className="toggleButton" onClick={() => setIsSchool(!isSchool)}>
-          <h3 className={(isSchool) ? 'greyButton' : 'greenButton'}>Buyer</h3>
-          <h3 className={(!isSchool) ? 'greyButton' : 'greenButton'}>School</h3>
+  if (props.isLoading) {
+    return (
+      <Container>
+        <Spinner/>
+      </Container>
+    )
+  } else {
+    return (
+      <Container>
+        <div className="title">
+          <h1>Register</h1>
+          <div className="toggleButton" onClick={() => setIsSchool(!isSchool)}>
+            <h3 className={(isSchool) ? 'greyButton' : 'greenButton'}>Buyer</h3>
+            <h3 className={(!isSchool) ? 'greyButton' : 'greenButton'}>School</h3>
+          </div>
         </div>
-      </div>
-      <RegisterForm {...props} isSchool={isSchool}/>
-    </Container>
-  );
+        <RegisterForm {...props} isSchool={isSchool}/>
+        <Link to='/auth/login' >already a member?</Link>
+      </Container>
+    );
+  }
+
 }
+
+export default connect(state => state, actionCreators)(Register)
 
 const Container = styled.div`
   max-width: 800px;
@@ -82,5 +97,9 @@ const Container = styled.div`
   
   h4 {
     font-size: 1.5rem
+  }
+
+  a {
+    font-size: 1.2rem
   }
 `;
