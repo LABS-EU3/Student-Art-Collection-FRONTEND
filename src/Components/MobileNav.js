@@ -44,7 +44,6 @@ const MobileNavStyle = styled.div`
     &:hover{
         opacity: 0.5;
     }
-
 }
 
 .active {
