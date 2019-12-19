@@ -1,6 +1,10 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/Actions/actionCreators';
+
+import Spinner from '../Spinner';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -30,7 +34,11 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const LoginForm = () => {
+const LoginForm = ({ isLoggingIn }) => {
+  if (isLoggingIn) {
+    return <Spinner />;
+  }
+
   return (
     <StyledDiv>
       <h2>Sign In</h2>
@@ -52,4 +60,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default connect(state => state, actionCreators)(LoginForm);

@@ -69,6 +69,7 @@ const Login = ({
       })
       .catch(error => {
         debugger;
+        loggingInFinished()
         errorLogin();
         // set error message state when redux file structure has been clarified
       });
