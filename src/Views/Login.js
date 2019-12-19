@@ -10,6 +10,7 @@ import * as actionCreators from '../store/Actions/actionCreators';
 
 import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
+import LoginError from '../Components/Login/LoginError';
 
 const initialValues = {
   email: '',
@@ -47,7 +48,6 @@ const StyledForm = styled.div`
 const Login = ({
   history,
   errorLogin,
-  logInError,
   resetErrorLogin,
   loadingStarted,
   loadingFinished,
@@ -109,8 +109,8 @@ const Login = ({
         onSubmit={onLoginHandle}
         component={LoginForm}
       />
+      <LoginError />
       <ResetPassword />
-      {logInError.isError ? <div>{logInError.errorMessage}</div> : null}
     </StyledForm>
   );
 };
