@@ -32,13 +32,13 @@ export function errorLoginReducer(isError = false, action) {
 
 // reducer to keep track of whether User is waiting for axios login call to resolve
 
-export function isLoggingInReducer(isLoggingIn = false, action) {
+export function isLoadingReducer(isLoading = false, action) {
   switch (action.type) {
-    case types.IS_LOGGING_IN:
+    case types.IS_LOADING:
       return true;
-    case types.FINISHED_LOGGING_IN:
+    case types.LOADING_FINISHED:
       return false;
     default:
-      return isLoggingIn;
+      return isLoading;
   }
 }

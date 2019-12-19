@@ -34,8 +34,8 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const LoginForm = ({ isLoggingIn }) => {
-  if (isLoggingIn) {
+const LoginForm = ({ isLoading }) => {
+  if (isLoading) {
     return <Spinner />;
   }
 

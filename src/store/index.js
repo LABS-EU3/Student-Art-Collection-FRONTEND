@@ -10,7 +10,7 @@ const store = createStore(
   combineReducers({
     count: reducers.countReducer,
     isError: reducers.errorLoginReducer,
-    isLoggingIn: reducers.isLoggingInReducer
+    isLoading: reducers.isLoadingReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

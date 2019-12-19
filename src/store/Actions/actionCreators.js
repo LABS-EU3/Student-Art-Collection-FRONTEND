@@ -36,14 +36,14 @@ export function resetErrorLogin() {
   };
 }
 
-export function isLoggingInLoading() {
+export function loadingStarted() {
   return {
-    type: types.IS_LOGGING_IN
+    type: types.IS_LOADING
   };
 }
 
-export function loggingInFinished() {
+export function loadingFinished() {
   return {
-    type: types.FINISHED_LOGGING_IN
+    type: types.LOADING_FINISHED
   };
 }

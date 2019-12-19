@@ -49,19 +49,19 @@ const Login = ({
   errorLogin,
   isError,
   resetErrorLogin,
-  isLoggingInLoading,
-  loggingInFinished
+  loadingStarted,
+  loadingFinished
 }) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
     console.log(values);
-    isLoggingInLoading();
+    loadingStarted();
     axios
       .post(loginEndpoint, values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
         debugger;
-        loggingInFinished();
+        loadingFinished();
         action.resetForm();
         resetErrorLogin();
         localStorage.setItem('authorization', res.data.token);
@@ -69,7 +69,7 @@ const Login = ({
       })
       .catch(error => {
         debugger;
-        loggingInFinished()
+        loadingFinished()
         errorLogin();
         // set error message state when redux file structure has been clarified
       });
