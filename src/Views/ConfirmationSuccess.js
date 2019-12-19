@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import queryString from 'query-string'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Success2 from '../Assets/success1.svg'
 
-const ConfirmationContainer = styled.div`
+import Spinner from '../Components/Spinner'
+import Success2 from '../Assets/success1.svg'
+import Error from '../Assets/error.svg'
+
+const URL = 'http://localhost:9000/confirm'
+
+const StyledConfirmationContainer = styled.div`
 width: 50vw;
 height: 60vh;
 margin: 0 auto;
@@ -70,18 +77,68 @@ margin-top: 8rem;
     }
 `
 
-function ConfirmationSuccess() {
-    return (
-        <ConfirmationContainer>
+const SpinnerContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    margin-top: 20rem;
+`
+
+function ConfirmationSuccess(props) {
+    const [display, setDisplay] = useState(null);
+    const value = queryString.parse(props.location.search);
+    const token = value.token;
+
+    useEffect(() => {
+        axios.patch(URL, {
+            token
+        })
+            .then((response) => {
+                if (response.data) {
+                    setDisplay("Success")
+                }
+            })
+            .catch(() => {
+                setDisplay("Error")
+            })
+    }, [])
+
+    if (display === 'Error') {
+        return (
+            <StyledConfirmationContainer>
             <div className="img-cont">
-                <img src={Success2  } alt="Successful registration" />
+                <img src={Error} alt="Error" />
             </div>
             <div className="text-cont">
-                <h3>Your account is now confirmed</h3>
-                <p>Please <Link to='/myaccount'>click here</Link> to login and get started. </p>
+                <h3>Something went wrong</h3>
+                <p>Please <Link to='/help'>contact us</Link> for further help.   </p>
             </div>
-        </ConfirmationContainer>
-    )
+
+        </StyledConfirmationContainer>
+        )
+    }
+
+    else if (!display) {
+        return (
+            <SpinnerContainer>
+                <Spinner />
+            </SpinnerContainer>
+        )
+    }
+    else if (display === "Success") {
+        return (
+            <StyledConfirmationContainer>
+                <div className="img-cont">
+                    <img src={Success2} alt="Successful registration" />
+                </div>
+                <div className="text-cont">
+                    <h3>Your account is now confirmed</h3>
+                    <p>Please <Link to='/myaccount'>click here</Link> to login and get started. </p>
+                </div>
+
+            </StyledConfirmationContainer>
+        )
+    }
 }
 
 export default ConfirmationSuccess;
