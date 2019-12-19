@@ -20,7 +20,7 @@ const initialValues = {
 
 // login endpoint pending build of real endpoint in the backend repo
 
-const loginEndpoint = 'http://localhost:9000/login';
+const loginEndpoint = 'http://localhost:9000/logiaaan';
 
 // validation schema by yup plugged into formik
 
@@ -47,7 +47,7 @@ const StyledForm = styled.div`
 const Login = ({
   history,
   errorLogin,
-  isError,
+  logInError,
   resetErrorLogin,
   loadingStarted,
   loadingFinished,
@@ -70,6 +70,9 @@ const Login = ({
             case 'please check your email address to confirm account':
               history.push('/confirmation');
               break;
+            case 'Invalid credentials':
+              errorLogin(res.data.message);
+              break;
             default:
               console.log('weird');
           }
@@ -82,7 +85,7 @@ const Login = ({
       .catch(error => {
         debugger;
         loadingFinished();
-        errorLogin();
+        errorLogin('There was a problem loggin you in. Please try again');
         // set error message state when redux file structure has been clarified
       });
   };
@@ -96,7 +99,7 @@ const Login = ({
         component={LoginForm}
       />
       <ResetPassword />
-      {isError ? <div>Error logging in. Please try again</div> : null}
+      {logInError.isError ? <div>{logInError.errorMessage}</div> : null}
     </StyledForm>
   );
 };

@@ -19,14 +19,25 @@ export function countReducer(count = initialCount, action) {
 
 // slice of state for error when logging in
 
-export function errorLoginReducer(isError = false, action) {
+const initialLogInError = {
+  isError: false,
+  errorMessage: ''
+};
+
+export function errorLoginReducer(logInError = initialLogInError, action) {
   switch (action.type) {
     case types.ERROR_ON_LOGIN:
-      return true;
+      return {
+        isError: true,
+        errorMessage: action.payload.message
+      };
     case types.RESET_ERROR_ON_LOGIN:
-      return false;
+      return {
+        isError: false,
+        message: ''
+      };
     default:
-      return isError;
+      return logInError;
   }
 }
 

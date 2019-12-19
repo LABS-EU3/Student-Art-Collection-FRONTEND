@@ -2,6 +2,17 @@ import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import * as reducers from '../store/Reducer/reducers';
 
+// PERSIST STATE UPON PAGE REFRESH
+// import { persistStore, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
+// CONFIG STORAGE STATE
+
+// const persistConfig = {
+//   key: 'root',
+//   storage
+// };
+
 // configuring react-devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -9,7 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     count: reducers.countReducer,
-    isError: reducers.errorLoginReducer,
+    logInError: reducers.errorLoginReducer,
     isLoading: reducers.isLoadingReducer,
     loggedInUserReducer: reducers.loggedInUserReducer
   }),
