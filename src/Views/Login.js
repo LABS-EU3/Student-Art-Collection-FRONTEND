@@ -64,12 +64,22 @@ const Login = ({
         loadingFinished();
         action.resetForm();
         resetErrorLogin();
-        localStorage.setItem('authorization', res.data.token);
-        history.push('/');
+        if (!res.data.token) {
+          switch (res.data.message) {
+            case 'please check your email address to confirm account':
+              history.push('/confirmation');
+              break;
+            default:
+              console.log('weird');
+          }
+        } else {
+          localStorage.setItem('authorization', res.data.token);
+          history.push('/');
+        }
       })
       .catch(error => {
         debugger;
-        loadingFinished()
+        loadingFinished();
         errorLogin();
         // set error message state when redux file structure has been clarified
       });
