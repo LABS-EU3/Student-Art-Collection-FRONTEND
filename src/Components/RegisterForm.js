@@ -52,7 +52,8 @@ function RegisterForm(props) {
             props.history.push("/confirmation");
           })
           .catch(err => {
-            debugger;
+            console.log(err);
+            ;
           })
           .finally(() => {
             actions.resetForm();
@@ -183,13 +184,10 @@ function RegisterForm(props) {
             <Error touched={touched.password} message={errors.password} />
           </div>
 
-          {/* <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button> */}
-
-          <button type="submit" onClick={() => console.log("test")}>
+          <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
+
         </StyledForm>
       )}
     </Formik>
