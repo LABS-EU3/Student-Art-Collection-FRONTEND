@@ -15,7 +15,6 @@ width: 50vw;
 height: 60vh;
 margin: 0 auto;
 margin-top: 8rem;
-// box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.04);
 
     @media(max-width: 800px){
         width: 80vw;
@@ -106,15 +105,14 @@ function ConfirmationSuccess(props) {
     if (display === 'Error') {
         return (
             <StyledConfirmationContainer>
-            <div className="img-cont">
-                <img src={Error} alt="Error" />
-            </div>
-            <div className="text-cont">
-                <h3>Something went wrong</h3>
-                <p>Please <Link to='/help'>contact us</Link> for further help.   </p>
-            </div>
-
-        </StyledConfirmationContainer>
+                <div className="img-cont">
+                    <img src={Error} alt="Error" />
+                </div>
+                <div className="text-cont">
+                    <h3>Something went wrong</h3>
+                    <p>Please <Link to='/help'>contact us</Link> for further help.   </p>
+                </div>
+            </StyledConfirmationContainer>
         )
     }
 
@@ -125,6 +123,7 @@ function ConfirmationSuccess(props) {
             </SpinnerContainer>
         )
     }
+
     else if (display === "Success") {
         return (
             <StyledConfirmationContainer>
