@@ -9,7 +9,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     count: reducers.countReducer,
-    isError: reducers.errorLoginReducer
+    isError: reducers.errorLoginReducer,
+    isLoggingIn: reducers.isLoggingInReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

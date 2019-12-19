@@ -44,15 +44,24 @@ const StyledForm = styled.div`
   justify-content: center;
 `;
 
-const Login = ({ history, errorLogin, isError, resetErrorLogin }) => {
+const Login = ({
+  history,
+  errorLogin,
+  isError,
+  resetErrorLogin,
+  isLoggingInLoading,
+  loggingInFinished
+}) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
     console.log(values);
+    isLoggingInLoading();
     axios
       .post(loginEndpoint, values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
         debugger;
+        loggingInFinished();
         action.resetForm();
         resetErrorLogin();
         localStorage.setItem('authorization', res.data.token);

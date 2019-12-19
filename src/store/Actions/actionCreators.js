@@ -35,3 +35,15 @@ export function resetErrorLogin() {
     type: types.RESET_ERROR_ON_LOGIN
   };
 }
+
+export function isLoggingInLoading() {
+  return {
+    type: types.IS_LOGGING_IN
+  };
+}
+
+export function loggingInFinished() {
+  return {
+    type: types.FINISHED_LOGGING_IN
+  };
+}

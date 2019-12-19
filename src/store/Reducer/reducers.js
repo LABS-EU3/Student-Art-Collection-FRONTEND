@@ -23,9 +23,22 @@ export function errorLoginReducer(isError = false, action) {
   switch (action.type) {
     case types.ERROR_ON_LOGIN:
       return true;
-      case types.RESET_ERROR_ON_LOGIN:
-        return false;
+    case types.RESET_ERROR_ON_LOGIN:
+      return false;
     default:
       return isError;
+  }
+}
+
+// reducer to keep track of whether User is waiting for axios login call to resolve
+
+export function isLoggingInReducer(isLoggingIn = false, action) {
+  switch (action.type) {
+    case types.IS_LOGGING_IN:
+      return true;
+    case types.FINISHED_LOGGING_IN:
+      return false;
+    default:
+      return isLoggingIn;
   }
 }
