@@ -20,7 +20,7 @@ const initialValues = {
 
 // login endpoint pending build of real endpoint in the backend repo
 
-const loginEndpoint = 'http://localhost:9000/logiaaan';
+const loginEndpoint = 'http://localhost:9000/login';
 
 // validation schema by yup plugged into formik
 
@@ -55,8 +55,8 @@ const Login = ({
 }) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
-    console.log(values);
     loadingStarted();
+    resetErrorLogin();
     axios
       .post(loginEndpoint, values)
       .then(res => {
@@ -85,7 +85,18 @@ const Login = ({
       .catch(error => {
         debugger;
         loadingFinished();
-        errorLogin('There was a problem loggin you in. Please try again');
+        switch (error.response.status) {
+          case 404:
+            errorLogin(error.message);
+            break;
+          case 401:
+            errorLogin(error.response.data);
+            break;
+          default:
+            return console.log('yay');
+        }
+        // if (error.respone.status === 404) {
+        // }
         // set error message state when redux file structure has been clarified
       });
   };
