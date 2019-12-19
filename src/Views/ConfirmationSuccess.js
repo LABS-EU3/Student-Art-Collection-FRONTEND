@@ -8,7 +8,7 @@ import Spinner from '../Components/Spinner'
 import Success2 from '../Assets/success1.svg'
 import Error from '../Assets/error.svg'
 
-const URL = 'http://localhost:9000/confirm'
+const baseURL = process.env.baseURL || 'http://localhost:9000'
 
 const StyledConfirmationContainer = styled.div`
 width: 50vw;
@@ -89,7 +89,7 @@ function ConfirmationSuccess(props) {
     const token = value.token;
 
     useEffect(() => {
-        axios.patch(URL, {
+        axios.patch(`${baseURL}/confirm`, {
             token
         })
             .then((response) => {
