@@ -36,6 +36,12 @@ const Container = styled.div`
     flex-direction row;
     justify-content: space-between
     width: 80%;
+
+    @media (max-width: 500px) {
+      flex-direction column;
+      height: 80px;
+      align-items: center
+    }
   }
 
   .toggleButton {

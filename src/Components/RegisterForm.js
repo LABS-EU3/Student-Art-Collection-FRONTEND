@@ -47,6 +47,7 @@ export default function RegisterForm(props) {
           .then(res => {
             actions.resetForm();
             actions.Submitting(false);
+            props.history.push('/confirmation')
           })
           .catch(err => {
             debugger;
@@ -224,7 +225,7 @@ const Form = styled.form`
     border: none
     border-radius: 5px
     font-size: 2rem
-    padding: 0.6rem 10rem
+    padding: 0.6rem 5rem
 
     &:hover{
       opacity: 0.7;
