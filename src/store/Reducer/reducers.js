@@ -42,3 +42,30 @@ export function isLoadingReducer(isLoading = false, action) {
       return isLoading;
   }
 }
+
+// SLICE OF STATE TO KEEP TRACK OF LOGGED IN USER
+
+const initialLoggedInUser = {
+  confirmed: '',
+  _id: '',
+  email: '',
+  type: '',
+  password: '',
+  createdAt: '',
+  updatedAt: '',
+  __v: ''
+};
+
+export function loggedInUserReducer(
+  loggedInUser = initialLoggedInUser,
+  action
+) {
+  switch (action.type) {
+    case types.SET_LOGGED_IN_USER:
+      return action.payload;
+    case types.EMPTY_LOGGED_IN_USER:
+      return {};
+    default:
+      return loggedInUser;
+  }
+}

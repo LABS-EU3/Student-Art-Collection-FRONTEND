@@ -50,7 +50,8 @@ const Login = ({
   isError,
   resetErrorLogin,
   loadingStarted,
-  loadingFinished
+  loadingFinished,
+  setLoggedInUser
 }) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
@@ -74,6 +75,7 @@ const Login = ({
           }
         } else {
           localStorage.setItem('authorization', res.data.token);
+          setLoggedInUser(res.data.user);
           history.push('/');
         }
       })

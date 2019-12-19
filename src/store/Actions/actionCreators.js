@@ -47,3 +47,13 @@ export function loadingFinished() {
     type: types.LOADING_FINISHED
   };
 }
+
+// SET LOGGED IN USER HANDLER
+
+export function setLoggedInUser(user) {
+  debugger
+  return {
+    type: types.SET_LOGGED_IN_USER,
+    payload: user
+  };
+}
