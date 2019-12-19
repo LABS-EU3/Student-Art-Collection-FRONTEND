@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const validationSchemaSchool = Yup.object().shape({
-  schoolName: Yup.string()
+  name: Yup.string()
     .min(3, "must be at least 3 charaters")
     .max(127, "must be shorter than 127")
     .required("this is a required field"),

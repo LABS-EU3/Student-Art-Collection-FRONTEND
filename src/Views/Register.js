@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import RegisterForm from "../Components/RegisterForm";
 
-export default function Register() {
+export default function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
 
   // console.log(isSchool);
@@ -16,7 +16,7 @@ export default function Register() {
           <h3 className={(!isSchool) ? 'greyButton' : 'greenButton'}>School</h3>
         </div>
       </div>
-      <RegisterForm isSchool={isSchool}/>
+      <RegisterForm {...props} isSchool={isSchool}/>
     </Container>
   );
 }
@@ -83,6 +83,4 @@ const Container = styled.div`
   h4 {
     font-size: 1.5rem
   }
-  
-
 `;

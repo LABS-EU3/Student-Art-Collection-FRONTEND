@@ -8,7 +8,7 @@ import {
   validationSchemaBuyer
 } from "../helpers/validationSchema";
 
-const registerApi = "http://localhost:9000/signup";
+const registerApi = process.env.URL || "http://localhost:9000/signup"
 
 const initalSignupForm = {
   name: "",
@@ -20,9 +20,10 @@ const initalSignupForm = {
 };
 
 export default function RegisterForm(props) {
-  // const type = (props.isSchool)
+
   const showSchool = props.isSchool ? "flex" : "none";
   const showBuyer = !props.isSchool ? "flex" : "none";
+console.log(props);
 
   return (
     <Formik
@@ -41,13 +42,14 @@ export default function RegisterForm(props) {
           password: values.password
         };
         actions.setSubmitting(true);
-        // console.log(newUser);
+        debugger;
+        console.log(newUser);
         axios
           .post(registerApi, newUser)
           .then(res => {
             actions.resetForm();
-            actions.Submitting(false);
-            props.history.push('/confirmation')
+            actions.setSubmitting(false);
+            props.history.push("/confirmation");
           })
           .catch(err => {
             debugger;
@@ -70,8 +72,12 @@ export default function RegisterForm(props) {
         handleSubmit,
         isSubmitting
       }) => (
-        <Form onSubmit={handleSubmit}>
-          <div data-testid="nameField" className="inputField" style={{ display: showSchool }}>
+        <StyledForm onSubmit={handleSubmit}>
+          <div
+            data-testid="nameField"
+            className="inputField"
+            style={{ display: showSchool }}
+          >
             <label htmlFor="name">School Name</label>
             <input
               name="name"
@@ -85,12 +91,16 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.name} message={errors.name} />
           </div>
-          <div data-testid="descriptionField" className="inputField" style={{ display: showSchool }}>
+          <div
+            data-testid="descriptionField"
+            className="inputField"
+            style={{ display: showSchool }}
+          >
             <label htmlFor="description">School Description</label>
             <textarea
               name="description"
               type="text"
-              placeholder="Enter your school description"
+              placeholder="This is optional"
               id="description"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -101,7 +111,11 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.description} message={errors.description} />
           </div>
-          <div data-testid="firstNameField" className="inputField" style={{ display: showBuyer }}>
+          <div
+            data-testid="firstNameField"
+            className="inputField"
+            style={{ display: showBuyer }}
+          >
             <label htmlFor="firstName">First Name</label>
             <input
               name="firstName"
@@ -117,7 +131,11 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.firstName} message={errors.firstName} />
           </div>
-          <div data-testid="lastNameField" className="inputField" style={{ display: showBuyer }}>
+          <div
+            data-testid="lastNameField"
+            className="inputField"
+            style={{ display: showBuyer }}
+          >
             <label htmlFor="lastName">Last Name</label>
             <input
               name="lastName"
@@ -151,7 +169,7 @@ export default function RegisterForm(props) {
             <label htmlFor="password">Password</label>
             <input
               name="password"
-              type="text"
+              type="password"
               placeholder="Enter your password"
               id="password"
               onChange={handleChange}
@@ -164,16 +182,20 @@ export default function RegisterForm(props) {
             <Error touched={touched.password} message={errors.password} />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          {/* <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button> */}
+
+          <button type="submit" onClick={() => console.log("test")}>
             Submit
           </button>
-        </Form>
+        </StyledForm>
       )}
     </Formik>
   );
 }
 
-const Form = styled.form`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,6 +252,6 @@ const Form = styled.form`
     &:hover{
       opacity: 0.7;
       transition: opacity 0.1s ease-in-out;
-  }
+    }
   }
 `;
