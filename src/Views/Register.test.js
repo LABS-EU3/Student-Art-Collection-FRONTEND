@@ -25,11 +25,12 @@ test('renders correct title', () => {
 
 test('renders the form', () => {
   
+  expect(wrapper.queryByText(/school name/i)).toBeInTheDocument()
+  expect(wrapper.queryByText(/description/i)).toBeInTheDocument()
   expect(wrapper.queryByText(/First Name/i)).toBeInTheDocument()
   expect(wrapper.queryByText(/Last Name/i)).toBeInTheDocument()
   expect(wrapper.queryByText(/e-mail/i)).toBeInTheDocument()
   expect(wrapper.queryByText(/password/i)).toBeInTheDocument()
-  expect(wrapper.queryByText(/description/i)).toBeInTheDocument()
 })
 
 test('checks the button changes buyer form to school form', () => {
