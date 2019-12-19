@@ -8,7 +8,7 @@ import {
   validationSchemaBuyer
 } from "../helpers/validationSchema";
 
-const registerApi = "enter url here";
+const registerApi = "http://localhost:9000/signup";
 
 const initalSignupForm = {
   name: "",
@@ -32,7 +32,7 @@ export default function RegisterForm(props) {
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         const newUser = {
-          type: props.isSchool ? "School" : "Buyer",
+          type: props.isSchool ? "school" : "buyer",
           name: values.name,
           description: values.description,
           firstname: values.firstName,
@@ -41,19 +41,20 @@ export default function RegisterForm(props) {
           password: values.password
         };
         actions.setSubmitting(true);
-        console.log(newUser);
-        // axios
-        //   .post(registerApi, newUser)
-        //   .then(res => {
-        //     actions.resetForm();
-        //     actions.Submitting(false);
-        //   })
-        //   .catch(err => {
-        //     debugger;
-        //   })
-        //   .finally(() => {
-
-        //   });
+        // console.log(newUser);
+        axios
+          .post(registerApi, newUser)
+          .then(res => {
+            actions.resetForm();
+            actions.Submitting(false);
+          })
+          .catch(err => {
+            debugger;
+          })
+          .finally(() => {
+            actions.resetForm();
+            actions.setSubmitting(false);
+          });
 
         actions.resetForm();
         actions.setSubmitting(false);
@@ -69,10 +70,9 @@ export default function RegisterForm(props) {
         isSubmitting
       }) => (
         <Form onSubmit={handleSubmit}>
-          <div className="inputField" style={{ display: showSchool }}>
+          <div data-testid="nameField" className="inputField" style={{ display: showSchool }}>
             <label htmlFor="name">School Name</label>
             <input
-              id="name"
               name="name"
               type="text"
               placeholder="Enter your school name"
@@ -80,19 +80,15 @@ export default function RegisterForm(props) {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
-              className={
-                touched.name && errors.name ? "has-error" : null
-              }
+              className={touched.name && errors.name ? "has-error" : null}
             />
             <Error touched={touched.name} message={errors.name} />
           </div>
-          <div className="inputField" style={{ display: showSchool }}>
+          <div data-testid="descriptionField" className="inputField" style={{ display: showSchool }}>
             <label htmlFor="description">School Description</label>
             <textarea
-              id="description"
               name="description"
               type="text"
-              multiline={true}
               placeholder="Enter your school description"
               id="description"
               onChange={handleChange}
@@ -104,10 +100,9 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.description} message={errors.description} />
           </div>
-          <div className="inputField" style={{ display: showBuyer }}>
+          <div data-testid="firstNameField" className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="firstName">First Name</label>
             <input
-              id="firstName"
               name="firstName"
               type="text"
               placeholder="Enter your first name"
@@ -121,10 +116,9 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.firstName} message={errors.firstName} />
           </div>
-          <div className="inputField" style={{ display: showBuyer }}>
+          <div data-testid="lastNameField" className="inputField" style={{ display: showBuyer }}>
             <label htmlFor="lastName">Last Name</label>
             <input
-              id="lastName"
               name="lastName"
               type="text"
               placeholder="Enter your last name"
@@ -138,10 +132,9 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.lastName} message={errors.lastName} />
           </div>
-          <div className="inputField">
+          <div data-testid="emailField" className="inputField">
             <label htmlFor="email">e-mail</label>
             <input
-              id="email"
               name="email"
               type="email"
               placeholder="Enter your email"
@@ -153,10 +146,9 @@ export default function RegisterForm(props) {
             />
             <Error touched={touched.email} message={errors.email} />
           </div>
-          <div className="inputField">
+          <div data-testid="passwordField" className="inputField">
             <label htmlFor="password">Password</label>
             <input
-              id="password"
               name="password"
               type="text"
               placeholder="Enter your password"

@@ -41,18 +41,21 @@ test('checks the button changes buyer form to school form', () => {
 })
 
 // test('checks the button changes buyer form to school form', () => {
-//   const { container, getByText } = rtl.render(<Router><Register /></Router>)
+//   const { container, queryByTestId } = rtl.render(<Router><Register /></Router>)
 //   const toggleButton = container.querySelector('.toggleButton')
-//   const emailField = getByText(/e-mail/i)
-//   const passwordField = getByText(/password/i)
-//   const firstName = getByText(/First Name/i)
-//   const lastName = getByText(/Last Name/i)
+//   const Name = queryByTestId('nameField')
+//   const Description = queryByTestId('descriptionField')
+//   const firstName = queryByTestId('firstNameField')
+//   const lastName = queryByTestId('lastNameField')
+
+
+//   expect(firstName).toHaveAttribute("display: flex")
 
 //   rtl.fireEvent.click(toggleButton)
 
 //   // expect(firstName).not.toBeInTheDocument();
 //   // expect(lastName).not.toBeInTheDocument();
-//   expect(schoolName).toBeInTheDocument();
-//   expect(emailField).toBeInTheDocument();
-//   expect(passwordField).toBeInTheDocument();
+//   // expect(schoolName).toBeInTheDocument();
+//   // expect(emailField).toBeInTheDocument();
+//   // expect(passwordField).toBeInTheDocument();
 // })
