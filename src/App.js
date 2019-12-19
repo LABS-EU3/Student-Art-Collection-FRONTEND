@@ -7,6 +7,7 @@ import LandingPage from './Views/LandingPage';
 import Register from './Views/Register'
 import ConfirmationSent from './Views/ConfirmationSent';
 import ConfirmationSuccess from './Views/ConfirmationSuccess';
+import Login from './Views/Login';
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
@@ -20,6 +21,7 @@ function App() {
       <Route exact path="/" component={LandingPage} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
+      <Route path="/auth/login" component={Login} />
       <Route path ='/register' component={Register} />
     </ThemeProvider>
   );
