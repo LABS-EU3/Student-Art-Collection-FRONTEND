@@ -3,59 +3,37 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import * as rtl from '@testing-library/react'
 import Register from './Register'
 import '@testing-library/jest-dom/extend-expect'
+import { Provider } from 'react-redux';
+import store from '../store/index';
+
+let wrapper;
+
+beforeEach(() => {
+  wrapper = rtl.render(
+    <Provider store={store}>
+      <Router>
+        <Register />
+      </Router>
+    </Provider>
+  );
+});
+afterEach(rtl.cleanup);
 
 test('renders correct title', () => {
-    const { getByText } = rtl.render(<Router><Register /></Router>)
-    const mainTitle = getByText(/register/i)
-    expect(mainTitle).toBeInTheDocument()
-})
-
-test('button with toggleButton class exists', () => {
-    const { container } = rtl.render(<Router><Register /></Router>)
-    const toggleButton = container.querySelector('.toggleButton')
-    expect(toggleButton).not.toBe(null)
+    expect(wrapper.queryByText(/register/i)).toBeInTheDocument();
 })
 
 test('renders the form', () => {
-  const { container, getByText } = rtl.render(<Router><Register /></Router>)
-  const firstName = getByText(/First Name/i)
-  const lastName = getByText(/Last Name/i)
-  const emailField = getByText(/e-mail/i)
-  const passwordField = getByText(/password/i)
   
-  expect(container.children.length).toBe(1);
-  expect(passwordField).toBeInTheDocument();
-  expect(emailField).toBeInTheDocument();
-  expect(firstName).toBeInTheDocument();
-  expect(lastName).toBeInTheDocument();
+  expect(wrapper.queryByText(/First Name/i)).toBeInTheDocument()
+  expect(wrapper.queryByText(/Last Name/i)).toBeInTheDocument()
+  expect(wrapper.queryByText(/e-mail/i)).toBeInTheDocument()
+  expect(wrapper.queryByText(/password/i)).toBeInTheDocument()
+  expect(wrapper.queryByText(/description/i)).toBeInTheDocument()
 })
 
 test('checks the button changes buyer form to school form', () => {
-  const { container, getByText } = rtl.render(<Router><Register /></Router>)
-  const toggleButton = container.querySelector('.toggleButton')
-  const buyerButton = getByText(/buyer/i)
-
-  expect(buyerButton).toHaveClass('greenButton')
-  rtl.fireEvent.click(toggleButton)
-  expect(buyerButton).toHaveClass('greyButton')
+  expect(wrapper.queryByText(/buyer/i)).toHaveClass('greenButton')
+  rtl.fireEvent.click(wrapper.queryByText(/buyer/i))
+  expect(wrapper.queryByText(/buyer/i)).toHaveClass('greyButton')
 })
-
-// test('checks the button changes buyer form to school form', () => {
-//   const { container, queryByTestId } = rtl.render(<Router><Register /></Router>)
-//   const toggleButton = container.querySelector('.toggleButton')
-//   const Name = queryByTestId('nameField')
-//   const Description = queryByTestId('descriptionField')
-//   const firstName = queryByTestId('firstNameField')
-//   const lastName = queryByTestId('lastNameField')
-
-
-//   expect(firstName).toHaveAttribute("display: flex")
-
-//   rtl.fireEvent.click(toggleButton)
-
-//   // expect(firstName).not.toBeInTheDocument();
-//   // expect(lastName).not.toBeInTheDocument();
-//   // expect(schoolName).toBeInTheDocument();
-//   // expect(emailField).toBeInTheDocument();
-//   // expect(passwordField).toBeInTheDocument();
-// })
