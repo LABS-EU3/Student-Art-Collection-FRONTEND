@@ -8,7 +8,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // connecting reducers and middleware to the store
 const store = createStore(
   combineReducers({
-    count: reducers.countReducer
+    count: reducers.countReducer,
+    isError: reducers.errorLoginReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

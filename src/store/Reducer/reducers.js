@@ -16,3 +16,16 @@ export function countReducer(count = initialCount, action) {
       return count;
   }
 }
+
+// slice of state for error when logging in
+
+export function errorLoginReducer(isError = false, action) {
+  switch (action.type) {
+    case types.ERROR_ON_LOGIN:
+      return true;
+      case types.RESET_ERROR_ON_LOGIN:
+        return false;
+    default:
+      return isError;
+  }
+}

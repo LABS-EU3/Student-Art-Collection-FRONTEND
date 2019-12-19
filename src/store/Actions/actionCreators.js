@@ -23,3 +23,15 @@ export function reset() {
     type: types.RESET
   };
 }
+
+export function errorLogin() {
+  return {
+    type: types.ERROR_ON_LOGIN
+  };
+}
+
+export function resetErrorLogin() {
+  return {
+    type: types.RESET_ERROR_ON_LOGIN
+  };
+}

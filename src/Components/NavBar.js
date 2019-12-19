@@ -7,11 +7,12 @@ import SearchIcon from '../Assets/magnifying-glass.png'
 import UserIcon from '../Assets/user.png'
 
 const NavContainer = styled.div`
-width: 100vw;
-height: 6rem;
-border-bottom: 1px solid rgba(0,0,0, 0.1);
-
-.navigation {
+  width: 100vw;
+  height: 6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* see example in line below how to use themes set in the ThemeProvider by Styled Components */
+  /* background: ${props => props.theme.red}; */
+  .navigation {
     height: 100%;
     width: 75vw;
     margin: 0 auto;
@@ -21,67 +22,67 @@ border-bottom: 1px solid rgba(0,0,0, 0.1);
     padding: 0 2rem;
 
     @media (max-width: 900px) {
-        width: 90vw;
-        padding: 0 1rem;
+      width: 90vw;
+      padding: 0 1rem;
     }
 
     h1 {
-        font-family: 'Shadows Into Light', cursive;
-        font-size: 4rem;
-        letter-spacing: 10px;
-        opacity: 1;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 4rem;
+      letter-spacing: 10px;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 0.5;
         transition: opacity 0.3s ease-in-out;
+      }
 
-        &:hover{
-            opacity: 0.5;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        @media (max-width: 900px) {
-            font-size: 3rem;
-        }
+      @media (max-width: 900px) {
+        font-size: 3rem;
+      }
     }
 
     nav {
-        width: 40%;
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Roboto', sans-serif;
+
+      @media (max-width: 900px) {
+        display: none;
+      }
+
+      a {
+        font-size: 1.3rem;
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+          transition: 0.2s ease-in-out;
+        }
+      }
+
+      .icons {
+        width: 4.8rem;
         display: flex;
         justify-content: space-between;
-        font-family: 'Roboto', sans-serif;
 
-        @media (max-width: 900px) {
-            display: none;
+        img {
+          opacity: 1;
+          transition: opacity 0.2s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.5;
+            transition: 0.2s ease-in-out;
+          }
         }
-
-        a {
-            font-size: 1.3rem;
-            opacity: 1;
-            transition: opacity 0.2s ease-in-out;
-
-            &:hover {
-                opacity: 0.5;
-                transition: 0.2s ease-in-out;
-            }
-        }
-
-        .icons{
-            width: 4.8rem;
-            display: flex;
-            justify-content: space-between;
-
-            img {
-            opacity: 1;
-            transition: opacity 0.2s ease-in-out;
-            cursor: pointer;
-
-            &:hover {
-                opacity: 0.5;
-                transition: 0.2s ease-in-out;
-            }
-}        
-        }
+      }
     }
-}
-`
+  }
+`;
 
 const Hamburger = styled.div`
 width: 25px;
@@ -97,18 +98,18 @@ transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
 }
 
-div {
+  div {
     width: 100%;
     height: 2px;
     background-color: black;
-}
+  }
 
-@media (max-width: 900px) {
+  @media (max-width: 900px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-`
+  }
+`;
 
 function NavBar() {
     const [menuStyle, changeMenuStyle] = useState(null);

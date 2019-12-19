@@ -3,6 +3,8 @@ import { Formik } from 'formik';
 import axios from 'axios';
 import * as yup from 'yup';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/Actions/actionCreators';
 
 // COMPONENTS
 
@@ -18,7 +20,7 @@ const initialValues = {
 
 // login endpoint pending build of real endpoint in the backend repo
 
-const loginEndpoint = 'http://localhost:4000/auth/login';
+const loginEndpoint = 'http://localhost:9000/login';
 
 // validation schema by yup plugged into formik
 
@@ -42,7 +44,7 @@ const StyledForm = styled.div`
   justify-content: center;
 `;
 
-const Login = props => {
+const Login = ({ history, errorLogin, isError, resetErrorLogin }) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
     console.log(values);
@@ -50,13 +52,15 @@ const Login = props => {
       .post(loginEndpoint, values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
-
-        localStorage.setItem('authorization', res.data.token);
-        props.history.push('/');
+        debugger;
         action.resetForm();
+        resetErrorLogin();
+        localStorage.setItem('authorization', res.data.token);
+        history.push('/');
       })
       .catch(error => {
-        alert(error);
+        debugger;
+        errorLogin();
         // set error message state when redux file structure has been clarified
       });
   };
@@ -70,8 +74,9 @@ const Login = props => {
         component={LoginForm}
       />
       <ResetPassword />
+      {isError ? <div>Error logging in. Please try again</div> : null}
     </StyledForm>
   );
 };
 
-export default Login;
+export default connect(state => state, actionCreators)(Login);
