@@ -12,6 +12,7 @@ import Login from './Views/Login';
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
 import theme from './Styles/Theme';
+import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Route exact path="/" component={LandingPage} />
+      <Route path="/resetpassword" component={ResetPasswordForm} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
       <Route path="/auth/login" component={Login} />
