@@ -7,8 +7,11 @@ import {
   validationSchemaSchool,
   validationSchemaBuyer
 } from "../helpers/validationSchema";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const registerApi = process.env.URL || "http://localhost:9000/signup";
+const registerApi =
+  process.env.URL || "https://art-finder-staging.herokuapp.com/signup";
 
 const initalSignupForm = {
   name: "",
@@ -31,7 +34,7 @@ function RegisterForm(props) {
       }
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
-        props.loadingStarted()
+        props.loadingStarted();
         // debugger
         const newUser = {
           type: props.isSchool ? "school" : "buyer",
@@ -52,17 +55,11 @@ function RegisterForm(props) {
             props.history.push("/confirmation");
           })
           .catch(err => {
-            console.log(err);
-            ;
-          })
-          .finally(() => {
-            actions.resetForm();
+            console.error(err.response.data.error);
+            toast.error(err.response.data.error);
             actions.setSubmitting(false);
-            props.loadingFinished()
+            props.loadingFinished();
           });
-
-        actions.resetForm();
-        actions.setSubmitting(false);
       }}
     >
       {({
@@ -187,14 +184,27 @@ function RegisterForm(props) {
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
-
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{ 
+              'font-size': '1.5rem',
+              'width': '400px',
+              'text-align': 'center',
+            }}
+          />
         </StyledForm>
       )}
     </Formik>
   );
 }
 
-export default RegisterForm
+export default RegisterForm;
 
 const StyledForm = styled.form`
   display: flex;

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
 import Spinner from "../Components/Spinner";
 import { Link } from 'react-router-dom';
+
 function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
 
