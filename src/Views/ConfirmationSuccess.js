@@ -100,7 +100,7 @@ function ConfirmationSuccess(props) {
             .catch(() => {
                 setDisplay("Error")
             })
-    }, [])
+    }, [token])
 
     if (display === 'Error') {
         return (

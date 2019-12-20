@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import {axiosWithBase} from '../../AxiosCustom'
+import { axiosWithBase } from '../../AxiosCustom'
 import * as actions from '../../store/Actions/actionCreators'
+
+import Spinner from '../Spinner'
 
 const ProfileContainer = styled.div`
 width: 90%;
@@ -131,7 +133,8 @@ font-family: 'Roboto', sans-serif;
     }
 `
 function BuyerProfile(props) {
-    const [userDetails, setUserDetails] = useState({firstName: "Rory", lastName:"Flint", email: "rory@rory.com"});
+    const [userDetails, setUserDetails] = useState();
+    const [waiting, setWaiting] = useState(true)
 
     const submit = () => {
         console.log(userDetails);
@@ -142,51 +145,68 @@ function BuyerProfile(props) {
     }
 
     const cancel = () => {
-        setUserDetails(props.userData);
-    }
-
-    const letter = userDetails.firstName.charAt(0);
-
-    useEffect(() => {
-        const id = '5dfcc4c54e32032c2ffa069c';
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNWRmY2M0YzU0ZTMyMDMyYzJmZmEwNjljIiwiaWF0IjoxNTc2ODQ2NjQ3LCJleHAiOjE1NzcyNzg2NDd9.n3lxhs98N8qfk8aDo7FQ7Xvico1LHPzmtvRmBkkLjR8"
-        axiosWithBase.get(`${id}`, {headers: {'authorization': token}})
+        const { _id } = props.loggedInUser;
+        const token = localStorage.getItem('authorization');
+        
+        axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
-                console.log(res.data)
+                setUserDetails(res.data)
+                setWaiting(false)
             })
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
+    }
 
-    return (
-        <ProfileContainer>
-            <div className="top-container">
-                <div className="photo-container">
-                    {/* <img src={userDetails.profilePhoto} alt='Users profile' /> */}
-                    <h1>{letter}</h1>
+
+    useEffect(() => {
+        const { _id } = props.loggedInUser;
+        const token = localStorage.getItem('authorization');
+
+        axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
+            .then((res) => {
+                setUserDetails(res.data)
+                setWaiting(false)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [props.loggedInUser])
+    if (!waiting) {
+        return (
+            <ProfileContainer>
+                <div className="top-container">
+                    <div className="photo-container">
+                        <h1>{userDetails.firstname.charAt(0)}</h1>
+                    </div>
                 </div>
-            </div>
-            <div className='middle-container'>
-                <div className="data-row">
-                    <h2>Email</h2>
-                    <input onChange={changeHandler} value={userDetails.email} name="email" />
+                <div className='middle-container'>
+                    <div className="data-row">
+                        <h2>Email</h2>
+                        <input onChange={changeHandler} value={userDetails.email} name="email" />
+                    </div>
+                    <div className="data-row">
+                        <h2>First Name</h2>
+                        <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
+                    </div>
+                    <div className="data-row">
+                        <h2>Last Name</h2>
+                        <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
+                    </div>
                 </div>
-                <div className="data-row">
-                    <h2>First Name</h2>
-                    <input onChange={changeHandler} value={userDetails.firstName} name="firstName" />
+                <div className="bottom-container">
+                    <button onClick={cancel} id="cancel">Cancel</button>
+                    <button onClick={submit} id="save">Save</button>
                 </div>
-                <div className="data-row">
-                    <h2>Last Name</h2>
-                    <input onChange={changeHandler} value={userDetails.lastName} name="lastName" />
-                </div>
-            </div>
-            <div className="bottom-container">
-                <button onClick={cancel} id="cancel">Cancel</button>
-                <button onClick={submit} id="save">Save</button>
-            </div>
-        </ProfileContainer>
-    )
+            </ProfileContainer>
+        )
+    }
+
+    else {
+        return (
+            <Spinner />
+        )
+    }
 }
 
 export default connect(state => state, actions)(BuyerProfile);
