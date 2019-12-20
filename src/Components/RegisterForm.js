@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
-import axios from 'axios';
 import Error from '../helpers/Error';
 import {
   validationSchemaSchool,
@@ -10,10 +9,6 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { axiosWithBase } from '../AxiosCustom';
-
-const registerApi =
-  process.env.REACT_APP_URL ||
-  'https://art-finder-staging.herokuapp.com/signup';
 
 const initalSignupForm = {
   name: '',
