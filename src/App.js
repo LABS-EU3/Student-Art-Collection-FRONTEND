@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import './App.css';
 import Navbar from './Components/NavBar';
 import LandingPage from './Views/LandingPage';
+import Register from './Views/Register'
 import ConfirmationSent from './Views/ConfirmationSent';
 import ConfirmationSuccess from './Views/ConfirmationSuccess';
 import Login from './Views/Login';
@@ -25,6 +26,7 @@ function App() {
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
       <Route path="/auth/login" component={Login} />
+      <Route path ='/register' component={Register} />
 	  <Route path='/myaccount' component={BuyerDashboard} />
     </ThemeProvider>
   );
