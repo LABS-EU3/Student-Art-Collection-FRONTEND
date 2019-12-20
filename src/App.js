@@ -20,7 +20,7 @@ function App() {
       <Route exact path="/" component={LandingPage} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
-      <Route path="/auth/login" component={Login} />
+      <Route path="/login" component={Login} />
     </ThemeProvider>
   );
 }

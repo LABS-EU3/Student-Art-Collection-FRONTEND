@@ -5,12 +5,13 @@ import * as yup from 'yup';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // COMPONENTS
 
 import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
-import LoginError from '../Components/Login/LoginError';
 
 const initialValues = {
   email: '',
@@ -51,7 +52,8 @@ const Login = ({
   resetErrorLogin,
   loadingStarted,
   loadingFinished,
-  setLoggedInUser
+  setLoggedInUser,
+  logInError
 }) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
@@ -87,23 +89,28 @@ const Login = ({
         loadingFinished();
         if (!error.response) {
           errorLogin('Something went wrong. Please contact us so we can help.');
+          toast.error(
+            'Something went wrong. Please contact us so we can help.'
+          );
         } else {
           switch (error.response.status) {
             case 404:
               errorLogin(error.message);
+              toast.error(error.message);
               break;
             case 401:
               errorLogin(error.response.data);
+              toast.error(error.response.data);
               break;
             default:
               errorLogin(
                 'Something went wrong. Please contact us so we can help.'
               );
+              toast.error(
+                'Something went wrong. Please contact us so we can help.'
+              );
           }
         }
-        // if (error.respone.status === 404) {
-        // }
-        // set error message state when redux file structure has been clarified
       });
   };
 
@@ -115,7 +122,13 @@ const Login = ({
         onSubmit={onLoginHandle}
         component={LoginForm}
       />
-      <LoginError />
+      {/* <LoginError /> */}
+      <ToastContainer
+        position="bottom-left"
+        bodyClassName="toast"
+        autoClose={3000}
+        closeButton={false}
+      />
       <ResetPassword />
     </StyledForm>
   );

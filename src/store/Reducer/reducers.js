@@ -75,7 +75,7 @@ export function loggedInUserReducer(
     case types.SET_LOGGED_IN_USER:
       return action.payload;
     case types.EMPTY_LOGGED_IN_USER:
-      return {};
+      return initialLoggedInUser;
     default:
       return loggedInUser;
   }

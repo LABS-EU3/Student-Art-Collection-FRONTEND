@@ -59,4 +59,8 @@ export function setLoggedInUser(user) {
   };
 }
 
-
+export function logOutUser() {
+  return {
+    type: types.EMPTY_LOGGED_IN_USER
+  };
+}
