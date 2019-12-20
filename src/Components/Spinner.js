@@ -80,6 +80,7 @@ const SpinnerContainer = styled.div`
     }
   }
 `;
+
 function Spinner() {
   return (
     <>
