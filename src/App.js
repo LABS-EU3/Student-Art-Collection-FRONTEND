@@ -20,7 +20,7 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Route exact path="/" component={LandingPage} />
-      <Route path="/resetpassword" component={ResetPasswordForm} />
+      <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
       <Route path="/auth/login" component={Login} />

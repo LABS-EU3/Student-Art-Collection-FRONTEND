@@ -35,7 +35,7 @@ const validationSchema = yup.object().shape({
     .min(8)
 });
 
-const StyledForm = styled.div`
+export const StyledForm = styled.div`
   width: 600px;
   margin: 0 auto;
   display: flex;

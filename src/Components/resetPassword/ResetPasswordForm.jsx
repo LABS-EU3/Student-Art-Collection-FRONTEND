@@ -1,19 +1,22 @@
-import React from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import styled from 'styled-components';
 
-const registerApi = process.env.URL || "http://localhost:4000/resetpassword";
+import { StyledForm } from '../../Views/Login';
+
+const registerApi = process.env.URL || 'http://localhost:4000/resetpassword';
 
 const ResetPasswordForm = () => {
   const formik = useFormik({
     initialValues: {
-      email: ""
+      email: ''
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Invalid email address")
-        .required("Required")
+        .email('Invalid email address')
+        .required('Required')
     }),
     onSubmit: (values, { resetForm }) => {
       axios
@@ -26,7 +29,7 @@ const ResetPasswordForm = () => {
     }
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <StyledForm onSubmit={formik.handleSubmit}>
       <label htmlFor="email">Email Address</label>
       <input
         id="email"
@@ -40,7 +43,7 @@ const ResetPasswordForm = () => {
         <div>{formik.errors.email}</div>
       ) : null}
       <button type="submit">Submit</button>
-    </form>
+    </StyledForm>
   );
 };
 
