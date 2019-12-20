@@ -85,15 +85,21 @@ const Login = ({
       .catch(error => {
         debugger;
         loadingFinished();
-        switch (error.response.status) {
-          case 404:
-            errorLogin(error.message);
-            break;
-          case 401:
-            errorLogin(error.response.data);
-            break;
-          default:
-            return console.log('yay');
+        if (!error.response) {
+          errorLogin('Something went wrong. Please contact us so we can help.');
+        } else {
+          switch (error.response.status) {
+            case 404:
+              errorLogin(error.message);
+              break;
+            case 401:
+              errorLogin(error.response.data);
+              break;
+            default:
+              errorLogin(
+                'Something went wrong. Please contact us so we can help.'
+              );
+          }
         }
         // if (error.respone.status === 404) {
         // }
