@@ -89,8 +89,13 @@ function ConfirmationSuccess(props) {
 
     useEffect(() => {
         axiosWithBase.patch('/confirm', { token })
-            .then(() => {
-                setDisplay("Success")
+            .then((response) => {
+                if (response.data) {
+                    setDisplay("Success")
+                }
+                else {
+                    setDisplay("Error")
+                }
             })
             .catch(() => {
                 setDisplay("Error")
