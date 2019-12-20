@@ -41,12 +41,15 @@ const validationSchema = yup.object().shape({
 });
 
 const StyledForm = styled.div`
-  width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 3rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: solid 0.5px lightgrey;
+  border-radius: 10px;
+  padding: 80px 20px;
 `;
 
 const Login = ({

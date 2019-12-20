@@ -203,7 +203,7 @@ function RegisterForm(props) {
 
 export default RegisterForm;
 
-const StyledForm = styled.form`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -234,10 +234,10 @@ const StyledForm = styled.form`
   }
 
   input {
-    font-size: 1.5rem
-    padding: 10px
-    border-radius: 5px
-    border: solid 0.5px lightgrey
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 0.5px lightgrey;
   }
 
   textarea {
@@ -249,13 +249,13 @@ const StyledForm = styled.form`
   }
 
   button {
-    margin: 40px
-    background-color: green
-    color: white
-    border: none
-    border-radius: 5px
-    font-size: 2rem
-    padding: 0.6rem 5rem
+    margin: 40px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 0.6rem 5rem;
 
     &:hover{
       opacity: 0.7;
