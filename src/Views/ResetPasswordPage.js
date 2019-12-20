@@ -47,7 +47,6 @@ const ResetPasswordPage = props => {
       .then(res => {
         debugger;
         action.resetForm();
-        // props.history.push('/login');
         toast.success(`You can now login`);
         setTimeout(() => {
           props.history.push('/login');
