@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const ResetPassword = () => {
+import * as actionCreators from '../../store/Actions/actionCreators';
+
+const ResetPassword = ({ isLoading }) => {
+  if (isLoading) {
+    return null;
+  }
   return (
     <div>
       <p>
@@ -12,4 +18,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default connect(state => state, actionCreators)(ResetPassword);
