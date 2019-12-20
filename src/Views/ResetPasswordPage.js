@@ -47,7 +47,11 @@ const ResetPasswordPage = props => {
       .then(res => {
         debugger;
         action.resetForm();
-        props.history.push('/login');
+        // props.history.push('/login');
+        toast.success(`You can now login`);
+        setTimeout(() => {
+          props.history.push('/login');
+        }, 2000);
       })
       .catch(err => {
         toast.error('Something went wrong, please try again');
@@ -64,7 +68,7 @@ const ResetPasswordPage = props => {
       <ToastContainer
         position="bottom-left"
         bodyClassName="toast"
-        autoClose={3000}
+        autoClose={false}
         closeButton={false}
       />
     </StyledForm>
