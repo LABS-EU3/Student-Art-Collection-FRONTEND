@@ -1,30 +1,32 @@
-import React from "react";
-import styled from "styled-components";
-import { Formik } from "formik";
-import axios from "axios";
-import Error from "../helpers/Error";
+import React from 'react';
+import styled from 'styled-components';
+import { Formik } from 'formik';
+import axios from 'axios';
+import Error from '../helpers/Error';
 import {
   validationSchemaSchool,
   validationSchemaBuyer
-} from "../helpers/validationSchema";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+} from '../helpers/validationSchema';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { axiosWithBase } from '../AxiosCustom';
 
 const registerApi =
-  process.env.REACT_APP_URL || "https://art-finder-staging.herokuapp.com/signup";
+  process.env.REACT_APP_URL ||
+  'https://art-finder-staging.herokuapp.com/signup';
 
 const initalSignupForm = {
-  name: "",
-  description: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: ""
+  name: '',
+  description: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
 };
 
 function RegisterForm(props) {
-  const showSchool = props.isSchool ? "flex" : "none";
-  const showBuyer = !props.isSchool ? "flex" : "none";
+  const showSchool = props.isSchool ? 'flex' : 'none';
+  const showBuyer = !props.isSchool ? 'flex' : 'none';
   // console.log(props);
 
   return (
@@ -37,7 +39,7 @@ function RegisterForm(props) {
         props.loadingStarted();
         // debugger
         const newUser = {
-          type: props.isSchool ? "school" : "buyer",
+          type: props.isSchool ? 'school' : 'buyer',
           name: values.name,
           description: values.description,
           firstname: values.firstName,
@@ -46,13 +48,13 @@ function RegisterForm(props) {
           password: values.password
         };
         actions.setSubmitting(true);
-        axios
-          .post(registerApi, newUser)
+        axiosWithBase
+          .post('/signup', newUser)
           .then(res => {
             actions.resetForm();
             actions.setSubmitting(false);
             props.loadingFinished();
-            props.history.push("/confirmation");
+            props.history.push('/confirmation');
           })
           .catch(err => {
             console.error(err.response.data.error);
@@ -86,7 +88,7 @@ function RegisterForm(props) {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
-              className={touched.name && errors.name ? "has-error" : null}
+              className={touched.name && errors.name ? 'has-error' : null}
             />
             <Error touched={touched.name} message={errors.name} />
           </div>
@@ -105,7 +107,7 @@ function RegisterForm(props) {
               onBlur={handleBlur}
               value={values.description}
               className={
-                touched.description && errors.description ? "has-error" : null
+                touched.description && errors.description ? 'has-error' : null
               }
             />
             <Error touched={touched.description} message={errors.description} />
@@ -125,7 +127,7 @@ function RegisterForm(props) {
               onBlur={handleBlur}
               value={values.firstName}
               className={
-                touched.firstName && errors.firstName ? "has-error" : null
+                touched.firstName && errors.firstName ? 'has-error' : null
               }
             />
             <Error touched={touched.firstName} message={errors.firstName} />
@@ -145,7 +147,7 @@ function RegisterForm(props) {
               onBlur={handleBlur}
               value={values.lastName}
               className={
-                touched.lastName && errors.lastName ? "has-error" : null
+                touched.lastName && errors.lastName ? 'has-error' : null
               }
             />
             <Error touched={touched.lastName} message={errors.lastName} />
@@ -160,7 +162,7 @@ function RegisterForm(props) {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-              className={touched.email && errors.email ? "has-error" : null}
+              className={touched.email && errors.email ? 'has-error' : null}
             />
             <Error touched={touched.email} message={errors.email} />
           </div>
@@ -175,7 +177,7 @@ function RegisterForm(props) {
               onBlur={handleBlur}
               value={values.password}
               className={
-                touched.password && errors.password ? "has-error" : null
+                touched.password && errors.password ? 'has-error' : null
               }
             />
             <Error touched={touched.password} message={errors.password} />
@@ -192,10 +194,10 @@ function RegisterForm(props) {
             draggable
             pauseOnHover
             closeButton={false}
-            style={{ 
+            style={{
               'font-size': '1.5rem',
-              'width': '400px',
-              'text-align': 'center',
+              width: '400px',
+              'text-align': 'center'
             }}
           />
         </StyledForm>

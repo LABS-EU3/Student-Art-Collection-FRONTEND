@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import axios from 'axios';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -12,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
+import { axiosWithBase } from '../AxiosCustom';
 
 const initialValues = {
   email: '',
@@ -22,10 +22,10 @@ const initialValues = {
 
 // login endpoint pending build of real endpoint in the backend repo
 
-const loginEndpoint = 'http://localhost:9000/login';
-// const loginEndpoint =
-//   process.env.REACT_APP_LOGIN_ENDPOINT ||
-//   'https://art-finder-staging.herokuapp.com/login';
+// const loginEndpoint = 'http://localhost:9000/login';
+// // const loginEndpoint =
+// //   process.env.REACT_APP_LOGIN_ENDPOINT ||
+// //   'https://art-finder-staging.herokuapp.com/login';
 
 // validation schema by yup plugged into formik
 
@@ -62,8 +62,8 @@ const Login = ({
   const onLoginHandle = (values, action) => {
     loadingStarted();
     resetErrorLogin();
-    axios
-      .post(loginEndpoint, values)
+    axiosWithBase
+      .post('/login', values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
         loadingFinished();
