@@ -13,7 +13,6 @@ import GlobalStyle from './Styles/GlobalStyle';
 import theme from './Styles/Theme';
 
 function App() {
-	console.log(process.env.REACT_APP_BASE_URL)
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
