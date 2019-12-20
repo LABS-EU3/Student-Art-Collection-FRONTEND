@@ -10,7 +10,12 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 50%;
+  width: 75%;
+  font-family: ‘Roboto’, sans-serif;
+  h1 {
+    font-size: 3rem;
+    padding: 2rem 0;
+  }
 `;
 
 const StyledForm = styled(Form)`
@@ -18,20 +23,38 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  label {
+    font-size: 2rem;
+    padding: 1rem 0;
+  }
   input {
     width: 100%;
-    background: gray;
-    border: none;
-    padding: 2rem 0.5rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 0.5px lightgrey;
   }
   button {
-    width: 50%;
-    margin: 1rem auto;
-    padding: 1rem;
+    margin: 40px auto;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 0.6rem 5rem;
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
+    }
   }
   * {
     padding: 2rem 0;
   }
+`;
+
+const StyledError = styled(ErrorMessage)`
+  color: red;
+  padding: 0.5rem 0;
+  font-size: 1rem;
 `;
 
 const LoginForm = ({ isLoading }) => {
@@ -41,19 +64,25 @@ const LoginForm = ({ isLoading }) => {
 
   return (
     <StyledDiv>
-      <h2>Sign In</h2>
+      <h1>Sign In</h1>
       <StyledForm>
-        <label for="email">Email address</label>
+        <label htmlFor="email">email</label>
         <Field
           name="email"
           type="email"
           data-testid="emailField"
           className="field"
+          placeholder="Enter your email"
         />
-        <ErrorMessage name="email" component="div" />
-        <label for="password">Password</label>
-        <Field name="password" type="password" data-testid="passwordField" />
-        <ErrorMessage name="password" component="div" />
+        <StyledError name="email" component="div" />
+        <label htmlFor="password">Password</label>
+        <Field
+          name="password"
+          type="password"
+          data-testid="passwordField"
+          placeholder="Enter your password"
+        />
+        <StyledError name="password" component="div" />
         <button type="submit">Login</button>
       </StyledForm>
     </StyledDiv>

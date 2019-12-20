@@ -24,9 +24,10 @@ export function reset() {
   };
 }
 
-export function errorLogin() {
+export function errorLogin(message) {
   return {
-    type: types.ERROR_ON_LOGIN
+    type: types.ERROR_ON_LOGIN,
+    payload: { message }
   };
 }
 
@@ -45,5 +46,20 @@ export function loadingStarted() {
 export function loadingFinished() {
   return {
     type: types.LOADING_FINISHED
+  };
+}
+
+// SET LOGGED IN USER HANDLER
+
+export function setLoggedInUser(user) {
+  return {
+    type: types.SET_LOGGED_IN_USER,
+    payload: user
+  };
+}
+
+export function logOutUser() {
+  return {
+    type: types.EMPTY_LOGGED_IN_USER
   };
 }
