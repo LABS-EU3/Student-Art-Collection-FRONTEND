@@ -10,8 +10,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const registerApi =
-  process.env.URL || "https://art-finder-staging.herokuapp.com/signup";
+const registerApi = 'http://localhost:9000/signup'
 
 const initalSignupForm = {
   name: "",
@@ -25,7 +24,6 @@ const initalSignupForm = {
 function RegisterForm(props) {
   const showSchool = props.isSchool ? "flex" : "none";
   const showBuyer = !props.isSchool ? "flex" : "none";
-  // console.log(props);
 
   return (
     <Formik
@@ -35,7 +33,6 @@ function RegisterForm(props) {
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         props.loadingStarted();
-        // debugger
         const newUser = {
           type: props.isSchool ? "school" : "buyer",
           name: values.name,
