@@ -5,7 +5,7 @@ const ResetPassword = () => {
   return (
     <div>
       <p>
-        Click <Link to="/auth/resetPassword">here</Link> if you forgot your
+        Click <Link to="/resetpasswordrequest">here</Link> if you forgot your
         password.
       </p>
     </div>
