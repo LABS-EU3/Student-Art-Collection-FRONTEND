@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 // COMPONENTS
 
@@ -50,6 +51,7 @@ const StyledForm = styled.div`
   border: solid 0.5px lightgrey;
   border-radius: 10px;
   padding: 80px 20px;
+  font-family: ‘Roboto’, sans-serif;
 `;
 
 const Login = ({
@@ -134,6 +136,7 @@ const Login = ({
         closeButton={false}
       />
       <ResetPassword />
+      <Link to="/signup">Not a member yet? Click here.</Link>
     </StyledForm>
   );
 };

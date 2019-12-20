@@ -29,7 +29,7 @@ function Register(props) {
           </div>
         </div>
         <RegisterForm {...props} isSchool={isSchool}/>
-        <Link to='/auth/login' >already a member?</Link>
+        <Link to='/login' >Already a member?</Link>
       </Container>
     );
   }

@@ -7,8 +7,9 @@ import * as actionCreators from '../../store/Actions/actionCreators';
 
 const StyledDiv = styled.div`
   font-family: ‘Roboto’, sans-serif;
+  padding: 2rem;
   h2 {
-    font-size: 2rem;
+    font-size: 1rem;
   }
   span {
     text-decoration: underline;
