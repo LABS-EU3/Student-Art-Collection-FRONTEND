@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import {axiosWithBase} from '../../AxiosCustom'
 import * as actions from '../../store/Actions/actionCreators'
-import ProfilePhoto from '../../Assets/profile.jpg'
 
 const ProfileContainer = styled.div`
 width: 90%;
@@ -20,10 +20,19 @@ font-family: 'Roboto', sans-serif;
     margin-top: 3rem;
 
     .photo-container {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         margin-bottom: 0.7rem;
+        background-color: rgba(56,56,188,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            color: white;
+            font-size: 5rem;
+        }
 
          img {
              max-width: 100%;
@@ -122,37 +131,60 @@ font-family: 'Roboto', sans-serif;
     }
 `
 function BuyerProfile(props) {
+    const [userDetails, setUserDetails] = useState(props.userData);
+
+    const submit = () => {
+        console.log(userDetails);
+    }
+
+    const changeHandler = (e) => {
+        setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+    }
+
+    const cancel = () => {
+        setUserDetails(props.userData);
+    }
+
+    const letter = props.userData.firstName.charAt(0);
+
+    useEffect(() => {
+        const id = '5dfcc4c54e32032c2ffa069c';
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNWRmY2M0YzU0ZTMyMDMyYzJmZmEwNjljIiwiaWF0IjoxNTc2ODQ2NjQ3LCJleHAiOjE1NzcyNzg2NDd9.n3lxhs98N8qfk8aDo7FQ7Xvico1LHPzmtvRmBkkLjR8"
+        axiosWithBase.get(`${id}`, {headers: {'authorization': token}})
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [])
+
     return (
         <ProfileContainer>
             <div className="top-container">
                 <div className="photo-container">
-                    <img src={ProfilePhoto} alt='Users profile' />
+                    {/* <img src={userDetails.profilePhoto} alt='Users profile' /> */}
+                    <h1>{letter}</h1>
                 </div>
-                <span>Change</span>
             </div>
             <div className='middle-container'>
                 <div className="data-row">
                     <h2>Email</h2>
-                    <input value={'roryflintphoto@gmail.com'} />
+                    <input onChange={changeHandler} value={userDetails.email} name="email" />
                 </div>
                 <div className="data-row">
                     <h2>First Name</h2>
-                    <input value={'Rory'} />
+                    <input onChange={changeHandler} value={userDetails.firstName} name="firstName" />
                 </div>
                 <div className="data-row">
                     <h2>Last Name</h2>
-                    <input value={'Flint'} />
-                </div>
-                <div className="data-row">
-                    <h2>Password</h2>
-                    <input value={'*******'} />
+                    <input onChange={changeHandler} value={userDetails.lastName} name="lastName" />
                 </div>
             </div>
             <div className="bottom-container">
-                <button id="cancel">Cancel</button>
-                <button id="save">Save</button>
+                <button onClick={cancel} id="cancel">Cancel</button>
+                <button onClick={submit} id="save">Save</button>
             </div>
-
         </ProfileContainer>
     )
 }

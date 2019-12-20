@@ -42,3 +42,20 @@ export function isLoadingReducer(isLoading = false, action) {
       return isLoading;
   }
 }
+
+const fakeUser = {
+  firstName: "Rory",
+  lastName: "Flint",
+  email: "hello@hello.com",
+  type: "buyer",
+  profilePhoto: 'https://upload.wikimedia.org/wikipedia/commons/9/97/Ernest_Hemingway_1923_passport_photo_%28square%29.jpg'
+}
+
+export function userDetailsReducer(userObject = fakeUser, action) {
+  switch (action.type) {
+    case types.SET_USER_INFO:
+      return true;
+    default:
+      return userObject
+  }
+}
