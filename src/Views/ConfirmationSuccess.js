@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import queryString from 'query-string'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { axiosWithBase } from '../AxiosCustom'
 
 import Spinner from '../Components/Spinner'
 import Success2 from '../Assets/success1.svg'
 import Error from '../Assets/error.svg'
 
-const baseURL = process.env.baseURL || 'http://localhost:9000'
 
 const StyledConfirmationContainer = styled.div`
 width: 50vw;
@@ -89,13 +88,9 @@ function ConfirmationSuccess(props) {
     const token = value.token;
 
     useEffect(() => {
-        axios.patch(`${baseURL}/confirm`, {
-            token
-        })
-            .then((response) => {
-                if (response.data) {
-                    setDisplay("Success")
-                }
+        axiosWithBase.patch('/confirm', { token })
+            .then(() => {
+                setDisplay("Success")
             })
             .catch(() => {
                 setDisplay("Error")
