@@ -23,3 +23,27 @@ export function reset() {
     type: types.RESET
   };
 }
+
+export function errorLogin() {
+  return {
+    type: types.ERROR_ON_LOGIN
+  };
+}
+
+export function resetErrorLogin() {
+  return {
+    type: types.RESET_ERROR_ON_LOGIN
+  };
+}
+
+export function loadingStarted() {
+  return {
+    type: types.IS_LOADING
+  };
+}
+
+export function loadingFinished() {
+  return {
+    type: types.LOADING_FINISHED
+  };
+}
