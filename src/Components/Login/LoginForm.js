@@ -43,7 +43,7 @@ const LoginForm = ({ isLoading }) => {
     <StyledDiv>
       <h2>Sign In</h2>
       <StyledForm>
-        <label for="email">Email address</label>
+        <label htmlFor="email">Email address</label>
         <Field
           name="email"
           type="email"
@@ -51,7 +51,7 @@ const LoginForm = ({ isLoading }) => {
           className="field"
         />
         <ErrorMessage name="email" component="div" />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <Field name="password" type="password" data-testid="passwordField" />
         <ErrorMessage name="password" component="div" />
         <button type="submit">Login</button>
