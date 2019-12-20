@@ -132,7 +132,7 @@ function ConfirmationSuccess(props) {
                 </div>
                 <div className="text-cont">
                     <h3>Your account is now confirmed</h3>
-                    <p>Please <Link to='/myaccount'>click here</Link> to login and get started. </p>
+                    <p>Please <Link to='/login'>click here</Link> to login and get started. </p>
                 </div>
 
             </StyledConfirmationContainer>

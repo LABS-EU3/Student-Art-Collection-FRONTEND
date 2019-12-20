@@ -8,6 +8,8 @@ export const RESET = 'RESET';
 
 export const ERROR_ON_LOGIN = 'ERROR_ON_LOGIN';
 export const RESET_ERROR_ON_LOGIN = 'RESET_ERROR_ON_LOGIN';
+export const SET_LOGGED_IN_USER = 'SET_LOGGED_IN_USER';
+export const EMPTY_LOGGED_IN_USER = 'EMPTY_LOGGED_IN_USER';
 
 // REUSABLE STATES
 

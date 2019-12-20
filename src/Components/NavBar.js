@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/Actions/actionCreators';
 
-import MobileNav from './MobileNav'
-import SearchIcon from '../Assets/magnifying-glass.png'
-import UserIcon from '../Assets/user.png'
+import MobileNav from './MobileNav';
+import SearchIcon from '../Assets/magnifying-glass.png';
+import UserIcon from '../Assets/user.png';
 
 const NavContainer = styled.div`
   width: 100vw;
@@ -85,18 +87,18 @@ const NavContainer = styled.div`
 `;
 
 const Hamburger = styled.div`
-width: 25px;
-height: 20px;
-display: none;
-margin-top: 4px;
-cursor: pointer;
-opacity: 1;
-transition: opacity 0.2s ease-in-out;
+  width: 25px;
+  height: 20px;
+  display: none;
+  margin-top: 4px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 
-&:hover {
+  &:hover {
     opacity: 0.3;
     transition: opacity 0.2s ease-in-out;
-}
+  }
 
   div {
     width: 100%;
@@ -111,43 +113,64 @@ transition: opacity 0.2s ease-in-out;
   }
 `;
 
-function NavBar() {
-    const [menuStyle, changeMenuStyle] = useState(null);
+function NavBar({ loggedInUser, logOutUser }) {
+  const [menuStyle, changeMenuStyle] = useState(null);
 
-    const openMobileNav = () => {
-        changeMenuStyle({ 'width': '50vw' });
-    }
+  const openMobileNav = () => {
+    changeMenuStyle({ width: '50vw' });
+  };
 
-    const closeMobileNav = () => {
-        changeMenuStyle(null);
-    }
+  const closeMobileNav = () => {
+    changeMenuStyle(null);
+  };
 
-    window.addEventListener('resize', closeMobileNav);
+  window.addEventListener('resize', closeMobileNav);
 
-    return (
-        <NavContainer>
-            <div className='navigation'>
-                <Link to='/'> <h1>artFunder</h1> </Link>
-                <nav>
-                    <Link to='/about'>About</Link>
-                    <Link to='/browse'>Browse</Link>
-                    <Link to='/schools'>Schools</Link>
-                    <Link to='/contact'>Contact</Link>
-                    <div className='icons'>
-                        <Link to='/search'> <img src={SearchIcon} alt='Search icon' /></Link>
-                        <Link to='/myaccount'> <img src={UserIcon} alt='Search icon' /></Link>
-                    </div>
-                </nav>
-                <Hamburger onClick={openMobileNav}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </Hamburger>
-                <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
-            </div>
-        </NavContainer>
-    )
+  const logOutHandler = () => {
+    localStorage.clear();
+    logOutUser();
+  };
 
+  return (
+    <NavContainer>
+      <div className="navigation">
+        <Link to="/">
+          {' '}
+          <h1>artFunder</h1>{' '}
+        </Link>
+        <nav>
+          <Link to="/about">About</Link>
+          <Link to="/browse">Browse</Link>
+          <Link to="/schools">Schools</Link>
+          <Link to="/contact">Contact</Link>
+          {loggedInUser.email ? (
+            <Link to="/" onClick={logOutHandler}>
+              Log Out
+            </Link>
+          ) : (
+            <Link to="/login">Log In</Link>
+          )}
+          <div className="icons">
+            <Link to="/search">
+              {' '}
+              <img src={SearchIcon} alt="Search icon" />
+            </Link>
+            {loggedInUser.email ? (
+              <Link to="/myaccount">
+                <img src={UserIcon} alt="Search icon" />
+              </Link>
+            ) : null}
+          </div>
+        </nav>
+        <Hamburger onClick={openMobileNav}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </Hamburger>
+        <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
+      </div>
+    </NavContainer>
+  );
 }
 
-export default NavBar;
+export default connect(state => state, actionCreators)(NavBar);

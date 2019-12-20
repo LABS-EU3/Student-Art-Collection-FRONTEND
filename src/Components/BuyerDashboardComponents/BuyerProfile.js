@@ -131,7 +131,7 @@ font-family: 'Roboto', sans-serif;
     }
 `
 function BuyerProfile(props) {
-    const [userDetails, setUserDetails] = useState(props.userData);
+    const [userDetails, setUserDetails] = useState({firstName: "Rory", lastName:"Flint", email: "rory@rory.com"});
 
     const submit = () => {
         console.log(userDetails);
@@ -145,7 +145,7 @@ function BuyerProfile(props) {
         setUserDetails(props.userData);
     }
 
-    const letter = props.userData.firstName.charAt(0);
+    const letter = userDetails.firstName.charAt(0);
 
     useEffect(() => {
         const id = '5dfcc4c54e32032c2ffa069c';
