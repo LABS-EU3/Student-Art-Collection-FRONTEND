@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux'
 import { axiosWithBase } from '../../AxiosCustom'
 import * as actions from '../../store/Actions/actionCreators'
@@ -137,7 +140,16 @@ function BuyerProfile(props) {
     const [waiting, setWaiting] = useState(true)
 
     const submit = () => {
-        console.log(userDetails);
+        const { _id } = props.loggedInUser;
+        const token = localStorage.getItem('authorization');
+
+        axios({ method: 'PATCH', url: `http://localhost:9000/updateProfile/${_id}`, headers: { authorization: token }, data: { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } })
+            .then(() => {
+                toast.success("Successfully updated profile")
+            })
+            .catch(() => {
+                toast.error('Error updating profile')
+            })
     }
 
     const changeHandler = (e) => {
@@ -147,7 +159,7 @@ function BuyerProfile(props) {
     const cancel = () => {
         const { _id } = props.loggedInUser;
         const token = localStorage.getItem('authorization');
-        
+
         axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
                 setUserDetails(res.data)
@@ -172,8 +184,10 @@ function BuyerProfile(props) {
                 console.log(err)
             })
     }, [props.loggedInUser])
+
     if (!waiting) {
         return (
+            <>
             <ProfileContainer>
                 <div className="top-container">
                     <div className="photo-container">
@@ -199,6 +213,19 @@ function BuyerProfile(props) {
                     <button onClick={submit} id="save">Save</button>
                 </div>
             </ProfileContainer>
+            <ToastContainer
+            position="bottom-center"
+            autoClose={3000}
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              'font-size': '1.3rem',
+              'text-align': 'center'
+            }}
+          />
+          </>
         )
     }
 
