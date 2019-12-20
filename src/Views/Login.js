@@ -63,7 +63,6 @@ const Login = ({
       .post(loginEndpoint, values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
-        debugger;
         loadingFinished();
         action.resetForm();
         resetErrorLogin();
@@ -85,7 +84,6 @@ const Login = ({
         }
       })
       .catch(error => {
-        debugger;
         loadingFinished();
         if (!error.response) {
           errorLogin('Something went wrong. Please contact us so we can help.');
