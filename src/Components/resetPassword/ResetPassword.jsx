@@ -10,6 +10,7 @@ const ResetPassword = () => {
           type="password"
           placeholder="Type your new password"
         />
+        <ErrorMessage name="password" component="div" />
         <button>Reset Password</button>
       </Form>
     </div>

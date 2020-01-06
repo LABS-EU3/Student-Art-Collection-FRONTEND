@@ -2,6 +2,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import queryString from 'query-string';
+import * as yup from 'yup';
 
 //HELPERS
 import { axiosWithBase } from '../../AxiosCustom';
@@ -12,6 +13,14 @@ import ResetPassword from './ResetPassword';
 const initialValues = {
   password: ''
 };
+
+const validationSchema = yup.object().shape({
+  password: yup
+    .string()
+    .min(8, 'Must be at least 8 charaters')
+    .max(127, 'Must be shorter than 127')
+    .required('This is a required field')
+});
 
 const PasswordReset = props => {
   const value = queryString.parse(props.location.search);
@@ -31,6 +40,7 @@ const PasswordReset = props => {
   return (
     <div>
       <Formik
+        validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={submitNewPasswordHandler}
         component={ResetPassword}
