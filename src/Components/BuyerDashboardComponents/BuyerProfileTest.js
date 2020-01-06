@@ -8,6 +8,7 @@ import { axiosWithBase } from '../../AxiosCustom'
 import * as actions from '../../store/Actions/actionCreators'
 
 import Spinner from '../Spinner'
+import { RegisterForm } from '../RegisterForm';
 
 const ProfileContainer = styled.div`
 width: 90%;
@@ -137,14 +138,14 @@ font-family: 'Roboto', sans-serif;
         }
     }
 `
-function BuyerProfile(props) {
+function BuyerProfile1(props) {
     const [userDetails, setUserDetails] = useState();
     const [waiting, setWaiting] = useState(true)
 
     const submit = () => {
         const { _id } = props.loggedInUser;
 
-        axiosWithBase.patch(`/updateProfile/${_id}`, { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } )
+        axiosWithBase.patch(`/updateProfile/${_id}`, { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email })
             .then(() => {
                 toast.success('Profile updated');
             })
@@ -183,31 +184,7 @@ function BuyerProfile(props) {
     if (!waiting) {
         return (
             <>
-                <ProfileContainer>
-                    <div className="top-container">
-                        <div className="photo-container">
-                            <h1>{userDetails.firstname.charAt(0)}</h1>
-                        </div>
-                    </div>
-                    <div className='middle-container'>
-                        <div className="data-row">
-                            <h2>Email</h2>
-                            <input onChange={changeHandler} value={userDetails.email} name="email" />
-                        </div>
-                        <div className="data-row">
-                            <h2>First Name</h2>
-                            <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
-                        </div>
-                        <div className="data-row">
-                            <h2>Last Name</h2>
-                            <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
-                        </div>
-                    </div>
-                    <div className="bottom-container">
-                        <button onClick={cancel} id="cancel">Cancel</button>
-                        <button onClick={submit} id="save">Save</button>
-                    </div>
-                </ProfileContainer>
+            <RegisterForm />
                 <ToastContainer
                     position="bottom-center"
                     autoClose={3000}
@@ -231,4 +208,36 @@ function BuyerProfile(props) {
     }
 }
 
-export default connect(state => state, actions)(BuyerProfile);
+export default connect(state => state, actions)(BuyerProfile1);
+
+
+
+
+
+
+
+{/* <ProfileContainer>
+    <div className="top-container">
+        <div className="photo-container">
+            <h1>{userDetails.firstname.charAt(0)}</h1>
+        </div>
+    </div>
+    <div className='middle-container'>
+        <div className="data-row">
+            <h2>Email</h2>
+            <input onChange={changeHandler} value={userDetails.email} name="email" />
+        </div>
+        <div className="data-row">
+            <h2>First Name</h2>
+            <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
+        </div>
+        <div className="data-row">
+            <h2>Last Name</h2>
+            <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
+        </div>
+    </div>
+    <div className="bottom-container">
+        <button onClick={cancel} id="cancel">Cancel</button>
+        <button onClick={submit} id="save">Save</button>
+    </div>
+</ProfileContainer> */}

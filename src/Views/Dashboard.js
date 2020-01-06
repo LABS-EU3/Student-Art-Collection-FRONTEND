@@ -6,6 +6,7 @@ import * as actions from '../store/Actions/actionCreators'
 
 import DashNav from '../Components/BuyerDashboardComponents/DashNav'
 import BuyerProfile from '../Components/BuyerDashboardComponents/BuyerProfile'
+import SchoolProfile from '../Components/BuyerDashboardComponents/SchoolProfile'
 
 const DashboardContainer = styled.div`
 width: 100vw;
@@ -47,12 +48,13 @@ function Dashboard({ loggedInUser }) {
     }
 
     else if (loggedInUser.type === 'school') {
-         console.log("This is a school!")
+        console.log("This is a school!")
         return (
             <DashboardContainer>
                 <div className="dashboard">
                     <Route path='/myaccount' component={DashNav} />
                     <div className='right-side'>
+                        <Route exact path='/myaccount' component={SchoolProfile} />
                     </div>
                 </div>
             </DashboardContainer>

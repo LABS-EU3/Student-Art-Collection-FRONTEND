@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux'
@@ -16,7 +15,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 font-family: 'Roboto', sans-serif;
-
 
 .top-container {
     display: flex;
@@ -137,14 +135,14 @@ font-family: 'Roboto', sans-serif;
         }
     }
 `
-function BuyerProfile(props) {
-    const [userDetails, setUserDetails] = useState();
+function SchoolProfile(props) {
+    const [schoolDetails, setSchoolDetails] = useState();
     const [waiting, setWaiting] = useState(true)
 
     const submit = () => {
         const { _id } = props.loggedInUser;
 
-        axiosWithBase.patch(`/updateProfile/${_id}`, { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } )
+        axiosWithBase.patch(`/updateProfile/${_id}`, { name: schoolDetails.name, description: schoolDetails.description, email: schoolDetails.email })
             .then(() => {
                 toast.success('Profile updated');
             })
@@ -154,7 +152,7 @@ function BuyerProfile(props) {
     }
 
     const changeHandler = (e) => {
-        setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+        setSchoolDetails({ ...schoolDetails, [e.target.name]: e.target.value })
     }
 
     const cancel = () => {
@@ -163,11 +161,10 @@ function BuyerProfile(props) {
 
         axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
-                setUserDetails(res.data)
+                setSchoolDetails(res.data)
                 setWaiting(false)
             })
     }
-
 
     useEffect(() => {
         const { _id } = props.loggedInUser;
@@ -175,7 +172,7 @@ function BuyerProfile(props) {
 
         axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
-                setUserDetails(res.data)
+                setSchoolDetails(res.data)
                 setWaiting(false)
             })
     }, [props.loggedInUser])
@@ -186,21 +183,21 @@ function BuyerProfile(props) {
                 <ProfileContainer>
                     <div className="top-container">
                         <div className="photo-container">
-                            <h1>{userDetails.firstname.charAt(0)}</h1>
+                            <h1>{schoolDetails.name.charAt(0)}</h1>
                         </div>
                     </div>
                     <div className='middle-container'>
                         <div className="data-row">
                             <h2>Email</h2>
-                            <input onChange={changeHandler} value={userDetails.email} name="email" />
+                            <input onChange={changeHandler} value={schoolDetails.email} name="email" />
                         </div>
                         <div className="data-row">
-                            <h2>First Name</h2>
-                            <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
+                            <h2>School Name</h2>
+                            <input onChange={changeHandler} value={schoolDetails.name} name="name" />
                         </div>
                         <div className="data-row">
-                            <h2>Last Name</h2>
-                            <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
+                            <h2>Description</h2>
+                            <input onChange={changeHandler} value={schoolDetails.description} name="description" />
                         </div>
                     </div>
                     <div className="bottom-container">
@@ -231,4 +228,4 @@ function BuyerProfile(props) {
     }
 }
 
-export default connect(state => state, actions)(BuyerProfile);
+export default connect(state => state, actions)(SchoolProfile);
