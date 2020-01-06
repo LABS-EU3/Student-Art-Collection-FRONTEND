@@ -102,6 +102,7 @@ font-family: 'Roboto', sans-serif;
             border-radius: 4px;
             cursor: pointer;
             transition: opacity 0.2s ease-in-out;
+            font-size: 1.2rem;
 
             &:focus {
                 outline: none;
@@ -123,6 +124,7 @@ font-family: 'Roboto', sans-serif;
             cursor: pointer;
             border-radius: 4px;
             transition: opacity 0.2s ease-in-out;
+            font-size: 1.2rem;
 
             &:focus {
                 outline: none;
@@ -188,44 +190,44 @@ function BuyerProfile(props) {
     if (!waiting) {
         return (
             <>
-            <ProfileContainer>
-                <div className="top-container">
-                    <div className="photo-container">
-                        <h1>{userDetails.firstname.charAt(0)}</h1>
+                <ProfileContainer>
+                    <div className="top-container">
+                        <div className="photo-container">
+                            <h1>{userDetails.firstname.charAt(0)}</h1>
+                        </div>
                     </div>
-                </div>
-                <div className='middle-container'>
-                    <div className="data-row">
-                        <h2>Email</h2>
-                        <input onChange={changeHandler} value={userDetails.email} name="email" />
+                    <div className='middle-container'>
+                        <div className="data-row">
+                            <h2>Email</h2>
+                            <input onChange={changeHandler} value={userDetails.email} name="email" />
+                        </div>
+                        <div className="data-row">
+                            <h2>First Name</h2>
+                            <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
+                        </div>
+                        <div className="data-row">
+                            <h2>Last Name</h2>
+                            <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
+                        </div>
                     </div>
-                    <div className="data-row">
-                        <h2>First Name</h2>
-                        <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
+                    <div className="bottom-container">
+                        <button onClick={cancel} id="cancel">Cancel</button>
+                        <button onClick={submit} id="save">Save</button>
                     </div>
-                    <div className="data-row">
-                        <h2>Last Name</h2>
-                        <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
-                    </div>
-                </div>
-                <div className="bottom-container">
-                    <button onClick={cancel} id="cancel">Cancel</button>
-                    <button onClick={submit} id="save">Save</button>
-                </div>
-            </ProfileContainer>
-            <ToastContainer
-            position="bottom-center"
-            autoClose={3000}
-            pauseOnVisibilityChange
-            draggable
-            pauseOnHover
-            closeButton={false}
-            style={{
-              'font-size': '1.3rem',
-              'text-align': 'center'
-            }}
-          />
-          </>
+                </ProfileContainer>
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={3000}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    closeButton={false}
+                    style={{
+                        'font-size': '1.3rem',
+                        'text-align': 'center'
+                    }}
+                />
+            </>
         )
     }
 
