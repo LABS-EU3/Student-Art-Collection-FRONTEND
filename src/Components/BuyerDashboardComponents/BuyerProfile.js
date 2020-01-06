@@ -167,9 +167,6 @@ function BuyerProfile(props) {
                 setUserDetails(res.data)
                 setWaiting(false)
             })
-            .catch((err) => {
-                console.log(err)
-            })
     }
 
 
@@ -181,9 +178,6 @@ function BuyerProfile(props) {
             .then((res) => {
                 setUserDetails(res.data)
                 setWaiting(false)
-            })
-            .catch((err) => {
-                console.log(err)
             })
     }, [props.loggedInUser])
 

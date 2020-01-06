@@ -22,7 +22,6 @@ const initalSignupForm = {
 function RegisterForm(props) {
   const showSchool = props.isSchool ? 'flex' : 'none';
   const showBuyer = !props.isSchool ? 'flex' : 'none';
-  // console.log(props);
 
   return (
     <Formik
