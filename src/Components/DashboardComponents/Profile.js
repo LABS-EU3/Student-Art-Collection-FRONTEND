@@ -185,7 +185,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
                 setEditedUserDetails(res.data)
                 setWaiting(false)
             })
-    }, [loggedInUser, setUserDetailsƒ])
+    }, [loggedInUser, setUserDetails])
 
     if (!waiting) {
         return (
