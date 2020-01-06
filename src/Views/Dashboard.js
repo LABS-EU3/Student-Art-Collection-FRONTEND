@@ -4,9 +4,9 @@ import { Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../store/Actions/actionCreators'
 
-import DashNav from '../Components/BuyerDashboardComponents/DashNav'
-import BuyerProfile from '../Components/BuyerDashboardComponents/BuyerProfile'
-import SchoolProfile from '../Components/BuyerDashboardComponents/SchoolProfile'
+import DashNav from '../Components/DashboardComponents/DashNav'
+import Profile from '../Components/DashboardComponents/Profile'
+
 
 const DashboardContainer = styled.div`
 width: 100vw;
@@ -32,40 +32,17 @@ align-items: center;
         }
     }
 `
-function Dashboard({ loggedInUser }) {
-
-    if (loggedInUser.type === 'buyer') {
-        return (
-            <DashboardContainer>
-                <div className="dashboard">
-                    <Route path='/myaccount' component={DashNav} />
-                    <div className='right-side'>
-                        <Route exact path='/myaccount' component={BuyerProfile} />
-                    </div>
+function Dashboard() {
+    return (
+        <DashboardContainer>
+            <div className="dashboard">
+                <Route path='/myaccount' component={DashNav} />
+                <div className='right-side'>
+                    <Route exact path='/myaccount' component={Profile} />
                 </div>
-            </DashboardContainer>
-        )
-    }
-
-    else if (loggedInUser.type === 'school') {
-        console.log("This is a school!")
-        return (
-            <DashboardContainer>
-                <div className="dashboard">
-                    <Route path='/myaccount' component={DashNav} />
-                    <div className='right-side'>
-                        <Route exact path='/myaccount' component={SchoolProfile} />
-                    </div>
-                </div>
-            </DashboardContainer>
-        )
-    }
-
-    else {
-        return (
-            <h1> Go back and try again. </h1>
-        )
-    }
+            </div>
+        </DashboardContainer>
+    )
 }
 
 export default connect(state => state, actions)(Dashboard);

@@ -16,6 +16,7 @@ flex-direction: column;
 align-items: center;
 font-family: 'Roboto', sans-serif;
 
+
 .top-container {
     display: flex;
     flex-direction: column;
@@ -135,14 +136,22 @@ font-family: 'Roboto', sans-serif;
         }
     }
 `
-function SchoolProfile(props) {
-    const [schoolDetails, setSchoolDetails] = useState();
-    const [waiting, setWaiting] = useState(true)
+function Profile({ loggedInUser, setUserDetails, userDetails}) {
+    const [editedUserDetails, setEditedUserDetails] = useState();
+    const [waiting, setWaiting] = useState(true);
 
     const submit = () => {
-        const { _id } = props.loggedInUser;
+        const { _id } = loggedInUser;
 
-        axiosWithBase.patch(`/updateProfile/${_id}`, { name: schoolDetails.name, description: schoolDetails.description, email: schoolDetails.email })
+        const editedUser = {
+            firstname: editedUserDetails.firstname,
+            lastname: editedUserDetails.lastname,
+            email: editedUserDetails.email,
+            name: editedUserDetails.name,
+            description: editedUserDetails.description
+        }
+
+        axiosWithBase.patch(`/updateProfile/${_id}`, editedUser)
             .then(() => {
                 toast.success('Profile updated');
             })
@@ -152,30 +161,31 @@ function SchoolProfile(props) {
     }
 
     const changeHandler = (e) => {
-        setSchoolDetails({ ...schoolDetails, [e.target.name]: e.target.value })
+        setEditedUserDetails({ ...editedUserDetails, [e.target.name]: e.target.value })
     }
 
     const cancel = () => {
-        const { _id } = props.loggedInUser;
+        const { _id } = loggedInUser;
         const token = localStorage.getItem('authorization');
 
         axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
-                setSchoolDetails(res.data)
+                setUserDetails(res.data)
                 setWaiting(false)
             })
     }
 
     useEffect(() => {
-        const { _id } = props.loggedInUser;
+        const { _id } = loggedInUser;
         const token = localStorage.getItem('authorization');
 
         axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
-                setSchoolDetails(res.data)
+                setUserDetails(res.data)
+                setEditedUserDetails(res.data)
                 setWaiting(false)
             })
-    }, [props.loggedInUser])
+    }, [loggedInUser, setUserDetailsƒ])
 
     if (!waiting) {
         return (
@@ -183,22 +193,42 @@ function SchoolProfile(props) {
                 <ProfileContainer>
                     <div className="top-container">
                         <div className="photo-container">
-                            <h1>{schoolDetails.name.charAt(0)}</h1>
+                            <h1>{userDetails.firstname ? userDetails.firstname.charAt(0) : userDetails.name.charAt(0)}</h1>
                         </div>
                     </div>
                     <div className='middle-container'>
                         <div className="data-row">
                             <h2>Email</h2>
-                            <input onChange={changeHandler} value={schoolDetails.email} name="email" />
+                            <input onChange={changeHandler} value={editedUserDetails.email} name="email" />
                         </div>
-                        <div className="data-row">
-                            <h2>School Name</h2>
-                            <input onChange={changeHandler} value={schoolDetails.name} name="name" />
-                        </div>
-                        <div className="data-row">
-                            <h2>Description</h2>
-                            <input onChange={changeHandler} value={schoolDetails.description} name="description" />
-                        </div>
+                        {'firstname' in editedUserDetails ?
+                            <div className="data-row">
+                                <h2>First Name</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.firstname} name="firstname" />
+                            </div>
+                            : null
+                        }
+                        {'lastname' in editedUserDetails ?
+                            <div className="data-row">
+                                <h2>Last Name</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.lastname} name="lastname" />
+                            </div>
+                            : null
+                        }
+                        {'name' in editedUserDetails ?
+                            <div className="data-row">
+                                <h2>School Name</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.name} name="name" />
+                            </div>
+                            : null
+                        }
+                        {'description' in editedUserDetails ?
+                            < div className="data-row">
+                                <h2>School Description</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.description} name="description" />
+                            </div>
+                            : null
+                        }
                     </div>
                     <div className="bottom-container">
                         <button onClick={cancel} id="cancel">Cancel</button>
@@ -228,4 +258,4 @@ function SchoolProfile(props) {
     }
 }
 
-export default connect(state => state, actions)(SchoolProfile);
+export default connect(state => state, actions)(Profile);

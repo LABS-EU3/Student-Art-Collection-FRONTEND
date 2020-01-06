@@ -74,9 +74,28 @@ export function loggedInUserReducer(
   switch (action.type) {
     case types.SET_LOGGED_IN_USER:
       return action.payload;
-    case types.EMPTY_LOGGED_IN_USER:
+    case types.EMPTY_USER_DETAILS:
       return initialLoggedInUser;
     default:
       return loggedInUser;
+  }
+}
+
+const initialUserData = {
+  firstname: "",
+  lastname: "",
+  email: "",
+  name: "",
+  description: ""
+}
+
+export function userDetailsReducer(userData = initialUserData, action) {
+  switch (action.type) {
+    case types.SET_USER_DETAILS:
+      return action.payload;
+    case types.EMPTY_USER_DETAILS:
+      return userData;
+    default:
+      return userData;
   }
 }
