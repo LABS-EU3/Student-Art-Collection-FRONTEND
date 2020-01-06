@@ -22,7 +22,6 @@ const initalSignupForm = {
 function RegisterForm(props) {
   const showSchool = props.isSchool ? 'flex' : 'none';
   const showBuyer = !props.isSchool ? 'flex' : 'none';
-  // console.log(props);
 
   return (
     <Formik
@@ -32,7 +31,6 @@ function RegisterForm(props) {
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         props.loadingStarted();
-        // debugger
         const newUser = {
           type: props.isSchool ? 'school' : 'buyer',
           name: values.name,
