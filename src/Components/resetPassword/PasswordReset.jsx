@@ -4,9 +4,13 @@ import { Formik } from 'formik';
 import queryString from 'query-string';
 import * as yup from 'yup';
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { connect } from 'react-redux';
 
 //HELPERS
 import { axiosWithBase } from '../../AxiosCustom';
+import * as actionCreators from '../../store/Actions/actionCreators';
 
 // COMPONENTS
 import ResetPassword from './ResetPassword';
@@ -36,18 +40,31 @@ const StyledForm = styled.div`
   font-family: ‘Roboto’, sans-serif;
 `;
 
-const PasswordReset = props => {
-  const value = queryString.parse(props.location.search);
+const PasswordReset = ({
+  location,
+  history,
+  loadingStarted,
+  loadingFinished
+}) => {
+  const value = queryString.parse(location.search);
   const token = value.token;
   const submitNewPasswordHandler = (values, action) => {
-    debugger;
+    loadingStarted();
     axiosWithBase
       .patch(`/newpassword?token=${token}`, values)
       .then(res => {
-        debugger;
+        loadingFinished();
+        action.resetForm();
+        toast.success(
+          'You have reset your password. You will be redirected to sign in page in 3 seconds'
+        );
+        setTimeout(() => {
+          return history.push('/login');
+        }, 3000);
       })
       .catch(error => {
-        debugger;
+        loadingFinished();
+        toast.error(error.response.data);
       });
   };
 
@@ -59,8 +76,14 @@ const PasswordReset = props => {
         onSubmit={submitNewPasswordHandler}
         component={ResetPassword}
       />
+      <ToastContainer
+        position="bottom-left"
+        bodyClassName="toast"
+        autoClose={3000}
+        closeButton={false}
+      />
     </StyledForm>
   );
 };
 
-export default PasswordReset;
+export default connect(state => state, actionCreators)(PasswordReset);
