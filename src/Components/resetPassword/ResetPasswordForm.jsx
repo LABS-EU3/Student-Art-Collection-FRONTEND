@@ -3,8 +3,13 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { StyledForm } from '../../Views/Login';
+import * as actionCreators from '../../store/Actions/actionCreators';
+import { axiosWithBase } from '../../AxiosCustom';
 
 import ResetPasswordFormik from './ResetPasswordFormik';
 
@@ -14,9 +19,22 @@ const initialValues = {
   email: ''
 };
 
-const ResetPasswordForm = () => {
-  const onResetPasswordHandle = values => {
+const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
+  const onResetPasswordHandle = (values, action) => {
     debugger;
+    loadingStarted();
+    axiosWithBase
+      .post(registerApi, values)
+      .then(res => {
+        debugger;
+        action.resetForm();
+        loadingFinished();
+        history.push('/resetpasswordsent');
+      })
+      .catch(error => {
+        debugger;
+        loadingFinished();
+      });
   };
   return (
     <div>
@@ -67,4 +85,4 @@ const ResetPasswordForm = () => {
   // );
 };
 
-export default ResetPasswordForm;
+export default connect(state => state, actionCreators)(ResetPasswordForm);
