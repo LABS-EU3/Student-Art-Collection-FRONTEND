@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { StyledForm } from '../../Views/Login';
 import * as actionCreators from '../../store/Actions/actionCreators';
 import { axiosWithBase } from '../../AxiosCustom';
 
@@ -18,6 +17,19 @@ const registerApi = process.env.URL || 'http://localhost:9000/resetpassword';
 const initialValues = {
   email: ''
 };
+
+const StyledForm = styled.div`
+  max-width: 800px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.5px lightgrey;
+  border-radius: 10px;
+  padding: 80px 20px;
+  font-family: ‘Roboto’, sans-serif;
+`;
 
 const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
   const onResetPasswordHandle = (values, action) => {
@@ -38,7 +50,7 @@ const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
       });
   };
   return (
-    <div>
+    <StyledForm>
       <Formik
         initialValues={initialValues}
         onSubmit={onResetPasswordHandle}
@@ -50,7 +62,7 @@ const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
         autoClose={3000}
         closeButton={false}
       />
-    </div>
+    </StyledForm>
   );
   // const formik = useFormik({
   //   initialValues: {
