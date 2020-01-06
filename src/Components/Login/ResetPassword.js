@@ -21,14 +21,6 @@ const ResetPassword = ({ isLoading }) => {
     return null;
   }
   return (
-<<<<<<< HEAD
-    <div>
-      <p>
-        Click <Link to="/resetpasswordrequest">here</Link> if you forgot your
-        password.
-      </p>
-    </div>
-=======
     <StyledDiv>
       <h2>
         Click{' '}
@@ -38,7 +30,6 @@ const ResetPassword = ({ isLoading }) => {
         if you forgot your password.
       </h2>
     </StyledDiv>
->>>>>>> ef52672be0b3a35d09b319dfa17fb6dc28607608
   );
 };
 
