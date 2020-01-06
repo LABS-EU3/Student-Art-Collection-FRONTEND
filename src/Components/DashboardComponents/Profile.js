@@ -165,14 +165,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
     }
 
     const cancel = () => {
-        const { _id } = loggedInUser;
-        const token = localStorage.getItem('authorization');
-
-        axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
-            .then((res) => {
-                setUserDetails(res.data)
-                setWaiting(false)
-            })
+        setEditedUserDetails(userDetails)
     }
 
     useEffect(() => {
