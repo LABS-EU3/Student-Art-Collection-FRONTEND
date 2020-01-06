@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import RegisterForm from "../Components/RegisterForm";
@@ -28,7 +29,7 @@ function Register(props) {
           </div>
         </div>
         <RegisterForm {...props} isSchool={isSchool}/>
-        <Link to='/auth/login' >already a member?</Link>
+        <Link to='/login' >Already a member?</Link>
       </Container>
     );
   }
@@ -37,7 +38,7 @@ function Register(props) {
 
 export default connect(state => state, actionCreators)(Register)
 
-const Container = styled.div`
+export const Container = styled.div`
   max-width: 800px;
   margin: 30px Auto;
   display: flex;

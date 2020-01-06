@@ -4,16 +4,19 @@ import '@testing-library/jest-dom/extend-expect';
 import Login from './Login';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../store/index';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from '../store/index';
 
 let wrapper;
 
 beforeEach(() => {
   wrapper = rtl.render(
     <Provider store={store}>
-      <Router>
-        <Login />
-      </Router>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <Login />
+        </Router>
+      </PersistGate>
     </Provider>
   );
 });

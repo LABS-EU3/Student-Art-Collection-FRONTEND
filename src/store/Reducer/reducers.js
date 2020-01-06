@@ -19,14 +19,25 @@ export function countReducer(count = initialCount, action) {
 
 // slice of state for error when logging in
 
-export function errorLoginReducer(isError = false, action) {
+const initialLogInError = {
+  isError: false,
+  errorMessage: ''
+};
+
+export function errorLoginReducer(logInError = initialLogInError, action) {
   switch (action.type) {
     case types.ERROR_ON_LOGIN:
-      return true;
+      return {
+        isError: true,
+        errorMessage: action.payload.message
+      };
     case types.RESET_ERROR_ON_LOGIN:
-      return false;
+      return {
+        isError: false,
+        message: ''
+      };
     default:
-      return isError;
+      return logInError;
   }
 }
 
@@ -40,5 +51,32 @@ export function isLoadingReducer(isLoading = false, action) {
       return false;
     default:
       return isLoading;
+  }
+}
+
+// SLICE OF STATE TO KEEP TRACK OF LOGGED IN USER
+
+const initialLoggedInUser = {
+  confirmed: '',
+  _id: '',
+  email: '',
+  type: '',
+  password: '',
+  createdAt: '',
+  updatedAt: '',
+  __v: ''
+};
+
+export function loggedInUserReducer(
+  loggedInUser = initialLoggedInUser,
+  action
+) {
+  switch (action.type) {
+    case types.SET_LOGGED_IN_USER:
+      return action.payload;
+    case types.EMPTY_LOGGED_IN_USER:
+      return initialLoggedInUser;
+    default:
+      return loggedInUser;
   }
 }

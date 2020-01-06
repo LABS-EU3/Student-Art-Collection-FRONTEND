@@ -1,15 +1,18 @@
 import React from 'react';
 import { Formik } from 'formik';
-import axios from 'axios';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 // COMPONENTS
 
 import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
+import { axiosWithBase } from '../AxiosCustom';
 
 const initialValues = {
   email: '',
@@ -20,7 +23,10 @@ const initialValues = {
 
 // login endpoint pending build of real endpoint in the backend repo
 
-const loginEndpoint = 'http://localhost:9000/login';
+// const loginEndpoint = 'http://localhost:9000/login';
+// // const loginEndpoint =
+// //   process.env.REACT_APP_LOGIN_ENDPOINT ||
+// //   'https://art-finder-staging.herokuapp.com/login';
 
 // validation schema by yup plugged into formik
 
@@ -35,43 +41,82 @@ const validationSchema = yup.object().shape({
     .min(8)
 });
 
-export const StyledForm = styled.div`
-  width: 600px;
-  margin: 0 auto;
+const StyledForm = styled.div`
+  max-width: 800px;
+  margin: 3rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: solid 0.5px lightgrey;
+  border-radius: 10px;
+  padding: 80px 20px;
+  font-family: ‘Roboto’, sans-serif;
 `;
 
 const Login = ({
   history,
   errorLogin,
-  isError,
   resetErrorLogin,
   loadingStarted,
-  loadingFinished
+  loadingFinished,
+  setLoggedInUser,
+  logInError
 }) => {
   // login handler when login form is submitted
   const onLoginHandle = (values, action) => {
-    console.log(values);
     loadingStarted();
-    axios
-      .post(loginEndpoint, values)
+    resetErrorLogin();
+    axiosWithBase
+      .post('/login', values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
-        debugger;
         loadingFinished();
         action.resetForm();
         resetErrorLogin();
-        localStorage.setItem('authorization', res.data.token);
-        history.push('/');
+        if (!res.data.token) {
+          switch (res.data.message) {
+            case 'please check your email address to confirm account':
+              history.push('/confirmation');
+              break;
+            // case 'Invalid credentials':
+            //   errorLogin(res.data.message);
+            //   break;
+            default:
+              console.log('weird');
+          }
+        } else {
+          localStorage.setItem('authorization', res.data.token);
+          setLoggedInUser(res.data.user);
+          history.push('/');
+        }
       })
       .catch(error => {
-        debugger;
-        loadingFinished()
-        errorLogin();
-        // set error message state when redux file structure has been clarified
+        loadingFinished();
+        if (!error.response) {
+          errorLogin('Something went wrong. Please contact us so we can help.');
+          toast.error(
+            'Something went wrong. Please contact us so we can help.'
+          );
+        } else {
+          switch (error.response.status) {
+            case 404:
+              errorLogin(error.message);
+              toast.error(error.message);
+              break;
+            case 401:
+              errorLogin(error.response.data);
+              toast.error(error.response.data);
+              break;
+            default:
+              errorLogin(
+                'Something went wrong. Please contact us so we can help.'
+              );
+              toast.error(
+                'Something went wrong. Please contact us so we can help.'
+              );
+          }
+        }
       });
   };
 
@@ -83,8 +128,15 @@ const Login = ({
         onSubmit={onLoginHandle}
         component={LoginForm}
       />
+      {/* <LoginError /> */}
+      <ToastContainer
+        position="bottom-left"
+        bodyClassName="toast"
+        autoClose={3000}
+        closeButton={false}
+      />
       <ResetPassword />
-      {isError ? <div>Error logging in. Please try again</div> : null}
+      <Link to="/signup">Not a member yet? Click here.</Link>
     </StyledForm>
   );
 };

@@ -23,8 +23,8 @@ function App() {
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
-      <Route path="/auth/login" component={Login} />
-      <Route path ='/register' component={Register} />
+      <Route path="/login" component={Login} />
+      <Route path ='/signup' component={Register} />
     </ThemeProvider>
   );
 }
