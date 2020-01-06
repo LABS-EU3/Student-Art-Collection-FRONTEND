@@ -145,12 +145,20 @@ function BuyerProfile(props) {
         const { _id } = props.loggedInUser;
         const token = localStorage.getItem('authorization');
 
-        axios({ method: 'PATCH', url: `http://localhost:9000/updateProfile/${_id}`, headers: { authorization: token }, data: { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } })
+        // axios({ method: 'PATCH', url: `http://localhost:9000/updateProfile/${_id}`, headers: { authorization: token }, data: { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } })
+        //     .then(() => {
+        //         toast.success("Successfully updated profile")
+        //     })
+        //     .catch(() => {
+        //         toast.error('Error updating profile')
+        //     })
+
+        axiosWithBase.patch(`/updateProfile/${_id}`, { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } )
             .then(() => {
-                toast.success("Successfully updated profile")
+                toast.success('Profile updated');
             })
-            .catch(() => {
-                toast.error('Error updating profile')
+            .catch((err) => {
+                toast.error('Error updating profile');
             })
     }
 
@@ -217,8 +225,8 @@ function BuyerProfile(props) {
                     pauseOnHover
                     closeButton={false}
                     style={{
-                        'font-size': '1.3rem',
-                        'text-align': 'center'
+                        'fontSize': '1.3rem',
+                        'textlign': 'center'
                     }}
                 />
             </>
