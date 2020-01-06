@@ -8,7 +8,7 @@ import Register from './Views/Register'
 import ConfirmationSent from './Views/ConfirmationSent';
 import ConfirmationSuccess from './Views/ConfirmationSuccess';
 import Login from './Views/Login';
-import BuyerDashboard from './Views/BuyerDashboard'
+import Dashboard from './Views/Dashboard'
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
@@ -26,8 +26,8 @@ function App() {
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
       <Route path="/login" component={Login} />
-      <Route path ='/signup' component={Register} />
-	  <Route path='/myaccount' component={BuyerDashboard} />
+      <Route path='/signup' component={Register} />
+      <Route path='/myaccount' component={Dashboard} />
     </ThemeProvider>
   );
 }

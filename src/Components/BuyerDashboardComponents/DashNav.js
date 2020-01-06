@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+
+import { connect } from 'react-redux';
+import * as actions from '../../store/Actions/actionCreators';
 
 const DashNavStyle = styled.div`
     width: 220px;
@@ -48,19 +51,30 @@ const DashNavStyle = styled.div`
         border-bottom: 1px solid black;
 
     }
-
-
 `
 
-function DashNav() {
+function DashNav({ loggedInUser }) {
+
+    const [isBuyer, setIsBuyer] = useState(null);
+
+    useEffect(() => {
+        if (loggedInUser.type === 'buyer') {
+            setIsBuyer(true);
+        }
+        else if (loggedInUser.type === 'school') {
+            setIsBuyer(false);
+        }
+    }, [loggedInUser.type])
+
     return (
         <DashNavStyle>
             <div>
                 <nav>
+                    {!isBuyer ? <NavLink exact to='/myaccount/dashboard'>Dashboard</NavLink> : null}
                     <NavLink exact to='/myaccount'>Profile</NavLink>
-                    <NavLink to='/myaccount/orders'>Orders</NavLink>
+                    {isBuyer ? <NavLink to='/myaccount/orders'>Orders</NavLink> : null}
                     <NavLink to='/myaccount/messages'>Messages</NavLink>
-                    <NavLink to='/myaccount/wishlist'>Wishlist</NavLink>
+                    {isBuyer ? <NavLink to='/myaccount/wishlist'>Wishlist</NavLink> : null}
                     <NavLink to='/myaccount/help'>Help</NavLink>
                 </nav>
             </div>
@@ -68,4 +82,4 @@ function DashNav() {
     )
 }
 
-export default DashNav
+export default connect(state => state, actions)(DashNav)
