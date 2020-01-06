@@ -83,7 +83,7 @@ const Login = ({
             //   errorLogin(res.data.message);
             //   break;
             default:
-              console.log('weird');
+              return res.data.message;
           }
         } else {
           localStorage.setItem('authorization', res.data.token);
