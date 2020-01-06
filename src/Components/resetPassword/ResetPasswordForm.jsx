@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
+import * as yup from 'yup';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,6 +16,13 @@ const registerApi = process.env.URL || 'http://localhost:9000/resetpassword';
 const initialValues = {
   email: ''
 };
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email()
+    .required()
+});
 
 const StyledForm = styled.div`
   max-width: 800px;
@@ -52,6 +58,7 @@ const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
   return (
     <StyledForm>
       <Formik
+        validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={onResetPasswordHandle}
         component={ResetPasswordFormik}
