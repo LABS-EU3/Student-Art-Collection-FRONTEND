@@ -34,6 +34,7 @@ const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
       .catch(error => {
         debugger;
         loadingFinished();
+        toast.error(error.response.data);
       });
   };
   return (
@@ -42,6 +43,12 @@ const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
         initialValues={initialValues}
         onSubmit={onResetPasswordHandle}
         component={ResetPasswordFormik}
+      />
+      <ToastContainer
+        position="bottom-left"
+        bodyClassName="toast"
+        autoClose={3000}
+        closeButton={false}
       />
     </div>
   );
