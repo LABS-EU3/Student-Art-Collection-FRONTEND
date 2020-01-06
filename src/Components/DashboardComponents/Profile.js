@@ -81,7 +81,12 @@ font-family: 'Roboto', sans-serif;
                 border: 0;
                 text-align: right;
                 width: 300px;   
-                color: rgba(0,0,0,0.7)
+                color: rgba(0,0,0,0.7);
+
+                &:focus {
+                    outline: none;
+                    color: orange;
+                }
             }
         }
     }
@@ -142,7 +147,6 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
 
     const submit = () => {
         const { _id } = loggedInUser;
-
         const editedUser = {
             firstname: editedUserDetails.firstname,
             lastname: editedUserDetails.lastname,
@@ -154,6 +158,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
         axiosWithBase.patch(`/updateProfile/${_id}`, editedUser)
             .then(() => {
                 toast.success('Profile updated');
+                setUserDetails(editedUser);
             })
             .catch(() => {
                 toast.error('Error updating profile');
@@ -177,6 +182,9 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
                 setUserDetails(res.data)
                 setEditedUserDetails(res.data)
                 setWaiting(false)
+            })
+            .catch(() => {
+                toast.error("There was an error retrieving your information.")
             })
     }, [loggedInUser, setUserDetails])
 
@@ -237,7 +245,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
                     closeButton={false}
                     style={{
                         'fontSize': '1.3rem',
-                        'textlign': 'center'
+                        'textAlign': 'center'
                     }}
                 />
             </>
