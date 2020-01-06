@@ -10,6 +10,7 @@ import ConfirmationSuccess from './Views/ConfirmationSuccess';
 import PasswordResetSent from './Views/PasswordResetSent';
 import Login from './Views/Login';
 import BuyerDashboard from './Views/BuyerDashboard';
+import PasswordReset from './Components/resetPassword/PasswordReset';
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
@@ -29,6 +30,7 @@ function App() {
       <Route path="/signup" component={Register} />
       <Route path="/myaccount" component={BuyerDashboard} />
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
+      <Route path="/resetpassword" component={PasswordReset} />
     </ThemeProvider>
   );
 }
