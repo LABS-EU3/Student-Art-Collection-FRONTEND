@@ -15,8 +15,6 @@ import { axiosWithBase } from '../../AxiosCustom';
 // COMPONENTS
 import ResetPasswordFormik from './ResetPasswordFormik';
 
-const registerApi = process.env.URL || 'http://localhost:9000/resetpassword';
-
 const initialValues = {
   email: ''
 };
@@ -45,7 +43,7 @@ const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
   const onResetPasswordHandle = (values, action) => {
     loadingStarted();
     axiosWithBase
-      .post(registerApi, values)
+      .post('/resetpassword', values)
       .then(() => {
         action.resetForm();
         loadingFinished();
