@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux'
@@ -143,7 +142,6 @@ function BuyerProfile(props) {
 
     const submit = () => {
         const { _id } = props.loggedInUser;
-        const token = localStorage.getItem('authorization');
 
         // axios({ method: 'PATCH', url: `http://localhost:9000/updateProfile/${_id}`, headers: { authorization: token }, data: { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } })
         //     .then(() => {

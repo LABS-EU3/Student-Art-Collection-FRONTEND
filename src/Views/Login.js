@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom';
 
 import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
-import { axiosWithBase } from '../AxiosCustom';
+import { axiosWithBase, baseURL } from '../AxiosCustom';
+import SocialAuthButton from '../Components/SocilaAuthButton'
 
 const initialValues = {
   email: '',
@@ -79,9 +80,6 @@ const Login = ({
             case 'please check your email address to confirm account':
               history.push('/confirmation');
               break;
-            // case 'Invalid credentials':
-            //   errorLogin(res.data.message);
-            //   break;
             default:
               return res.data.message;
           }
@@ -128,7 +126,6 @@ const Login = ({
         onSubmit={onLoginHandle}
         component={LoginForm}
       />
-      {/* <LoginError /> */}
       <ToastContainer
         position="bottom-left"
         bodyClassName="toast"
@@ -136,6 +133,10 @@ const Login = ({
         closeButton={false}
       />
       <ResetPassword />
+      <SocialAuthButton 
+            isSchool={false}
+            url={baseURL+'auth/google'}
+      />
       <Link to="/signup">Not a member yet? Click here.</Link>
     </StyledForm>
   );
