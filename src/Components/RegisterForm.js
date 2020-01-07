@@ -8,7 +8,8 @@ import {
 } from '../helpers/validationSchema';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { axiosWithBase } from '../AxiosCustom';
+import { axiosWithBase, baseURL } from '../AxiosCustom';
+import SocialAuthButton from '../Components/SocilaAuthButton';
 
 const initalSignupForm = {
   name: '',
@@ -50,7 +51,6 @@ export function RegisterForm(props) {
             props.history.push('/confirmation');
           })
           .catch(err => {
-            console.error(err.response.data.error);
             toast.error(err.response.data.error);
             actions.setSubmitting(false);
             props.loadingFinished();
@@ -179,6 +179,11 @@ export function RegisterForm(props) {
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
+
+          <SocialAuthButton 
+            isSchool={props.isSchool}
+            url={baseURL+'auth/google'}
+            />
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -239,11 +244,11 @@ export const StyledForm = styled.form`
   }
 
   textarea {
-    font-size: 1.5rem
-    padding: 10px
-    border-radius: 5px
-    border: solid 0.5px lightgrey
-    height: 80px
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 0.5px lightgrey;
+    height: 80px;
   }
 
   button {

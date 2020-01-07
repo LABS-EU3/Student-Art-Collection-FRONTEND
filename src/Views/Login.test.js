@@ -24,7 +24,7 @@ afterEach(rtl.cleanup);
 
 describe('Login component', () => {
   test('renders submit button', () => {
-    expect(wrapper.queryByText(/login/i)).toBeInTheDocument();
+    expect(wrapper.queryAllByText(/login/i)[0]).toBeInTheDocument();
   });
   test('renders line of text to reset password', () => {
     expect(
