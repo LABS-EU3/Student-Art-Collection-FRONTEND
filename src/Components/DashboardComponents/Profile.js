@@ -93,6 +93,10 @@ font-family: 'Roboto', sans-serif;
                     outline: none;
                     color: orange;
                 }
+
+                @media(max-width: 775px) {
+                    width: 50%;
+                }
             }
         }
     }

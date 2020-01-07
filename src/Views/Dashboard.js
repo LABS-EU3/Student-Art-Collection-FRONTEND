@@ -24,6 +24,11 @@ align-items: center;
         border-radius: 5px;
         display: flex;
 
+        @media(max-width: 500px) {
+            width: 100%;
+            height: 100%;
+        }
+
         .right-side {
             width: 100%;
             display: flex;
