@@ -156,26 +156,22 @@ function Profile({ loggedInUser, setUserDetails, userDetails, ...props }) {
   const [editedUserDetails, setEditedUserDetails] = useState();
   const [waiting, setWaiting] = useState(true);
   const [photo, setPhoto] = useState(null);
-
   const urlString = queryString.parse(props.location.search);
-  console.log(urlString);
 
   function googleUserDetails(urlString) {
     const urlToken = urlString.token;
     const decodedUrlToken = jwt.decode(urlToken);
-    const _id = decodedUrlToken.subject;
+    const google_id = decodedUrlToken.subject;
     localStorage.setItem("authorization", urlToken);
-    return _id;
+    return google_id;
   }
 
   let _id = null;
   Object.keys(urlString).length
     ? (_id = googleUserDetails(urlString))
-    : (_id = loggedInUser._id);
-  const token = localStorage.getItem("authorization");
+    : (_id = loggedInUser.userId);
 
   const submit = () => {
-    const { _id } = loggedInUser;
     const editedUser = {
       firstname: editedUserDetails.firstname,
       lastname: editedUserDetails.lastname,
@@ -184,13 +180,13 @@ function Profile({ loggedInUser, setUserDetails, userDetails, ...props }) {
       description: editedUserDetails.description
     };
 
-    axiosWithBase
+    axiosWithBase()
       .patch(`/updateProfile/${_id}`, editedUser)
       .then(() => {
-        toast.success("Profile updated");
         populateUserDetails();
+        toast.success("Profile updated");
       })
-      .catch(() => {
+      .catch(error => {
         toast.error("Error updating profile");
       });
   };
@@ -212,11 +208,11 @@ function Profile({ loggedInUser, setUserDetails, userDetails, ...props }) {
 
   const uploadProfilePhoto = () => {
     setWaiting(true);
-    const { _id } = loggedInUser;
+    const _id = loggedInUser.userId;
     const formData = new FormData();
     formData.append("image", photo);
 
-    axiosWithBase
+    axiosWithBase()
       .post(`/upload/${_id}`, formData)
       .then(() => {
         populateUserDetails();
@@ -229,17 +225,16 @@ function Profile({ loggedInUser, setUserDetails, userDetails, ...props }) {
   };
 
   const populateUserDetails = () => {
-    axiosWithBase
-      .get(`/profile/${_id}`, { headers: { authorization: token } })
+    axiosWithBase()
+      .get(`/profile/${_id}`)
       .then(res => {
-        //   console.log(res.data);
-
+        props.setLoggedInUser(res.data);
         setUserDetails(res.data);
-        //   debugger
         setEditedUserDetails(res.data);
         setWaiting(false);
       })
-      .catch(() => {
+      .catch(err => {
+        setWaiting(false);
         toast.error("There was an error retrieving your information.");
       });
   };

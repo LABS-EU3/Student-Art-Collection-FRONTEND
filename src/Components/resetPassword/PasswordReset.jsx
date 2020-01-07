@@ -50,7 +50,7 @@ const PasswordReset = ({
   const token = value.token;
   const submitNewPasswordHandler = (values, action) => {
     loadingStarted();
-    axiosWithBase
+    axiosWithBase()
       .patch(`/newpassword?token=${token}`, values)
       .then(res => {
         loadingFinished();

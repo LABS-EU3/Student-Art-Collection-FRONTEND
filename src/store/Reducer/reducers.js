@@ -74,7 +74,7 @@ export function loggedInUserReducer(
   switch (action.type) {
     case types.SET_LOGGED_IN_USER:
       return action.payload;
-    case types.EMPTY_USER_DETAILS:
+    case types.EMPTY_LOGGED_IN_USER:
       return initialLoggedInUser;
     default:
       return loggedInUser;
@@ -93,8 +93,8 @@ export function userDetailsReducer(userData = initialUserData, action) {
   switch (action.type) {
     case types.SET_USER_DETAILS:
       return action.payload;
-    case types.EMPTY_USER_DETAILS:
-      return userData;
+    case types.EMPTY_LOGGED_IN_USER:
+      return initialUserData;
     default:
       return userData;
   }
