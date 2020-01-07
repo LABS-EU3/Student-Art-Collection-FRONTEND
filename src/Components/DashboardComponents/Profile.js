@@ -212,7 +212,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails }) {
         const { _id } = loggedInUser;
         const token = localStorage.getItem('authorization');
 
-        axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
+        axiosWithBase.get(`/profile/${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
                 setUserDetails(res.data)
                 setEditedUserDetails(res.data)
