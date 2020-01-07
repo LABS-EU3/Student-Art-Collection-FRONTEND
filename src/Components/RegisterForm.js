@@ -232,7 +232,7 @@ export const StyledForm = styled.form`
   }
 
   label {
-    font-size: 2rem
+    font-size: 2rem;
     padding: 15px 0 10px 0
   }
 

@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 
 import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
-import { axiosWithBase, baseURL } from '../AxiosCustom';
-import SocialAuthButton from '../Components/SocilaAuthButton'
+import { axiosWithBase } from '../AxiosCustom';
+
 
 const initialValues = {
   email: '',
@@ -133,10 +133,6 @@ const Login = ({
         closeButton={false}
       />
       <ResetPassword />
-      <SocialAuthButton 
-            isSchool={false}
-            url={baseURL+'auth/google'}
-      />
       <Link to="/signup">Not a member yet? Click here.</Link>
     </StyledForm>
   );
