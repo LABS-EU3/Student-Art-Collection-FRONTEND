@@ -22,6 +22,11 @@ font-family: 'Roboto', sans-serif;
     flex-direction: column;
     align-items: center;
     margin-top: 3rem;
+    justify-content: center;
+
+    input {
+        width: 180px;
+    }
 
     .photo-container {
         width: 100px;
@@ -48,6 +53,7 @@ font-family: 'Roboto', sans-serif;
     span {
         color: #FD7135;
         cursor: pointer;
+        margin-top: 10px;
 
         &:hover {
             opacity: 0.5;
@@ -141,9 +147,10 @@ font-family: 'Roboto', sans-serif;
         }
     }
 `
-function Profile({ loggedInUser, setUserDetails, userDetails}) {
+function Profile({ loggedInUser, setUserDetails, userDetails }) {
     const [editedUserDetails, setEditedUserDetails] = useState();
     const [waiting, setWaiting] = useState(true);
+    const [photo, setPhoto] = useState(null);
 
     const submit = () => {
         const { _id } = loggedInUser;
@@ -173,7 +180,31 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
         setEditedUserDetails(userDetails)
     }
 
-    useEffect(() => {
+    const photoChangeHandler = (e) => {
+        setPhoto(e.target.files[0]);
+    }
+
+    const uploadProfilePhoto = () => {
+        setWaiting(true);
+        const { _id } = loggedInUser;
+        const formData = new FormData();
+        formData.append(
+            'image',
+            photo
+        )
+
+        axiosWithBase.post(`/upload/${_id}`, formData)
+            .then(() => {
+                populateUserDetails();
+                setWaiting(false);
+            })
+            .catch(() => {
+                setWaiting(false);
+                toast.error("Error uploading photo")
+            })
+    }
+
+    const populateUserDetails = () => {
         const { _id } = loggedInUser;
         const token = localStorage.getItem('authorization');
 
@@ -186,6 +217,10 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
             .catch(() => {
                 toast.error("There was an error retrieving your information.")
             })
+    }
+
+    useEffect(() => {   
+        populateUserDetails();
     }, [loggedInUser, setUserDetails])
 
     if (!waiting) {
@@ -194,8 +229,16 @@ function Profile({ loggedInUser, setUserDetails, userDetails}) {
                 <ProfileContainer>
                     <div className="top-container">
                         <div className="photo-container">
-                            <h1>{userDetails.firstname ? userDetails.firstname.charAt(0) : userDetails.name.charAt(0)}</h1>
+                            {userDetails.profile_picture ?
+                                < img src={userDetails.profile_picture} alt="Your face!" />
+                                : <h1>{userDetails.firstname ? userDetails.firstname.charAt(0) : userDetails.name.charAt(0)}</h1>
+                            }
                         </div>
+                        <input type="file" onChange={photoChangeHandler}></input>
+                        {photo ?
+                            <span onClick={uploadProfilePhoto}>Upload Photo</span>
+                            : null
+                        }
                     </div>
                     <div className='middle-container'>
                         <div className="data-row">
