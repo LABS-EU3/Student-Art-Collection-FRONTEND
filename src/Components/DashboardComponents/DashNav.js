@@ -12,6 +12,15 @@ const DashNavStyle = styled.div`
     font-family: 'Roboto', sans-serif;  
     font-size: 1.5rem;
     color: rgba(0,0,0,0.5);
+
+    @media(max-width: 500px) {
+        width: 150px;
+        font-size: 1.2rem;
+    }
+
+    @media(max-width: 330px) {
+        font-size: 1rem;
+    }
     
     div {
         height: 85%;
