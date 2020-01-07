@@ -81,7 +81,12 @@ font-family: 'Roboto', sans-serif;
                 border: 0;
                 text-align: right;
                 width: 300px;   
-                color: rgba(0,0,0,0.7)
+                color: rgba(0,0,0,0.7);
+
+                &:focus {
+                    outline: none;
+                    color: orange;
+                }
             }
         }
     }
@@ -136,56 +141,52 @@ font-family: 'Roboto', sans-serif;
         }
     }
 `
-function BuyerProfile(props) {
-    const [userDetails, setUserDetails] = useState();
-    const [waiting, setWaiting] = useState(true)
+function Profile({ loggedInUser, setUserDetails, userDetails}) {
+    const [editedUserDetails, setEditedUserDetails] = useState();
+    const [waiting, setWaiting] = useState(true);
 
     const submit = () => {
-        const { _id } = props.loggedInUser;
+        const { _id } = loggedInUser;
+        const editedUser = {
+            firstname: editedUserDetails.firstname,
+            lastname: editedUserDetails.lastname,
+            email: editedUserDetails.email,
+            name: editedUserDetails.name,
+            description: editedUserDetails.description
+        }
 
-        // axios({ method: 'PATCH', url: `http://localhost:9000/updateProfile/${_id}`, headers: { authorization: token }, data: { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } })
-        //     .then(() => {
-        //         toast.success("Successfully updated profile")
-        //     })
-        //     .catch(() => {
-        //         toast.error('Error updating profile')
-        //     })
-
-        axiosWithBase.patch(`/updateProfile/${_id}`, { firstname: userDetails.firstname, lastname: userDetails.lastname, email: userDetails.email } )
+        axiosWithBase.patch(`/updateProfile/${_id}`, editedUser)
             .then(() => {
                 toast.success('Profile updated');
+                setUserDetails(editedUser);
             })
-            .catch((err) => {
+            .catch(() => {
                 toast.error('Error updating profile');
             })
     }
 
     const changeHandler = (e) => {
-        setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+        setEditedUserDetails({ ...editedUserDetails, [e.target.name]: e.target.value })
     }
 
     const cancel = () => {
-        const { _id } = props.loggedInUser;
-        const token = localStorage.getItem('authorization');
-
-        axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
-            .then((res) => {
-                setUserDetails(res.data)
-                setWaiting(false)
-            })
+        setEditedUserDetails(userDetails)
     }
 
-
     useEffect(() => {
-        const { _id } = props.loggedInUser;
+        const { _id } = loggedInUser;
         const token = localStorage.getItem('authorization');
 
         axiosWithBase.get(`${_id}`, { headers: { 'authorization': token } })
             .then((res) => {
                 setUserDetails(res.data)
+                setEditedUserDetails(res.data)
                 setWaiting(false)
             })
-    }, [props.loggedInUser])
+            .catch(() => {
+                toast.error("There was an error retrieving your information.")
+            })
+    }, [loggedInUser, setUserDetails])
 
     if (!waiting) {
         return (
@@ -193,22 +194,42 @@ function BuyerProfile(props) {
                 <ProfileContainer>
                     <div className="top-container">
                         <div className="photo-container">
-                            <h1>{userDetails.firstname.charAt(0)}</h1>
+                            <h1>{userDetails.firstname ? userDetails.firstname.charAt(0) : userDetails.name.charAt(0)}</h1>
                         </div>
                     </div>
                     <div className='middle-container'>
                         <div className="data-row">
                             <h2>Email</h2>
-                            <input onChange={changeHandler} value={userDetails.email} name="email" />
+                            <input onChange={changeHandler} value={editedUserDetails.email} name="email" />
                         </div>
-                        <div className="data-row">
-                            <h2>First Name</h2>
-                            <input onChange={changeHandler} value={userDetails.firstname} name="firstname" />
-                        </div>
-                        <div className="data-row">
-                            <h2>Last Name</h2>
-                            <input onChange={changeHandler} value={userDetails.lastname} name="lastname" />
-                        </div>
+                        {'firstname' in editedUserDetails ?
+                            <div className="data-row">
+                                <h2>First Name</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.firstname} name="firstname" />
+                            </div>
+                            : null
+                        }
+                        {'lastname' in editedUserDetails ?
+                            <div className="data-row">
+                                <h2>Last Name</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.lastname} name="lastname" />
+                            </div>
+                            : null
+                        }
+                        {'name' in editedUserDetails ?
+                            <div className="data-row">
+                                <h2>School Name</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.name} name="name" />
+                            </div>
+                            : null
+                        }
+                        {'description' in editedUserDetails ?
+                            < div className="data-row">
+                                <h2>School Description</h2>
+                                <input onChange={changeHandler} value={editedUserDetails.description} name="description" />
+                            </div>
+                            : null
+                        }
                     </div>
                     <div className="bottom-container">
                         <button onClick={cancel} id="cancel">Cancel</button>
@@ -224,7 +245,7 @@ function BuyerProfile(props) {
                     closeButton={false}
                     style={{
                         'fontSize': '1.3rem',
-                        'textlign': 'center'
+                        'textAlign': 'center'
                     }}
                 />
             </>
@@ -238,4 +259,4 @@ function BuyerProfile(props) {
     }
 }
 
-export default connect(state => state, actions)(BuyerProfile);
+export default connect(state => state, actions)(Profile);

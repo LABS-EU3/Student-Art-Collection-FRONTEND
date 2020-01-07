@@ -4,8 +4,9 @@ import { Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../store/Actions/actionCreators'
 
-import DashNav from '../Components/BuyerDashboardComponents/DashNav'
-import BuyerProfile from '../Components/BuyerDashboardComponents/BuyerProfile'
+import DashNav from '../Components/DashboardComponents/DashNav'
+import Profile from '../Components/DashboardComponents/Profile'
+
 
 const DashboardContainer = styled.div`
 width: 100vw;
@@ -31,18 +32,17 @@ align-items: center;
         }
     }
 `
-function BuyerDashboard() {
-
+function Dashboard() {
     return (
         <DashboardContainer>
             <div className="dashboard">
                 <Route path='/myaccount' component={DashNav} />
                 <div className='right-side'>
-                    <Route exact path='/myaccount' component={BuyerProfile} />
+                    <Route exact path='/myaccount' component={Profile} />
                 </div>
             </div>
         </DashboardContainer>
     )
 }
 
-export default connect(state => state, actions)(BuyerDashboard);
+export default connect(state => state, actions)(Dashboard);

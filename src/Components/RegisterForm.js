@@ -20,7 +20,7 @@ const initalSignupForm = {
   password: ''
 };
 
-function RegisterForm(props) {
+export function RegisterForm(props) {
   const showSchool = props.isSchool ? 'flex' : 'none';
   const showBuyer = !props.isSchool ? 'flex' : 'none';
 
