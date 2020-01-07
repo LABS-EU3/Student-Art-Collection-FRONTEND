@@ -165,7 +165,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails }) {
         axiosWithBase.patch(`/updateProfile/${_id}`, editedUser)
             .then(() => {
                 toast.success('Profile updated');
-                setUserDetails(editedUser);
+                populateUserDetails();
             })
             .catch(() => {
                 toast.error('Error updating profile');
@@ -221,7 +221,7 @@ function Profile({ loggedInUser, setUserDetails, userDetails }) {
 
     useEffect(() => {   
         populateUserDetails();
-    }, [loggedInUser, setUserDetails])
+    }, [])
 
     if (!waiting) {
         return (
