@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
+export const MainContainer = styled.section`
+	display: flex;
+	justify-content: space-around;
+`;
+
 export const SchoolsDashboardContainer = styled.section`
 	margin-top: 5rem;
-	padding: 2rem;
-	width: 80%;
-	display: flex;
-	flex-direction: column;
+	padding: 3rem;
+	width: 85%;
 `;
 
 export const StyledSidebar = styled.aside`
-	width: 25%;
+	width: 20%;
 	display: flex;
 	flex-direction: column;
 	background: white;
