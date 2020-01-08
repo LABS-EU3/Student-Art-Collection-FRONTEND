@@ -10,8 +10,6 @@ import { Link } from 'react-router-dom';
 function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
 
-  // console.log(isSchool);
-
   if (props.isLoading) {
     return (
       <Container>

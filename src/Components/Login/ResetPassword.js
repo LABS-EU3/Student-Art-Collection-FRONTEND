@@ -25,7 +25,7 @@ const ResetPassword = ({ isLoading }) => {
       <h2>
         Click{' '}
         <span>
-          <Link to="/auth/resetPassword">here</Link>
+          <Link to="/resetpasswordrequest">here</Link>
         </span>{' '}
         if you forgot your password.
       </h2>

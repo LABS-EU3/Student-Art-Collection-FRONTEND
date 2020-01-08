@@ -64,7 +64,13 @@ const initialLoggedInUser = {
   password: '',
   createdAt: '',
   updatedAt: '',
-  __v: ''
+  __v: '',
+  profile_picture: '',
+  firstname: '',
+  lastname: '',
+  name: '',
+  description: '',
+  userId: ''
 };
 
 export function loggedInUserReducer(
@@ -80,3 +86,4 @@ export function loggedInUserReducer(
       return loggedInUser;
   }
 }
+

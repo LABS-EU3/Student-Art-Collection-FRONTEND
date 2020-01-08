@@ -38,7 +38,7 @@ test('renders the form', () => {
 });
 
 test('checks the button changes buyer form to school form', () => {
-  expect(wrapper.queryByText(/buyer/i)).toHaveClass('greenButton');
-  rtl.fireEvent.click(wrapper.queryByText(/buyer/i));
-  expect(wrapper.queryByText(/buyer/i)).toHaveClass('greyButton');
+  expect(wrapper.queryAllByText(/buyer/i)[0]).toHaveClass('greenButton');
+  rtl.fireEvent.click(wrapper.queryAllByText(/buyer/i)[0]);
+  expect(wrapper.queryAllByText(/buyer/i)[0]).toHaveClass('greyButton');
 });

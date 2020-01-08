@@ -63,3 +63,10 @@ export function logOutUser() {
     type: types.EMPTY_LOGGED_IN_USER
   };
 }
+
+export function setUserDetails(user) {
+  return {
+    type: types.SET_USER_DETAILS,
+    payload: user
+  };
+}
