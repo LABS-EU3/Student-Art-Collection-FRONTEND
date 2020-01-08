@@ -68,7 +68,7 @@ const Login = ({
   const onLoginHandle = (values, action) => {
     loadingStarted();
     resetErrorLogin();
-    axiosWithBase
+    axiosWithBase()
       .post('/login', values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
