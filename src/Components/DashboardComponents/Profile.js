@@ -156,20 +156,16 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
     const [editedUserDetails, setEditedUserDetails] = useState({});
     const [waiting, setWaiting] = useState(true);
     const [photo, setPhoto] = useState(null);
-    // const urlString = queryString.parse(props.location.search);
 
-    // const googleUserDetails = (urlString) => {
-    //     const urlToken = urlString.token;
-    //     const decodedUrlToken = jwt.decode(urlToken);
-    //     const google_id = decodedUrlToken.subject;
-    //     localStorage.setItem("authorization", urlToken);
-    //     return google_id;
-    // }
+    const urlString = queryString.parse(props.location.search);
 
-    // let _id = null;
-    // Object.keys(urlString).length
-    //     ? (_id = googleUserDetails(urlString))
-    //     : (_id = loggedInUser.userId);
+    const googleUserDetails = (x) => {
+        const urlToken = x.token;
+        const decodedUrlToken = jwt.decode(urlToken);
+        const google_id = decodedUrlToken.subject;
+        localStorage.setItem("authorization", urlToken);
+        return google_id;
+    }
 
     const submit = () => {
         const editedUser = {
@@ -183,7 +179,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
         axiosWithBase()
             .patch(`/updateProfile/${loggedInUser.userId}`, editedUser)
             .then(() => {
-                populateUserDetails();
+                populateUserDetails(loggedInUser.userId);
                 toast.success("Profile updated");
             })
             .catch(() => {
@@ -214,7 +210,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
         axiosWithBase()
             .post(`/upload/${loggedInUser.userId}`, formData)
             .then(() => {
-                populateUserDetails();
+            populateUserDetails(loggedInUser.userId);
             })
             .catch(() => {
                 setWaiting(false);
@@ -222,9 +218,9 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             });
     };
 
-    const populateUserDetails = () => {
+    const populateUserDetails = (id) => {
         axiosWithBase()
-            .get(`/profile/${loggedInUser.userId}`)
+            .get(`/profile/${id}`)
             .then(res => {
                 setLoggedInUser(res.data);
                 setEditedUserDetails(res.data);
@@ -238,7 +234,10 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
 
     useEffect(() => {
         if (loggedInUser.userId) {
-            populateUserDetails();
+            populateUserDetails(loggedInUser.userId);
+        } else {
+            const authId = googleUserDetails(urlString);
+            populateUserDetails(authId);
         }
     }, []);
 
