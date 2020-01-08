@@ -1,12 +1,16 @@
 import React from 'react'
-import {SchoolsDashboardContainer} from './SchoolsDasboardStyle'
+import {SchoolsDashboardContainer, ArrowWrapper} from './SchoolsDasboardStyle'
+import { ReactComponent as LeftArrow } from '../../Assets/images/left_arrow.svg';
 import Sidebar from './Sidebar'
 
 function SchoolsDashboard() {
     return (
         <SchoolsDashboardContainer>
         <Sidebar/>
-            <h3>School's Dashboard</h3>
+        {/* <ArrowWrapper>
+            <LeftArrow width="70%"/>
+        </ArrowWrapper> */}
+
         </SchoolsDashboardContainer>
     )
 }
