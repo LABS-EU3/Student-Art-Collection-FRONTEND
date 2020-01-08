@@ -1,3 +1,14 @@
+import { createGlobalStyle } from 'styled-components';
+
+// https://www.styled-components.com/docs/api#createglobalstyle
+
+const GlobalStyle = createGlobalStyle`
+
+	/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,12 +34,8 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-:root{
-  font-size: 67.5%;
-}
 body {
-  line-height: 1;
-  box-sizing: border-box;
+	line-height: 1;
 }
 ol, ul {
 	list-style: none;
@@ -45,8 +52,35 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+	html {
+		box-sizing: border-box;
+	}
+	*, *:before, *:after {
+		box-sizing: inherit
+	}
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+    /* placeholders to fill styles with */
+    h1 {
+
+    }
+    h2 {
+
+    }
+    h3 {
+
+    }
+    h4 {
+
+    }
+    h5 {
+
+    }
+    p {
+
+    }
+    a {
+
+    }
+`;
+
+export default GlobalStyle;
