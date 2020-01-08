@@ -162,9 +162,9 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
     const googleUserDetails = (x) => {
         const urlToken = x.token;
         const decodedUrlToken = jwt.decode(urlToken);
-        const google_id = decodedUrlToken.subject;
+        const googleID = decodedUrlToken.subject;
         localStorage.setItem("authorization", urlToken);
-        return google_id;
+        return googleID;
     }
 
     const submit = () => {
@@ -210,7 +210,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
         axiosWithBase()
             .post(`/upload/${loggedInUser.userId}`, formData)
             .then(() => {
-            populateUserDetails(loggedInUser.userId);
+                populateUserDetails(loggedInUser.userId);
             })
             .catch(() => {
                 setWaiting(false);
@@ -226,7 +226,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                 setEditedUserDetails(res.data);
                 setWaiting(false);
             })
-            .catch(err => {
+            .catch(() => {
                 setWaiting(false);
                 toast.error("There was an error retrieving your information.");
             });
@@ -315,10 +315,10 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                     <div className="bottom-container">
                         <button onClick={cancel} id="cancel">
                             Cancel
-            </button>
+                        </button>
                         <button onClick={submit} id="save">
                             Save
-            </button>
+                       </button>
                     </div>
                 </ProfileContainer>
                 <ToastContainer
@@ -336,7 +336,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             </>
         );
     } else {
-        return <Spinner />;
+        return <Spinner />
     }
 }
 
