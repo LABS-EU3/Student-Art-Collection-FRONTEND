@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const axiosWithBase = () => {
-    console.log(localStorage.getItem('authorization'), 'VINCENT')
     return axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {authorization: localStorage.getItem('authorization') ? localStorage.getItem('authorization') : null},
