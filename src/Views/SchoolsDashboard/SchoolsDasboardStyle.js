@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const SchoolsDashboardContainer = styled.section`
+    width:90%;
 	display: flex;
-	margin-top: 100px;
-	height: calc(100vh - 100px);
+	justify-content: space-around;
+
 `;
 
 export const StyledSidebar = styled.aside`
-	width: 22rem;
+	width: 25%;
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -22,6 +23,7 @@ export const StyledNavItem = styled.div`
 	a {
 		display: block;
 		width: 100%;
+        font-size: 1.5rem;
 		padding: 1rem;
 		padding-left: 1.4rem;
 		border-bottom: 1px solid black;
