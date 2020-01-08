@@ -42,7 +42,7 @@ export function RegisterForm(props) {
           password: values.password
         };
         actions.setSubmitting(true);
-        axiosWithBase
+        axiosWithBase()
           .post('/signup', newUser)
           .then(res => {
             actions.resetForm();
