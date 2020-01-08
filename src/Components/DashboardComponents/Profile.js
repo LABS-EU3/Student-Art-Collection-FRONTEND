@@ -152,194 +152,192 @@ const ProfileContainer = styled.div`
   }
 `;
 
-function Profile({ loggedInUser, setUserDetails, userDetails, ...props }) {
-  const [editedUserDetails, setEditedUserDetails] = useState();
-  const [waiting, setWaiting] = useState(true);
-  const [photo, setPhoto] = useState(null);
-  const urlString = queryString.parse(props.location.search);
+function Profile({ loggedInUser, setLoggedInUser, ...props }) {
+    const [editedUserDetails, setEditedUserDetails] = useState({});
+    const [waiting, setWaiting] = useState(true);
+    const [photo, setPhoto] = useState(null);
 
-  function googleUserDetails(urlString) {
-    const urlToken = urlString.token;
-    const decodedUrlToken = jwt.decode(urlToken);
-    const google_id = decodedUrlToken.subject;
-    localStorage.setItem("authorization", urlToken);
-    return google_id;
-  }
+    const urlString = queryString.parse(props.location.search);
 
-  let _id = null;
-  Object.keys(urlString).length
-    ? (_id = googleUserDetails(urlString))
-    : (_id = loggedInUser.userId);
+    const googleUserDetails = (x) => {
+        const urlToken = x.token;
+        const decodedUrlToken = jwt.decode(urlToken);
+        const googleID = decodedUrlToken.subject;
+        localStorage.setItem("authorization", urlToken);
+        return googleID;
+    }
 
-  const submit = () => {
-    const editedUser = {
-      firstname: editedUserDetails.firstname,
-      lastname: editedUserDetails.lastname,
-      email: editedUserDetails.email,
-      name: editedUserDetails.name,
-      description: editedUserDetails.description
+    const submit = () => {
+        const editedUser = {
+            firstname: editedUserDetails.firstname,
+            lastname: editedUserDetails.lastname,
+            email: editedUserDetails.email,
+            name: editedUserDetails.name,
+            description: editedUserDetails.description
+        };
+
+        axiosWithBase()
+            .patch(`/updateProfile/${loggedInUser.userId}`, editedUser)
+            .then(() => {
+                populateUserDetails(loggedInUser.userId);
+                toast.success("Profile updated");
+            })
+            .catch(() => {
+                toast.error("Error updating profile");
+            });
     };
 
-    axiosWithBase()
-      .patch(`/updateProfile/${_id}`, editedUser)
-      .then(() => {
-        populateUserDetails();
-        toast.success("Profile updated");
-      })
-      .catch(error => {
-        toast.error("Error updating profile");
-      });
-  };
+    const changeHandler = e => {
+        setEditedUserDetails({
+            ...editedUserDetails,
+            [e.target.name]: e.target.value
+        });
+    };
 
-  const changeHandler = e => {
-    setEditedUserDetails({
-      ...editedUserDetails,
-      [e.target.name]: e.target.value
-    });
-  };
+    const cancel = () => {
+        setEditedUserDetails(loggedInUser);
+    };
 
-  const cancel = () => {
-    setEditedUserDetails(userDetails);
-  };
+    const photoChangeHandler = e => {
+        setPhoto(e.target.files[0]);
+    };
 
-  const photoChangeHandler = e => {
-    setPhoto(e.target.files[0]);
-  };
+    const uploadProfilePhoto = () => {
+        setWaiting(true);
+        const formData = new FormData();
+        formData.append("image", photo);
 
-  const uploadProfilePhoto = () => {
-    setWaiting(true);
-    const _id = loggedInUser.userId;
-    const formData = new FormData();
-    formData.append("image", photo);
+        axiosWithBase()
+            .post(`/upload/${loggedInUser.userId}`, formData)
+            .then(() => {
+                populateUserDetails(loggedInUser.userId);
+            })
+            .catch(() => {
+                setWaiting(false);
+                toast.error("Error uploading your photo");
+            });
+    };
 
-    axiosWithBase()
-      .post(`/upload/${_id}`, formData)
-      .then(() => {
-        populateUserDetails();
-        setWaiting(false);
-      })
-      .catch(() => {
-        setWaiting(false);
-        toast.error("Error uploading photo");
-      });
-  };
+    const populateUserDetails = (id) => {
+        axiosWithBase()
+            .get(`/profile/${id}`)
+            .then(res => {
+                setLoggedInUser(res.data);
+                setEditedUserDetails(res.data);
+                setWaiting(false);
+            })
+            .catch(() => {
+                setWaiting(false);
+                toast.error("There was an error retrieving your information.");
+            });
+    };
 
-  const populateUserDetails = () => {
-    axiosWithBase()
-      .get(`/profile/${_id}`)
-      .then(res => {
-        props.setLoggedInUser(res.data);
-        setUserDetails(res.data);
-        setEditedUserDetails(res.data);
-        setWaiting(false);
-      })
-      .catch(err => {
-        setWaiting(false);
-        toast.error("There was an error retrieving your information.");
-      });
-  };
+    useEffect(() => {
+        if (loggedInUser.userId) {
+            populateUserDetails(loggedInUser.userId);
+        } else {
+            const authId = googleUserDetails(urlString);
+            populateUserDetails(authId);
+        }
+    }, []);
 
-  useEffect(() => {
-    populateUserDetails();
-  }, []);
-
-  if (!waiting) {
-    return (
-      <>
-        <ProfileContainer>
-          <div className="top-container">
-            <div className="photo-container">
-              {userDetails.profile_picture ? (
-                <img src={userDetails.profile_picture} alt="Your face!" />
-              ) : (
-                <h1>
-                  {userDetails.firstname
-                    ? userDetails.firstname.charAt(0)
-                    : userDetails.name.charAt(0)}
-                </h1>
-              )}
-            </div>
-            <input type="file" onChange={photoChangeHandler}></input>
-            {photo ? (
-              <span onClick={uploadProfilePhoto}>Upload Photo</span>
-            ) : null}
-          </div>
-          <div className="middle-container">
-            <div className="data-row">
-              <h2>Email</h2>
-              <input
-                onChange={changeHandler}
-                value={editedUserDetails.email}
-                name="email"
-              />
-            </div>
-            {"firstname" in editedUserDetails ? (
-              <div className="data-row">
-                <h2>First Name</h2>
-                <input
-                  onChange={changeHandler}
-                  value={editedUserDetails.firstname}
-                  name="firstname"
+    if (!waiting) {
+        return (
+            <>
+                <ProfileContainer>
+                    <div className="top-container">
+                        <div className="photo-container">
+                            {editedUserDetails.profile_picture ? (
+                                <img src={editedUserDetails.profile_picture} alt="Your face!" />
+                            ) : (
+                                    <h1>
+                                        {editedUserDetails.firstname
+                                            ? editedUserDetails.firstname.charAt(0)
+                                            : "S"}
+                                    </h1>
+                                )}
+                        </div>
+                        <input type="file" onChange={photoChangeHandler}></input>
+                        {photo ? (
+                            <span onClick={uploadProfilePhoto}>Upload Photo</span>
+                        ) : null}
+                    </div>
+                    <div className="middle-container">
+                        <div className="data-row">
+                            <h2>Email</h2>
+                            <input
+                                onChange={changeHandler}
+                                value={editedUserDetails.email}
+                                name="email"
+                            />
+                        </div>
+                        {"firstname" in editedUserDetails ? (
+                            <div className="data-row">
+                                <h2>First Name</h2>
+                                <input
+                                    onChange={changeHandler}
+                                    value={editedUserDetails.firstname}
+                                    name="firstname"
+                                />
+                            </div>
+                        ) : null}
+                        {"lastname" in editedUserDetails ? (
+                            <div className="data-row">
+                                <h2>Last Name</h2>
+                                <input
+                                    onChange={changeHandler}
+                                    value={editedUserDetails.lastname}
+                                    name="lastname"
+                                />
+                            </div>
+                        ) : null}
+                        {"name" in editedUserDetails ? (
+                            <div className="data-row">
+                                <h2>School Name</h2>
+                                <input
+                                    onChange={changeHandler}
+                                    value={editedUserDetails.name}
+                                    name="name"
+                                />
+                            </div>
+                        ) : null}
+                        {"description" in editedUserDetails ? (
+                            <div className="data-row">
+                                <h2>School Description</h2>
+                                <input
+                                    onChange={changeHandler}
+                                    value={editedUserDetails.description}
+                                    name="description"
+                                />
+                            </div>
+                        ) : null}
+                    </div>
+                    <div className="bottom-container">
+                        <button onClick={cancel} id="cancel">
+                            Cancel
+                        </button>
+                        <button onClick={submit} id="save">
+                            Save
+                       </button>
+                    </div>
+                </ProfileContainer>
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={3000}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    closeButton={false}
+                    style={{
+                        fontSize: "1.3rem",
+                        textAlign: "center"
+                    }}
                 />
-              </div>
-            ) : null}
-            {"lastname" in editedUserDetails ? (
-              <div className="data-row">
-                <h2>Last Name</h2>
-                <input
-                  onChange={changeHandler}
-                  value={editedUserDetails.lastname}
-                  name="lastname"
-                />
-              </div>
-            ) : null}
-            {"name" in editedUserDetails ? (
-              <div className="data-row">
-                <h2>School Name</h2>
-                <input
-                  onChange={changeHandler}
-                  value={editedUserDetails.name}
-                  name="name"
-                />
-              </div>
-            ) : null}
-            {"description" in editedUserDetails ? (
-              <div className="data-row">
-                <h2>School Description</h2>
-                <input
-                  onChange={changeHandler}
-                  value={editedUserDetails.description}
-                  name="description"
-                />
-              </div>
-            ) : null}
-          </div>
-          <div className="bottom-container">
-            <button onClick={cancel} id="cancel">
-              Cancel
-            </button>
-            <button onClick={submit} id="save">
-              Save
-            </button>
-          </div>
-        </ProfileContainer>
-        <ToastContainer
-          position="bottom-center"
-          autoClose={3000}
-          pauseOnVisibilityChange
-          draggable
-          pauseOnHover
-          closeButton={false}
-          style={{
-            fontSize: "1.3rem",
-            textAlign: "center"
-          }}
-        />
-      </>
-    );
-  } else {
-    return <Spinner />;
-  }
+            </>
+        );
+    } else {
+        return <Spinner />
+    }
 }
 
 export default connect(state => state, actions)(Profile);
