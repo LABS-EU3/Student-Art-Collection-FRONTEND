@@ -214,7 +214,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             })
             .catch(() => {
                 setWaiting(false);
-                toast.error("Error uploading photo");
+                toast.error("Error uploading your photo");
             });
     };
 
@@ -253,7 +253,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                                     <h1>
                                         {editedUserDetails.firstname
                                             ? editedUserDetails.firstname.charAt(0)
-                                            : editedUserDetails.name.charAt(0)}
+                                            : "S"}
                                     </h1>
                                 )}
                         </div>
