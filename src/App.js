@@ -10,6 +10,7 @@ import ConfirmationSuccess from './Views/ConfirmationSuccess';
 import PasswordResetSent from './Views/PasswordResetSent';
 import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
+import SchoolsDashboard from './Views/SchoolsDashboard/SchoolsDashboard'
 import PasswordReset from './Components/resetPassword/PasswordReset';
 
 // global style
@@ -24,6 +25,7 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Route exact path="/" component={LandingPage} />
+      <Route exact path="/schoolsdashboard" component={SchoolsDashboard} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
