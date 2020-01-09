@@ -42,7 +42,7 @@ const StyledForm = styled.div`
 const ResetPasswordForm = ({ history, loadingStarted, loadingFinished }) => {
   const onResetPasswordHandle = (values, action) => {
     loadingStarted();
-    axiosWithBase
+    axiosWithBase()
       .post('/resetpassword', values)
       .then(() => {
         action.resetForm();

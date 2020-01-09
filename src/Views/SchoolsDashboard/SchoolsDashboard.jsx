@@ -16,4 +16,5 @@ function SchoolsDashboard (){
 	);
 }
 
+
 export default SchoolsDashboard;

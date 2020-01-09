@@ -42,7 +42,7 @@ export function RegisterForm(props) {
           password: values.password
         };
         actions.setSubmitting(true);
-        axiosWithBase
+        axiosWithBase()
           .post('/signup', newUser)
           .then(res => {
             actions.resetForm();
@@ -51,7 +51,7 @@ export function RegisterForm(props) {
             props.history.push('/confirmation');
           })
           .catch(err => {
-            toast.error(err.response.data.error);
+            toast.error(err.response.statusText);
             actions.setSubmitting(false);
             props.loadingFinished();
           });

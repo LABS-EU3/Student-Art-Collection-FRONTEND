@@ -64,7 +64,13 @@ const initialLoggedInUser = {
   password: '',
   createdAt: '',
   updatedAt: '',
-  __v: ''
+  __v: '',
+  profile_picture: '',
+  firstname: '',
+  lastname: '',
+  name: '',
+  description: '',
+  userId: ''
 };
 
 export function loggedInUserReducer(
@@ -81,21 +87,3 @@ export function loggedInUserReducer(
   }
 }
 
-const initialUserData = {
-  firstname: "",
-  lastname: "",
-  email: "",
-  name: "",
-  description: ""
-}
-
-export function userDetailsReducer(userData = initialUserData, action) {
-  switch (action.type) {
-    case types.SET_USER_DETAILS:
-      return action.payload;
-    case types.EMPTY_LOGGED_IN_USER:
-      return initialUserData;
-    default:
-      return userData;
-  }
-}
