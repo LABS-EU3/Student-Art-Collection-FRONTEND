@@ -14,6 +14,7 @@ import LoginForm from '../Components/Login/LoginForm';
 import ResetPassword from '../Components/Login/ResetPassword';
 import { axiosWithBase } from '../AxiosCustom';
 
+
 const initialValues = {
   email: '',
   password: ''
@@ -67,7 +68,7 @@ const Login = ({
   const onLoginHandle = (values, action) => {
     loadingStarted();
     resetErrorLogin();
-    axiosWithBase
+    axiosWithBase()
       .post('/login', values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
@@ -79,11 +80,8 @@ const Login = ({
             case 'please check your email address to confirm account':
               history.push('/confirmation');
               break;
-            // case 'Invalid credentials':
-            //   errorLogin(res.data.message);
-            //   break;
             default:
-              console.log('weird');
+              return res.data.message;
           }
         } else {
           localStorage.setItem('authorization', res.data.token);
@@ -128,7 +126,6 @@ const Login = ({
         onSubmit={onLoginHandle}
         component={LoginForm}
       />
-      {/* <LoginError /> */}
       <ToastContainer
         position="bottom-left"
         bodyClassName="toast"

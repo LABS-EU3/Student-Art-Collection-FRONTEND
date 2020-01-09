@@ -1,18 +1,13 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as actionCreators from '../../store/Actions/actionCreators';
-
-import Spinner from '../Spinner';
-import SocialAuthButton from '../SocilaAuthButton';
-import {baseURL} from '../../AxiosCustom'
 
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
+  width: 50%;
+  margin: 0 auto;
   font-family: ‘Roboto’, sans-serif;
   h1 {
     font-size: 3rem;
@@ -59,40 +54,20 @@ const StyledError = styled(ErrorMessage)`
   font-size: 1rem;
 `;
 
-const LoginForm = ({ isLoading }) => {
-  if (isLoading) {
-    return <Spinner />;
-  }
-
+const ResetPassword = () => {
   return (
     <StyledDiv>
-      <h1>Sign In</h1>
       <StyledForm>
-        <label htmlFor="email">email</label>
-        <Field
-          name="email"
-          type="email"
-          data-testid="emailField"
-          className="field"
-          placeholder="Enter your email"
-        />
-        <StyledError name="email" component="div" />
-        <label htmlFor="password">Password</label>
         <Field
           name="password"
           type="password"
-          data-testid="passwordField"
-          placeholder="Enter your password"
+          placeholder="Type your new password"
         />
         <StyledError name="password" component="div" />
-        <button type="submit">Login</button>
+        <button>Reset Password</button>
       </StyledForm>
-      <SocialAuthButton 
-            isSchool={false}
-            url={baseURL+'auth/google'}
-      />
     </StyledDiv>
   );
 };
 
-export default connect(state => state, actionCreators)(LoginForm);
+export default ResetPassword;

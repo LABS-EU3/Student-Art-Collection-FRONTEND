@@ -8,7 +8,8 @@ import {
 } from '../helpers/validationSchema';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { axiosWithBase } from '../AxiosCustom';
+import { axiosWithBase, baseURL } from '../AxiosCustom';
+import SocialAuthButton from '../Components/SocilaAuthButton';
 
 const initalSignupForm = {
   name: '',
@@ -19,10 +20,9 @@ const initalSignupForm = {
   password: ''
 };
 
-function RegisterForm(props) {
+export function RegisterForm(props) {
   const showSchool = props.isSchool ? 'flex' : 'none';
   const showBuyer = !props.isSchool ? 'flex' : 'none';
-  // console.log(props);
 
   return (
     <Formik
@@ -32,7 +32,6 @@ function RegisterForm(props) {
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
         props.loadingStarted();
-        // debugger
         const newUser = {
           type: props.isSchool ? 'school' : 'buyer',
           name: values.name,
@@ -43,7 +42,7 @@ function RegisterForm(props) {
           password: values.password
         };
         actions.setSubmitting(true);
-        axiosWithBase
+        axiosWithBase()
           .post('/signup', newUser)
           .then(res => {
             actions.resetForm();
@@ -52,8 +51,7 @@ function RegisterForm(props) {
             props.history.push('/confirmation');
           })
           .catch(err => {
-            console.error(err.response.data.error);
-            toast.error(err.response.data.error);
+            toast.error(err.response.statusText);
             actions.setSubmitting(false);
             props.loadingFinished();
           });
@@ -181,6 +179,11 @@ function RegisterForm(props) {
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
+
+          <SocialAuthButton 
+            isSchool={props.isSchool}
+            url={baseURL+'auth/google'}
+            />
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -229,7 +232,7 @@ export const StyledForm = styled.form`
   }
 
   label {
-    font-size: 2rem
+    font-size: 2rem;
     padding: 15px 0 10px 0
   }
 
@@ -241,11 +244,11 @@ export const StyledForm = styled.form`
   }
 
   textarea {
-    font-size: 1.5rem
-    padding: 10px
-    border-radius: 5px
-    border: solid 0.5px lightgrey
-    height: 80px
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 0.5px lightgrey;
+    height: 80px;
   }
 
   button {
