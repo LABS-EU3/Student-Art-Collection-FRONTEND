@@ -16,7 +16,7 @@ function Sidebar (){
 				<SideNavItem text={sidebarTexts.students} path="/students" />
 				<SideNavItem text={sidebarTexts.upload_art} path="/uploadart" />
 				<ArrowWrapper>
-					<Arrow width="20%" />
+					<Arrow width="50%" />
 				</ArrowWrapper>
 			</NavItemsWrapper>
 		</StyledSidebar>

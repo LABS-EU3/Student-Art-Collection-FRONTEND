@@ -8,15 +8,17 @@ export const MainContainer = styled.section`
 export const SchoolsDashboardContainer = styled.section`
 	margin-top: 5rem;
 	padding: 3rem;
-	width: 85%;
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 `;
 
 export const StyledSidebar = styled.aside`
-	width: 20%;
+	width: 30%;
 	display: flex;
 	flex-direction: column;
 	background: white;
-	z-index: 100;
 `;
 
 export const StyledNavItem = styled.div`
@@ -66,4 +68,19 @@ export const NavItemsWrapper = styled.div`
 	width: 90%;
 	flex-direction: column;
 	align-content: flex-start;
+`;
+
+export const MainCollectionItemContainer = styled.div``;
+
+export const CollectionItemContainer = styled.div`
+	width: 20%;
+	display: flex;
+	height: 35%;
+	border: 1px solid black;
+	margin-left: 1.5rem;
+
+	${'' /* flex-direction: column;
+	height: 350px;
+	align-items: center;
+	position: relative; */} 
 `;

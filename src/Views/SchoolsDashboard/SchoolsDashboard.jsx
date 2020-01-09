@@ -1,5 +1,6 @@
 import React from 'react';
-import { SchoolsDashboardContainer, ArrowWrapper, MainContainer } from './SchoolsDasboardStyle';
+import { SchoolsDashboardContainer, MainContainer } from './SchoolsDasboardStyle';
+import CollectionItem from './CollectionItem';
 import { ReactComponent as LeftArrow } from '../../Assets/images/left_arrow.svg';
 import Sidebar from './Sidebar';
 
@@ -8,6 +9,10 @@ function SchoolsDashboard (){
 		<MainContainer>
 			<SchoolsDashboardContainer>
 				<Sidebar />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+
 				{/* <ArrowWrapper>
             <LeftArrow width="70%"/>
         </ArrowWrapper> */}
@@ -15,6 +20,5 @@ function SchoolsDashboard (){
 		</MainContainer>
 	);
 }
-
 
 export default SchoolsDashboard;
