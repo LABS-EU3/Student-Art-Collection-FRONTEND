@@ -32,6 +32,7 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Register} />
       <Route path="/myaccount" component={Dashboard} />
+      <Route path="/selling" component={Dashboard} />
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
       <Route path="/resetpassword" component={PasswordReset} />
     </ThemeProvider>

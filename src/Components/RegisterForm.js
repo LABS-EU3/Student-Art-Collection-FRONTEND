@@ -44,7 +44,7 @@ export function RegisterForm(props) {
         actions.setSubmitting(true);
         axiosWithBase()
           .post('/signup', newUser)
-          .then(res => {
+          .then(() => {
             actions.resetForm();
             actions.setSubmitting(false);
             props.loadingFinished();
@@ -66,140 +66,140 @@ export function RegisterForm(props) {
         handleSubmit,
         isSubmitting
       }) => (
-        <StyledForm onSubmit={handleSubmit}>
-          <div
-            data-testid="nameField"
-            className="inputField"
-            style={{ display: showSchool }}
-          >
-            <label htmlFor="name">School Name</label>
-            <input
-              name="name"
-              type="text"
-              placeholder="Enter your school name"
-              id="name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-              className={touched.name && errors.name ? 'has-error' : null}
-            />
-            <Error touched={touched.name} message={errors.name} />
-          </div>
-          <div
-            data-testid="descriptionField"
-            className="inputField"
-            style={{ display: showSchool }}
-          >
-            <label htmlFor="description">School Description</label>
-            <textarea
-              name="description"
-              type="text"
-              placeholder="This is optional"
-              id="description"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.description}
-              className={
-                touched.description && errors.description ? 'has-error' : null
-              }
-            />
-            <Error touched={touched.description} message={errors.description} />
-          </div>
-          <div
-            data-testid="firstNameField"
-            className="inputField"
-            style={{ display: showBuyer }}
-          >
-            <label htmlFor="firstName">First Name</label>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="Enter your first name"
-              id="firstName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.firstName}
-              className={
-                touched.firstName && errors.firstName ? 'has-error' : null
-              }
-            />
-            <Error touched={touched.firstName} message={errors.firstName} />
-          </div>
-          <div
-            data-testid="lastNameField"
-            className="inputField"
-            style={{ display: showBuyer }}
-          >
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              name="lastName"
-              type="text"
-              placeholder="Enter your last name"
-              id="lastName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastName}
-              className={
-                touched.lastName && errors.lastName ? 'has-error' : null
-              }
-            />
-            <Error touched={touched.lastName} message={errors.lastName} />
-          </div>
-          <div data-testid="emailField" className="inputField">
-            <label htmlFor="email">e-mail</label>
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              id="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              className={touched.email && errors.email ? 'has-error' : null}
-            />
-            <Error touched={touched.email} message={errors.email} />
-          </div>
-          <div data-testid="passwordField" className="inputField">
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              id="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              className={
-                touched.password && errors.password ? 'has-error' : null
-              }
-            />
-            <Error touched={touched.password} message={errors.password} />
-          </div>
+          <StyledForm onSubmit={handleSubmit}>
+            <div
+              data-testid="nameField"
+              className="inputField"
+              style={{ display: showSchool }}
+            >
+              <label htmlFor="name">School Name</label>
+              <input
+                name="name"
+                type="text"
+                placeholder="Enter your school name"
+                id="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                className={touched.name && errors.name ? 'has-error' : null}
+              />
+              <Error touched={touched.name} message={errors.name} />
+            </div>
+            <div
+              data-testid="descriptionField"
+              className="inputField"
+              style={{ display: showSchool }}
+            >
+              <label htmlFor="description">School Description</label>
+              <textarea
+                name="description"
+                type="text"
+                placeholder="This is optional"
+                id="description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description}
+                className={
+                  touched.description && errors.description ? 'has-error' : null
+                }
+              />
+              <Error touched={touched.description} message={errors.description} />
+            </div>
+            <div
+              data-testid="firstNameField"
+              className="inputField"
+              style={{ display: showBuyer }}
+            >
+              <label htmlFor="firstName">First Name</label>
+              <input
+                name="firstName"
+                type="text"
+                placeholder="Enter your first name"
+                id="firstName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.firstName}
+                className={
+                  touched.firstName && errors.firstName ? 'has-error' : null
+                }
+              />
+              <Error touched={touched.firstName} message={errors.firstName} />
+            </div>
+            <div
+              data-testid="lastNameField"
+              className="inputField"
+              style={{ display: showBuyer }}
+            >
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Enter your last name"
+                id="lastName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
+                className={
+                  touched.lastName && errors.lastName ? 'has-error' : null
+                }
+              />
+              <Error touched={touched.lastName} message={errors.lastName} />
+            </div>
+            <div data-testid="emailField" className="inputField">
+              <label htmlFor="email">e-mail</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                id="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                className={touched.email && errors.email ? 'has-error' : null}
+              />
+              <Error touched={touched.email} message={errors.email} />
+            </div>
+            <div data-testid="passwordField" className="inputField">
+              <label htmlFor="password">Password</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                id="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                className={
+                  touched.password && errors.password ? 'has-error' : null
+                }
+              />
+              <Error touched={touched.password} message={errors.password} />
+            </div>
 
-          <button type="submit" disabled={isSubmitting}>
-            Submit
+            <button type="submit" disabled={isSubmitting}>
+              Submit
           </button>
 
-          <SocialAuthButton 
-            isSchool={props.isSchool}
-            url={baseURL+'auth/google'}
+            <SocialAuthButton
+              isSchool={props.isSchool}
+              url={baseURL + 'auth/google'}
             />
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar
-            pauseOnVisibilityChange
-            draggable
-            pauseOnHover
-            closeButton={false}
-            style={{
-              'font-size': '1.5rem',
-              width: '400px',
-              'text-align': 'center'
-            }}
-          />
-        </StyledForm>
-      )}
+            <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar
+              pauseOnVisibilityChange
+              draggable
+              pauseOnHover
+              closeButton={false}
+              style={{
+                'font-size': '1.5rem',
+                width: '400px',
+                'text-align': 'center'
+              }}
+            />
+          </StyledForm>
+        )}
     </Formik>
   );
 }
