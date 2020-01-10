@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import styled from 'styled-components'
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import HeroImage from '../Assets/contactus.svg'
 import SuccessImage from '../Assets/success1.svg'
 import ContactForm from '../Components/ContactForm';
+
+import { StyledContact, StyledForm, StyledSuccess } from './ContactStyle';
 
 const validationSchema = yup.object().shape({
     email: yup
@@ -25,78 +26,6 @@ const initialValues = {
     name: '',
     message: ''
 };
-
-const StyledContact = styled.div`
-width: 100vw;
-height: 90vh;
-display: flex;
-align-items: center;
-font-family: 'Roboto', sans-serif;
-
-    .contactContainer {
-        width: 100vw;
-        height: 70vh;
-        display: flex;
-        align-items: center;
-
-        .contactLeft {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding-left: 150px;
-            padding-right: 70px;
-            padding-top: 40px;
-
-
-            h1 {
-                font-size: 4rem;
-                font-weight: 200;
-                margin-bottom: 20px;
-            }
-
-            p {
-                font-size: 1.5rem;
-                margin-bottom: 4rem;
-            }
-        }
-
-        .contactRight {
-        width: 44%;
-        height: 100%;
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 30px;
-        }
-        }
-    }
-`
-
-const StyledForm = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  font-family: ‘Roboto’, sans-serif;
-`;
-
-const StyledSuccess = styled.div`
-width: 380px;
-height: 380px;
-display: flex;
-flex-direction: column;
-align-items: center;
-
-h3 {
-    font-size: 2rem;
-    padding-bottom: 2rem;
-}
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-`
 
 function ContactPage() {
     const [submmited, setSubmitted] = useState(false);
