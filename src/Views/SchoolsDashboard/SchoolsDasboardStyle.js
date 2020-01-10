@@ -19,9 +19,8 @@ export const SchoolsDashboardContainer = styled.section`
 `;
 
 export const CollectionItemContainer = styled.div`
-	width: 20%;
+	width: 40%;
 	display: flex;
-	height: 35%;
+	height: 80%;
 	border: 1px solid black;
-	margin-left: 1.5rem;
 `;
