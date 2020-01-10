@@ -11,6 +11,7 @@ import PasswordResetSent from './Views/PasswordResetSent';
 import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
 import PasswordReset from './Components/resetPassword/PasswordReset';
+import Modal from './Views/Modal';
 
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
@@ -22,6 +23,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Modal />
       <Navbar />
       <Route exact path="/" component={LandingPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
@@ -33,6 +35,7 @@ function App() {
       <Route path="/selling" component={Dashboard} />
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
       <Route path="/resetpassword" component={PasswordReset} />
+      
     </ThemeProvider>
   );
 }
