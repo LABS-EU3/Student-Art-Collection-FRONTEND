@@ -8,10 +8,19 @@ function SchoolsDashboard (){
 	return (
 		<MainContainer>
 			<SchoolsDashboardContainer>
-				<Sidebar />
+				{/* <Sidebar /> */}
 				<CollectionItem />
 				<CollectionItem />
 				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				<CollectionItem />
+				
 
 				{/* <ArrowWrapper>
             <LeftArrow width="70%"/>

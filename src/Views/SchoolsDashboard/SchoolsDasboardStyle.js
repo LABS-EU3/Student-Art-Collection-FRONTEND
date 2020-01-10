@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.section`
-	display: flex;
-	justify-content: space-around;
+	width:900px;
+	box-sizing: border-box;
+	height: 80%;
+	padding: 10px;
+	margin: 0 auto;
+
 `;
 
 export const SchoolsDashboardContainer = styled.section`
-	margin-top: 5rem;
-	padding: 3rem;
-	width: 90%;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
+    margin-top: 3rem;
+	display: grid;
+	width:100%;
+	max-width: 800px;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    ${'' /* grid-template-rows: repeat(2, 100px); */}
+    grid-auto-rows: 100px;
+
+
 `;
 
 export const StyledSidebar = styled.aside`
@@ -82,5 +90,5 @@ export const CollectionItemContainer = styled.div`
 	${'' /* flex-direction: column;
 	height: 350px;
 	align-items: center;
-	position: relative; */} 
+	position: relative; */}
 `;
