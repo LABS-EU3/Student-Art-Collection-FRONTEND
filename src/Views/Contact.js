@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import HeroImage from '../Assets/contactus.svg'
 import SuccessImage from '../Assets/success1.svg'
-import ContactForm from '../Components/ContactForm';
+import ContactForm from '../Components/ContactForm/ContactForm';
 
 import { StyledContact, StyledForm, StyledSuccess } from './ContactStyle';
 
