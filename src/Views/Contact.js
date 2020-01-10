@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import HeroImage from '../Assets/contactus.svg'
+import SuccessImage from '../Assets/success1.svg'
 import ContactForm from '../Components/ContactForm';
 
 const validationSchema = yup.object().shape({
@@ -80,6 +81,23 @@ const StyledForm = styled.div`
   font-family: ‘Roboto’, sans-serif;
 `;
 
+const StyledSuccess = styled.div`
+width: 380px;
+height: 380px;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+h3 {
+    font-size: 2rem;
+    padding-bottom: 2rem;
+}
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+`
+
 function ContactPage() {
     const [submmited, setSubmitted] = useState(false);
 
@@ -97,7 +115,7 @@ function ContactPage() {
                     <p>Want to get in touch? Use the form below and we will get back to you
                         as soon as possible.
                     </p>
-                    { !submmited? 
+                    {!submmited ?
                         <StyledForm>
                             <Formik
                                 initialValues={initialValues}
@@ -106,7 +124,10 @@ function ContactPage() {
                                 component={ContactForm}
                             />
                         </StyledForm>
-                        : <h1>Submitted!</h1>
+                        : <StyledSuccess>
+                            <h3>Message Sent!</h3>
+                            <img src={SuccessImage} alt='tick!' />
+                        </StyledSuccess>
                     }
                 </div>
                 <div className="contactRight">
