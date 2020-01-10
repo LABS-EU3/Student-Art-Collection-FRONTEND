@@ -6,6 +6,7 @@ import * as actions from '../store/Actions/actionCreators'
 
 import DashNav from '../Components/DashboardComponents/DashNav'
 import Profile from '../Components/DashboardComponents/Profile'
+import SellingNav from '../Components/SellingDashboardComponents/SellingNav'
 
 
 const DashboardContainer = styled.div`
@@ -42,6 +43,7 @@ function Dashboard() {
         <DashboardContainer>
             <div className="dashboard">
                 <Route path='/myaccount' component={DashNav} />
+                <Route path='/selling' component={SellingNav} />
                 <div className='right-side'>
                     <Route exact path='/myaccount' component={Profile} />
                 </div>
