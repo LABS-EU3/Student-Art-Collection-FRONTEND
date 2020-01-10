@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
+import { Formik } from 'formik';
+import * as yup from 'yup';
 import HeroImage from '../Assets/contactus.svg'
+import ContactForm from '../Components/ContactForm';
+
+const validationSchema = yup.object().shape({
+    email: yup
+        .string()
+        .email()
+        .required(),
+    name: yup
+        .string()
+        .required()
+        .min(2),
+    message: yup
+        .string()
+        .required(),
+});
+
+const initialValues = {
+    email: '',
+    name: '',
+    message: ''
+};
 
 const StyledContact = styled.div`
 width: 100vw;
@@ -33,6 +56,7 @@ font-family: 'Roboto', sans-serif;
 
             p {
                 font-size: 1.5rem;
+                margin-bottom: 4rem;
             }
         }
 
@@ -49,7 +73,22 @@ font-family: 'Roboto', sans-serif;
     }
 `
 
+const StyledForm = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-family: ‘Roboto’, sans-serif;
+`;
+
 function ContactPage() {
+    const [submmited, setSubmitted] = useState(false);
+
+    const submitMessage = (values, actions) => {
+        //Console log temporary until endpoit is working
+        console.log(values);
+        actions.resetForm();
+        setSubmitted(true);
+    };
     return (
         <StyledContact>
             <div className="contactContainer">
@@ -58,6 +97,17 @@ function ContactPage() {
                     <p>Want to get in touch? Use the form below and we will get back to you
                         as soon as possible.
                     </p>
+                    { !submmited? 
+                        <StyledForm>
+                            <Formik
+                                initialValues={initialValues}
+                                validationSchema={validationSchema}
+                                onSubmit={submitMessage}
+                                component={ContactForm}
+                            />
+                        </StyledForm>
+                        : <h1>Submitted!</h1>
+                    }
                 </div>
                 <div className="contactRight">
                     <img src={HeroImage} alt="Man with mail" />
