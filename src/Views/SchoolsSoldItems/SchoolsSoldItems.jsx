@@ -1,11 +1,11 @@
 import React from 'react';
-import { SchoolsDashboardContainer, MainContainer } from './SchoolsDasboardStyle';
+import { SchoolsCollectionContainer, MainContainer } from './SchoolsSoldItemsStyle';
 import CollectionItem from './CollectionItem';
 
-function SchoolsDashboard (){
+function SchoolsSoldItems (){
 	return (
 		<MainContainer>
-			<SchoolsDashboardContainer>
+			<SchoolsCollectionContainer>
 				<CollectionItem />
 				<CollectionItem />
 				<CollectionItem />
@@ -17,9 +17,9 @@ function SchoolsDashboard (){
 				<CollectionItem />
 				<CollectionItem />
 				<CollectionItem />
-			</SchoolsDashboardContainer>
+			</SchoolsCollectionContainer>
 		</MainContainer>
 	);
 }
 
-export default SchoolsDashboard;
+export default SchoolsSoldItems;

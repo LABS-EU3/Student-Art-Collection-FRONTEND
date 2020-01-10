@@ -10,7 +10,7 @@ import ConfirmationSuccess from './Views/ConfirmationSuccess';
 import PasswordResetSent from './Views/PasswordResetSent';
 import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
-import SchoolsDashboard from './Views/SchoolsDashboard/SchoolsDashboard'
+import SchoolsDashboard from './Views/SchoolsSoldItems/SchoolsSoldItems'
 import PasswordReset from './Components/resetPassword/PasswordReset';
 
 // global style

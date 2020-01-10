@@ -1,5 +1,5 @@
 import React from 'react';
-import { CollectionItemContainer } from './SchoolsDasboardStyle';
+import { CollectionItemContainer } from './SchoolsSoldItemsStyle';
 
 function CollectionItem (){
 	return (

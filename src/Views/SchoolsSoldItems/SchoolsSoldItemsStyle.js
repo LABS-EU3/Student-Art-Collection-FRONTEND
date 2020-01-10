@@ -7,7 +7,7 @@ export const MainContainer = styled.section`
 	margin: 0 auto;
 `;
 
-export const SchoolsDashboardContainer = styled.section`
+export const SchoolsCollectionContainer = styled.section`
 	margin-top: 3rem;
 	display: grid;
 	padding: 1 rem;
