@@ -23,8 +23,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Modal />
       <Navbar />
+      <Modal />
       <Route exact path="/" component={LandingPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
       <Route path="/confirmation" component={ConfirmationSent} />
