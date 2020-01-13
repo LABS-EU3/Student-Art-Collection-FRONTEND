@@ -74,9 +74,16 @@ export function setUserDetails(user) {
 
 // OPEN/CLOSE FILTER BAR 
 
-export function openFilterBar(bool) {
+export function toggleFilterBar(bool) {
   return {
-    type: types.OPEN_FILTER_BAR,
+    type: types.TOGGLE_FILTER_BAR,
+    payload: bool
+  };
+}
+
+export function toggleViewModal(bool) {
+  return {
+    type: types.TOGGLE_VIEW_MODAL,
     payload: bool
   };
 }

@@ -26,6 +26,8 @@ export const SET_USER_INFO = 'SET_USER_INFO';
 export const SET_USER_DETAILS = 'SET_USER_DETAILS';
 export const EMPTY_USER_DETAILS = 'EMPTY_USER_DETAILS';
 
-// Filter Drop Down 
+// BROWSE ART 
 
-export const OPEN_FILTER_BAR = 'OPEN_FILTER_BAR';
+export const TOGGLE_FILTER_BAR = 'TOGGLE_FILTER_BAR';
+
+export const TOGGLE_VIEW_MODAL = 'TOGGLE_VIEW_MODAL';

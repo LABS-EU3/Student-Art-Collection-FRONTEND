@@ -35,7 +35,8 @@ let masterReducer = {
   logInError: reducers.errorLoginReducer,
   isLoading: reducers.isLoadingReducer,
   loggedInUser: reducers.loggedInUserReducer,
-  filterBarOpen: reducers.filterBarReducer
+  filterBarOpen: reducers.filterBarReducer,
+  viewModalOpen: reducers.artViewModal
 };
 
 const persistedReducer = persistReducer(

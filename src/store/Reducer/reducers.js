@@ -92,10 +92,22 @@ export function filterBarReducer(
   action
 ) {
   switch (action.type) {
-    case types.OPEN_FILTER_BAR:
+    case types.TOGGLE_FILTER_BAR:
       return action.payload;
     default:
       return filterBarOpen;
+  }
+}
+
+export function artViewModal(
+  artModalOpen = false,
+  action
+) {
+  switch (action.type) {
+    case types.TOGGLE_VIEW_MODAL:
+      return action.payload;
+    default:
+      return artModalOpen;
   }
 }
 

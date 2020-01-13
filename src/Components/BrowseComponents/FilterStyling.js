@@ -12,7 +12,7 @@ align-items: center;
 justify-content: center;
 color: white;
 font-family: 'Roboto', sans-serif;
-transition: height 0.2s ease-in-out;
+transition: height 0.3s ease-in-out;
 
     h1 {
         font-size: 5rem;

@@ -1,23 +1,31 @@
-import React from 'react';
-import RecentCard from '../LandingComponents/RecentCard';
+import React, { useState, useEffect } from 'react';
+import BrowseCard from './BrowseCard';
 import { temporaryData } from './TemporaryData';
 import { StyledContainer } from './BrowseArtContainerStyling';
 
 function ArtContainer() {
+    const [displayedArt, setDisplayedArt] = useState(null);
+
+    useEffect(() => {
+        setDisplayedArt(temporaryData);
+    })
     return (
         <StyledContainer>
-            {temporaryData.map(art => {
-                return (
-                    <RecentCard
-                        image={art.image}
-                        alt={art.title}
-                        title={art.title}
-                        artist={art.artist}
-                        dimensions={art.dimensions}
-                        price={art.price}
-                    />
-                )
-            })}
+            <div className="grid-row">
+                {displayedArt ? displayedArt.map(art => {
+                    return (
+                        <BrowseCard
+                            image={art.image}
+                            alt={art.title}
+                            title={art.title}
+                            artist={art.artist}
+                            dimensions={art.dimensions}
+                            price={art.price}
+                        />
+                    )
+                })
+            : null}
+            </div>
         </StyledContainer>
     )
 }

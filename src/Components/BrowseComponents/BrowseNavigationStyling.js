@@ -19,13 +19,14 @@ justify-content: center;
          height: 57px;
          border: none;
          background-color: rgba(0,0,0,0.04);
-         font-color: rgba(0,0,0,0.8);
+         font-color: rgba(10,0,0,0.7);
          font-size: 1.5rem;
          text-align: left;
          margin-right: 30px;
          opacity: 1;
          transition: opacity 0.3s ease-in-out
          cursor: pointer;
+         border-radius: 5px;
 
          &:hover {
              opacity: 0.7;
