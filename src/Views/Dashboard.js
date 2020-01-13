@@ -7,12 +7,13 @@ import * as actions from '../store/Actions/actionCreators'
 import DashNav from '../Components/DashboardComponents/DashNav'
 import Profile from '../Components/DashboardComponents/Profile'
 import SellingNav from '../Components/SellingDashboardComponents/SellingNav'
+import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems'
 
 
 const DashboardContainer = styled.div`
 width: 100vw;
 height: 92vh;
-background-color: #F9F9F9
+background-color: #F9F9F9;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -44,6 +45,7 @@ function Dashboard() {
             <div className="dashboard">
                 <Route path='/myaccount' component={DashNav} />
                 <Route path='/selling' component={SellingNav} />
+                <Route path='/schoolsolditems' component={SchoolsSoldItems} />
                 <div className='right-side'>
                     <Route exact path='/myaccount' component={Profile} />
                 </div>
