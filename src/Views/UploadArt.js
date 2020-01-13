@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import UploadArt from './UploadArt';
+
 
 // const BackgroundStyled = styled.div`
 // width: 100vw;
