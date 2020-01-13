@@ -11,7 +11,7 @@ import PasswordResetSent from './Views/PasswordResetSent';
 import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
 import PasswordReset from './Components/resetPassword/PasswordReset';
-import Modal from './Views/Modal';
+import Modal from './Views/UploadArt';
 
 // global style
 import GlobalStyle from './Styles/GlobalStyle';

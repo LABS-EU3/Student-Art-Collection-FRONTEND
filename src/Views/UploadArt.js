@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import UploadArt from './UploadArt';
 
 // const BackgroundStyled = styled.div`
 // width: 100vw;
@@ -101,7 +102,7 @@ function submitForm(contentType, data, setResponse) {
  })
 }
 
-function Modal() {
+function UploadArt() {
  const [title, setTitle] = useState("");
  const [file, setFile] = useState(null);
  const [desc, setDesc] = useState("");
@@ -113,7 +114,7 @@ function Modal() {
 
  return (
     // <BackgroundStyled>
- <div className="App">
+ <div className="UploadArt">
  <Form>
  <label>
  <File type="file" name="file" onChange={(e) => setFile(e.target.files[0])} />
@@ -195,4 +196,4 @@ function Modal() {
  );
 }
 
-export default Modal;
+export default UploadArt;
