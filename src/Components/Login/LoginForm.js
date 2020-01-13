@@ -6,7 +6,7 @@ import * as actionCreators from '../../store/Actions/actionCreators';
 
 import Spinner from '../Spinner';
 import SocialAuthButton from '../SocilaAuthButton';
-import {baseURL} from '../../AxiosCustom'
+import { baseURL } from '../../AxiosCustom'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -87,9 +87,9 @@ const LoginForm = ({ isLoading }) => {
         <StyledError name="password" component="div" />
         <button type="submit">Login</button>
       </StyledForm>
-      <SocialAuthButton 
-            isSchool={false}
-            url={baseURL+'auth/google'}
+      <SocialAuthButton
+        isSchool={false}
+        url={baseURL + 'auth/google'}
       />
     </StyledDiv>
   );

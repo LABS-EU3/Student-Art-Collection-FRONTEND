@@ -11,7 +11,11 @@ import PasswordResetSent from './Views/PasswordResetSent';
 import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
 import PasswordReset from './Components/resetPassword/PasswordReset';
+<<<<<<< HEAD
 import Modal from './Views/UploadArt';
+=======
+import ContactPage from './Views/Contact';
+>>>>>>> b2a927eaacd746650016e703d8881cbdf9263584
 
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
@@ -26,6 +30,7 @@ function App() {
       <Navbar />
       <Modal />
       <Route exact path="/" component={LandingPage} />
+      <Route path='/contact' component={ContactPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
       <Route path="/confirmation" component={ConfirmationSent} />
       <Route path="/success" component={ConfirmationSuccess} />
