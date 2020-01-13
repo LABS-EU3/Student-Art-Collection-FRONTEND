@@ -3,7 +3,7 @@ import HeroImage from '../../Assets/browsehero.jpg';
 
 export const StyledHero = styled.div`
 width: 100%;
-height: 280px;
+height: 250px;
 background: url(${HeroImage});
 background-size: cover;
 display: flex;
@@ -18,6 +18,4 @@ font-family: 'Roboto', sans-serif;
         font-weight: 550;
         letter-spacing: 0.2rem;
     }
-
-
 `

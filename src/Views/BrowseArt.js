@@ -1,18 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import * as actionCreators from '../store/Actions/actionCreators';
 
 import BrowseHero from '../Components/BrowseComponents/BrowseHero';
 import Filter from '../Components/BrowseComponents/Filter';
+import BrowseNavigation from '../Components/BrowseComponents/BrowseNavigation';
+import ArtContainer from '../Components/BrowseComponents/BrowseArtContainer';
 
-function BrowseArt(props) {
+function BrowseArt() {
     return (
         <>
             <BrowseHero />
-            <Filter/>
-            <button onClick={() => props.openFilterBar(!props.filterBarOpen)}>Filter</button>
+            <Filter />
+            <BrowseNavigation />
+            <ArtContainer />
         </>
     )
 }
 
-export default connect(state => state, actionCreators)(BrowseArt);
+export default BrowseArt;

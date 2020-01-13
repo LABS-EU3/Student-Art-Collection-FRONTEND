@@ -22,5 +22,5 @@ transition: height 0.2s ease-in-out;
 `
 
 export const openBarStyling = {
-    "height": "200px",
+    "height": "180px",
 }
