@@ -70,3 +70,13 @@ export function setUserDetails(user) {
     payload: user
   };
 }
+
+
+// OPEN/CLOSE FILTER BAR 
+
+export function openFilterBar(bool) {
+  return {
+    type: types.OPEN_FILTER_BAR,
+    payload: bool
+  };
+}

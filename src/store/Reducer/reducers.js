@@ -87,3 +87,16 @@ export function loggedInUserReducer(
   }
 }
 
+export function filterBarReducer(
+  filterBarOpen = false,
+  action
+) {
+  switch (action.type) {
+    case types.OPEN_FILTER_BAR:
+      return action.payload;
+    default:
+      return filterBarOpen;
+  }
+}
+
+
