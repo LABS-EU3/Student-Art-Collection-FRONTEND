@@ -45,7 +45,7 @@ function Dashboard() {
             <div className="dashboard">
                 <Route path='/myaccount' component={DashNav} />
                 <Route path='/selling' component={SellingNav} />
-                <Route path='/schoolsolditems' component={SchoolsSoldItems} />
+                <Route exact path='/schoolsolditems' component={SchoolsSoldItems} />
                 <div className='right-side'>
                     <Route exact path='/myaccount' component={Profile} />
                 </div>
