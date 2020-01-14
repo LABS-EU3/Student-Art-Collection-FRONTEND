@@ -17,5 +17,15 @@ font-family: 'Roboto', sans-serif;
         font-size: 5rem;
         font-weight: 550;
         letter-spacing: 0.2rem;
+
+        @media(max-width: 750px) {
+            font-size: 3.5rem;
+        }
+        @media(max-width: 500px) {
+            width: 80%;
+            font-size: 3rem;
+            text-align: center;
+        }
+
     }
 `

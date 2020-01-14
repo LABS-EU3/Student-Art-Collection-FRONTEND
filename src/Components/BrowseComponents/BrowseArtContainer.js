@@ -11,7 +11,7 @@ function ArtContainer(props) {
     useEffect(() => {
 
         axiosWithBase()
-            .get('/art')
+            .get('/art?pagination=12')
             .then((res) => {
                 props.fetchArt(res.data)
             })

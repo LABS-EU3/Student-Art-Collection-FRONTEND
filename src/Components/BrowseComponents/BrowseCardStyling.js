@@ -27,13 +27,18 @@ font-family: 'Roboto', sans-serif;
       height: auto;
 
   }
-  @media(max-width: 555px) {
+  @media(max-width: 375px) {
       flex-basis: 100%;
       height: auto;
+      margin-left: 14px;
   }
+  @media(max-width: 340px) {
+    flex-basis: 100%;
+    height: auto;
+    margin-left: 0px;
 
-  
 }
+
 h2 {
     font-size: 1.5rem;
     font-weight: 550;

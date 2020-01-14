@@ -4,6 +4,7 @@ import BrowseHero from '../Components/BrowseComponents/BrowseHero';
 import Filter from '../Components/BrowseComponents/Filter';
 import BrowseNavigation from '../Components/BrowseComponents/BrowseNavigation';
 import ArtContainer from '../Components/BrowseComponents/BrowseArtContainer';
+import Footer from '../Components/LandingComponents/Footer';
 
 function BrowseArt() {
     return (
@@ -12,6 +13,7 @@ function BrowseArt() {
             <Filter />
             <BrowseNavigation />
             <ArtContainer />
+            <Footer />
         </>
     )
 }
