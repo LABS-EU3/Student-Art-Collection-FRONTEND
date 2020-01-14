@@ -9,9 +9,9 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 // CONFIG STORAGE STATE
 
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['loggedInUser']
+	key: 'root',
+	storage,
+	whitelist: [ 'loggedInUser' ],
 };
 
 // configuring react-devtools
@@ -31,20 +31,14 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // export default store;
 
 let masterReducer = {
-  count: reducers.countReducer,
-  logInError: reducers.errorLoginReducer,
-  isLoading: reducers.isLoadingReducer,
-  loggedInUser: reducers.loggedInUserReducer,
-  // itemsCollections: reducers.itemsCollectionReducer
+	count: reducers.countReducer,
+	logInError: reducers.errorLoginReducer,
+	isLoading: reducers.isLoadingReducer,
+	loggedInUser: reducers.loggedInUserReducer,
+	// itemsCollections: reducers.itemsCollectionReducer
 };
 
-const persistedReducer = persistReducer(
-  persistConfig,
-  combineReducers(masterReducer)
-);
+const persistedReducer = persistReducer(persistConfig, combineReducers(masterReducer));
 
-export let store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+export let store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)));
 export let persistor = persistStore(store);
