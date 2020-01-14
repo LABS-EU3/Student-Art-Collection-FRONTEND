@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import axios from 'axios'
 import { axiosWithBase } from '../../AxiosCustom'
 
 // This is a dummy action to check that redux has been properly set. It can safely be deleted when starting to build the app
@@ -73,7 +74,7 @@ export function setUserDetails(user) {
 }
 
 
-// GETTING SOLD COLLECTIONS
+// GETTING ITEMS COLLECTIONS
 
 export const fetchCollectionsStart = () => ({
   type: types.FETCH_COLLECTIONS_START
@@ -90,8 +91,12 @@ export const fetchCollectionsFailure = errorMessage => ({
 });
 
 
-export const fetchCollectionsStartAsync = () => {
-  return dispatch => {
-  
-  };
+export const fetchCollectionsStartAsync = (req, res) => {
+  // const id = req.params.id
+  // return dispatch => {
+  //   axios
+	// 	.get(`http://localhost:4000/art/sold/order/${id}`, { timeout: 5000 })
+	// 	.then((res) => showOutput(res))
+	// 	.catch((err) => console.log(err));
+  // };
 };
