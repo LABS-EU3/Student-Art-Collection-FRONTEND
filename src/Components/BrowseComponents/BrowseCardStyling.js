@@ -10,19 +10,18 @@ padding: 10px 20px;
 box-sizing: border-box;
 font-family: 'Roboto', sans-serif;
 
-
     img {
      max-width: 100%;
      height: auto;
      margin-bottom: 1rem;
-
+     cursor: pointer;
 }
 
   @media(max-width: 1073px) {
       flex-basis: 33.33%;
       height: auto;
-
   }
+
   @media(max-width: 815px) {
       flex-basis: 50%;
       height: auto;
@@ -40,6 +39,7 @@ h2 {
     font-weight: 550;
     margin-bottom: 0.8rem;
 }
+
 h3 {
     opacity: 0.5;
     margin-bottom: 0.4rem;

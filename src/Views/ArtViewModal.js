@@ -31,7 +31,7 @@ function ArtViewModal(props) {
 
     const testFunc = e => {
         if(e.target.className !== 'modal'){
-            props.toggleViewModal(!props.viewModalOpen)
+            props.toggleViewModal(!props.browseArtState.artModalOpen)
         }
         else {
             return null
@@ -39,7 +39,7 @@ function ArtViewModal(props) {
     }
 
     return (
-        <StyledModal style={props.viewModalOpen ? openModalStyling : null} onClick={testFunc}>
+        <StyledModal style={props.browseArtState.artModalOpen ? openModalStyling : null} onClick={testFunc}>
             <div className='modal' />
         </StyledModal>
     )

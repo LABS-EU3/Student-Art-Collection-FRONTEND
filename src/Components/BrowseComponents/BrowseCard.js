@@ -5,8 +5,12 @@ import { StyledBox } from './BrowseCardStyling';
 
 
 function BrowseCard(props) {
+    const populateViewModal = () => {
+        props.toggleViewModal(!props.browseArtState.artModalOpen)
+    }
+
     return (
-        <StyledBox onClick={() => props.toggleViewModal(!props.viewModalOpen)}>
+        <StyledBox onClick={populateViewModal}>
             <img src={props.image} alt={props.alt} />
             <div className="art-info">
                 <h2>{props.title}</h2>

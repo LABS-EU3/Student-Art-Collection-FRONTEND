@@ -6,7 +6,7 @@ import { StyledHero, openBarStyling } from './FilterStyling';
 
 function Filter(props) {
     return(
-        <StyledHero style={props.filterBarOpen ? openBarStyling : null}>
+        <StyledHero style={props.browseArtState.filterBarOpen ? openBarStyling : null}>
             <h1>Filter</h1>
         </StyledHero>
     )

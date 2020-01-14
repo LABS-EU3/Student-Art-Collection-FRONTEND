@@ -87,28 +87,46 @@ export function loggedInUserReducer(
   }
 }
 
-export function filterBarReducer(
-  filterBarOpen = false,
-  action
-) {
+const initialBrowseArtState = {
+  filterBarOpen: false,
+  artModalOpen: false
+}
+
+export function browseArtReducer(state = initialBrowseArtState, action) {
   switch (action.type) {
     case types.TOGGLE_FILTER_BAR:
-      return action.payload;
+      return {...state, filterBarOpen: action.payload};
+    case types.TOGGLE_VIEW_MODAL:
+      return {...state, artModalOpen: action.payload}
     default:
-      return filterBarOpen;
+      return state;
   }
 }
 
-export function artViewModal(
-  artModalOpen = false,
-  action
-) {
-  switch (action.type) {
-    case types.TOGGLE_VIEW_MODAL:
-      return action.payload;
-    default:
-      return artModalOpen;
-  }
-}
+// export function filterBarReducer(
+//   filterBarOpen = false,
+//   action
+// ) {
+//   switch (action.type) {
+//     case types.TOGGLE_FILTER_BAR:
+//       return action.payload;
+//     case types.TOGGLE_VIEW_MODAL:
+//       return action.payload;
+//     default:
+//       return filterBarOpen;
+//   }
+// }
+
+// export function artViewModal(
+//   artModalOpen = false,
+//   action
+// ) {
+//   switch (action.type) {
+//     case types.TOGGLE_VIEW_MODAL:
+//       return action.payload;
+//     default:
+//       return artModalOpen;
+//   }
+// }
 
 

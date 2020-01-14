@@ -8,7 +8,7 @@ function ArtContainer() {
 
     useEffect(() => {
         setDisplayedArt(temporaryData);
-    })
+    }, [])
     return (
         <StyledContainer>
             <div className="grid-row">
@@ -21,6 +21,8 @@ function ArtContainer() {
                             artist={art.artist}
                             dimensions={art.dimensions}
                             price={art.price}
+                            key={art.id}
+                            id={art.id}
                         />
                     )
                 })

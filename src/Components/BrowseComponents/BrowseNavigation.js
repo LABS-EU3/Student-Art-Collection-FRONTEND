@@ -15,7 +15,7 @@ function BrowseNavigation(props) {
         <StyledBrowseNav>
             <div className="container">
                 <button
-                    onClick={() => props.toggleFilterBar(!props.filterBarOpen)}>
+                    onClick={() => props.toggleFilterBar(!props.browseArtState.filterBarOpen)}>
                     {props.filterBarOpen ? 'Hide' : 'Show'} Filters
             </button>
                 <select value={displayFilter} onChange={changeHandler}>
