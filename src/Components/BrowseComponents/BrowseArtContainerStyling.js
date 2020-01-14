@@ -24,3 +24,32 @@ align-items: center;
         font-family: 'Roboto', sans-serif;
     }
 `
+
+export const StyledButtonContainer = styled.div`
+width: 100%;
+height: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+  
+button {
+    width: 160px;
+    height: 45px;
+    margin: 0 40px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+`

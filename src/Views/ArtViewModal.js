@@ -15,6 +15,15 @@ function ArtViewModal(props) {
         }
     }
 
+    const clickBuy = () => {
+        if(props.loggedInUser.userId){
+            console.log("Art has been bought!")
+        }
+        else {
+            props.history.push('/login');
+        }
+    }
+
     return (
         <StyledModal >
             <div className='close' style={props.browseArtState.artModalOpen ? openModalStyling : null} onClick={closeModal}>
@@ -41,7 +50,7 @@ function ArtViewModal(props) {
                             <h3>£{props.browseArtState.artInModal.price}.00</h3>
                             <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
                             </div>
-                            <button>Buy</button>
+                            <button onClick={clickBuy}>Buy</button>
                         </div>
                     </div>
                 </div>

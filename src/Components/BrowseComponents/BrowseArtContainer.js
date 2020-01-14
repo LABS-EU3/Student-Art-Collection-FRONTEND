@@ -3,15 +3,28 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
 import { axiosWithBase } from '../../AxiosCustom';
 import BrowseCard from './BrowseCard';
-import { StyledContainer, StyledEmptyContainer } from './BrowseArtContainerStyling';
+import { StyledContainer, StyledEmptyContainer, StyledButtonContainer } from './BrowseArtContainerStyling';
 import Spinner from '../Spinner';
 
 function ArtContainer(props) {
     const [spinning, setSpinning] = useState(true);
+    const [page, setPage] = useState(1)
+
+    const changePage = (direction) => {
+        if (direction === "plus") {
+            setPage(page + 1);
+        }
+        else if (direction === "minus") {
+            if (page > 1) {
+                setPage(page - 1)
+            }
+        }
+        return null;
+    }
 
     useEffect(() => {
         axiosWithBase()
-            .get('/art?pagination=12')
+            .get(`/art?page=${page}&pagination=12`)
             .then((res) => {
                 props.fetchArt(res.data)
                 setSpinning(false);
@@ -20,7 +33,7 @@ function ArtContainer(props) {
                 setSpinning(false);
             })
         props.toggleViewModal(false);
-    }, [])
+    }, [page])
 
     if (spinning) {
         return (
@@ -32,13 +45,18 @@ function ArtContainer(props) {
 
     else if (props.browseArtState.art.length === 0) {
         return (
-            <StyledEmptyContainer>
-                <h1>Nothing to show yet!</h1>
-            </StyledEmptyContainer>
+            <>
+                <StyledEmptyContainer>
+                    <h1>Nothing here!</h1>
+                </StyledEmptyContainer>
+                <StyledButtonContainer>
+                    <button onClick={() => changePage('minus')}>Previous</button>
+                </StyledButtonContainer>
+            </>
         )
     }
 
-    return (
+    return (<>
         <StyledContainer>
             <div className="grid-row">
                 {props.browseArtState.artSorted ? props.browseArtState.artSorted.map(art => {
@@ -59,6 +77,11 @@ function ArtContainer(props) {
                 }
             </div>
         </StyledContainer>
+        <StyledButtonContainer>
+            <button onClick={() => changePage('minus')}>Previous</button>
+            <button onClick={() => changePage('plus')}>Next</button>
+        </StyledButtonContainer>
+    </>
     )
 }
 
