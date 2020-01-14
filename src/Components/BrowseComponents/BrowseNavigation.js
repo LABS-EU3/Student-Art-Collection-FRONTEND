@@ -10,29 +10,34 @@ function BrowseNavigation(props) {
     const changeHandler = (e) => {
         setDisplayFilter(e.target.value);
 
-        if (displayFilter === 'price_asc') {
-
-            const sorted = props.browseArtState.art.sort((a, b) => a.price - b.price)
-
-            props.fetchArt()
+        if (e.target.value === 'price_asc') {
+            const sorted = props.browseArtState.art.slice().sort((a, b) => a.price - b.price)
+            props.updateArtDisplayed(sorted);
+        }
+        else if (e.target.value === 'price_desc') {
+            const sorted = props.browseArtState.art.slice().sort((a, b) => b.price - a.price)
+            props.updateArtDisplayed(sorted);
+        }
+        else {
+            props.updateArtDisplayed(props.browseArtState.art);
         }
     };
 
-return (
-    <StyledBrowseNav>
-        <div className="container">
-            <button
-                onClick={() => props.toggleFilterBar(!props.browseArtState.filterBarOpen)}>
-                {props.filterBarOpen ? 'Hide' : 'Show'} Filters
+    return (
+        <StyledBrowseNav>
+            <div className="container">
+                <button
+                    onClick={() => props.toggleFilterBar(!props.browseArtState.filterBarOpen)}>
+                    {props.filterBarOpen ? 'Hide' : 'Show'} Filters
             </button>
-            <select value={displayFilter} onChange={changeHandler}>
-                <option value="newest">Newest</option>
-                <option value="price_desc">Price High to Low</option>
-                <option value="price_asc">Price Low to High</option>
-            </select>
-        </div>
-    </StyledBrowseNav>
-)
+                <select value={displayFilter} onChange={changeHandler}>
+                    <option value="newest">Newest</option>
+                    <option value="price_desc">Price High to Low</option>
+                    <option value="price_asc">Price Low to High</option>
+                </select>
+            </div>
+        </StyledBrowseNav>
+    )
 }
 
 export default connect(state => state, actionCreators)(BrowseNavigation);

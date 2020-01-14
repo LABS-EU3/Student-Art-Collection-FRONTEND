@@ -94,3 +94,10 @@ export function fetchArt(data) {
     payload: data
   };
 }
+
+export function updateArtDisplayed(data) {
+  return {
+    type: types.UPDATE_ART_DISPLAYED,
+    payload: data
+  };
+}

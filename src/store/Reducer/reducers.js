@@ -98,11 +98,13 @@ const initialBrowseArtState = {
 export function browseArtReducer(state = initialBrowseArtState, action) {
   switch (action.type) {
     case types.TOGGLE_FILTER_BAR:
-      return {...state, filterBarOpen: action.payload};
+      return { ...state, filterBarOpen: action.payload };
     case types.TOGGLE_VIEW_MODAL:
-      return {...state, artModalOpen: action.payload}
-      case types.FETCH_ART:
-        return {...state, art: action.payload, artSorted: action.payload};
+      return { ...state, artModalOpen: action.payload }
+    case types.FETCH_ART:
+      return { ...state, art: action.payload, artSorted: action.payload };
+    case types.UPDATE_ART_DISPLAYED:
+      return { ...state, artSorted: action.payload }
     default:
       return state;
   }

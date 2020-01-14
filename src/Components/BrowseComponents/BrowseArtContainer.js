@@ -18,7 +18,7 @@ function ArtContainer(props) {
             .catch((err) => {
                 console.log(err)
             })
-        props.toggleViewModal(false);
+        props.toggleViewModal(false);   
     }, [])
     return (
         <StyledContainer>
