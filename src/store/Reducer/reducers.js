@@ -3,6 +3,12 @@ import * as types from '../Actions/actionTypes';
 // set initial values for slices of state below
 const initialCount = 0;
 
+const INITIAL_STATE = {
+  collections: null,
+  isFetching: false,
+  errorMessage: undefined
+};
+
 // slices of state reducers
 export function countReducer(count = initialCount, action) {
   switch (action.type) {
@@ -87,3 +93,28 @@ export function loggedInUserReducer(
   }
 }
 
+
+
+export const itemsCollectionReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case types.FETCH_COLLECTIONS_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case types.FETCH_COLLECTIONS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        collections: action.payload
+      };
+    case types.FETCH_COLLECTIONS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload
+      };
+    default:
+      return state;
+  }
+};

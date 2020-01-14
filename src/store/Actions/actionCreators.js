@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import { axiosWithBase } from '../../AxiosCustom'
 
 // This is a dummy action to check that redux has been properly set. It can safely be deleted when starting to build the app
 
@@ -70,3 +71,27 @@ export function setUserDetails(user) {
     payload: user
   };
 }
+
+
+// GETTING SOLD COLLECTIONS
+
+export const fetchCollectionsStart = () => ({
+  type: types.FETCH_COLLECTIONS_START
+});
+
+export const fetchCollectionsSuccess = collectionsMap => ({
+  type: types.FETCH_COLLECTIONS_SUCCESS,
+  payload: collectionsMap
+});
+
+export const fetchCollectionsFailure = errorMessage => ({
+  type: types.FETCH_COLLECTIONS_FAILURE,
+  payload: errorMessage
+});
+
+
+export const fetchCollectionsStartAsync = () => {
+  return dispatch => {
+  
+  };
+};
