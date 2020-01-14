@@ -11,3 +11,16 @@ margin: 0 auto;
         align-items: flex-start;
     }
 `
+
+export const StyledEmptyContainer = styled.div`
+width: 100%;
+height: 35vh;
+display: flex;
+justify-content: center;
+align-items: center;
+
+    h1 {
+        font-size: 2rem;
+        font-family: 'Roboto', sans-serif;
+    }
+`

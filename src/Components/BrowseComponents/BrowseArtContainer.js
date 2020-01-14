@@ -3,23 +3,41 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
 import { axiosWithBase } from '../../AxiosCustom';
 import BrowseCard from './BrowseCard';
-import { StyledContainer } from './BrowseArtContainerStyling';
+import { StyledContainer, StyledEmptyContainer } from './BrowseArtContainerStyling';
 import Spinner from '../Spinner';
+
 function ArtContainer(props) {
-    const [displayedArt, setDisplayedArt] = useState(null);
+    const [spinning, setSpinning] = useState(true);
 
     useEffect(() => {
-
         axiosWithBase()
-            .get('/art?pagination=12')
+            .get('/at?pagination=12')
             .then((res) => {
                 props.fetchArt(res.data)
+                setSpinning(false);
             })
-            .catch((err) => {
-                console.log(err)
+            .catch(() => {
+                setSpinning(false);
             })
-        props.toggleViewModal(false);   
+        props.toggleViewModal(false);
     }, [])
+
+    if (spinning) {
+        return (
+            <StyledEmptyContainer>
+                <Spinner />
+            </StyledEmptyContainer>
+        )
+    }
+
+    else if (props.browseArtState.art.length === 0) {
+        return (
+            <StyledEmptyContainer>
+                <h1>Nothing to show yet!</h1>
+            </StyledEmptyContainer>
+        )
+    }
+
     return (
         <StyledContainer>
             <div className="grid-row">
@@ -32,12 +50,12 @@ function ArtContainer(props) {
                             artist={art.artist}
                             dimensions={`${art.height} x ${art.width}`}
                             price={art.price}
-                            key={art.id}
-                            id={art.id}
+                            key={art.public_picture_id}
+                            id={art.public_picture_id}
                         />
                     )
                 })
-                    : null  
+                    : null
                 }
             </div>
         </StyledContainer>
