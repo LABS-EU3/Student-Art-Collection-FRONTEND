@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
-import axios from 'axios'
-import { axiosWithBase } from '../../AxiosCustom'
+
 
 // This is a dummy action to check that redux has been properly set. It can safely be deleted when starting to build the app
 
