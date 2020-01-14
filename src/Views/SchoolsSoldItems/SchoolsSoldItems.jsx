@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
 import { SchoolsCollectionContainer, MainContainer } from './SchoolsSoldItemsStyle';
 import CollectionItem from './CollectionItem';
 
 function SchoolsSoldItems (){
+
+
+
 	return (
 		<MainContainer>
 			<SchoolsCollectionContainer>
