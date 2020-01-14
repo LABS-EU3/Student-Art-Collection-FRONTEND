@@ -22,7 +22,7 @@ justify-content: center;
          font-color: rgba(10,0,0,0.7);
          font-size: 1.5rem;
          text-align: left;
-         margin-right: 30px;
+         margin: 0px 10px;
          opacity: 1;
          transition: opacity 0.3s ease-in-out
          cursor: pointer;

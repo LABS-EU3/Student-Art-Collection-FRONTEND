@@ -9,7 +9,6 @@ function BrowseNavigation(props) {
 
     const changeHandler = (e) => {
         setDisplayFilter(e.target.value);
-
         if (e.target.value === 'price_asc') {
             const sorted = props.browseArtState.art.slice().sort((a, b) => a.price - b.price)
             props.updateArtDisplayed(sorted);
