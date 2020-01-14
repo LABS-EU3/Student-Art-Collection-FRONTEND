@@ -89,7 +89,10 @@ export function loggedInUserReducer(
 
 const initialBrowseArtState = {
   filterBarOpen: false,
-  artModalOpen: false
+  artModalOpen: false,
+  art: [],
+  artSorted: [],
+  artInModal: {}
 }
 
 export function browseArtReducer(state = initialBrowseArtState, action) {
@@ -98,35 +101,9 @@ export function browseArtReducer(state = initialBrowseArtState, action) {
       return {...state, filterBarOpen: action.payload};
     case types.TOGGLE_VIEW_MODAL:
       return {...state, artModalOpen: action.payload}
+      case types.FETCH_ART:
+        return {...state, art: action.payload, artSorted: action.payload};
     default:
       return state;
   }
 }
-
-// export function filterBarReducer(
-//   filterBarOpen = false,
-//   action
-// ) {
-//   switch (action.type) {
-//     case types.TOGGLE_FILTER_BAR:
-//       return action.payload;
-//     case types.TOGGLE_VIEW_MODAL:
-//       return action.payload;
-//     default:
-//       return filterBarOpen;
-//   }
-// }
-
-// export function artViewModal(
-//   artModalOpen = false,
-//   action
-// ) {
-//   switch (action.type) {
-//     case types.TOGGLE_VIEW_MODAL:
-//       return action.payload;
-//     default:
-//       return artModalOpen;
-//   }
-// }
-
-

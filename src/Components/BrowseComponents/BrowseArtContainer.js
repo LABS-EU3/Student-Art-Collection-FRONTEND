@@ -1,35 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/Actions/actionCreators';
+import { axiosWithBase } from '../../AxiosCustom';
 import BrowseCard from './BrowseCard';
-import { temporaryData } from './TemporaryData';
 import { StyledContainer } from './BrowseArtContainerStyling';
-
-function ArtContainer() {
+import Spinner from '../Spinner';
+function ArtContainer(props) {
     const [displayedArt, setDisplayedArt] = useState(null);
 
     useEffect(() => {
-        setDisplayedArt(temporaryData);
+
+        axiosWithBase()
+            .get('/art')
+            .then((res) => {
+                props.fetchArt(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        props.toggleViewModal(false);
     }, [])
     return (
         <StyledContainer>
             <div className="grid-row">
-                {displayedArt ? displayedArt.map(art => {
+                {props.browseArtState.artSorted ? props.browseArtState.artSorted.map(art => {
                     return (
                         <BrowseCard
-                            image={art.image}
-                            alt={art.title}
-                            title={art.title}
+                            image={art.picture}
+                            alt={art.name}
+                            title={art.name}
                             artist={art.artist}
-                            dimensions={art.dimensions}
+                            dimensions={`${art.height} x ${art.width}`}
                             price={art.price}
                             key={art.id}
                             id={art.id}
                         />
                     )
                 })
-            : null}
+                    : null  
+                }
             </div>
         </StyledContainer>
     )
 }
 
-export default ArtContainer;
+export default connect(state => state, actionCreators)(ArtContainer);

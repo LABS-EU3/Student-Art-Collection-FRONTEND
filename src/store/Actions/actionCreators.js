@@ -87,3 +87,10 @@ export function toggleViewModal(bool) {
     payload: bool
   };
 }
+
+export function fetchArt(data) {
+  return {
+    type: types.FETCH_ART,
+    payload: data
+  };
+}

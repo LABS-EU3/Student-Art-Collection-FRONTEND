@@ -26,7 +26,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ArtViewModal />
+      <Route exact path="/browse" component={ArtViewModal} />
       <Navbar />
       <Route exact path="/" component={LandingPage} />
       <Route path='/contact' component={ContactPage} />

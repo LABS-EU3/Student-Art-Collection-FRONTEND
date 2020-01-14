@@ -16,7 +16,7 @@ function BrowseCard(props) {
                 <h2>{props.title}</h2>
                 <h3>{props.artist}</h3>
                 <h3>{props.dimensions}</h3>
-                <h2>{props.price}</h2>
+                <h2>£{props.price}</h2>
             </div>
         </StyledBox>
     )
