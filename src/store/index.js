@@ -35,7 +35,7 @@ let masterReducer = {
   logInError: reducers.errorLoginReducer,
   isLoading: reducers.isLoadingReducer,
   loggedInUser: reducers.loggedInUserReducer,
-  itemsCollections: reducers.itemsCollectionReducer
+  // itemsCollections: reducers.itemsCollectionReducer
 };
 
 const persistedReducer = persistReducer(

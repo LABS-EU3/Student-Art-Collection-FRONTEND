@@ -76,27 +76,27 @@ export function setUserDetails(user) {
 
 // GETTING ITEMS COLLECTIONS
 
-export const fetchCollectionsStart = () => ({
-  type: types.FETCH_COLLECTIONS_START
-});
+// export const fetchCollectionsStart = () => ({
+//   type: types.FETCH_COLLECTIONS_START
+// });
 
-export const fetchCollectionsSuccess = collectionsMap => ({
-  type: types.FETCH_COLLECTIONS_SUCCESS,
-  payload: collectionsMap
-});
+// export const fetchCollectionsSuccess = collectionsMap => ({
+//   type: types.FETCH_COLLECTIONS_SUCCESS,
+//   payload: collectionsMap
+// });
 
-export const fetchCollectionsFailure = errorMessage => ({
-  type: types.FETCH_COLLECTIONS_FAILURE,
-  payload: errorMessage
-});
+// export const fetchCollectionsFailure = errorMessage => ({
+//   type: types.FETCH_COLLECTIONS_FAILURE,
+//   payload: errorMessage
+// });
 
 
-export const fetchCollectionsStartAsync = (req, res) => {
-  // const id = req.params.id
-  // return dispatch => {
-  //   axios
-	// 	.get(`http://localhost:4000/art/sold/order/${id}`, { timeout: 5000 })
-	// 	.then((res) => showOutput(res))
-	// 	.catch((err) => console.log(err));
-  // };
-};
+// export const fetchCollectionsStartAsync = (req, res) => {
+//   // const id = req.params.id
+//   // return dispatch => {
+//   //   axios
+// 	// 	.get(`http://localhost:4000/art/sold/order/${id}`, { timeout: 5000 })
+// 	// 	.then((res) => showOutput(res))
+// 	// 	.catch((err) => console.log(err));
+//   // };
+// };
