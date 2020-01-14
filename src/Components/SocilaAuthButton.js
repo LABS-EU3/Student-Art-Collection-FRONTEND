@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SocialAuthButtonCSS from './SocialAuthButton.css';
+import './SocialAuthButton.css';
 import GoogleIcon from '../Assets/google.png'
 export default function SocialAuthButton(props) {
 const display = props.isSchool ? "none" : "flex";
