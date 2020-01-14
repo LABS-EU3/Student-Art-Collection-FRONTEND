@@ -28,6 +28,12 @@ justify-content: center;
          cursor: pointer;
          border-radius: 5px;
 
+         @media(max-width:500px) {
+             width:150px;
+             height: 50px;
+             font-size: 1rem;
+         }
+
          &:hover {
              opacity: 0.7;
              transition: opacity 0.3s ease-in-out
