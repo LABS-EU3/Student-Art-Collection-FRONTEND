@@ -36,7 +36,6 @@ function App() {
       <Route path="/selling" component={Dashboard} />
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
       <Route path="/resetpassword" component={PasswordReset} />
-      <Route path="/UploadArt" component={UploadArt} />
       
       
     </ThemeProvider>

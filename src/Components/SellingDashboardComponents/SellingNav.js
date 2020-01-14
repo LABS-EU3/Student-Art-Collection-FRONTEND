@@ -13,8 +13,7 @@ function SellingNav() {
                     <NavLink exact to='/selling/sold'>Sold</NavLink>
                     <NavLink to='/selling/messages'>Messages</NavLink>
                     <NavLink to='/selling/help'>Help</NavLink>
-                    <NavLink to='/UploadArt'>Upload Art</NavLink>
-                    {/* <UploadModal/> */}
+                    <UploadModal/>
                     <NavLink to='/myaccount' id="arrow">⭠</NavLink>
                 </nav>
             </div>
