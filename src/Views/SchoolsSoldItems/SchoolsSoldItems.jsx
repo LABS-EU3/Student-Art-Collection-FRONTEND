@@ -16,7 +16,7 @@ function SchoolsSoldItems (props){
 			.get(`/art/sold/order/${id}?status=all`)
 			.then((res) => setArtSold(res.data))
 			.catch((err) => console.log(err));
-	}, [artSold]);
+	}, []);
 
 	console.log(artSold);
 
