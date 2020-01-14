@@ -101,3 +101,10 @@ export function updateArtDisplayed(data) {
     payload: data
   };
 }
+
+export function selectArt(data) {
+  return {
+    type: types.SELECT_ART,
+    payload: data
+  };
+}

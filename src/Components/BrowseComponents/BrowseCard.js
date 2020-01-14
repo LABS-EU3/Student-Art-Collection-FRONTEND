@@ -5,8 +5,14 @@ import { StyledBox } from './BrowseCardStyling';
 
 
 function BrowseCard(props) {
+
     const populateViewModal = () => {
-        props.toggleViewModal(!props.browseArtState.artModalOpen)
+        props.toggleViewModal(!props.browseArtState.artModalOpen);
+
+        const test = props.browseArtState.art.filter(x => {
+            return x.public_picture_id === props.id;
+        })
+        props.selectArt(test[0])
     }
 
     return (

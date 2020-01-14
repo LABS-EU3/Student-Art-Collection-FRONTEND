@@ -105,6 +105,8 @@ export function browseArtReducer(state = initialBrowseArtState, action) {
       return { ...state, art: action.payload, artSorted: action.payload };
     case types.UPDATE_ART_DISPLAYED:
       return { ...state, artSorted: action.payload }
+      case types.SELECT_ART:
+      return { ...state, artInModal: action.payload }
     default:
       return state;
   }

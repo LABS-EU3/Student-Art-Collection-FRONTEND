@@ -11,7 +11,7 @@ function ArtContainer(props) {
 
     useEffect(() => {
         axiosWithBase()
-            .get('/at?pagination=12')
+            .get('/art?pagination=12')
             .then((res) => {
                 props.fetchArt(res.data)
                 setSpinning(false);
