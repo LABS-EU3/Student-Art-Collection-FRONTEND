@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import UploadModal from '../../Views/Modal';
 import { DashNavStyle }  from './SellingNavStyle';
+import UploadArt from '../../Views/UploadArt';
 
 function SellingNav() {
     return (
@@ -12,7 +13,8 @@ function SellingNav() {
                     <NavLink exact to='/selling/sold'>Sold</NavLink>
                     <NavLink to='/selling/messages'>Messages</NavLink>
                     <NavLink to='/selling/help'>Help</NavLink>
-                    <UploadModal/>
+                    <NavLink to='/UploadArt'>Upload Art</NavLink>
+                    {/* <UploadModal/> */}
                     <NavLink to='/myaccount' id="arrow">⭠</NavLink>
                 </nav>
             </div>

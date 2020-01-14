@@ -12,12 +12,12 @@ import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
 import PasswordReset from './Components/resetPassword/PasswordReset';
 import ContactPage from './Views/Contact';
-
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
 import theme from './Styles/Theme';
 import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
+import  UploadArt from './Views/UploadArt';
 
 function App() {
   return (
@@ -36,6 +36,8 @@ function App() {
       <Route path="/selling" component={Dashboard} />
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
       <Route path="/resetpassword" component={PasswordReset} />
+      <Route path="/UploadArt" component={UploadArt} />
+      
       
     </ThemeProvider>
   );
