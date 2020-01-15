@@ -4,11 +4,9 @@ export const MainContainer = styled.section`
 	box-sizing: border-box;
 	width: 90%;
 	padding: 1rem;
-
 `;
 
 export const SchoolsCollectionContainer = styled.section`
-	margin-top: 2rem;
 	display: grid;
 	padding: 1 rem;
 	grid-gap: 5%;
@@ -22,7 +20,7 @@ export const CollectionItemContainer = styled.div`
 	flex-direction: column;
 	height: 100%;
 	padding: 1rem;
-	margin-bottom:1rem;
+	margin-bottom: 1rem;
 	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.02);
 	box-sizing: border-box;
@@ -39,7 +37,6 @@ export const CollectionItemContainer = styled.div`
 		font-style: normal;
 		font-weight: normal;
 		font-size: 11px;
-		line-height:1.5rem;
-
+		line-height: 1.5rem;
 	}
 `;

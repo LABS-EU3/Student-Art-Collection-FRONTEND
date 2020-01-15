@@ -28,7 +28,6 @@ function SchoolsSoldItems (props){
 				<CollectionItem />
 				<CollectionItem />
 				<CollectionItem />
-				<CollectionItem />
 			</SchoolsCollectionContainer>
 		</MainContainer>
 	);
