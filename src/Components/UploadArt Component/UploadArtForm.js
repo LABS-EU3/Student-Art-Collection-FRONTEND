@@ -29,7 +29,7 @@ function UploadArtForm (props) {
         <StyledError name='price' component='div' />
         <StyledDetails name='price' type='text' placeholder='Price' />
         <StyledError name='medium' component='div' />
-        <StyledDetails name='medium' type='list' placeholder='Medium' defaultValue={[1, 2, 3]} />
+        <StyledDetails name='medium' type='text' placeholder='Medium' />
         <StyledError name='subject' component='div' />
         <StyledDetails name='subject' type='text' placeholder='Subject' />
         <StyledError name='material' component='div' />

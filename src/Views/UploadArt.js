@@ -11,14 +11,14 @@ import * as actionCreators from '../store/Actions/actionCreators'
 
 
 const initialValues = {
-   name: "Bugger",
-   artistName: "Brenda",
-   description: "burger photo",
-   width: 10,
-   height: 10,
-   quantity: 20,
+   name: "",
+   artistName: "",
+   description: "",
+   width: "",
+   height: "",
+   quantity: "",
    category: "",
-   price: 20,
+   price: "",
    medium: "",
    subject: "",
    materials: "",
