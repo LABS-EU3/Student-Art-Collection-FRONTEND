@@ -78,8 +78,8 @@ function ArtContainer(props) {
             </div>
         </StyledContainer>
         <StyledButtonContainer>
-            <button onClick={() => changePage('minus')}>Previous</button>
-            <button onClick={() => changePage('plus')}>Next</button>
+            {page === 1 ? null : <button onClick={() => changePage('minus')}>Previous</button>}
+            {props.browseArtState.artSorted.length >= 12 ? <button onClick={() => changePage('plus')}>Next</button> : null}
         </StyledButtonContainer>
     </>
     )
