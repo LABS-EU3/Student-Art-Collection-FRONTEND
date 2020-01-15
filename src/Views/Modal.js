@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import {Formik, Form, Field, ErrorMessage } from 'formik';
 import UploadArt from './UploadArt';
+import { StyledHeading } from './ModalStyle';
+import UploadArtForm from '../Components/UploadArt Component/UploadArtForm';
 
 const customStyles = {
   content : {
@@ -43,8 +43,8 @@ function UploadModal(){
           contentLabel="Example Modal"
         >
 
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>Upload Art</h2>
-          <button onClick={closeModal}>close</button>
+          <StyledHeading ref={_subtitle => (subtitle = _subtitle)}>Upload Art</StyledHeading>
+        
           <UploadArt/>
         </Modal>
       </div>
