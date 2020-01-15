@@ -53,9 +53,9 @@ export const CollectionItemContainer = styled.div`
 		line-height: 1.5rem;
 	}
 
-	span:nth-child(5) {
+	${'' /* span:nth-child(5) {
 		color: green;
-	}
+	} */}
 `;
 
 export const CustomButton = styled.a`
