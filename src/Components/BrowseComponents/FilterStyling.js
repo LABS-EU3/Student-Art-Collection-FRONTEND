@@ -28,7 +28,7 @@ transition: height 0.3s ease-in-out;
         border-radius: 5px;
 
         @media(max-width:500px) {
-            width:150px;
+            width:100px;
             height: 50px;
             font-size: 1rem;
         }
@@ -90,6 +90,10 @@ transition: height 0.3s ease-in-out;
         &:hover {
           opacity: 0.7;
           transition: opacity 0.1s ease-in-out;
+        }
+
+        @media(max-width:500px){
+            margin: 0 10px;
         }
     
         &:focus {
