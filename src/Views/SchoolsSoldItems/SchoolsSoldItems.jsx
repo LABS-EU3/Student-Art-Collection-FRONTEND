@@ -9,6 +9,7 @@ import {
 	CustomButton,
 	ButtonsContainer,
 } from './SchoolsSoldItemsStyle';
+import Spinner from '../../Components/Spinner'
 import CollectionItem from './CollectionItem';
 
 function SchoolsSoldItems (props){
@@ -34,10 +35,13 @@ function SchoolsSoldItems (props){
 				{/* <hr className="line"/> */}
 			</ButtonsContainer>
 			<SchoolsCollectionContainer>
-				<CollectionItem />
-				<CollectionItem />
-				<CollectionItem />
-				<CollectionItem />
+				{artSold ? artSold.length === 0 ? (
+					<h1 className="not-sold">You don't have any sold art</h1>
+				) : (
+					artSold.map((art) => (
+						<CollectionItem art={art} />
+					))
+				): <Spinner/>}
 			</SchoolsCollectionContainer>
 		</MainContainer>
 	);

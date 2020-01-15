@@ -13,6 +13,10 @@ export const SchoolsCollectionContainer = styled.section`
 	grid-gap: 5%;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	grid-auto-rows: 220px;
+
+	.not-sold {
+		font-size: 16px;
+	}
 `;
 
 export const CollectionItemContainer = styled.div`
@@ -22,7 +26,7 @@ export const CollectionItemContainer = styled.div`
 	height: 100%;
 	padding: 1rem;
 	margin-bottom: 1rem;
-	font-family: Roboto;
+	font-family: 'Roboto';
 	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.02);
 	box-sizing: border-box;
@@ -56,10 +60,11 @@ export const CollectionItemContainer = styled.div`
 
 export const CustomButton = styled.a`
 	background: white;
-	${'' /* border: 1px #dadada solid; */} padding: 5px 15px;
+	padding: 5px 15px;
 	font-size: 10pt;
 	font-family: 'Roboto', sans-serif;
 	margin-left: 0.5rem;
+	cursor: pointer;
 
 	&:hover {
 		color: #333333;
@@ -82,7 +87,7 @@ export const ButtonsContainer = styled.div`
 
 	&:after {
 		content: "";
-		width: 700px;
+		width: 600px;
 		height: 2px;
 		position: absolute;
 		top: 45%;
