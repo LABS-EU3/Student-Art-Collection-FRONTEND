@@ -55,26 +55,20 @@ export const CollectionItemContainer = styled.div`
 `;
 
 export const CustomButton = styled.a`
-
 	background: white;
-	${'' /* border: 1px #dadada solid; */}
-	padding: 5px 15px;
-	${'' /* border-radius: 2px; */}
+	${'' /* border: 1px #dadada solid; */} padding: 5px 15px;
 	font-size: 10pt;
 	font-family: 'Roboto', sans-serif;
-	${'' /* outline: none; */}
 	margin-left: 0.5rem;
 
 	&:hover {
-		${'' /* border: 1px #c6c6c6 solid; */}
-		${'' /* box-shadow: 1px 1px 1px #eaeaea; */}
 		color: #333333;
 		background: #f7f7f7;
 	}
 
-	${'' /* &:active {
+	&:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
-	} */}
+	}
 `;
 
 export const ButtonsContainer = styled.div`
@@ -84,17 +78,15 @@ export const ButtonsContainer = styled.div`
 	justify-content: space-around;
 	padding-bottom: 2rem;
 	margin-bottom: 2rem;
-	position:relative;
+	position: relative;
 
-
- &:after {
-    content: "";
-	width: 700px;
-	height: 2px;
-	position:absolute;
-	top: 50%;
-    display: block;
-    border-bottom: 1px solid darkgray;
-  }
-
+	&:after {
+		content: "";
+		width: 700px;
+		height: 2px;
+		position: absolute;
+		top: 45%;
+		display: block;
+		border-bottom: 1px solid darkgray;
+	}
 `;
