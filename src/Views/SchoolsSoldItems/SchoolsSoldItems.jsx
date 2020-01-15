@@ -16,7 +16,7 @@ function SchoolsSoldItems (props){
 	const [ artSold, setArtSold ] = useState(null);
 
 	const id = props.loggedInUser._id;
-
+console.log(props)
 	useEffect(() => {
 		axiosWithBase()
 			.get(`/art/sold/order/${id}?status=all`)
@@ -29,7 +29,9 @@ function SchoolsSoldItems (props){
 	return (
 		<MainContainer>
 			<ButtonsContainer>
-				<CustomButton>All</CustomButton>
+				<CustomButton
+					status='all'
+				>All</CustomButton>
 				<CustomButton>Pending</CustomButton>
 				<CustomButton>Sent</CustomButton>
 				{/* <hr className="line"/> */}
