@@ -10,7 +10,7 @@ export const SchoolsCollectionContainer = styled.section`
 	display: grid;
 	padding: 1 rem;
 	grid-gap: 5%;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	grid-auto-rows: 220px;
 `;
 
@@ -26,12 +26,16 @@ export const CollectionItemContainer = styled.div`
 	box-sizing: border-box;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
 
-	img {
-		object-fit: fill;
-		width: 180px;
-		display:flex;
-		justify-content: center
+	.order-img {
+		display: flex;
+		justify-content: center;
+	}
 
+	img {
+		object-fit: cover;
+		width: 180px;
+		display: flex;
+		justify-content: center;
 	}
 
 	span {
