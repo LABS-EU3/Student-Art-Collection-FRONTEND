@@ -2,18 +2,18 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
-	width: 80%;
+	width: 90%;
 	padding: 1rem;
-	margin: 0 auto;
+
 `;
 
 export const SchoolsCollectionContainer = styled.section`
-	margin-top: 10rem;
+	margin-top: 2rem;
 	display: grid;
 	padding: 1 rem;
 	grid-gap: 5%;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-auto-rows: 175px;
+	grid-auto-rows: 200px;
 `;
 
 export const CollectionItemContainer = styled.div`
@@ -22,6 +22,7 @@ export const CollectionItemContainer = styled.div`
 	flex-direction: column;
 	height: 100%;
 	padding: 1rem;
+	margin-bottom:1rem;
 	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.02);
 	box-sizing: border-box;
@@ -32,9 +33,13 @@ export const CollectionItemContainer = styled.div`
 		width: 150px;
 	}
 
+	span {
+		padding: 2.5 rem;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 11px;
+		line-height:1.5rem;
 
-   span {
-	   padding: 2 rem;
-   }
-
+	}
 `;
