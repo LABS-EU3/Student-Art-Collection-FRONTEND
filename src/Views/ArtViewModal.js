@@ -43,8 +43,7 @@ function ArtViewModal(props) {
                             <h2>by {props.browseArtState.artInModal.artist ? props.browseArtState.artInModal.picture : 'Anonymous'}</h2>
                             </div>
                             <div className="about">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p> 
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                {props.browseArtState.artInModal.description ? props.browseArtState.artInModal.description : "No description provided"}
                             </div>
                             <div className="price">
                             <h3>£{props.browseArtState.artInModal.price}.00</h3>
