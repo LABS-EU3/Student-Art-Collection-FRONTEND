@@ -33,17 +33,15 @@ function UploadModal(){
 
     return (
       <div>
-        <button onClick={openModal}>Upload</button>
+        <button onClick={openModal}>Upload Art</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
         >
 
           <StyledHeading ref={_subtitle => (subtitle = _subtitle)}>Upload Art</StyledHeading>
-        
           <UploadArt/>
         </Modal>
       </div>

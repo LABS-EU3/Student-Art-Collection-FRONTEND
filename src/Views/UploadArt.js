@@ -55,7 +55,7 @@ const validationSchema = yup.object().shape({
    materials: yup
        .string(),
    style: yup
-       .string(), 
+       .string() 
 });
 
 function UploadArt({ loggedInUser }) {

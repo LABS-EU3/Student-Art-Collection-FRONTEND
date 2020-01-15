@@ -2,7 +2,7 @@ import React  from 'react';
 import {Form, Field, ErrorMessage } from 'formik';
 import { StyledForm, StyledError, StyledName, StyledDesc, StyledDimension, StyledDetails, Button, Title, Dimensions, Details } from './UploadArtFormStyle';
 
-function UploadArtForm () {
+function UploadArtForm (props) {
     return(
         <StyledForm >
             <Title>
