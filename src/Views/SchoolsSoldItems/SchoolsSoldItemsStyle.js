@@ -15,7 +15,7 @@ export const SchoolsCollectionContainer = styled.section`
 	grid-auto-rows: 220px;
 
 	.not-sold {
-		font-size: 16px;
+		font-size: 17px;
 	}
 `;
 
@@ -84,6 +84,7 @@ export const ButtonsContainer = styled.div`
 	padding-bottom: 2rem;
 	margin-bottom: 2rem;
 	position: relative;
+	font-size:17px;
 
 	&:after {
 		content: "";
