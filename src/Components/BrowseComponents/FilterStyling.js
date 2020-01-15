@@ -46,7 +46,7 @@ transition: height 0.3s ease-in-out;
     input {
         width: 320px;
         height: 57px;
-        border: 1px solid rgba(0, 0, 71, 0.2);
+        border: 1px solid rgba(0, 0, 71, 0.3);
         background-color: white;;
         font-color: rgba(10,0,0,0.7);
         font-size: 1.5rem;
@@ -57,6 +57,7 @@ transition: height 0.3s ease-in-out;
         transition: opacity 0.3s ease-in-out
         cursor: pointer;
         border-radius: 5px;
+        transition: border 0.2s ease-in-out;
 
         @media(max-width:500px) {
             width:150px;
@@ -66,8 +67,9 @@ transition: height 0.3s ease-in-out;
 
         &:hover {
             opacity: 0.7;
-            border: none;
-            transition: opacity 0.3s ease-in-out
+            border: 1px solid rgba(0, 0, 71, 0.05   );
+            transition: opacity 0.3s ease-in-out;
+            transition: border 0.2s ease-in-out;
         }
 
         &:focus {
