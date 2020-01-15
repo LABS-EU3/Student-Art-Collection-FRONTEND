@@ -6,7 +6,7 @@ function CollectionItem (){
 	return (
 		<CollectionItemContainer>
 			<div className="order-img">
-				<img src={OrderPicture} alt="order" />
+				<img src={OrderPicture} alt="order-image" />
 			</div>
 			<span>Order #:12321758</span>
 			<span>01/04/2020</span>
