@@ -6,20 +6,22 @@ import { axiosWithBase } from '../AxiosCustom';
 import { ToastContainer, toast } from 'react-toastify';
 import Spinner from '../Components/Spinner';
 import { StyledSpinner } from './UploadArtStyle';
+import {connect} from 'react-redux';
+import * as actionCreators from '../store/Actions/actionCreators'
 
 
 const initialValues = {
-   name: "",
-   artistName: "",
-   description: "",
-   width: "",
-   height: "",
-   quantity: "",
+   name: "Brenda",
+   artistName: "Joshua",
+   description: "artist",
+   width: 10,
+   height: 10,
+   quantity: 20,
    materials: "",
    style: "",
    medium: "",
    subject: "",
-   price: "",
+   price: 20,
    category: "",
 }
 
@@ -34,10 +36,10 @@ const validationSchema = yup.object().shape({
        .string()
        .required(),
    width: yup
-       .string()
+       .number()
        .required(),
    height: yup
-       .string()
+       .number()
        .required(),
    materials: yup
        .string(),
@@ -48,10 +50,12 @@ const validationSchema = yup.object().shape({
    subject: yup
        .string(),
    price: yup
-       .string()
+       .number()
        .required(),
    category: yup
-       .string()
+       .string(),
+   quantity: yup
+       .number()
 });
 
 function UploadArt({ loggedInUser }) {
@@ -82,13 +86,14 @@ function UploadArt({ loggedInUser }) {
       setSpinning(true);
 
       axiosWithBase()
-          .post(`/art/upload/${loggedInUser.userId}`, formData)
+          .post(`/art/upload/${loggedInUser._id}`, formData)
           .then(data => {
               actions.resetForm();
               setSpinning(false);
               setSubmitted(true);
           })
-          .catch(() => {
+          .catch((error) => {
+             console.log(error.response)
             setSpinning(false);
               toast.error("Error uploading art.")
           })
@@ -114,7 +119,7 @@ function UploadArt({ loggedInUser }) {
     : <h1>Art uploaded</h1>
 }
     <ToastContainer
-    position="bottom-left"
+    position="center"
     bodyClassName="toast"
     autoClose={3000}
     closeButton={false}
@@ -126,4 +131,4 @@ function UploadArt({ loggedInUser }) {
  )
 }
 
-export default UploadArt;
+export default connect(state => state,actionCreators)(UploadArt)
