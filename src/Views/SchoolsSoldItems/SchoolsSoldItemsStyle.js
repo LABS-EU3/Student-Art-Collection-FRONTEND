@@ -8,7 +8,7 @@ export const MainContainer = styled.section`
 `;
 
 export const SchoolsCollectionContainer = styled.section`
-	margin-top: 3rem;
+	margin-top: 10rem;
 	display: grid;
 	padding: 1 rem;
 	grid-gap: 5%;
