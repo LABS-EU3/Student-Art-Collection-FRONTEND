@@ -26,7 +26,7 @@ function ArtContainer(props) {
         axiosWithBase()
             .get(`/art?page=${page}&pagination=12`)
             .then((res) => {
-                props.fetchArt(res.data)
+                props.fetchArt(res.data.art)
                 setSpinning(false);
             })
             .catch(() => {
@@ -43,7 +43,7 @@ function ArtContainer(props) {
         )
     }
 
-    else if (props.browseArtState.art.length === 0) {
+    else if (props.browseArtState.artSorted.length === 0) {
         return (
             <>
                 <StyledEmptyContainer>

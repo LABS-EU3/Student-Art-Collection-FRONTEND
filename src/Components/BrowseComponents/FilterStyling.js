@@ -55,7 +55,6 @@ transition: height 0.3s ease-in-out;
         opacity: 1;
         padding-left: 10px;
         transition: opacity 0.3s ease-in-out
-        cursor: pointer;
         border-radius: 5px;
         transition: border 0.2s ease-in-out;
 

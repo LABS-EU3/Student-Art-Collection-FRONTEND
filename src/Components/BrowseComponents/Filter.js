@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators'
 
 import { StyledHero, openBarStyling } from './FilterStyling';
 
 function Filter(props) {
+    const [filters, setFilters] = useState({search: '', type: 'name'});
+
+    const changeHandler = e => {
+        setFilters({...filters, [e.target.name]: e.target.value})
+    }
+
+    const submit = () => {
+        console.log(filters)
+    }
+   
     return(
         <StyledHero style={props.browseArtState.filterBarOpen ? openBarStyling : null}>
-            <input type="text" placeholder="Search by..." />
-            <select value="name">
+            <input type="text" name="search" onChange={changeHandler} value={filters.search} placeholder="Search by..." />
+            <select value={filters.type} name="type" onChange={changeHandler}>
                 <option value="name">Title</option>
                 <option value="artist">Artist</option>
                 <option value="medium">Medium</option>
                 <option value="description">Description</option>
                 <option value="style">Style</option>
             </select>
-            <button>Search</button>
+            <button onClick={submit}>Search</button>
         </StyledHero>
     )
 }
