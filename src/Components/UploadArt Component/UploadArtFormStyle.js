@@ -18,6 +18,14 @@ export const StyledName = styled(Field)`
   height: 50px;
   padding: 20px;
   border-radius: 3px;
+
+  @media(max-width: 500px) {
+        width: 100%;
+    }
+
+  @media(max-width: 330px) {
+        width: 100%;
+    }
 `;
 
 export const StyledDesc = styled(Field)`
@@ -26,6 +34,14 @@ export const StyledDesc = styled(Field)`
   height: 60px;
   padding: 20px;
   border-radius: 3px;
+
+  @media(max-width: 500px) {
+        width: 100%;
+    }
+
+  @media(max-width: 330px) {
+        width: 100%;
+    }
 `;
 
 export const StyledDimension = styled(Field)`
@@ -33,6 +49,14 @@ export const StyledDimension = styled(Field)`
   height: 40px;
   padding: 20px;
   border-radius: 3px;
+
+  @media(max-width: 500px) {
+        width: 100%;
+    }
+
+  @media(max-width: 330px) {
+        width: 100%;
+    }
 `;
 
 export const StyledDetails = styled(Field)`
@@ -41,6 +65,14 @@ export const StyledDetails = styled(Field)`
   height: 50px;
   padding: 20px;
   border-radius: 3px;
+
+  @media(max-width: 500px) {
+        width: 100%;
+    }
+
+  @media(max-width: 330px) {
+        width: 100%;
+    }
 `;
 
 export const Button = styled.button`
