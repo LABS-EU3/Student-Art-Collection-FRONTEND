@@ -9,6 +9,7 @@ import Spinner from '../Spinner';
 function ArtContainer(props) {
     const [spinning, setSpinning] = useState(true);
     const [page, setPage] = useState(1)
+    const [upperPageLimit, setUpperPageLimit] = useState(null);
 
     const changePage = (direction) => {
         if (direction === "plus") {
@@ -22,10 +23,12 @@ function ArtContainer(props) {
         return null;
     }
 
+
     useEffect(() => {
         axiosWithBase()
             .get(`/art?page=${page}&pagination=12`)
             .then((res) => {
+                setUpperPageLimit(Math.ceil(res.data.totalCount/12))
                 props.fetchArt(res.data.art)
                 setSpinning(false);
             })
@@ -74,7 +77,7 @@ function ArtContainer(props) {
         </StyledContainer>
         <StyledButtonContainer>
             {page === 1 ? null : <button onClick={() => changePage('minus')}>Previous</button>}
-            {props.browseArtState.artSorted.length >= 12 ? <button onClick={() => changePage('plus')}>Next</button> : null}
+            {page !== upperPageLimit ? <button onClick={() => changePage('plus')}>Next</button> : null}
         </StyledButtonContainer>
     </>
     )
