@@ -45,14 +45,9 @@ function ArtContainer(props) {
 
     else if (props.browseArtState.artSorted.length === 0) {
         return (
-            <>
                 <StyledEmptyContainer>
                     <h1>Nothing here!</h1>
                 </StyledEmptyContainer>
-                <StyledButtonContainer>
-                    <button onClick={() => changePage('minus')}>Previous</button>
-                </StyledButtonContainer>
-            </>
         )
     }
 
