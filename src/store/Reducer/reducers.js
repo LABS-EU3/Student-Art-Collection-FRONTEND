@@ -90,6 +90,9 @@ export function loggedInUserReducer (loggedInUser = initialLoggedInUser, action)
 	}
 }
 
+
+
+// ! COMMENTED OUT, MAYBE IT WILL BE NEEDED
 // export const itemsCollectionReducer = (state = INITIAL_STATE, action) => {
 //   switch (action.type) {
 //     case types.FETCH_COLLECTIONS_START:
