@@ -10,8 +10,8 @@ export const SchoolsCollectionContainer = styled.section`
 	display: grid;
 	padding: 1 rem;
 	grid-gap: 5%;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-auto-rows: 200px;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	grid-auto-rows: 220px;
 `;
 
 export const CollectionItemContainer = styled.div`
@@ -28,7 +28,10 @@ export const CollectionItemContainer = styled.div`
 
 	img {
 		object-fit: fill;
-		width: 150px;
+		width: 180px;
+		display:flex;
+		justify-content: center
+
 	}
 
 	span {
