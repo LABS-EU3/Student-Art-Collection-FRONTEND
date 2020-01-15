@@ -11,9 +11,9 @@ import * as actionCreators from '../store/Actions/actionCreators'
 
 
 const initialValues = {
-   name: "Brenda",
-   artistName: "Joshua",
-   description: "artist",
+   name: "Bugger",
+   artistName: "Brenda",
+   description: "burger photo",
    width: 10,
    height: 10,
    quantity: 20,
@@ -116,10 +116,10 @@ function UploadArt({ loggedInUser }) {
     component = {UploadArtForm}
     />
     </form> 
-    : <h1>Art uploaded</h1>
+    : toast.success("Art successfully uploaded")
 }
     <ToastContainer
-    position="center"
+    position="bottom-center"
     bodyClassName="toast"
     autoClose={3000}
     closeButton={false}

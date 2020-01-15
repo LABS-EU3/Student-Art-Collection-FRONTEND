@@ -24,7 +24,7 @@ function UploadModal(){
   }
 
   function afterOpenModal() {
-    subtitle.style.color = '#f00';
+    subtitle.style.color = '#FFA500';
   }
 
   function closeModal(){

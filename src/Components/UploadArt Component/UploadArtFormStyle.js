@@ -5,15 +5,6 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* input {
-    width: 100%;
-    height: 50px;
-    padding-left: 10px;
-    border-radius: 5px;
-    border: solid 0.5px lightgrey;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-  } */
 `;
 
 export const StyledError = styled(ErrorMessage)`

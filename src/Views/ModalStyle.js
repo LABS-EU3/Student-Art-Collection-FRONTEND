@@ -8,5 +8,6 @@ display: block;
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
+  text-align: center;
   
 `
