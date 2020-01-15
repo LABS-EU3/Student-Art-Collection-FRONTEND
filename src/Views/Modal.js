@@ -16,6 +16,8 @@ const customStyles = {
   }
 };
 
+Modal.setAppElement ("body");
+
 function UploadModal(){
   var subtitle;
   const [modalIsOpen,setIsOpen] = React.useState(false);

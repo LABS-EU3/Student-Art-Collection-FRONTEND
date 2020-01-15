@@ -105,7 +105,7 @@ function UploadArt({ loggedInUser }) {
        :
        <>
        {!submitted ?
-   <form>
+       <div>
       <div>
       <Upload type="file" onChange={uploadArtPic} />
    </div>
@@ -114,8 +114,8 @@ function UploadArt({ loggedInUser }) {
     validationSchema={validationSchema}
     onSubmit = {submitArt}
     component = {UploadArtForm}
-    />
-    </form> 
+    /> 
+    </div>
     : toast.success("Art successfully uploaded")
 }
     <ToastContainer
