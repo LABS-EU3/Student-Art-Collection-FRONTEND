@@ -58,7 +58,6 @@ export const CustomButton = styled.button`
 	border: 1px #dadada solid;
 	padding: 5px 15px;
 	border-radius: 2px;
-	font-weight: bold;
 	font-size: 10pt;
 	font-family: Roboto;
 	outline: none;
