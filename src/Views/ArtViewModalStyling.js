@@ -19,6 +19,13 @@ display: none
   top: 50%;
   transform: translate(-50%, -50%);
 
+  @media(max-width:450px) {
+    width: 95vw;
+    height: 95vh;
+    flex-direction: column;
+    align-items: center;
+  }
+
     .left-modal{
       width: 50%;
       height: 100%;
@@ -26,10 +33,19 @@ display: none
       justify-content: center;
       align-items: center;
 
-      .cont {
-        width: 440px;
-        height: 440px;
+      @media(max-width:450px) {
+        width: 100vw;
+        height: 50%;
+      }
 
+      .cont {
+        width: 80%;
+        height: auto;
+
+        @media(max-width:450px) {
+          width: 60%;
+          margin-top: 20px;
+        }
         img {
           width: 100%;
           max-height: auto;
@@ -44,9 +60,14 @@ display: none
       align-items: center;
       font-family: 'Roboto', sans-serif;
 
+      @media(max-width:450px) {
+        width: 100vw;
+        justify-content: center;
+      }
+
       .cont {
-        width: 500px
-        height: 440px;
+        width: 90%;
+        height: 70%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -55,17 +76,42 @@ display: none
         width: 80%;
         font-size: 4.5rem;
         margin-bottom: 0.6rem;
+
+        @media(max-width:1200px) {
+          font-size: 3.5rem;
+          width: 90%;
+        }
+
+        @media(max-width:450px) {
+       font-size: 2rem;
+        }
       }
 
       h2 {
         font-size: 2rem;
         color: darkgrey;
+
+        @media(max-width:1200px) {
+          font-size: 1.8rem;
+        }
+
+        @media(max-width:450px) {
+          font-size: 1.4rem;
+           }
       }
 
       h3 {
         font-size: 3.5rem;
         color: #4e9982;
         margin-bottom: 5px;
+
+        @media(max-width:1200px) {
+          font-size: 2.5rem;
+        }
+
+        @media(max-width:450px) {
+          font-size: 1.8remem;
+           }
       }
       
       h4 {
@@ -76,6 +122,15 @@ display: none
          font-size: 1.3rem;
          line-height: 120%;
          margin-bottom: 20px;
+
+         @media(max-width:1200px) {
+          font-size: 1rem;
+          margin-bottom: 10px;
+        }
+
+        @media(max-width:450px) {
+          font-size: 0.95rem;
+           }
        }
 
       button {
@@ -90,6 +145,7 @@ display: none
         &:hover {
           opacity: 0.7;
           transition: opacity 0.1s ease-in-out;
+        }
         }
       }
       }
