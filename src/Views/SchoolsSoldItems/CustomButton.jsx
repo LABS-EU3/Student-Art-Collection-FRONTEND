@@ -1,11 +1,8 @@
-import React from 'react'
-import {CustomButton} from './SchoolsSoldItemsStyle'
+import React from 'react';
+import { CustomButton } from './SchoolsSoldItemsStyle';
 
-function CustomButton() {
-    return (
-        <CustomButton/>
-
-    )
+function CustomButton (){
+	return <CustomButton />;
 }
 
-export default CustomButton
+export default CustomButton;

@@ -54,14 +54,14 @@ export const CollectionItemContainer = styled.div`
 
 export const CustomButton = styled.button`
 	color: #444444;
-	background: #F9F9F9;
+	background: #f9f9f9;
 	border: 1px #dadada solid;
 	padding: 5px 15px;
 	border-radius: 2px;
 	font-size: 10pt;
 	font-family: Roboto;
 	outline: none;
-	margin-left:0.5rem;
+	margin-left: 0.5rem;
 
 	&:hover {
 		border: 1px #c6c6c6 solid;
@@ -75,13 +75,10 @@ export const CustomButton = styled.button`
 	}
 `;
 
-
 export const ButtonsContainer = styled.div`
-  padding: 2 rem;
-  width:50%;
-  display:flex;
-  justify-content: flex-start;
-  padding-bottom:2rem;
-
-
+	padding: 2 rem;
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+	padding-bottom: 2rem;
 `;

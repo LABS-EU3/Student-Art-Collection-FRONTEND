@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 
 import { axiosWithBase } from '../../AxiosCustom';
 
-import { SchoolsCollectionContainer, MainContainer, CustomButton, ButtonsContainer } from './SchoolsSoldItemsStyle';
+import {
+	SchoolsCollectionContainer,
+	MainContainer,
+	CustomButton,
+	ButtonsContainer,
+} from './SchoolsSoldItemsStyle';
 import CollectionItem from './CollectionItem';
 
 function SchoolsSoldItems (props){
@@ -22,10 +27,10 @@ function SchoolsSoldItems (props){
 
 	return (
 		<MainContainer>
-            <ButtonsContainer>
-			<CustomButton>All</CustomButton>
-			<CustomButton>Pending</CustomButton>
-			<CustomButton>Sent</CustomButton>
+			<ButtonsContainer>
+				<CustomButton>All</CustomButton>
+				<CustomButton>Pending</CustomButton>
+				<CustomButton>Sent</CustomButton>
 			</ButtonsContainer>
 			<SchoolsCollectionContainer>
 				<CollectionItem />
