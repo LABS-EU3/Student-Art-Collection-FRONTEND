@@ -15,4 +15,14 @@ width: 100%;
   box-sizing: border-box;
   background-color: #F5F5F5;
   border-radius: 5px;
+
+  @media(max-width: 500px) {
+        width: 100%;
+        padding: 20px;
+    }
+
+  @media(max-width: 330px) {
+        width: 100%;
+        padding: 10px;
+    }
 `
