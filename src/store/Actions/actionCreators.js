@@ -73,7 +73,7 @@ export function setUserDetails(user) {
 }
 
 
-// GETTING ITEMS COLLECTIONS
+// GETTING ITEMS COLLECTIONS / ! COMMENTED OUT, MAYBE IT WILL BE NEEDED FOR LATER
 
 // export const fetchCollectionsStart = () => ({
 //   type: types.FETCH_COLLECTIONS_START
@@ -91,11 +91,11 @@ export function setUserDetails(user) {
 
 
 // export const fetchCollectionsStartAsync = (req, res) => {
-//   // const id = req.params.id
-//   // return dispatch => {
-//   //   axios
-// 	// 	.get(`http://localhost:4000/art/sold/order/${id}`, { timeout: 5000 })
-// 	// 	.then((res) => showOutput(res))
-// 	// 	.catch((err) => console.log(err));
-//   // };
+ // const id = req.params.id
+ // return dispatch => {
+ //   axios
+	// 	.get(`http://localhost:4000/art/sold/order/${id}`, { timeout: 5000 })
+	// 	.then((res) => showOutput(res))
+	// 	.catch((err) => console.log(err));
+// };
 // };
