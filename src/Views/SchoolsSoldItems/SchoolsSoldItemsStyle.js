@@ -84,7 +84,7 @@ export const ButtonsContainer = styled.div`
 	padding-bottom: 2rem;
 	margin-bottom: 2rem;
 	position: relative;
-	font-size:17px;
+	font-size: 17px;
 
 	&:after {
 		content: "";
