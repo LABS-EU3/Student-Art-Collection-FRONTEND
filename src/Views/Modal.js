@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import UploadArt from './UploadArt';
 import { StyledHeading } from './ModalStyle';
-import UploadArtForm from '../Components/UploadArt Component/UploadArtForm';
 
 const customStyles = {
   content : {

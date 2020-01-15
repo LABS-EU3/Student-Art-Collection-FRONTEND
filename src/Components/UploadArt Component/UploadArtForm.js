@@ -1,35 +1,48 @@
 import React  from 'react';
 import {Form, Field, ErrorMessage } from 'formik';
-import { StyledForm, StyledError } from './UploadArtFormStyle';
+import { StyledForm, StyledError, StyledName, StyledDesc, StyledDimension, StyledDetails, Button, Title, Dimensions, Details } from './UploadArtFormStyle';
 
 function UploadArtForm () {
     return(
-        <StyledForm>
+        <StyledForm >
+            <Title>
         <StyledError name='name' component='div' />
-        <Field name='name' type='text' placeholder='name' />
+        <StyledName name='name' type='text' placeholder='Name' />
         <StyledError name='artistName' component='div' />
-        <Field name='artistName' type='text' placeholder='artistName' />
-        <StyledError name='description' component='div' />
-        <Field name='description' type='text' placeholder='description' />
-        <StyledError name='category' component='div' />
-        <Field name='category' type='text' placeholder='category' />
-        <StyledError name='price' component='div' />
-        <Field name='price' type='text' placeholder='price' />
-        <StyledError name='medium' component='div' />
-        <Field name='medium' type='text' placeholder='medium' />
-        <StyledError name='subject' component='div' />
-        <Field name='subject' type='text' placeholder='subject' />
-        <StyledError name='material' component='div' />
-        <Field name='material' type='text' placeholder='material' />
-        <StyledError name='width' component='div' />
-        <Field name='width' type='text' placeholder='width' />
-        <StyledError name='height' component='div' />
-        <Field name='height' type='text' placeholder='height' />
-        <StyledError name='style' component='div' />
-        <Field name='style' type='text' placeholder='style' />
+        <StyledName name='artistName' type='text' placeholder='Artist Name' />
+        </Title>
 
-        <button type="submit">Upload Art</button>
-        </StyledForm>
+        <Dimensions>
+        <StyledError name='description' component='div' />
+        <StyledDesc name='description' type='text' placeholder='Description' />
+        <StyledError name='width' component='div' />
+        <StyledDimension name='width' type='text' placeholder='Width' />
+        <StyledError name='height' component='div' />
+        <StyledDimension name='height' type='text' placeholder='Height' />
+        <StyledError name='quantity' component='div' />
+        <StyledDimension name='quantity' type='text' placeholder='Quantity' />
+        </Dimensions>
+
+        <Details>
+        <StyledError name='category' component='div' />
+        <StyledDetails name='category' type='text' placeholder='Category' />
+        <StyledError name='price' component='div' />
+        <StyledDetails name='price' type='text' placeholder='Price' />
+        <StyledError name='medium' component='div' />
+        <StyledDetails name='medium' type='text' placeholder='Medium' />
+        <StyledError name='subject' component='div' />
+        <StyledDetails name='subject' type='text' placeholder='Subject' />
+        <StyledError name='material' component='div' />
+        <StyledDetails name='material' type='text' placeholder='Material' />
+        <StyledError name='style' component='div' />
+        <StyledDetails name='style' type='text' placeholder='Style' />
+        </Details>
+
+        <h1>I agree to the terms and conditions and I have all relevant permissions to upload and sell this artwork </h1> 
+        <input type="checkbox"></input>
+
+        <Button type="submit">Upload Art</Button>
+        </StyledForm >
     )
 };
 

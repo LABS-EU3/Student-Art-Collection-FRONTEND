@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { axiosWithBase } from '../AxiosCustom';
 import { ToastContainer, toast } from 'react-toastify';
 import Spinner from '../Components/Spinner';
-import { StyledSpinner } from './UploadArtStyle';
+import { StyledSpinner, Upload } from './UploadArtStyle';
 import {connect} from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators'
 
@@ -17,12 +17,12 @@ const initialValues = {
    width: 10,
    height: 10,
    quantity: 20,
-   materials: "",
-   style: "",
+   category: "",
+   price: 20,
    medium: "",
    subject: "",
-   price: 20,
-   category: "",
+   materials: "",
+   style: "",
 }
 
 const validationSchema = yup.object().shape({
@@ -41,21 +41,21 @@ const validationSchema = yup.object().shape({
    height: yup
        .number()
        .required(),
+    quantity: yup
+       .number(),
+    category: yup
+       .string(),
+    price: yup
+       .number()
+       .required(),
+    medium: yup
+       .string(),
+    subject: yup
+       .string(),
    materials: yup
        .string(),
    style: yup
-       .string(),
-   medium: yup
-       .string(),
-   subject: yup
-       .string(),
-   price: yup
-       .number()
-       .required(),
-   category: yup
-       .string(),
-   quantity: yup
-       .number()
+       .string(), 
 });
 
 function UploadArt({ loggedInUser }) {
@@ -72,17 +72,17 @@ function UploadArt({ loggedInUser }) {
       formData.append('image', artPic);
       formData.append('name', values.name);
       formData.append('artistName', values.artistName);
+      formData.append('description', values.description);
+      formData.append('width', values.width);
+      formData.append('height', values.height);
+      formData.append('quantity', values.quantity);
+      formData.append('category', values.category);
+      formData.append('price', values.price);
       formData.append('medium', values.medium);
       formData.append('subject', values.subject);
-      formData.append('height', values.height);
-      formData.append('width', values.width);
+      formData.append('materials', values.materials); 
       formData.append('style', values.style);
-      formData.append('category', values.category);
-      formData.append('materials', values.materials);
-      formData.append('quantity', values.quantity);
-      formData.append('price', values.price);
-      formData.append('description', values.description);
-
+      
       setSpinning(true);
 
       axiosWithBase()
@@ -107,7 +107,7 @@ function UploadArt({ loggedInUser }) {
        {!submitted ?
    <form>
       <div>
-      <input type="file" onChange={uploadArtPic} />
+      <Upload type="file" onChange={uploadArtPic} />
    </div>
     <Formik 
     initialValues = {initialValues}
