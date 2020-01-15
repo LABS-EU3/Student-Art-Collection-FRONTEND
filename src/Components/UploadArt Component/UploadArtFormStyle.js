@@ -64,6 +64,12 @@ export const Title = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20px;
+
+  @media(max-width: 500px) {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+    }
 `;
 
 export const Dimensions = styled.div`
@@ -79,5 +85,11 @@ export const Details = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
+
+  @media(max-width: 500px) {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+    }
 `;
 
