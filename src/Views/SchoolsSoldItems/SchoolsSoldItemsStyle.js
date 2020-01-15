@@ -46,4 +46,8 @@ export const CollectionItemContainer = styled.div`
 		font-size: 11px;
 		line-height: 1.5rem;
 	}
+
+	span:nth-child(5) {
+		color: green;
+	}
 `;
