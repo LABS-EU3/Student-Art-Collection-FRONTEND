@@ -51,3 +51,37 @@ export const CollectionItemContainer = styled.div`
 		color: green;
 	}
 `;
+
+export const CustomButton = styled.button`
+	color: #444444;
+	background: #F9F9F9;
+	border: 1px #dadada solid;
+	padding: 5px 15px;
+	border-radius: 2px;
+	font-weight: bold;
+	font-size: 9pt;
+	outline: none;
+	margin-left:0.5rem;
+
+	&:hover {
+		border: 1px #c6c6c6 solid;
+		box-shadow: 1px 1px 1px #eaeaea;
+		color: #333333;
+		background: #f7f7f7;
+	}
+
+	&:active {
+		box-shadow: inset 1px 1px 1px #dfdfdf;
+	}
+`;
+
+
+export const ButtonsContainer = styled.div`
+  padding: 2 rem;
+  width:50%;
+  display:flex;
+  justify-content: flex-start;
+  padding-bottom:2rem;
+
+
+`;
