@@ -8,6 +8,7 @@ export const MainContainer = styled.section`
 
 export const SchoolsCollectionContainer = styled.section`
 	display: grid;
+	overflow-y: scroll;
 	padding: 1 rem;
 	grid-gap: 5%;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -21,6 +22,7 @@ export const CollectionItemContainer = styled.div`
 	height: 100%;
 	padding: 1rem;
 	margin-bottom: 1rem;
+	font-family: Roboto;
 	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.02);
 	box-sizing: border-box;
@@ -52,33 +54,47 @@ export const CollectionItemContainer = styled.div`
 	}
 `;
 
-export const CustomButton = styled.button`
-	color: #444444;
-	background: #f9f9f9;
-	border: 1px #dadada solid;
+export const CustomButton = styled.a`
+
+	background: white;
+	${'' /* border: 1px #dadada solid; */}
 	padding: 5px 15px;
-	border-radius: 2px;
+	${'' /* border-radius: 2px; */}
 	font-size: 10pt;
-	font-family: Roboto;
-	outline: none;
+	font-family: 'Roboto', sans-serif;
+	${'' /* outline: none; */}
 	margin-left: 0.5rem;
 
 	&:hover {
-		border: 1px #c6c6c6 solid;
-		box-shadow: 1px 1px 1px #eaeaea;
+		${'' /* border: 1px #c6c6c6 solid; */}
+		${'' /* box-shadow: 1px 1px 1px #eaeaea; */}
 		color: #333333;
 		background: #f7f7f7;
 	}
 
-	&:active {
+	${'' /* &:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
-	}
+	} */}
 `;
 
 export const ButtonsContainer = styled.div`
 	padding: 2 rem;
-	width: 50%;
+	width: 88%;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-around;
 	padding-bottom: 2rem;
+	margin-bottom: 2rem;
+	position:relative;
+
+
+ &:after {
+    content: "";
+	width: 700px;
+	height: 2px;
+	position:absolute;
+	top: 50%;
+    display: block;
+    border-bottom: 1px solid darkgray;
+  }
+
 `;

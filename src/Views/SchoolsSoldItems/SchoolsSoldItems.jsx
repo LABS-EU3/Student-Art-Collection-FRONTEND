@@ -31,6 +31,7 @@ function SchoolsSoldItems (props){
 				<CustomButton>All</CustomButton>
 				<CustomButton>Pending</CustomButton>
 				<CustomButton>Sent</CustomButton>
+				{/* <hr className="line"/> */}
 			</ButtonsContainer>
 			<SchoolsCollectionContainer>
 				<CollectionItem />
