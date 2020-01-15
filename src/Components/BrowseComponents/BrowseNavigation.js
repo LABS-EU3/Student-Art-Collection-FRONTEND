@@ -27,7 +27,7 @@ function BrowseNavigation(props) {
             <div className="container">
                 <button
                     onClick={() => props.toggleFilterBar(!props.browseArtState.filterBarOpen)}>
-                    {props.filterBarOpen ? 'Hide' : 'Show'} Filters
+                    {props.browseArtState.filterBarOpen ? 'Hide' : 'Show'} Filters
             </button>
                 <select value={displayFilter} onChange={changeHandler}>
                     <option value="newest">Newest</option>
