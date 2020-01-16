@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
@@ -19,7 +19,7 @@ export const BuyerItemsContainer = styled.section`
 	}
 `;
 
-export const CollectionItemContainer = styled.div`
+export const CollectionItemContainer = styled(Link)`
 	width: 70%;
 	display: flex;
 	flex-direction: column;
