@@ -11,6 +11,7 @@ import {
 	MainContainer,
 	MainButtonsContainer,
 	ButtonsContainer,
+	CustomButtonWrapper,
 } from './SchoolsSoldItemsStyle';
 import Spinner from '../../Components/Spinner';
 import CollectionItem from './CollectionItem';
@@ -35,10 +36,12 @@ function SchoolsSoldItems (props){
 		<MainContainer>
 			<MainButtonsContainer>
 				<ButtonsContainer>
-					<BuyerButtons />
-					<CustomButton status="all">All</CustomButton>
-					<CustomButton status="pending">Pending</CustomButton>
-					<CustomButton status="sent">Sent</CustomButton>
+					<CustomButtonWrapper>
+						{/* <BuyerButtons /> */}
+						<CustomButton status="all">All</CustomButton>
+						<CustomButton status="pending">Pending</CustomButton>
+						<CustomButton status="sent">Sent</CustomButton>
+					</CustomButtonWrapper>
 					{/* <BuyerButton status="all">All</BuyerButton>
 				<BuyerButton>Pending</BuyerButton>
 				<BuyerButton>Sent</BuyerButton> */}
@@ -47,16 +50,16 @@ function SchoolsSoldItems (props){
 			</MainButtonsContainer>
 
 			<SchoolsCollectionContainer>
-				{/* {artSold ? artSold.length === 0 ? (
+				{artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
 					artSold.map((art) => <CollectionItem art={art} />)
 				) : (
 					<Spinner />
-				)} */}
+				)}
+				{/* <CollectionItem />
 				<CollectionItem />
-				<CollectionItem />
-				<CollectionItem />
+				<CollectionItem /> */}
 				<ToastContainer
 					position="bottom-center"
 					autoClose={3000}

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {NavLink} from 'react-router-dom';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
@@ -55,7 +54,7 @@ export const CollectionItemContainer = styled.div`
 	}
 `;
 
-export const CustomButton = styled(NavLink)`
+export const CustomButton = styled.a`
 	background: white;
 	padding: 5px 15px;
 	font-size: 10pt;
@@ -72,14 +71,14 @@ export const CustomButton = styled(NavLink)`
 `;
 
 export const ButtonsContainer = styled.div`
-	padding: 1 rem;
 	width: 88%;
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 1rem;
+	margin-bottom: 6rem;
+
 	font-size: 17px;
 	hr {
-		width: 700px;
+		width: 85%;
 		border: 0;
 		height: 1px;
 		background: #333;
@@ -87,15 +86,13 @@ export const ButtonsContainer = styled.div`
 	}
 `;
 
-
-
 export const MainButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-	padding-bottom: 1rem;
-`;
 
+	margin-bottom: 6rem;
+`;
 
 export const CustomButtonWrapper = styled.div`
 	display: flex;
