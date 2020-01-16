@@ -2,12 +2,13 @@ import styled from 'styled-components'
 
 export const Button = styled.button`
   width: 70%;
+  margin-left: 25px;
   border: none;
   background-color: orange;
   color: white;
   height: 40px;
   font-size: 1.5rem;
-  margin-top: 20px;
+  margin-top: 5px;
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.0);
   cursor: pointer;

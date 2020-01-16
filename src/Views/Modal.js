@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import UploadArt from './UploadArt';
-import { StyledHeading, Button } from './ModalStyle';
+import { Button } from './ModalStyle';
 
 const customStyles = {
   content : {

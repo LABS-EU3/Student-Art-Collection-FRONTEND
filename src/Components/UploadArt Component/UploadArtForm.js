@@ -24,9 +24,9 @@ function UploadArtForm (props) {
         <StyledError name='description' component='div' />
         <StyledDesc name='description' type='text' placeholder='Description' />
         <StyledError name='width' component='div' />
-        <StyledDimension name='width' type='text' placeholder='Width' />
+        <StyledDimension name='width' type='text' placeholder='Width in CM' />
         <StyledError name='height' component='div' />
-        <StyledDimension name='height' type='text' placeholder='Height' />
+        <StyledDimension name='height' type='text' placeholder='Height in CM' />
         <StyledError name='quantity' component='div' />
         <StyledDimension name='quantity' type='text' placeholder='Quantity' />
         </Dimensions>
