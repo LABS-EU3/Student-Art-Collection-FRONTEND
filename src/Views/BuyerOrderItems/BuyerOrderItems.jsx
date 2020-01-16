@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 
 import { axiosWithBase } from '../../AxiosCustom';
 
-import { BuyerItemsContainer, MainContainer, ButtonsContainer } from './BuyerOrderItemsStyle';
+import {
+	BuyerItemsContainer,
+	MainContainer,
+	ButtonsContainer,
+	MainButtonsContainer,
+} from './BuyerOrderItemsStyle';
 import BuyerButtons from './CustomButton2';
 import Spinner from '../../Components/Spinner';
 import BuyerItem from './BuyerItem';
@@ -24,13 +29,16 @@ function BuyerOrderItems (props){
 
 	return (
 		<MainContainer>
-			<ButtonsContainer>
-				<BuyerButtons />
-				{/* <BuyerButton status="all">All</BuyerButton>
+			<MainButtonsContainer>
+				<ButtonsContainer>
+					<BuyerButtons />
+					{/* <BuyerButton status="all">All</BuyerButton>
 				<BuyerButton>Pending</BuyerButton>
 				<BuyerButton>Sent</BuyerButton> */}
-				{/* <hr className="line"/> */}
-			</ButtonsContainer>
+				 <hr className="line"/>
+				</ButtonsContainer>
+			</MainButtonsContainer>
+
 			<BuyerItemsContainer>
 				{/* {artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
-	width: 90%;
+	width: 85%;
 	padding: 1rem;
 `;
 
@@ -25,7 +25,7 @@ export const CollectionItemContainer = styled(Link)`
 	flex-direction: column;
 	height: 100%;
 	padding: 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	font-family: 'Roboto';
 	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.02);
@@ -62,8 +62,8 @@ export const CustomButton2 = styled.a`
 	margin-left: 0.5rem;
 	cursor: pointer;
 	&:hover {
-		color: #333333;
-		background: #f7f7f7;
+		${'' /* color: #333333;
+		background: #f7f7f7; */}
 	}
 	&:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
@@ -71,21 +71,42 @@ export const CustomButton2 = styled.a`
 `;
 
 export const ButtonsContainer = styled.div`
-	padding: 2 rem;
+	padding: 1 rem;
 	width: 88%;
 	display: flex;
-	justify-content: space-around;
-	padding-bottom: 2rem;
-	margin-bottom: 2rem;
-	position: relative;
-	font-size: 17px;
-	&:after {
+    flex-direction:column;
+	${'' /* justify-content: space-around; */}
+	padding-bottom: 1rem;
+	${'' /* position: relative; */} font-size: 17px;
+	${'' /* &:after {
 		content: "";
 		width: 600px;
 		height: 2px;
 		position: absolute;
-		top: 45%;
+		top: 55%;
 		display: block;
 		border-bottom: 1px solid darkgray;
+	} */}
+
+    hr {
+        width: 700px;
+		border: 0;
+		height: 1px;
+		background: #333;
+		background-image: linear-gradient(to right, #ccc, #333, #ccc);
 	}
+`;
+
+export const MainButtonsContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+    padding-bottom: 1rem;
+`;
+
+
+export const CustomButtonWrapper = styled.div`
+ display:flex;
+ justify-content: space-around;
+
 `;
