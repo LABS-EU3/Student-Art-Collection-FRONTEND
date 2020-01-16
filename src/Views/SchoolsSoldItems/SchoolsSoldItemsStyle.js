@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {NavLink} from 'react-router-dom';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
@@ -26,74 +25,80 @@ export const CollectionItemContainer = styled.div`
 	flex-direction: column;
 	height: 100%;
 	padding: 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	font-family: 'Roboto';
 	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.02);
 	box-sizing: border-box;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
-
 	.order-img {
 		display: flex;
 		justify-content: center;
 	}
-
 	img {
 		object-fit: cover;
 		width: 180px;
 		display: flex;
 		justify-content: center;
 	}
-
 	span {
 		padding: 2.5 rem;
-		font-family: Roboto;
+		font-family: 'Roboto';
 		font-style: normal;
 		font-weight: normal;
 		font-size: 11px;
 		line-height: 1.5rem;
 	}
-
-	${'' /* span:nth-child(5) {
+	span:nth-child(5) {
 		color: green;
-	} */}
+	}
 `;
 
-export const CustomButton = styled(NavLink)`
+export const CustomButton = styled.a`
 	background: white;
 	padding: 5px 15px;
 	font-size: 10pt;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto';
 	margin-left: 0.5rem;
 	cursor: pointer;
-
 	&:hover {
-		color: #333333;
-		background: #f7f7f7;
+		${'' /* color: #333333;
+		background: #f7f7f7; */};
 	}
-
 	&:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
 	}
 `;
 
 export const ButtonsContainer = styled.div`
-	padding: 2 rem;
-	width: 88%;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	margin-bottom: 3rem;
+	position: absolute;
+	bottom: 60%;
+
+	font-size: 17px;
+	hr {
+		width: 85%;
+		border: 0;
+		height: 1px;
+		margin-bottom: 2rem;
+		background: #333;
+		background-image: linear-gradient(to right, #ccc, #333, #cccccc);
+	}
+`;
+
+export const MainButtonsContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	position: relative;
+	margin-bottom: 5rem;
+`;
+
+export const CustomButtonWrapper = styled.div`
 	display: flex;
 	justify-content: space-around;
-	padding-bottom: 2rem;
-	margin-bottom: 2rem;
-	position: relative;
-	font-size: 17px;
-
-	&:after {
-		content: "";
-		width: 600px;
-		height: 2px;
-		position: absolute;
-		top: 45%;
-		display: block;
-		border-bottom: 1px solid darkgray;
-	}
 `;

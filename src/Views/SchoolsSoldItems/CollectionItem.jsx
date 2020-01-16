@@ -6,7 +6,8 @@ function CollectionItem ({ art }){
 	return (
 		<CollectionItemContainer>
 			<div className="order-img">
-				<img src={art.transactionId.productId.picture} alt="order-image" />
+				{/* <img src={art.transactionId.productId.picture} alt="order-image" /> */}
+				<img src={OrderPicture} alt="order-image" />
 			</div>
 			<span>Order:{art._id} </span>
 			<span>01/04/2020</span>
