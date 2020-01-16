@@ -10,10 +10,10 @@ function CollectionItem ({ art }){
 				<img src={OrderPicture} alt="order-image" />
 			</div>
 			<div className="order-section">
-				<p>Order:{art._id} </p>
-				<p>01/04/2020</p>
-				<p>${art.transactionId.productId.price}</p>
-				<p>{art.status}</p>
+				<h3>Order:{art._id} </h3>
+				<h3>01/04/2020</h3>
+				<h3>${art.transactionId.productId.price}</h3>
+				<h3>{art.status}</h3>
 			</div>
 		</CollectionItemContainer>
 	);
