@@ -7,7 +7,7 @@ import { StyledBrowseNav } from './BrowseNavigationStyling';
 function BrowseNavigation(props) {
 
     const changeHandler = (e) => {
-        props.setFilter(e.target.value);
+        props.setSortBy(e.target.value);
     };
 
     return (

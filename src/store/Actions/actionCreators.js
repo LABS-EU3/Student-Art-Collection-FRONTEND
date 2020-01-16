@@ -109,9 +109,16 @@ export function selectArt(data) {
   };
 }
 
-export function setFilter(filter) {
+export function setSortBy(filter) {
   return {
-    type: types.SELECT_FILTER,
+    type: types.SET_SORT_BY,
     payload: filter
+  };
+}
+
+export function setSearchValues(values) {
+  return {
+    type: types.SET_SEARCH_VALUES,
+    payload: values
   };
 }

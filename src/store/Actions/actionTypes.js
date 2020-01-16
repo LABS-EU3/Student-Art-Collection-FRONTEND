@@ -33,4 +33,5 @@ export const TOGGLE_VIEW_MODAL = 'TOGGLE_VIEW_MODAL';
 export const FETCH_ART = 'FETCH_ART';
 export const UPDATE_ART_DISPLAYED = 'UPDATE_ART_DISPLAYED';
 export const SELECT_ART = 'SELECT_ART';
-export const SELECT_FILTER = 'SELECT_FILTER';
+export const SET_SORT_BY = 'SET_SORT_BY';
+export const SET_SEARCH_VALUES = 'SET_SEARCH_VALUES';
