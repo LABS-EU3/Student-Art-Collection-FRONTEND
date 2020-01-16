@@ -7,11 +7,11 @@ import {
 	BuyerItemsContainer,
 	MainContainer,
 	ButtonsContainer,
+	CustomButton2,
 } from './BuyerOrderItemsStyle';
 import Spinner from '../../Components/Spinner';
 import CollectionItem from './BuyerItem';
-import CustomButton2 from './CustomButton2'
-import BuyerItem from './BuyerItem'
+import BuyerItem from './BuyerItem';
 
 function BuyerOrderItems (props){
 	const [ artSold, setArtSold ] = useState(null);
@@ -37,15 +37,15 @@ function BuyerOrderItems (props){
 			</ButtonsContainer>
 			<BuyerItemsContainer>
 				{/* {artSold ? artSold.length === 0 ? (
-					<h1 className="not-sold">You haven't bought any art</h1>
+					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
 					artSold.map((art) => <CollectionItem art={art} />)
 				) : (
 					<Spinner />
 				)} */}
-                <BuyerItem/>
-                <BuyerItem/>
-                <BuyerItem/>
+				<BuyerItem />
+				<BuyerItem />
+				<BuyerItem />
 			</BuyerItemsContainer>
 		</MainContainer>
 	);

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CollectionItemContainer } from './BuyerOrderItemsStyle';
 import OrderPicture from '../../Assets/order.jpg';
