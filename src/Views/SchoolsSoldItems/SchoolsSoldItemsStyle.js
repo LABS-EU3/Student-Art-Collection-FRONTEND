@@ -8,30 +8,34 @@ export const MainContainer = styled.section`
 `;
 
 export const SchoolsCollectionContainer = styled.section`
-	display: grid;
 	overflow-y: scroll;
-	padding: 1 rem;
-	grid-gap: 5%;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	grid-auto-rows: 250px;
-
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	.not-sold {
 		font-size: 17px;
 	}
 `;
 
 export const CollectionItemContainer = styled.div`	
-	max-height: auto;
-	flex-basis: 25%;
+	 max-height: auto;
 	-ms-flex: auto;
-	width: 250px;
-	position: relative;
-	padding: 10px 20px;
-	box-sizing: border-box;
+	background: #ffffff;
+	box-shadow: 0px 6px 18px rgba(0,0,0,.1);
+	width: 100%;
+	max-width: 250px;
+	margin: 2em;
+	padding: 2em;
+	border-radius: 10px;
+	display:inline-block;
 	border: 1px solid rgba(0, 0, 0, 0.02);
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
 	font-family: 'Roboto', sans-serif;
-
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	&:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    };
     img {
      max-width: 100%;
      height: auto;
