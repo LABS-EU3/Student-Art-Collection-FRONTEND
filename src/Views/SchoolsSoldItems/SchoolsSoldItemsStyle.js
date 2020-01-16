@@ -71,16 +71,20 @@ export const CustomButton = styled.a`
 `;
 
 export const ButtonsContainer = styled.div`
-	width: 88%;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 6rem;
+	align-content: flex-start;
+	margin-bottom: 3rem;
+	position: absolute;
+	bottom: 60%;
 
 	font-size: 17px;
 	hr {
 		width: 85%;
 		border: 0;
 		height: 1px;
+		margin-bottom: 2rem;
 		background: #333;
 		background-image: linear-gradient(to right, #ccc, #333, #cccccc);
 	}
@@ -90,8 +94,8 @@ export const MainButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-
-	margin-bottom: 6rem;
+	position: relative;
+	margin-bottom: 5rem;
 `;
 
 export const CustomButtonWrapper = styled.div`
