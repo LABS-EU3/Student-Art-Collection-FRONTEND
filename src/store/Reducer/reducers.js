@@ -92,7 +92,8 @@ const initialBrowseArtState = {
   artModalOpen: false,
   art: [],
   artSorted: [],
-  artInModal: {}
+  artInModal: {},
+  filter: 'newest'
 }
 
 export function browseArtReducer(state = initialBrowseArtState, action) {
@@ -107,6 +108,8 @@ export function browseArtReducer(state = initialBrowseArtState, action) {
       return { ...state, artSorted: action.payload }
       case types.SELECT_ART:
       return { ...state, artInModal: action.payload }
+      case types.SELECT_FILTER:
+      return { ...state, filter: action.payload }
     default:
       return state;
   }

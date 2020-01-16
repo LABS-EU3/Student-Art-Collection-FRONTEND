@@ -108,3 +108,10 @@ export function selectArt(data) {
     payload: data
   };
 }
+
+export function setFilter(filter) {
+  return {
+    type: types.SELECT_FILTER,
+    payload: filter
+  };
+}
