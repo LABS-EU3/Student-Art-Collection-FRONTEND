@@ -10,7 +10,6 @@ import {
 	CustomButton2,
 } from './BuyerOrderItemsStyle';
 import Spinner from '../../Components/Spinner';
-import CollectionItem from './BuyerItem';
 import BuyerItem from './BuyerItem';
 
 function BuyerOrderItems (props){
