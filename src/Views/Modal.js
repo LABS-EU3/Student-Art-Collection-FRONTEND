@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import UploadArt from './UploadArt';
-import { StyledHeading } from './ModalStyle';
+import { StyledHeading, Button } from './ModalStyle';
 
 const customStyles = {
   content : {
@@ -19,14 +19,12 @@ const customStyles = {
 Modal.setAppElement ("body");
 
 function UploadModal(){
-  var subtitle;
   const [modalIsOpen,setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
 
   function afterOpenModal() {
-    subtitle.style.color = '#FFA500';
   }
 
   function closeModal(){
@@ -35,15 +33,13 @@ function UploadModal(){
 
     return (
       <div>
-        <button onClick={openModal}>Upload Art</button>
+        <Button onClick={openModal}>Upload Art</Button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
         >
-
-          <StyledHeading ref={_subtitle => (subtitle = _subtitle)}>Upload Art</StyledHeading>
           <UploadArt/>
         </Modal>
       </div>
