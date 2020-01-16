@@ -9,12 +9,13 @@ function CustomButtonComponent (props){
         fontWeight: "bold",
         color: "red"
   }}
-        isActive={(match, {pathname,search}) => {
+        isActive={(_, {search}) => {
             const t = search.split('')
             t.shift()
-            return t.join('') == `status=${props.status}`
+            return t.join('') === `status=${props.status}`
         }}
-    >{props.children}
+    >
+    {props.children}
     </CustomButton>
 }
 
