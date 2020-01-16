@@ -9,14 +9,14 @@ import {
 	CustomButton,
 	ButtonsContainer,
 } from './SchoolsSoldItemsStyle';
-import Spinner from '../../Components/Spinner'
+import Spinner from '../../Components/Spinner';
 import CollectionItem from './CollectionItem';
 
 function SchoolsSoldItems (props){
 	const [ artSold, setArtSold ] = useState(null);
 
 	const id = props.loggedInUser._id;
-console.log(props)
+	console.log(props);
 	useEffect(() => {
 		axiosWithBase()
 			.get(`/art/sold/order/${id}?status=all`)
@@ -29,9 +29,7 @@ console.log(props)
 	return (
 		<MainContainer>
 			<ButtonsContainer>
-				<CustomButton
-					status='all'
-				>All</CustomButton>
+				<CustomButton status="all">All</CustomButton>
 				<CustomButton>Pending</CustomButton>
 				<CustomButton>Sent</CustomButton>
 				{/* <hr className="line"/> */}
@@ -40,10 +38,10 @@ console.log(props)
 				{artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You don't have any sold art</h1>
 				) : (
-					artSold.map((art) => (
-						<CollectionItem art={art} />
-					))
-				): <Spinner/>}
+					artSold.map((art) => <CollectionItem art={art} />)
+				) : (
+					<Spinner />
+				)}
 			</SchoolsCollectionContainer>
 		</MainContainer>
 	);
