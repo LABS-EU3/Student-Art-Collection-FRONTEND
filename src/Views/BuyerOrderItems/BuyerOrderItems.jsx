@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import { axiosWithBase } from '../../AxiosCustom';
 
 import {
-	SchoolsCollectionContainer,
+	BuyerItemsContainer,
 	MainContainer,
-	MainButtonsContainer,
 	ButtonsContainer,
-} from './SchoolsSoldItemsStyle';
+	MainButtonsContainer,
+} from './BuyerOrderItemsStyle';
+import BuyerButtons from './CustomButton2';
 import Spinner from '../../Components/Spinner';
-import CollectionItem from './CollectionItem';
+import BuyerItem from './BuyerItem';
 
-function SchoolsSoldItems (props){
+function BuyerOrderItems (props){
 	const [ artSold, setArtSold ] = useState(null);
 
 	const id = props.loggedInUser._id;
@@ -27,7 +28,7 @@ function SchoolsSoldItems (props){
 	console.log(artSold);
 
 	return (
-	<MainContainer>
+		<MainContainer>
 			<MainButtonsContainer>
 				<ButtonsContainer>
 					<BuyerButtons />
@@ -38,7 +39,7 @@ function SchoolsSoldItems (props){
 				</ButtonsContainer>
 			</MainButtonsContainer>
 
-			<SchoolsCollectionContainer>
+			<BuyerItemsContainer>
 				{/* {artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
@@ -46,12 +47,12 @@ function SchoolsSoldItems (props){
 				) : (
 					<Spinner />
 				)} */}
-				<CollectionItem />
-				<CollectionItem />
-				<CollectionItem />
-			</SchoolsCollectionContainer>
+				<BuyerItem />
+				<BuyerItem />
+				<BuyerItem />
+			</BuyerItemsContainer>
 		</MainContainer>
 	);
 }
 
-export default connect((state) => state)(SchoolsSoldItems);
+export default connect((state) => state)(BuyerOrderItems);
