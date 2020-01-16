@@ -1,10 +1,21 @@
 import React from 'react';
 import { CustomButton } from './SchoolsSoldItemsStyle';
 
-function CustomButton (props){
+function CustomButtonComponent (props){
+    const path = `/selling/sold?status=${props.status}`
 	return <CustomButton
-        href={`/selling/sold?status=${props.status}`}
-    />;
+        strict to={path}
+        activeStyle={{
+        fontWeight: "bold",
+        color: "red"
+  }}
+        isActive={(match, {pathname,search}) => {
+            const t = search.split('')
+            t.shift()
+            return t.join('') == `status=${props.status}`
+        }}
+    >{props.children}
+    </CustomButton>
 }
 
-export default CustomButton;
+export default CustomButtonComponent;

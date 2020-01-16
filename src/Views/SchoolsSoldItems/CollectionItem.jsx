@@ -8,10 +8,10 @@ function CollectionItem ({art}){
 			<div className="order-img">
 				<img src={art.transactionId.productId.picture} alt="order-image" />
 			</div>
-			<span>Order #:12321758</span>
+			<span>Order:{art._id} </span>
 			<span>01/04/2020</span>
-			<span>$45.00</span>
-			<span>Dispatched</span>
+			<span>${art.transactionId.productId.price}</span>
+			<span>{art.status}</span>
 		</CollectionItemContainer>
 	);
 }
