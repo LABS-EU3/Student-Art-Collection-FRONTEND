@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { axiosWithBase } from '../../AxiosCustom';
 
@@ -11,30 +14,35 @@ import {
 } from './SchoolsSoldItemsStyle';
 import Spinner from '../../Components/Spinner';
 import CollectionItem from './CollectionItem';
+import CustomButton from './CustomButton';
 
 function SchoolsSoldItems (props){
 	const [ artSold, setArtSold ] = useState(null);
-
+	const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
-	console.log(props);
-	useEffect(() => {
-		axiosWithBase()
-			.get(`/art/sold/order/${id}?status=all`)
-			.then((res) => setArtSold(res.data))
-			.catch((err) => console.log(err));
-	}, []);
-
-	console.log(artSold);
+	useEffect(
+		() => {
+			const orderStatus = status ? status : 'all';
+			axiosWithBase()
+				.get(`/art/sold/order/${id}?status=${orderStatus}`)
+				.then((res) => setArtSold(res.data))
+				.catch((err) => toast.error('could not fetch items'));
+		},
+		[ status ],
+	);
 
 	return (
-	<MainContainer>
+		<MainContainer>
 			<MainButtonsContainer>
 				<ButtonsContainer>
 					<BuyerButtons />
+					<CustomButton status="all">All</CustomButton>
+					<CustomButton status="pending">Pending</CustomButton>
+					<CustomButton status="sent">Sent</CustomButton>
 					{/* <BuyerButton status="all">All</BuyerButton>
 				<BuyerButton>Pending</BuyerButton>
 				<BuyerButton>Sent</BuyerButton> */}
-				 <hr className="line"/>
+					<hr className="line" />
 				</ButtonsContainer>
 			</MainButtonsContainer>
 
@@ -49,6 +57,18 @@ function SchoolsSoldItems (props){
 				<CollectionItem />
 				<CollectionItem />
 				<CollectionItem />
+				<ToastContainer
+					position="bottom-center"
+					autoClose={3000}
+					pauseOnVisibilityChange
+					draggable
+					pauseOnHover
+					closeButton={false}
+					style={{
+						fontSize: '1.3rem',
+						textAlign: 'center',
+					}}
+				/>
 			</SchoolsCollectionContainer>
 		</MainContainer>
 	);
