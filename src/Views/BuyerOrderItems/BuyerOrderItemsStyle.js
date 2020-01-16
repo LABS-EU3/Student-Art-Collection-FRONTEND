@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {NavLink} from 'react-router-dom'
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
@@ -42,15 +43,15 @@ export const CollectionItemContainer = styled.div`
 	}
 	span {
 		padding: 2.5 rem;
-		font-family: Roboto;
+		font-family: 'Roboto';
 		font-style: normal;
 		font-weight: normal;
 		font-size: 11px;
 		line-height: 1.5rem;
 	}
-	${'' /* span:nth-child(5) {
+	span:nth-child(5) {
 		color: green;
-	} */}
+	}
 `;
 
 export const CustomButton = styled.a`
