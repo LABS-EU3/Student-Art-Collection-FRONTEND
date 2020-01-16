@@ -75,18 +75,9 @@ export const ButtonsContainer = styled.div`
 	width: 88%;
 	display: flex;
     flex-direction:column;
-	${'' /* justify-content: space-around; */}
 	padding-bottom: 1rem;
-	${'' /* position: relative; */} font-size: 17px;
-	${'' /* &:after {
-		content: "";
-		width: 600px;
-		height: 2px;
-		position: absolute;
-		top: 55%;
-		display: block;
-		border-bottom: 1px solid darkgray;
-	} */}
+	font-size: 17px;
+
 
     hr {
         width: 700px;
