@@ -2,7 +2,7 @@ import React from 'react';
 import { CollectionItemContainer } from './SchoolsSoldItemsStyle';
 import OrderPicture from '../../Assets/order.jpg';
 
-function CollectionItem ({art}){
+function CollectionItem ({ art }){
 	return (
 		<CollectionItemContainer>
 			<div className="order-img">
