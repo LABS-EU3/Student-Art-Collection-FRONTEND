@@ -111,7 +111,7 @@ export function selectArt(data) {
 
 export function setSortBy(filter) {
   return {
-    type: types.SET_SORT_BY,
+    type: types.SET_SORT_TYPE,
     payload: filter
   };
 }

@@ -93,8 +93,9 @@ const initialBrowseArtState = {
   art: [],
   artSorted: [],
   artInModal: {},
-  sortBy: 'newest',
-  searchTerm: '',
+  sortType: '',
+  sortBy: '',
+  searchQuery: '',
   filter: ''
 }
 
@@ -110,10 +111,10 @@ export function browseArtReducer(state = initialBrowseArtState, action) {
       return { ...state, artSorted: action.payload };
     case types.SELECT_ART:
       return { ...state, artInModal: action.payload };
-    case types.SET_SORT_BY:
-      return { ...state, sortBy: action.payload };
+    case types.SET_SORT_TYPE:
+      return { ...state, sortType: action.payload.type, sortBy: action.payload.by };
     case types.SET_SEARCH_VALUES:
-      return { ...state, searchTerm: action.payload.search, filter: action.payload.type };
+      return { ...state, searchQuery: action.payload.search, filter: action.payload.type };
     default:
       return state;
   }

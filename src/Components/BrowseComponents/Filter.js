@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { axiosWithBase } from '../../AxiosCustom';
 import * as actionCreators from '../../store/Actions/actionCreators'
 
 import { StyledHero, openBarStyling } from './FilterStyling';
@@ -21,7 +20,8 @@ function Filter(props) {
             <input type="text" name="search" onChange={changeHandler} value={inputs.search} placeholder="Search by..." />
             <select value={inputs.type} name="type" onChange={changeHandler}>
                 <option value="name">Title</option>
-                <option value="artist">Artist</option>
+                <option value="artistName">Artist</option>
+                <option value="category">Category</option>
                 <option value="medium">Medium</option>
                 <option value="description">Description</option>
                 <option value="style">Style</option>

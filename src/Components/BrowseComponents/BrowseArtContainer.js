@@ -25,17 +25,19 @@ function ArtContainer(props) {
 
     useEffect(() => {
         axiosWithBase()
-            .get(`/art?filter=${props.browseArtState.sortBy === 'newest' ? null : 'price'}&sortBy=${props.browseArtState.sortBy}&page=${page}&pagination=12`)
+            .get(`/art/search?searchQuery=${props.browseArtState.searchQuery}&pagination=12&filter=${props.browseArtState.filter}&sortBy=${props.browseArtState.sortBy}&sortType=${props.browseArtState.sortType}&page=${page}`)
             .then((res) => {
                 setUpperPageLimit(Math.ceil(res.data.totalCount/12))
                 props.fetchArt(res.data.art)
                 setSpinning(false);
             })
             .catch(() => {
+                props.fetchArt([])
                 setSpinning(false);
             })
         props.toggleViewModal(false);
-    }, [page, props.browseArtState.sortBy])
+    }, [page, props.browseArtState.sortBy, props.browseArtState.searchQuery, props.browseArtState.sortBy, props.browseArtState.sortType,
+        props.browseArtState.filter])
 
     if (spinning) {
         return (
