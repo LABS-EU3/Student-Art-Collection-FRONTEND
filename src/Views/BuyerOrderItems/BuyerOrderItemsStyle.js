@@ -58,12 +58,12 @@ export const CustomButton2 = styled.a`
 	background: white;
 	padding: 5px 15px;
 	font-size: 10pt;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto';
 	margin-left: 0.5rem;
 	cursor: pointer;
 	&:hover {
 		${'' /* color: #333333;
-		background: #f7f7f7; */}
+		background: #f7f7f7; */};
 	}
 	&:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
@@ -74,17 +74,16 @@ export const ButtonsContainer = styled.div`
 	padding: 1 rem;
 	width: 88%;
 	display: flex;
-    flex-direction:column;
+	flex-direction: column;
 	padding-bottom: 1rem;
 	font-size: 17px;
 
-
-    hr {
-        width: 700px;
+	hr {
+		width: 700px;
 		border: 0;
 		height: 1px;
 		background: #333;
-		background-image: linear-gradient(to right, #ccc, #333, #ccc);
+		background-image: linear-gradient(to right, #ccc, #333, #cccccc);
 	}
 `;
 
@@ -92,12 +91,10 @@ export const MainButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-    padding-bottom: 1rem;
+	padding-bottom: 1rem;
 `;
 
-
 export const CustomButtonWrapper = styled.div`
- display:flex;
- justify-content: space-around;
-
+	display: flex;
+	justify-content: space-around;
 `;
