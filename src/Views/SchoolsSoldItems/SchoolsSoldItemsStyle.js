@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {NavLink} from 'react-router-dom';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
@@ -12,7 +13,7 @@ export const SchoolsCollectionContainer = styled.section`
 	padding: 1 rem;
 	grid-gap: 5%;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	grid-auto-rows: 220px;
+	grid-auto-rows: 300px;
 
 	.not-sold {
 		font-size: 17px;
@@ -23,7 +24,7 @@ export const CollectionItemContainer = styled.div`
 	width: 70%;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: auto;
 	padding: 1rem;
 	margin-bottom: 1.5rem;
 	font-family: 'Roboto';
@@ -33,28 +34,31 @@ export const CollectionItemContainer = styled.div`
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
 	.order-img {
 		display: flex;
-		justify-content: center;
+	}
+	.order-section {
+		display:flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin: .5rem 0;
+		p {
+			padding: 2.5 rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: normal;
+			font-size: 15px;
+			line-height: 1.5rem;
+		}
+		p:nth-child(4) {
+		color: green;
+	}
 	}
 	img {
-		object-fit: cover;
-		width: 180px;
-		display: flex;
-		justify-content: center;
-	}
-	span {
-		padding: 2.5 rem;
-		font-family: 'Roboto';
-		font-style: normal;
-		font-weight: normal;
-		font-size: 11px;
-		line-height: 1.5rem;
-	}
-	span:nth-child(5) {
-		color: green;
+		/* object-fit: cover; */
+		width: 100%;
 	}
 `;
 
-export const CustomButton = styled.a`
+export const CustomButton = styled(NavLink)`
 	background: white;
 	padding: 5px 15px;
 	font-size: 10pt;

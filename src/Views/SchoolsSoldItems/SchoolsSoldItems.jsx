@@ -55,7 +55,9 @@ function SchoolsSoldItems (props){
 				) : (
 					artSold.map((art) => <CollectionItem art={art} />)
 				) : (
-					<Spinner />
+					<div style={{display:'flex', justifyContent: 'flex-end'}}>
+						<Spinner />
+					</div>
 				)}
 				{/* <CollectionItem />
 				<CollectionItem />

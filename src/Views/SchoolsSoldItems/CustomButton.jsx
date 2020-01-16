@@ -10,7 +10,7 @@ function CustomButtonComponent (props){
 				to={path}
 				activeStyle={{
 					fontWeight: 'bold',
-					color: 'red',
+                    color: 'orange',
 				}}
 				isActive={(_, { search }) => {
 					const t = search.split('');
@@ -19,7 +19,7 @@ function CustomButtonComponent (props){
 				}}>
 				{props.children}
 			</CustomButton>
-		</CustomButtonWrapper>
+	     </CustomButtonWrapper>
 	);
 }
 
