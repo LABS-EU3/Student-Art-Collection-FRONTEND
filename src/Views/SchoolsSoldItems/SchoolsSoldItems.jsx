@@ -31,14 +31,22 @@ console.log(props)
 			<ButtonsContainer>
 				<CustomButton
 					status='all'
-				>All</CustomButton>
-				<CustomButton>Pending</CustomButton>
-				<CustomButton>Sent</CustomButton>
+				>
+				All
+				</CustomButton>
+				<CustomButton
+					status='pending'	
+				>Pending
+				</CustomButton>
+				<CustomButton
+					status='sent'
+				>Sent
+				</CustomButton>
 				{/* <hr className="line"/> */}
 			</ButtonsContainer>
 			<SchoolsCollectionContainer>
 				{artSold ? artSold.length === 0 ? (
-					<h1 className="not-sold">You don't have any sold art</h1>
+					<h2 className="not-sold">You don't have any sold art</h2>
 				) : (
 					artSold.map((art) => (
 						<CollectionItem art={art} />

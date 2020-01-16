@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {NavLink} from 'react-router-dom';
 
 export const MainContainer = styled.section`
 	box-sizing: border-box;
@@ -58,7 +59,7 @@ export const CollectionItemContainer = styled.div`
 	} */}
 `;
 
-export const CustomButton = styled.a`
+export const CustomButton = styled(NavLink)`
 	background: white;
 	padding: 5px 15px;
 	font-size: 10pt;
