@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 
 import { axiosWithBase } from '../../AxiosCustom';
 
-import {
-	BuyerItemsContainer,
-	MainContainer,
-	ButtonsContainer,
-	CustomButton2,
-} from './BuyerOrderItemsStyle';
+import { BuyerItemsContainer, MainContainer, ButtonsContainer } from './BuyerOrderItemsStyle';
+import BuyerButtons from './CustomButton2';
 import Spinner from '../../Components/Spinner';
 import BuyerItem from './BuyerItem';
 
@@ -29,9 +25,10 @@ function BuyerOrderItems (props){
 	return (
 		<MainContainer>
 			<ButtonsContainer>
-				<CustomButton2 status="all">All</CustomButton2>
-				<CustomButton2>Pending</CustomButton2>
-				<CustomButton2>Sent</CustomButton2>
+				<BuyerButtons />
+				{/* <BuyerButton status="all">All</BuyerButton>
+				<BuyerButton>Pending</BuyerButton>
+				<BuyerButton>Sent</BuyerButton> */}
 				{/* <hr className="line"/> */}
 			</ButtonsContainer>
 			<BuyerItemsContainer>
