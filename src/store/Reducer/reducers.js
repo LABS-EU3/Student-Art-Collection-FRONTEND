@@ -3,12 +3,6 @@ import * as types from '../Actions/actionTypes';
 // set initial values for slices of state below
 const initialCount = 0;
 
-const INITIAL_STATE = {
-	collections: null,
-	isFetching: false,
-	errorMessage: undefined,
-};
-
 // slices of state reducers
 export function countReducer (count = initialCount, action){
 	switch (action.type) {

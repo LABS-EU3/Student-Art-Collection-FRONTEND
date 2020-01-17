@@ -1,10 +1,9 @@
 import React from 'react';
-import { CustomButton, CustomButtonWrapper } from './SchoolsSoldItemsStyle';
+import { CustomButton} from './SchoolsSoldItemsStyle';
 
 function CustomButtonComponent (props){
 	const path = `/selling/sold?status=${props.status}`;
 	return (
-		<CustomButtonWrapper>
 			<CustomButton
 				strict
 				to={path}
@@ -19,7 +18,6 @@ function CustomButtonComponent (props){
 				}}>
 				{props.children}
 			</CustomButton>
-	     </CustomButtonWrapper>
 	);
 }
 

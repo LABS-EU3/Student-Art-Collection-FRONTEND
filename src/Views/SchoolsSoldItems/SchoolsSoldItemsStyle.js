@@ -10,6 +10,8 @@ export const MainContainer = styled.section`
 export const SchoolsCollectionContainer = styled.section`
 	overflow-y: scroll;
 	display: flex;
+	position: absolute;
+	top: 25%;
 	flex-wrap: wrap;
 	max-width: 100%;
 	margin-left: auto;
@@ -84,8 +86,7 @@ export const CustomButton = styled(NavLink)`
 	margin-left: 0.5rem;
 	cursor: pointer;
 	&:hover {
-		${'' /* color: #333333;
-		background: #f7f7f7; */};
+		color: orange;
 	}
 	&:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
@@ -93,23 +94,15 @@ export const CustomButton = styled(NavLink)`
 `;
 
 export const ButtonsContainer = styled.div`
-	width: 80%;
+	width: 63%;
 	display: flex;
 	flex-direction: column;
-	align-content: flex-start;
+	align-content: center;
 	margin-bottom: 3rem;
 	position: absolute;
-	bottom: 60%;
-
+	top: 17%;
+	border-bottom: 1px solid gray;
 	font-size: 17px;
-	hr {
-		width: 85%;
-		border: 0;
-		height: 1px;
-		margin-bottom: 2rem;
-		background: #333;
-		background-image: linear-gradient(to right, #ccc, #333, #cccccc);
-	}
 `;
 
 export const MainButtonsContainer = styled.div`
@@ -123,5 +116,7 @@ export const MainButtonsContainer = styled.div`
 export const CustomButtonWrapper = styled.div`
 	display: flex;
 	justify-content: space-around;
+	align-content: center;
+	padding: .5rem;
 `;
 

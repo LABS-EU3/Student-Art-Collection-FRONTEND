@@ -9,7 +9,6 @@ import { axiosWithBase } from '../../AxiosCustom';
 import {
 	SchoolsCollectionContainer,
 	MainContainer,
-	MainButtonsContainer,
 	ButtonsContainer,
 	CustomButtonWrapper,
 } from './SchoolsSoldItemsStyle';
@@ -34,16 +33,13 @@ function SchoolsSoldItems (props){
 
 	return (
 		<MainContainer>
-			<MainButtonsContainer>
-				<ButtonsContainer>
-					<CustomButtonWrapper>
-						<CustomButton status="all">All</CustomButton>
-						<CustomButton status="pending">Pending</CustomButton>
-						<CustomButton status="sent">Sent</CustomButton>
-					</CustomButtonWrapper>
-					<hr className="line" />
-				</ButtonsContainer>
-			</MainButtonsContainer>
+			<ButtonsContainer>
+				<CustomButtonWrapper>
+					<CustomButton status="all">All</CustomButton>
+					<CustomButton status="pending">Pending</CustomButton>
+					<CustomButton status="sent">Sent</CustomButton>
+				</CustomButtonWrapper>
+			</ButtonsContainer>
 
 			<SchoolsCollectionContainer>
 				{artSold ? artSold.length === 0 ? (

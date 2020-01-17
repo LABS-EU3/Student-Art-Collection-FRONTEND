@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import UploadModal from '../../Views/Modal';
 import { DashNavStyle }  from './SellingNavStyle';
-import UploadArt from '../../Views/UploadArt';
+
 
 function SellingNav() {
     return (
