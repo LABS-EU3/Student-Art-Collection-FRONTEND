@@ -46,7 +46,7 @@ function UploadArtForm (props) {
         <StyledDetails name='style' type='text' placeholder='Style' />
         </Details>
 
-        <h1>I agree to the terms and conditions and I have all relevant permissions to upload and sell this artwork <input type="checkbox"></input></h1> 
+        <h1>I agree to the terms and conditions and I have all relevant permissions to upload and sell this artwork <input type="checkbox" id="agree" value="check" /> </h1> 
 
         <Button type="submit">Upload Art</Button>
         </StyledForm >

@@ -67,6 +67,12 @@ function UploadArt({ loggedInUser }) {
    }
 
    const submitArt = (values, actions) => {
+    const checkbox = document.getElementById("agree")
+    if(!checkbox.checked) {
+        toast.error('Agree to the terms and conditions')
+        return
+    }
+
       const formData = new FormData();
       formData.append('image', artPic);
       formData.append('name', values.name);
