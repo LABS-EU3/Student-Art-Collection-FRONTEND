@@ -40,13 +40,13 @@ function BuyerOrderItems (props){
 			</MainButtonsContainer>
 
 			<BuyerItemsContainer>
-				{/* {artSold ? artSold.length === 0 ? (
+				{artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
 					artSold.map((art) => <CollectionItem art={art} />)
 				) : (
 					<Spinner />
-				)} */}
+				)}
 				<BuyerItem />
 				<BuyerItem />
 				<BuyerItem />
