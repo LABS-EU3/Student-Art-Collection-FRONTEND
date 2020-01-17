@@ -19,7 +19,7 @@ export const BuyerItemsContainer = styled.section`
 	}
 `;
 
-export const CollectionItemContainer = styled(NavLink)`
+export const CollectionItemContainer = styled.a`
 	width: 70%;
 	display: flex;
 	flex-direction: column;
@@ -54,7 +54,7 @@ export const CollectionItemContainer = styled(NavLink)`
 	}
 `;
 
-export const CustomButton2 = styled.a`
+export const CustomButton2 = styled(NavLink)`
 	background: white;
 	padding: 5px 15px;
 	font-size: 10pt;
@@ -72,14 +72,17 @@ export const CustomButton2 = styled.a`
 
 export const ButtonsContainer = styled.div`
 	padding: 1 rem;
-	width: 88%;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
 	padding-bottom: 1rem;
 	font-size: 17px;
+	position: absolute;
+	bottom: 80%;
+	margin-bottom: 4rem;
 
 	hr {
-		width: 700px;
+		width: 85%;
 		border: 0;
 		height: 1px;
 		background: #333;
@@ -91,7 +94,8 @@ export const MainButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-	padding-bottom: 1rem;
+margin-bottom: 5rem;
+	position: relative;
 `;
 
 export const CustomButtonWrapper = styled.div`

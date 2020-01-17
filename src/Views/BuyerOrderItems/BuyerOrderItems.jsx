@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { axiosWithBase } from '../../AxiosCustom';
 
@@ -8,22 +11,25 @@ import {
 	MainContainer,
 	ButtonsContainer,
 	MainButtonsContainer,
+	CustomButtonWrapper
 } from './BuyerOrderItemsStyle';
-import BuyerButtons from './CustomButton2';
+
 import Spinner from '../../Components/Spinner';
 import BuyerItem from './BuyerItem';
+import CustomButton from './CustomButton2'
 
 function BuyerOrderItems (props){
 	const [ artSold, setArtSold ] = useState(null);
-
+    const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
 	console.log(props);
 	useEffect(() => {
+		const orderStatus = status ? status : 'all';
 		axiosWithBase()
-			.get(`/art/sold/order/${id}?status=all`)
+			.get(`/art/sold/order/${id}?status=${orderStatus}`)
 			.then((res) => setArtSold(res.data))
-			.catch((err) => console.log(err));
-	}, []);
+			.catch((err) => toast.error('could not fetch items'));
+	}, [status]);
 
 	console.log(artSold);
 
@@ -31,11 +37,16 @@ function BuyerOrderItems (props){
 		<MainContainer>
 			<MainButtonsContainer>
 				<ButtonsContainer>
-					<BuyerButtons />
+				<CustomButtonWrapper>
+					{/* <BuyerButtons /> */}
+						<CustomButton status="all">All</CustomButton>
+						<CustomButton status="pending">Pending</CustomButton>
+						<CustomButton status="sent">Sent</CustomButton>
+						</CustomButtonWrapper>
 					{/* <BuyerButton status="all">All</BuyerButton>
 				<BuyerButton>Pending</BuyerButton>
 				<BuyerButton>Sent</BuyerButton> */}
-				 <hr className="line"/>
+					<hr className="line" />
 				</ButtonsContainer>
 			</MainButtonsContainer>
 
@@ -43,13 +54,22 @@ function BuyerOrderItems (props){
 				{artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
-					artSold.map((art) => <CollectionItem art={art} />)
+					artSold.map((art) => <BuyerItem art={art} />)
 				) : (
 					<Spinner />
 				)}
-				<BuyerItem />
-				<BuyerItem />
-				<BuyerItem />
+				<ToastContainer
+					position="bottom-center"
+					autoClose={3000}
+					pauseOnVisibilityChange
+					draggable
+					pauseOnHover
+					closeButton={false}
+					style={{
+						fontSize: '1.3rem',
+						textAlign: 'center',
+					}}
+				/>
 			</BuyerItemsContainer>
 		</MainContainer>
 	);
