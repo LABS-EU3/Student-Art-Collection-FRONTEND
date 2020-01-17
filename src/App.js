@@ -12,18 +12,19 @@ import Login from './Views/Login';
 import Dashboard from './Views/Dashboard'
 import PasswordReset from './Components/resetPassword/PasswordReset';
 import ContactPage from './Views/Contact';
-
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
 import theme from './Styles/Theme';
 import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
+import  UploadArt from './Views/UploadArt';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Navbar />
+      {/* <Modal /> */}
       <Route exact path="/" component={LandingPage} />
       <Route path='/contact' component={ContactPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
@@ -35,6 +36,8 @@ function App() {
       <Route path="/selling" component={Dashboard} />
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
       <Route path="/resetpassword" component={PasswordReset} />
+      
+      
     </ThemeProvider>
   );
 }
