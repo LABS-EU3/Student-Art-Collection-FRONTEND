@@ -5,6 +5,11 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  input {
+     border: none;
+     border: 1px solid lightgrey;
+   }
 `;
 
 export const StyledError = styled(ErrorMessage)`

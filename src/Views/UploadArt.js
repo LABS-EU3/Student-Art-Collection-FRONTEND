@@ -8,7 +8,7 @@ import Spinner from '../Components/Spinner';
 import { StyledSpinner, Upload } from './UploadArtStyle';
 import {connect} from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators'
-import { closeModal } from './Modal'
+
 const initialValues = {
    name: "",
    artistName: "",
@@ -72,7 +72,6 @@ function UploadArt({ loggedInUser }) {
         toast.error('Agree to the terms and conditions')
         return
     }
-
       const formData = new FormData();
       formData.append('image', artPic);
       formData.append('name', values.name);
