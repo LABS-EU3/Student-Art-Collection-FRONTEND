@@ -24,9 +24,6 @@ function UploadModal(){
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-  }
-
   function closeModal(){
     setIsOpen(false);
   }
@@ -36,11 +33,10 @@ function UploadModal(){
         <Button onClick={openModal}>Upload Art</Button>
         <Modal
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
         >
-          <UploadArt/>
+          <UploadArt closeModal={closeModal}/>
         </Modal>
       </div>
     );

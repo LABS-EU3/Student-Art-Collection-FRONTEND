@@ -57,7 +57,7 @@ const validationSchema = yup.object().shape({
        .string() 
 });
 
-function UploadArt({ loggedInUser }) {
+function UploadArt({ loggedInUser, closeModal }) {
    const [submitted, setSubmitted] = useState(false);
    const [spinning, setSpinning] = useState(false);
    const [artPic, setArtPic] = useState(null);
@@ -95,6 +95,7 @@ function UploadArt({ loggedInUser }) {
               actions.resetForm();
               setSpinning(false);
               setSubmitted(true);
+              closeModal();
           })
           .catch((error) => {
              console.log(error.response)
