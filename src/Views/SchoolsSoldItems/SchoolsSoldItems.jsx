@@ -37,14 +37,10 @@ function SchoolsSoldItems (props){
 			<MainButtonsContainer>
 				<ButtonsContainer>
 					<CustomButtonWrapper>
-						{/* <BuyerButtons /> */}
 						<CustomButton status="all">All</CustomButton>
 						<CustomButton status="pending">Pending</CustomButton>
 						<CustomButton status="sent">Sent</CustomButton>
 					</CustomButtonWrapper>
-					{/* <BuyerButton status="all">All</BuyerButton>
-				<BuyerButton>Pending</BuyerButton>
-				<BuyerButton>Sent</BuyerButton> */}
 					<hr className="line" />
 				</ButtonsContainer>
 			</MainButtonsContainer>
@@ -53,15 +49,12 @@ function SchoolsSoldItems (props){
 				{artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
-					artSold.map((art) => <CollectionItem art={art} />)
+					artSold.map((art) => <CollectionItem art={art} key={art._id}/>)
 				) : (
 					<div style={{display:'flex', justifyContent: 'flex-end'}}>
 						<Spinner />
 					</div>
 				)}
-				{/* <CollectionItem />
-				<CollectionItem />
-				<CollectionItem /> */}
 				<ToastContainer
 					position="bottom-center"
 					autoClose={3000}
