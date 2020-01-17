@@ -35,7 +35,7 @@ function UploadArtForm (props) {
         <StyledError name='category' component='div' />
         <StyledDetails name='category' type='text' placeholder='Category' />
         <StyledError name='price' component='div' />
-        <StyledDetails name='price' type='text' placeholder='Price' />
+        <StyledDetails name='price' type='text' placeholder='Price in $' />
         <StyledError name='medium' component='div' />
         <StyledDetails name='medium' type='text' placeholder='Medium' />
         <StyledError name='subject' component='div' />
