@@ -87,3 +87,35 @@ export function loggedInUserReducer(
   }
 }
 
+const initialBrowseArtState = {
+  filterBarOpen: false,
+  artModalOpen: false,
+  art: [],
+  artSorted: [],
+  artInModal: {},
+  sortType: '',
+  sortBy: '',
+  searchQuery: '',
+  filter: ''
+}
+
+export function browseArtReducer(state = initialBrowseArtState, action) {
+  switch (action.type) {
+    case types.TOGGLE_FILTER_BAR:
+      return { ...state, filterBarOpen: action.payload };
+    case types.TOGGLE_VIEW_MODAL:
+      return { ...state, artModalOpen: action.payload };
+    case types.FETCH_ART:
+      return { ...state, art: action.payload, artSorted: action.payload };
+    case types.UPDATE_ART_DISPLAYED:
+      return { ...state, artSorted: action.payload };
+    case types.SELECT_ART:
+      return { ...state, artInModal: action.payload };
+    case types.SET_SORT_TYPE:
+      return { ...state, sortType: action.payload.type, sortBy: action.payload.by };
+    case types.SET_SEARCH_VALUES:
+      return { ...state, searchQuery: action.payload.search, filter: action.payload.type };
+    default:
+      return state;
+  }
+}
