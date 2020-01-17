@@ -48,6 +48,7 @@ function ArtViewModal(props) {
                             <div className="price">
                             <h3>£{props.browseArtState.artInModal.price}.00</h3>
                             <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
+                            <h5>Quantity: {props.browseArtState.quantity ? props.browseArtState.quantity : "Out of Stock"}</h5>
                             </div>
                             <button onClick={clickBuy}>Buy</button>
                         </div>

@@ -22,6 +22,7 @@ function ArtContainer(props) {
         }
         return null;
     }
+    
 
     useEffect(() => {
         axiosWithBase()

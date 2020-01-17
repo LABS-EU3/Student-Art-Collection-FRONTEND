@@ -118,6 +118,12 @@ display: none
         font-size: 1.4rem;
         color: rgba(0,0,0,0.6);
       }
+
+      h5 {
+        font-size: 1.7rem;
+        color: rgba(0,0,0,1);
+        margin-top: 1rem;
+      }
        p {
          font-size: 1.3rem;
          line-height: 120%;
