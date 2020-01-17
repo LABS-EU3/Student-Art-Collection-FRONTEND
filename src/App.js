@@ -21,6 +21,7 @@ import GlobalStyle from './Styles/GlobalStyle';
 // import theme
 import theme from './Styles/Theme';
 import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
+import  UploadArt from './Views/UploadArt';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <GlobalStyle />
       <Route exact path="/browse" component={ArtViewModal} />
       <Navbar />
+      {/* <Modal /> */}
       <Route exact path="/" component={LandingPage} />
       <Route path='/contact' component={ContactPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
