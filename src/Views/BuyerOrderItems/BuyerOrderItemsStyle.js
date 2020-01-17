@@ -79,7 +79,7 @@ export const ButtonsContainer = styled.div`
 	font-size: 17px;
 	position: absolute;
 	bottom: 80%;
-	margin-bottom: 4rem;
+	margin-bottom: 3.5rem;
 
 	hr {
 		width: 85%;
@@ -94,7 +94,7 @@ export const MainButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-margin-bottom: 5rem;
+	margin-bottom: 5rem;
 	position: relative;
 `;
 
