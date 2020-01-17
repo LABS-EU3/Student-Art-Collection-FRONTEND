@@ -31,11 +31,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // export default store;
 
 let masterReducer = {
-	count: reducers.countReducer,
-	logInError: reducers.errorLoginReducer,
-	isLoading: reducers.isLoadingReducer,
-	loggedInUser: reducers.loggedInUserReducer,
-	// itemsCollections: reducers.itemsCollectionReducer
+  count: reducers.countReducer,
+  logInError: reducers.errorLoginReducer,
+  isLoading: reducers.isLoadingReducer,
+  loggedInUser: reducers.loggedInUserReducer,
+  browseArtState: reducers.browseArtReducer
 };
 
 const persistedReducer = persistReducer(persistConfig, combineReducers(masterReducer));

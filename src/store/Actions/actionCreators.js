@@ -73,29 +73,53 @@ export function setUserDetails(user) {
 }
 
 
-// GETTING ITEMS COLLECTIONS / ! COMMENTED OUT, MAYBE IT WILL BE NEEDED FOR LATER
+// OPEN/CLOSE FILTER BAR 
 
-// export const fetchCollectionsStart = () => ({
-//   type: types.FETCH_COLLECTIONS_START
-// });
+export function toggleFilterBar(bool) {
+  return {
+    type: types.TOGGLE_FILTER_BAR,
+    payload: bool
+  };
+}
 
-// export const fetchCollectionsSuccess = collectionsMap => ({
-//   type: types.FETCH_COLLECTIONS_SUCCESS,
-//   payload: collectionsMap
-// });
+export function toggleViewModal(bool) {
+  return {
+    type: types.TOGGLE_VIEW_MODAL,
+    payload: bool
+  };
+}
 
-// export const fetchCollectionsFailure = errorMessage => ({
-//   type: types.FETCH_COLLECTIONS_FAILURE,
-//   payload: errorMessage
-// });
+export function fetchArt(data) {
+  return {
+    type: types.FETCH_ART,
+    payload: data
+  };
+}
 
+export function updateArtDisplayed(data) {
+  return {
+    type: types.UPDATE_ART_DISPLAYED,
+    payload: data
+  };
+}
 
-// export const fetchCollectionsStartAsync = (req, res) => {
- // const id = req.params.id
- // return dispatch => {
- //   axios
-	// 	.get(`http://localhost:4000/art/sold/order/${id}`, { timeout: 5000 })
-	// 	.then((res) => showOutput(res))
-	// 	.catch((err) => console.log(err));
-// };
-// };
+export function selectArt(data) {
+  return {
+    type: types.SELECT_ART,
+    payload: data
+  };
+}
+
+export function setSortBy(filter) {
+  return {
+    type: types.SET_SORT_TYPE,
+    payload: filter
+  };
+}
+
+export function setSearchValues(values) {
+  return {
+    type: types.SET_SEARCH_VALUES,
+    payload: values
+  };
+}
