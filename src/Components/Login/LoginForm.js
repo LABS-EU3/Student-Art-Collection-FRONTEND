@@ -89,7 +89,7 @@ const LoginForm = ({ isLoading }) => {
       </StyledForm>
       <SocialAuthButton
         isSchool={false}
-        url={baseURL + 'auth/google'}
+        url={baseURL+'/auth/google'}
       />
     </StyledDiv>
   );

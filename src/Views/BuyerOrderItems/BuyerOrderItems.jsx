@@ -10,7 +10,6 @@ import {
 	BuyerItemsContainer,
 	MainContainer,
 	ButtonsContainer,
-	MainButtonsContainer,
 	CustomButtonWrapper
 } from './BuyerOrderItemsStyle';
 
@@ -22,41 +21,34 @@ function BuyerOrderItems (props){
 	const [ artSold, setArtSold ] = useState(null);
     const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
-	console.log(props);
 	useEffect(() => {
 		const orderStatus = status ? status : 'all';
 		axiosWithBase()
-			.get(`/art/sold/order/${id}?status=${orderStatus}`)
+			.get(`/art/sold/order/buyer/${id}?status=${orderStatus}`)
 			.then((res) => setArtSold(res.data))
-			.catch((err) => toast.error('could not fetch items'));
+			.catch(() => toast.error('could not fetch items'));
 	}, [status]);
 
 	console.log(artSold);
 
 	return (
 		<MainContainer>
-			<MainButtonsContainer>
 				<ButtonsContainer>
-				<CustomButtonWrapper>
-					{/* <BuyerButtons /> */}
+					<CustomButtonWrapper>
 						<CustomButton status="all">All</CustomButton>
 						<CustomButton status="pending">Pending</CustomButton>
 						<CustomButton status="sent">Sent</CustomButton>
-						</CustomButtonWrapper>
-					{/* <BuyerButton status="all">All</BuyerButton>
-				<BuyerButton>Pending</BuyerButton>
-				<BuyerButton>Sent</BuyerButton> */}
-					<hr className="line" />
+					</CustomButtonWrapper>
 				</ButtonsContainer>
-			</MainButtonsContainer>
-
 			<BuyerItemsContainer>
 				{artSold ? artSold.length === 0 ? (
 					<h1 className="not-sold">You haven't ordered any art</h1>
 				) : (
 					artSold.map((art) => <BuyerItem art={art} />)
 				) : (
-					<Spinner />
+					<div style={{display:'flex', justifyContent: 'flex-end'}}>
+						<Spinner />
+					</div>
 				)}
 				<ToastContainer
 					position="bottom-center"

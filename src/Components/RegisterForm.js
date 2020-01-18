@@ -51,7 +51,7 @@ export function RegisterForm(props) {
             props.history.push('/confirmation');
           })
           .catch(err => {
-            toast.error(err.response.statusText);
+            toast.error("There was an error");
             actions.setSubmitting(false);
             props.loadingFinished();
           });
@@ -182,7 +182,7 @@ export function RegisterForm(props) {
 
             <SocialAuthButton
               isSchool={props.isSchool}
-              url={baseURL + 'auth/google'}
+              url={baseURL+'/auth/google'}
             />
             <ToastContainer
               position="top-center"

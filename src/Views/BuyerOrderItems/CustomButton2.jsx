@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { CustomButton2, CustomButtonWrapper } from './BuyerOrderItemsStyle';
 
 function CustomButton (props){
-	const path = `/selling/sold?status=${props.status}`;
-	// return <CustomButton2 href={`/selling/sold?status=${props.status}`} />;
+	const path = `/myaccount/orders?status=${props.status}`;
 	return (
 		<CustomButtonWrapper>
 		<CustomButton2
