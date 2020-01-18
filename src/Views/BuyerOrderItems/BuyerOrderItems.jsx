@@ -29,8 +29,6 @@ function BuyerOrderItems (props){
 			.catch(() => toast.error('could not fetch items'));
 	}, [status]);
 
-	console.log(artSold);
-
 	return (
 		<MainContainer>
 				<ButtonsContainer>
