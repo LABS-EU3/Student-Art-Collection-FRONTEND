@@ -9,7 +9,7 @@ function SellingNav() {
         <DashNavStyle>
             <div>
                 <nav>
-                    <NavLink exact to='/selling'>Selling</NavLink>
+                    <NavLink exact to='/selling/forsale'>Selling</NavLink>
                     <NavLink exact to='/selling/sold'>Sold</NavLink>
                     <NavLink to='/selling/messages'>Messages</NavLink>
                     <NavLink to='/selling/help'>Help</NavLink>
