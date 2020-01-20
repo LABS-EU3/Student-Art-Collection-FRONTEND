@@ -4,7 +4,6 @@ import {NavLink} from 'react-router-dom';
 export const MainContainer = styled.section`
 	width: 90%;
 	height: 90%;
-	border: 1px solid red;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Roboto', sans-serif;
@@ -12,7 +11,7 @@ export const MainContainer = styled.section`
 
 export const StyledButtonContainer = styled.div`
 width: 100%
-height: 5rem;
+height: 10%;
 border-bottom: 1px solid rgba(0,0,0,0.1);
 display: flex;
 justify-content: space-evenly;
@@ -38,36 +37,36 @@ export const StyledButton = styled(NavLink)`
 }
 `;
 
-export const BuyerItemsContainer = styled.section`
-	overflow-y: scroll;
-	display: flex;
-	position: absolute;
-	top: 25%;
-	flex-wrap: wrap;
-	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	.not-sold {
-		font-size: 17px;
+export const StyledOrderContainer = styled.div`
+width: 100%;
+height: 90%;
+overflow-y: scroll;
+
+	.nothing{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2rem;
 	}
-`;
+`
 
 export const CollectionItemContainer = styled.div`	
 	 max-height: auto;
 	-ms-flex: auto;
 	background: #ffffff;
-	box-shadow: 0px 6px 18px rgba(0,0,0,.1);
+	box-shadow: 0px 6px 18px rgba(0,0,0,.06);
 	width: 100%;
 	max-width: 250px;
 	margin: 2em;
 	padding: 2em;
-	border-radius: 10px;
 	display:inline-block;
 	border: 1px solid rgba(0, 0, 0, 0.02);
 	font-family: 'Roboto', sans-serif;
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,0.5);
 	&:hover {
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.05);
     };
     img {
      max-width: 100%;
