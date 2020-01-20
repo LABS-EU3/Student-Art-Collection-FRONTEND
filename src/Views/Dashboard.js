@@ -47,8 +47,8 @@ function Dashboard (){
 				<Route path="/selling" component={SellingNav} />
 				<div className="right-side">
 					<Route exact path="/myaccount" component={Profile} />
-					<Route exact path= "/myaccount/orders" component={BuyerOrderItems}/>
-					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
+					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
+					<Route path="/selling/sold" component={SchoolsSoldItems} />
 				</div>
 			</div>
 		</DashboardContainer>

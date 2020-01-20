@@ -2,10 +2,39 @@ import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 
 export const MainContainer = styled.section`
-	box-sizing: border-box;
 	width: 90%;
-	padding: 1rem;
+	height: 90%;
+	border: 1px solid red;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
 `;
+
+export const StyledButtonContainer = styled.div`
+width: 100%
+height: 5rem;
+border-bottom: 1px solid rgba(0,0,0,0.1);
+display: flex;
+justify-content: space-evenly;
+align-items: flex-end;
+
+a {
+	text-align: center;
+	transition: color 0.2s ease-in-out;
+	border-bottom: 1px solid white;
+	font-size: 1.5rem;
+	color: rgba(0,0,0,0.5);
+	&:hover {
+		color: rgba(0,0,0,0.8);
+		transition: color 0.2s ease-in-out;
+	}
+}
+
+.active {
+	color: rgba(0,0,0,1);
+	border-bottom: 1px solid black;
+}
+`
 
 export const BuyerItemsContainer = styled.section`
 	overflow-y: scroll;

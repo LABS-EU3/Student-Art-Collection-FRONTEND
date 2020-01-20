@@ -4,13 +4,16 @@ import queryString from 'query-string';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { NavLink } from 'react-router-dom';
+
 import { axiosWithBase } from '../../AxiosCustom';
 
 import {
 	BuyerItemsContainer,
 	MainContainer,
 	ButtonsContainer,
-	CustomButtonWrapper
+	CustomButtonWrapper,
+	StyledButtonContainer
 } from './BuyerOrderItemsStyle';
 
 import Spinner from '../../Components/Spinner';
@@ -31,36 +34,11 @@ function BuyerOrderItems (props){
 
 	return (
 		<MainContainer>
-				<ButtonsContainer>
-					<CustomButtonWrapper>
-						<CustomButton status="all">All</CustomButton>
-						<CustomButton status="pending">Pending</CustomButton>
-						<CustomButton status="sent">Sent</CustomButton>
-					</CustomButtonWrapper>
-				</ButtonsContainer>
-			<BuyerItemsContainer>
-				{artSold ? artSold.length === 0 ? (
-					<h1 className="not-sold">You haven't ordered any art</h1>
-				) : (
-					artSold.map((art) => <BuyerItem art={art} />)
-				) : (
-					<div style={{display:'flex', justifyContent: 'flex-end'}}>
-						<Spinner />
-					</div>
-				)}
-				<ToastContainer
-					position="bottom-center"
-					autoClose={3000}
-					pauseOnVisibilityChange
-					draggable
-					pauseOnHover
-					closeButton={false}
-					style={{
-						fontSize: '1.3rem',
-						textAlign: 'center',
-					}}
-				/>
-			</BuyerItemsContainer>
+			<StyledButtonContainer>
+				<NavLink to='/myaccount/orders/all'>All</NavLink>
+				<NavLink to='/myaccount/orders/pending' >Pending</NavLink>
+				<NavLink to='/myaccount/orders/sent' >Sent</NavLink>
+			</StyledButtonContainer>
 		</MainContainer>
 	);
 }
