@@ -15,6 +15,10 @@ function Filter(props) {
         props.setSearchValues(inputs)
     }
 
+    const reset = () => {
+        props.setSearchValues({ search: '', type: 'name' });
+    }
+
     return (
         <StyledHero style={props.browseArtState.filterBarOpen ? openBarStyling : null}>
             <input type="text" name="search" onChange={changeHandler} value={inputs.search} placeholder="Search by..." />
@@ -27,6 +31,7 @@ function Filter(props) {
                 <option value="style">Style</option>
             </select>
             <button onClick={submit}>Search</button>
+            <button id="reset" onClick={reset}>Reset</button>
         </StyledHero>
     )
 }
