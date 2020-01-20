@@ -40,7 +40,7 @@ function ArtViewModal(props) {
                         <div className='cont'>
                             <div className="title">
                             <h1>{props.browseArtState.artInModal.name}</h1>
-                            <h2>by {props.browseArtState.artInModal.artist ? props.browseArtState.artInModal.picture : 'Anonymous'}</h2>
+                            <h2>by {props.browseArtState.artInModal.artistName ? props.browseArtState.artInModal.artistName : 'Anonymous'}</h2>
                             </div>
                             <div className="about">
                                 {props.browseArtState.artInModal.description ? props.browseArtState.artInModal.description : "No description provided"}
