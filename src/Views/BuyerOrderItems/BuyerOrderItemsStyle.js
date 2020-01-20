@@ -100,8 +100,9 @@ export const CollectionItemContainer = styled.div`
 h3 {
     opacity: 0.5;
     margin-bottom: 0.4rem;
-    font-size: 1.2rem;
+	font-size: 1.2rem;
 }
+
 h3:nth-child(4) {
 		color: green;
 	}

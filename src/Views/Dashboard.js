@@ -9,6 +9,7 @@ import Profile from '../Components/DashboardComponents/Profile';
 import SellingNav from '../Components/SellingDashboardComponents/SellingNav';
 import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
+import SchoolSelling from './SchoolSellingItems/SchoolSelling';
 
 const DashboardContainer = styled.div`
 	width: 100vw;
@@ -48,7 +49,8 @@ function Dashboard (){
 				<div className="right-side">
 					<Route exact path="/myaccount" component={Profile} />
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
-					<Route path="/selling/sold" component={SchoolsSoldItems} />
+					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
+					<Route exact path="/selling" component={SchoolSelling} />
 				</div>
 			</div>
 		</DashboardContainer>
