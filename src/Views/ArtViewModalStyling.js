@@ -184,6 +184,37 @@ width: 80vw;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+
+  .img-cont {
+    width: 40%;
+    margin-top: 2rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+    max-width: 80%;
+  }
+
+  p {
+    width: 60%;
+    font-size: 1.6rem;
+    margin: 2rem 0 10rem 0;
+    line-height: 2rem;
+    text-align: center;
+
+     span {
+       color: red;
+     }
+  }
 
   @media(max-width:700px) {
     width: 95vw;

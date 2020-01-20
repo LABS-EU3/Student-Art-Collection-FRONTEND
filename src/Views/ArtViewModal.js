@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { StyledModal, openModalStyling } from './ArtViewModalStyling';
 import { Route } from 'react-router-dom';
 import Spinner from '../Components/Spinner';
@@ -36,13 +38,13 @@ function ArtViewModal(props) {
             setRequestingPurchase(true);
             axiosWithBase()
                 .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)
-                .then(res => {
+                .then(() => {
                     setRequestingPurchase(false);
-                    console.log(res.data);
+                    props.history.push('/browse/success');
                 })
                 .catch(err => {
                     setRequestingPurchase(false);
-                    console.log(err);
+                    toast.error("There was a problem with your purchase")
                 })
         }
         else {
@@ -64,8 +66,25 @@ function ArtViewModal(props) {
 
     return (
         <>
-        <Route exact path="/browse" render={props => <DisplayArt {...props} closeModal={closeModal} clickBuy={clickBuy} /> }/> 
-        <Route exact path="/browse/success" render={props => <SuccessfulPurchase {...props} closeModal={closeModal} /> }/> 
+            <Route
+                exact path="/browse"
+                render={props => <DisplayArt
+                    {...props}
+                    closeModal={closeModal}
+                    clickBuy={clickBuy} />}
+            />
+            <Route
+                exact path="/browse/success"
+                render={props => <SuccessfulPurchase
+                    {...props}
+                    closeModal={closeModal}
+                />} />
+            <ToastContainer
+                position="bottom-center"
+                bodyClassName="toast"
+                autoClose={3000}
+                closeButton={false}
+            />
         </>
     )
 
