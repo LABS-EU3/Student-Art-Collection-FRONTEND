@@ -29,6 +29,10 @@ a {
 		color: rgba(0,0,0,0.8);
 		transition: color 0.2s ease-in-out;
 	}
+
+	@media(max-width:480px){
+		font-size: 1.1rem;
+	}
 }
 
 .active {
