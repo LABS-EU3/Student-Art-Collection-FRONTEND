@@ -9,6 +9,7 @@
     "axios": "^0.19.0",
     "eslint-config-react-app": "^5.1.0",
     "formik": "^2.0.8",
+    "jest-mock-axios": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "query-string": "^6.9.0",
     "react": "^16.12.0",

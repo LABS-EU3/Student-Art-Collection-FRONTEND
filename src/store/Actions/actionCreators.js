@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 
+
 // This is a dummy action to check that redux has been properly set. It can safely be deleted when starting to build the app
 
 export function increment() {
