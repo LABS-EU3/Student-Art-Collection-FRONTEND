@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
 import { StyledModal, openModalStyling } from './ArtViewModalStyling';
+import Spinner from '../Components/Spinner';
+import { axiosWithBase } from '../AxiosCustom';
 
 function ArtViewModal(props) {
-
+    const [requestingPurchase, setRequestingPurchase] = useState(false);
 
     const closeModal = e => {
         if (e.target.className === 'close') {
@@ -16,12 +18,42 @@ function ArtViewModal(props) {
     }
 
     const clickBuy = () => {
-        if (props.loggedInUser.userId) {
-            console.log(props.loggedInUser);
+        if (props.loggedInUser._id) {
+            const details = {
+                buyerId: props.loggedInUser._id,
+                SchoolId: props.browseArtState.artInModal.userId,
+                quantity: 1,
+                totalAmount: props.browseArtState.artInModal.price,
+                status: "completed"
+            }
+
+            setRequestingPurchase(true);
+            axiosWithBase()
+                .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)
+                .then(res => {
+                    setRequestingPurchase(false);
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    setRequestingPurchase(false);
+                    console.log(err);
+                })
         }
         else {
             props.history.push('/login');
         }
+    }
+
+    if (requestingPurchase) {
+        return (
+            <StyledModal >
+                <div className='close' style={props.browseArtState.artModalOpen ? openModalStyling : null} onClick={closeModal}>
+                    <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center' }} className='modal'>
+                        <Spinner />
+                    </div>
+                </div>
+            </StyledModal>
+        )
     }
 
     return (
@@ -48,13 +80,13 @@ function ArtViewModal(props) {
                             <div className="price">
                                 <h3>£{props.browseArtState.artInModal.price}.00</h3>
                                 <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
-                                <h5>Quantity: {props.browseArtState.artInModal.quantity ? props.browseArtState.artInModal.quantity : "Out of Stock"}</h5>
+                                <h5>Quantity: {props.browseArtState.artInModal.quantity < 1 || props.browseArtState.artInModal.quantity === null  ? "Out of Stock" : props.browseArtState.artInModal.quantity}</h5>
                             </div>
                             <button
-                                style={props.loggedInUser.type === 'school' ? { backgroundColor: 'grey', cursor: 'not-allowed' } : null}
-                                onClick={props.loggedInUser.type !== 'school' ? clickBuy : null}
+                                style={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? { backgroundColor: 'grey', cursor: 'not-allowed' } : null}
+                                onClick={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? null : clickBuy}
                                 title={props.loggedInUser.type === 'school' ? "Schools cannot buy art." : null}
-                                >
+                            >
                                 Buy
                                 </button>
                         </div>
@@ -66,12 +98,3 @@ function ArtViewModal(props) {
 }
 
 export default connect(state => state, actionCreators)(ArtViewModal);
-
-
-
-
-// <img src={props.browseArtState.artInModal.picture} alt="temporary" />
-//                 <h1>{props.browseArtState.artInModal.name}</h1>
-//                 <h1>{props.browseArtState.artInModal.price}</h1>
-//                 <h1>{props.browseArtState.artInModal.height}</h1>
-//                 <h1>{props.browseArtState.artInModal.width}</h1>
