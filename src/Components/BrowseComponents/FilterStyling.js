@@ -80,7 +80,7 @@ transition: height 0.3s ease-in-out;
     button {
         width: 180px;
         height: 45px;
-        margin: 0 30px;
+        margin: 0 20px;
         background-color: #ff6347;
         color: white;
         border: none;
@@ -99,6 +99,11 @@ transition: height 0.3s ease-in-out;
         &:focus {
             outline: none;
             border: none;
+        }
+
+        &#reset {
+            width:100px;
+            margin: 0;
         }
 `
 
