@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import styled from 'styled-components';
-import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
 import EditForm from '../Test';
+import {MainContainer,StyledOrderContainer,CollectionItemContainer, SellingSection} from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
 
 const customStyles = {
   content: {
@@ -21,15 +20,6 @@ const customStyles = {
   }
 };
 
-const StyledDiv = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  /* .photo-container {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-  } */
-`;
 
 Modal.setAppElement('body');
 
@@ -56,31 +46,45 @@ function ArtForSale(props) {
       .catch(() => {
         toast.error('cannot get art')
       });
-  }, [artForSale]);
+  }, [modalIsOpen]);
 
   return (
-    <StyledDiv>
+    <MainContainer>
       {artForSale ? (
         artForSale.length ? (
           artForSale.map(art => {
             return (
               <>
-                <StyledBox>
-                  <img src={art.picture} alt={art.name} />
-                  <div className="art-info">
-                    <h2>{art.name}</h2>
-                    <h3>{art.artistName}</h3>
-                    <h3>{`${art.height} x ${art.width}`}</h3>
-                    <h2>${art.price}</h2>
-                  </div>
-                  <button onClick={openModal}>Edit</button>
-                </StyledBox>
+                <StyledOrderContainer key={art.name}>
+                  <CollectionItemContainer>
+                    <div className="order-img">
+                      <img src={art.picture} alt={art.name} />
+                    </div>
+                    <SellingSection>
+                    <div>
+                      <span>{art.name}</span>
+                      <span>{art.artistName}</span>
+                    </div>
+                    <div>
+                      <span>{`${art.height} x ${art.width}`}</span>
+                      <span>${art.price}</span>
+                    </div>
+                    </SellingSection>
+                    <button onClick={openModal}>Edit</button>
+                  </CollectionItemContainer>
+                 
+                 
+                </StyledOrderContainer>
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
                   style={customStyles}
                 >
-                  <EditForm editArt={art} />
+                  <EditForm 
+                    editArt={art} 
+                    onRequestClose={closeModal}
+
+                  />
                 </Modal>
               </>
             );
@@ -105,7 +109,7 @@ function ArtForSale(props) {
             'text-align': 'center'
           }}
       />
-    </StyledDiv>
+    </MainContainer>
   );
 }
 

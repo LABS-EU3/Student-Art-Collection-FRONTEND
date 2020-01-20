@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { StyledModal, openModalStyling } from './ArtViewModalStyling';
+import { Route } from 'react-router-dom';
+import Spinner from '../Components/Spinner';
+import DisplayArt from '../Components/BuyModalComponents/DisplayArtModal';
+import SuccessfulPurchase from '../Components/BuyModalComponents/SuccessfulPurchase';
+import { axiosWithBase } from '../AxiosCustom';
+
+
 
 function ArtViewModal(props) {
-
+    const [requestingPurchase, setRequestingPurchase] = useState(false);
 
     const closeModal = e => {
         if (e.target.className === 'close') {
             props.toggleViewModal(!props.browseArtState.artModalOpen)
+            props.history.push('/browse')
         }
         else {
             return null;
@@ -16,56 +26,68 @@ function ArtViewModal(props) {
     }
 
     const clickBuy = () => {
-        if(props.loggedInUser.userId){
-            console.log("Art has been bought!")
+        if (props.loggedInUser._id) {
+            const details = {
+                buyerId: props.loggedInUser._id,
+                SchoolId: props.browseArtState.artInModal.userId,
+                quantity: 1,
+                totalAmount: props.browseArtState.artInModal.price,
+                status: "completed"
+            }
+
+            setRequestingPurchase(true);
+            axiosWithBase()
+                .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)
+                .then(() => {
+                    setRequestingPurchase(false);
+                    props.history.push('/browse/success');
+                })
+                .catch(err => {
+                    setRequestingPurchase(false);
+                    toast.error("There was a problem with your purchase")
+                })
         }
         else {
             props.history.push('/login');
         }
     }
 
-    return (
-        <StyledModal >
-            <div className='close' style={props.browseArtState.artModalOpen ? openModalStyling : null} onClick={closeModal}>
-                <div className='modal'>
-                    <div className="left-modal">
-                        <div className='cont'>
-                            <img
-                                src={props.browseArtState.artInModal.picture}
-                                alt={props.browseArtState.artInModal.name}
-                            />
-                        </div>
-                    </div>
-                    <div className="right-modal">
-                        <div className='cont'>
-                            <div className="title">
-                            <h1>{props.browseArtState.artInModal.name}</h1>
-                            <h2>by {props.browseArtState.artInModal.artist ? props.browseArtState.artInModal.picture : 'Anonymous'}</h2>
-                            </div>
-                            <div className="about">
-                                {props.browseArtState.artInModal.description ? props.browseArtState.artInModal.description : "No description provided"}
-                            </div>
-                            <div className="price">
-                            <h3>£{props.browseArtState.artInModal.price}.00</h3>
-                            <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
-                            <h5>Quantity: {props.browseArtState.quantity ? props.browseArtState.quantity : "Out of Stock"}</h5>
-                            </div>
-                            <button onClick={clickBuy}>Buy</button>
-                        </div>
+    if (requestingPurchase) {
+        return (
+            <StyledModal >
+                <div className='close' style={props.browseArtState.artModalOpen ? openModalStyling : null} onClick={closeModal}>
+                    <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center' }} className='modal'>
+                        <Spinner />
                     </div>
                 </div>
-            </div>
-        </StyledModal>
+            </StyledModal>
+        )
+    }
+
+    return (
+        <>
+            <Route
+                exact path="/browse"
+                render={props => <DisplayArt
+                    {...props}
+                    closeModal={closeModal}
+                    clickBuy={clickBuy} />}
+            />
+            <Route
+                exact path="/browse/success"
+                render={props => <SuccessfulPurchase
+                    {...props}
+                    closeModal={closeModal}
+                />} />
+            <ToastContainer
+                position="bottom-center"
+                bodyClassName="toast"
+                autoClose={3000}
+                closeButton={false}
+            />
+        </>
     )
+
 }
 
 export default connect(state => state, actionCreators)(ArtViewModal);
-
-
-
-
-// <img src={props.browseArtState.artInModal.picture} alt="temporary" />
-//                 <h1>{props.browseArtState.artInModal.name}</h1>
-//                 <h1>{props.browseArtState.artInModal.price}</h1>
-//                 <h1>{props.browseArtState.artInModal.height}</h1>
-//                 <h1>{props.browseArtState.artInModal.width}</h1>

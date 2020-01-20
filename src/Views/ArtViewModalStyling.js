@@ -148,10 +148,20 @@ display: none
         font-size: 2rem;
         padding: 0.6rem 5rem;
         cursor: pointer;
+
+        &:focus {
+          outline: none;
+          border: none
+        }
         &:hover {
           opacity: 0.7;
           transition: opacity 0.1s ease-in-out;
         }
+        }
+
+        &:focus {
+          outline: none;
+          border: none
         }
       }
       }
@@ -163,3 +173,53 @@ display: none
 export const openModalStyling = {
   display: 'flex'
 };
+
+export const StyledSuccessfulModal = styled.div`
+width: 80vw;
+  height: 80vh;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+
+  .img-cont {
+    width: 40%;
+    margin-top: 2rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+    max-width: 80%;
+  }
+
+  p {
+    width: 60%;
+    font-size: 1.6rem;
+    margin: 2rem 0 10rem 0;
+    line-height: 2rem;
+    text-align: center;
+
+     span {
+       color: red;
+     }
+  }
+
+  @media(max-width:700px) {
+    width: 95vw;
+    height: 95vh;
+    flex-direction: column;
+    align-items: center;
+  }
+`

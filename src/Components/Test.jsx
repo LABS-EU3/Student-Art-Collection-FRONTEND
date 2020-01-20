@@ -16,7 +16,7 @@ import {
 } from './UploadArt Component/UploadArtFormStyle';
 
 
-const Test = ({editArt}) => {
+const Test = ({editArt, onRequestClose}) => {
   const initialValues = {
     name: editArt.name,
     artistName: editArt.artistName,
@@ -35,6 +35,7 @@ const Test = ({editArt}) => {
     axiosWithBase()
       .put(`/art/edit/${editArt._id}`, values)
         .then(() =>{
+          onRequestClose()
           toast.success('product updated succesfully')
         })
         .catch(() =>{
