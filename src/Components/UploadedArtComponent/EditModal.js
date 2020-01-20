@@ -34,7 +34,7 @@ function UploadModal(props){
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          style={customStyles}
+          // style={customStyles}
         >
           <EditArtForm art={props.art} closeModal={closeModal}/>
         </Modal>
