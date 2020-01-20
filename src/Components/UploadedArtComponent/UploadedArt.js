@@ -5,6 +5,7 @@ import EditModal from './EditModal';
 import Modal from 'react-modal';
 import { Button } from './EditModalStyle';
 import EditArtForm from './EditArtForm';
+import { Formik } from 'formik';
 
 import styled from 'styled-components';
 
@@ -36,6 +37,7 @@ Modal.setAppElement('body');
 function ArtForSale(props) {
   const [artForSale, setArtForSale] = useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
   function openModal() {
     setIsOpen(true);
   }
@@ -50,15 +52,19 @@ function ArtForSale(props) {
     axiosWithBase()
       .get(`/art/selling/${id}`)
       .then(res => {
-        debugger;
+        // debugger;
         setArtForSale(res.data);
         console.log(res);
-        debugger;
+        // debugger;
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
+
+  const editArtHandle = values => {
+    debugger;
+  };
 
   return (
     <StyledDiv>
@@ -76,8 +82,17 @@ function ArtForSale(props) {
                   onRequestClose={closeModal}
                   style={customStyles}
                 >
-                  <h3>Hello you there</h3>
-                  {/* <EditArtForm art={art} closeModal={closeModal}/> */}
+                  {/* <h3>Hello you there</h3> */}
+                  {/* <Formik
+                    initialValues={art}
+                    onSubmit={editArtHandle}
+                    component={EditArtForm}
+                  /> */}
+                  <EditArtForm
+                    art={art}
+                    closeModal={closeModal}
+                    editArtHandle={editArtHandle}
+                  />
                 </Modal>
               </>
             );
