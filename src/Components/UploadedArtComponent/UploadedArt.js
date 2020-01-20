@@ -9,6 +9,7 @@ import { Formik } from 'formik';
 
 import styled from 'styled-components';
 import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
+import Test from '../Test';
 
 const customStyles = {
   content: {
@@ -38,9 +39,11 @@ Modal.setAppElement('body');
 function ArtForSale(props) {
   const [artForSale, setArtForSale] = useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [editArt, setEditArt] = useState(null);
 
-  function openModal() {
+  function openModal(art) {
     setIsOpen(true);
+    setEditArt(art);
   }
 
   function closeModal() {
@@ -83,7 +86,7 @@ function ArtForSale(props) {
                     <h3>{`${art.height} x ${art.width}`}</h3>
                     <h2>£{art.price}</h2>
                   </div>
-                  <button onClick={openModal}>Edit</button>
+                  <button onClick={() => openModal(art)}>Edit</button>
                 </StyledBox>
                 <Modal
                   isOpen={modalIsOpen}
@@ -96,11 +99,12 @@ function ArtForSale(props) {
                     onSubmit={editArtHandle}
                     component={EditArtForm}
                   /> */}
-                  <EditArtForm
+                  {/* <EditArtForm
                     art={art}
                     closeModal={closeModal}
                     editArtHandle={editArtHandle}
-                  />
+                  /> */}
+                  <Test editArt={editArt} />
                 </Modal>
               </>
             );
