@@ -8,6 +8,7 @@ import EditArtForm from './EditArtForm';
 import { Formik } from 'formik';
 
 import styled from 'styled-components';
+import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
 
 const customStyles = {
   content: {
@@ -25,11 +26,11 @@ const customStyles = {
 const StyledDiv = styled.div`
   display: flex;
   flex-flow: row wrap;
-  .photo-container {
+  /* .photo-container {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-  }
+  } */
 `;
 
 Modal.setAppElement('body');
@@ -71,12 +72,19 @@ function ArtForSale(props) {
       {artForSale ? (
         artForSale.length ? (
           artForSale.map(art => {
+            debugger;
             return (
               <>
-                <div className="photo-container">
-                  <img src={art.picture} alt="art" />
+                <StyledBox>
+                  <img src={art.picture} alt={art.name} />
+                  <div className="art-info">
+                    <h2>{art.name}</h2>
+                    <h3>{art.artistName}</h3>
+                    <h3>{`${art.height} x ${art.width}`}</h3>
+                    <h2>£{art.price}</h2>
+                  </div>
                   <button onClick={openModal}>Edit</button>
-                </div>
+                </StyledBox>
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
