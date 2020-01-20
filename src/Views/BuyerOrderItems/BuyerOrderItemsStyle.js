@@ -20,6 +20,7 @@ align-items: flex-end;
 
 a {
 	text-align: center;
+	width: 15%;
 	transition: color 0.2s ease-in-out;
 	border-bottom: 1px solid white;
 	font-size: 1.5rem;
