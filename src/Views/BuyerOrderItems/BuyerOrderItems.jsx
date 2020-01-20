@@ -4,15 +4,10 @@ import queryString from 'query-string';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { NavLink } from 'react-router-dom';
-
 import { axiosWithBase } from '../../AxiosCustom';
 
 import {
-	BuyerItemsContainer,
 	MainContainer,
-	ButtonsContainer,
-	CustomButtonWrapper,
 	StyledButtonContainer,
 	StyledOrderContainer
 } from './BuyerOrderItemsStyle';
@@ -27,7 +22,6 @@ function BuyerOrderItems(props) {
 	const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
 	useEffect(() => {
-		setSpinning(true);
 		const orderStatus = status ? status : 'all';
 		axiosWithBase()
 			.get(`/art/sold/order/buyer/${id}?status=${orderStatus}`)
@@ -38,7 +32,7 @@ function BuyerOrderItems(props) {
 			})
 			.catch(() => {
 				setSpinning(false);
-				toast.error('could not fetch items');
+				toast.error('Could not retrieve your orders');
 			});
 	}, [status]);
 	if (!spinner) {
@@ -55,12 +49,18 @@ function BuyerOrderItems(props) {
 						: <div className="nothing">Nothing here yet</div>
 					}
 				</StyledOrderContainer>
+				<ToastContainer
+					position="bottom-center"
+					bodyClassName="toast"
+					autoClose={3000}
+					closeButton={false}
+				/>
 			</MainContainer>
 		);
 	}
 
 	return (
-			<Spinner />
+		<Spinner />
 	);
 }
 

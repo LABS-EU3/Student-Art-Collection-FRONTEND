@@ -7,17 +7,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import { axiosWithBase } from '../../AxiosCustom';
 
 import {
-	SchoolsCollectionContainer,
 	MainContainer,
-	ButtonsContainer,
-	CustomButtonWrapper,
-} from './SchoolsSoldItemsStyle';
+	StyledButtonContainer,
+	StyledOrderContainer
+} from '../BuyerOrderItems/BuyerOrderItemsStyle';
 import Spinner from '../../Components/Spinner';
 import CollectionItem from './CollectionItem';
 import CustomButton from './CustomButton';
 
-function SchoolsSoldItems (props){
-	const [ artSold, setArtSold ] = useState(null);
+function SchoolsSoldItems(props) {
+	const [artSold, setArtSold] = useState([]);
+	const [spinner, setSpinning] = useState(true);
 	const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
 	useEffect(
@@ -25,46 +25,43 @@ function SchoolsSoldItems (props){
 			const orderStatus = status ? status : 'all';
 			axiosWithBase()
 				.get(`/art/sold/order/${id}?status=${orderStatus}`)
-				.then((res) => setArtSold(res.data))
-				.catch((err) => toast.error('could not fetch items'));
+				.then((res) => {
+					setSpinning(false);
+					setArtSold(res.data);
+				})
+				.catch(() => {
+					toast.error('Could not retrieve your items')
+					setSpinning(false)
+				});
 		},
-		[ status ],
+		[status],
 	);
-
-	return (
-		<MainContainer>
-			<ButtonsContainer>
-				<CustomButtonWrapper>
+	if (!spinner) {
+		return (
+			<MainContainer>
+				<StyledButtonContainer>
 					<CustomButton status="all">All</CustomButton>
 					<CustomButton status="pending">Pending</CustomButton>
 					<CustomButton status="sent">Sent</CustomButton>
-				</CustomButtonWrapper>
-			</ButtonsContainer>
-
-			<SchoolsCollectionContainer>
-				{artSold ? artSold.length === 0 ? (
-					<h1 className="not-sold">You haven't ordered any art</h1>
-				) : (
-					artSold.map((art) => <CollectionItem art={art} key={art._id}/>)
-				) : (
-					<div style={{display:'flex', justifyContent: 'flex-end'}}>
-						<Spinner />
-					</div>
-				)}
+				</StyledButtonContainer>
+				<StyledOrderContainer>
+					{artSold.length > 0
+						? artSold.map((art) => <CollectionItem art={art} />)
+						: <div className="nothing">Nothing here yet</div>
+					}
+				</StyledOrderContainer>
 				<ToastContainer
 					position="bottom-center"
+					bodyClassName="toast"
 					autoClose={3000}
-					pauseOnVisibilityChange
-					draggable
-					pauseOnHover
 					closeButton={false}
-					style={{
-						fontSize: '1.3rem',
-						textAlign: 'center',
-					}}
 				/>
-			</SchoolsCollectionContainer>
-		</MainContainer>
+			</MainContainer>
+		);
+	}
+
+	return (
+		<Spinner />
 	);
 }
 
