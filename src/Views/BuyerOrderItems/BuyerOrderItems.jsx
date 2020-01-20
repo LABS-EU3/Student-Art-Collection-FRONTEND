@@ -20,9 +20,9 @@ import Spinner from '../../Components/Spinner';
 import BuyerItem from './BuyerItem';
 import CustomButton from './CustomButton2'
 
-function BuyerOrderItems (props){
-	const [ artSold, setArtSold ] = useState(null);
-    const { status } = queryString.parse(props.location.search);
+function BuyerOrderItems(props) {
+	const [artSold, setArtSold] = useState(null);
+	const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
 	useEffect(() => {
 		const orderStatus = status ? status : 'all';
@@ -35,9 +35,12 @@ function BuyerOrderItems (props){
 	return (
 		<MainContainer>
 			<StyledButtonContainer>
-				<NavLink to='/myaccount/orders/all'>All</NavLink>
-				<NavLink to='/myaccount/orders/pending' >Pending</NavLink>
-				<NavLink to='/myaccount/orders/sent' >Sent</NavLink>
+				{/* <NavLink to='/myaccount/orders/?status=all'>All</NavLink>
+				<NavLink to='/myaccount/orders/?status=pending' >Pending</NavLink>
+				<NavLink to='/myaccount/orders/?status=sent' >Sent</NavLink> */}
+				<CustomButton status="all">All</CustomButton>
+				<CustomButton status="pending">Pending</CustomButton>
+				<CustomButton status="sent">Sent</CustomButton>
 			</StyledButtonContainer>
 		</MainContainer>
 	);
