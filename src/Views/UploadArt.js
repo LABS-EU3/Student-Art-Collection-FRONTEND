@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik } from 'formik';
 import UploadArtForm  from '../Components/UploadArt Component/UploadArtForm';
 import * as yup from 'yup';
 import { axiosWithBase } from '../AxiosCustom';

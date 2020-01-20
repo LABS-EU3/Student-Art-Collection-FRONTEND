@@ -182,7 +182,7 @@ export function RegisterForm(props) {
 
             <SocialAuthButton
               isSchool={props.isSchool}
-              url={baseURL + 'auth/google'}
+              url={baseURL+'/auth/google'}
             />
             <ToastContainer
               position="top-center"
