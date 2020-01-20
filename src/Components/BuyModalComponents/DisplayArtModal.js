@@ -32,11 +32,11 @@ function DisplayArt(props) {
                                 <h5>Quantity: {props.browseArtState.artInModal.quantity < 1 || props.browseArtState.artInModal.quantity === null  ? "Out of Stock" : props.browseArtState.artInModal.quantity}</h5>
                             </div>
                             <button
-                                style={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? { backgroundColor: 'grey', cursor: 'not-allowed' } : null}
+                                style={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? { backgroundColor: 'grey', cursor: 'not-allowed'} : null}
                                 onClick={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? null : props.clickBuy}
                                 title={props.loggedInUser.type === 'school' ? "Schools cannot buy art." : null}
                             >   
-                            {props.loggedInUser._id ? 'Buy' : "Log in to purchase"}
+                            {props.loggedInUser._id ? 'Buy' : 'Log in to purchase'}
                                 </button>
                         </div>
                     </div>
