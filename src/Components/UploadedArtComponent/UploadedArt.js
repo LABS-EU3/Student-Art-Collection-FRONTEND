@@ -1,79 +1,95 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { axiosWithBase } from '../../AxiosCustom';
 import { connect } from 'react-redux';
-import EditModal from './EditModal'
+import EditModal from './EditModal';
 import Modal from 'react-modal';
 import { Button } from './EditModalStyle';
 import EditArtForm from './EditArtForm';
 
+import styled from 'styled-components';
+
 const customStyles = {
-  content : {
+  content: {
     width: '80%',
     height: '80%',
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
   }
 };
 
-Modal.setAppElement ("body");
+const StyledDiv = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  .photo-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+`;
 
+Modal.setAppElement('body');
 
-function ArtForSale (props) {
-    const [artForSale, setArtForSale] = useState(null);
-    const [modalIsOpen,setIsOpen] = React.useState(false);
-    function openModal() {
-        setIsOpen(true);
-    }
+function ArtForSale(props) {
+  const [artForSale, setArtForSale] = useState(null);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
 
-    function closeModal(){
-        setIsOpen(false);
-    }
-    const id = props.loggedInUser._id;
-    console.log(id)
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const id = props.loggedInUser._id;
+  console.log(id);
 
-    useEffect(() => {
-        axiosWithBase()
-        .get(`/art/selling/${id}`)
-        .then(res => {
-            debugger
-            setArtForSale(res.data)
-            console.log(res)
-            debugger
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }, []) 
-    
-    return(
-        <div>
-            {
-                artForSale ? artForSale.length ? artForSale.map(art => {
-                    return(
-                        <>
-                        <div>
-                            <img src={art.picture} alt="art" />
-                            <button onClick={openModal}>Edit</button>
-                        </div>
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
-                            style={customStyles}
-                            >
-                            <h3>Hello you there</h3>
-                            {/* <EditArtForm art={art} closeModal={closeModal}/> */}
-                        </Modal>
-                        </>
-                    )
-                }) : <h1> no art </h1>
-                : <h2>spinner</h2>
-            }
-        </div>
-    )
+  useEffect(() => {
+    axiosWithBase()
+      .get(`/art/selling/${id}`)
+      .then(res => {
+        debugger;
+        setArtForSale(res.data);
+        console.log(res);
+        debugger;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  return (
+    <StyledDiv>
+      {artForSale ? (
+        artForSale.length ? (
+          artForSale.map(art => {
+            return (
+              <>
+                <div className="photo-container">
+                  <img src={art.picture} alt="art" />
+                  <button onClick={openModal}>Edit</button>
+                </div>
+                <Modal
+                  isOpen={modalIsOpen}
+                  onRequestClose={closeModal}
+                  style={customStyles}
+                >
+                  <h3>Hello you there</h3>
+                  {/* <EditArtForm art={art} closeModal={closeModal}/> */}
+                </Modal>
+              </>
+            );
+          })
+        ) : (
+          <h1> no art </h1>
+        )
+      ) : (
+        <h2>spinner</h2>
+      )}
+    </StyledDiv>
+  );
 }
 
-export default connect((state) => state)(ArtForSale);
+export default connect(state => state)(ArtForSale);
