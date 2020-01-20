@@ -29,7 +29,7 @@ function UploadModal(){
   }
 
     return (
-      <div>
+      <>
         <Button onClick={openModal}>Upload Art</Button>
         <Modal
           isOpen={modalIsOpen}
@@ -38,7 +38,7 @@ function UploadModal(){
         >
           <UploadArt closeModal={closeModal}/>
         </Modal>
-      </div>
+      </>
     );
 }
 
