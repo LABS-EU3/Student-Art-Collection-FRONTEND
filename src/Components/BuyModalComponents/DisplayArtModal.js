@@ -35,8 +35,8 @@ function DisplayArt(props) {
                                 style={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? { backgroundColor: 'grey', cursor: 'not-allowed' } : null}
                                 onClick={props.loggedInUser.type === 'school' || props.browseArtState.artInModal.quantity < 1 ? null : props.clickBuy}
                                 title={props.loggedInUser.type === 'school' ? "Schools cannot buy art." : null}
-                            >
-                                Buy
+                            >   
+                            {props.loggedInUser._id ? 'Buy' : "Log in to purchase"}
                                 </button>
                         </div>
                     </div>
