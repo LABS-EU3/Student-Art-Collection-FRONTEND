@@ -28,7 +28,6 @@ function BuyerOrderItems(props) {
 			.then((res) => {
 				setSpinning(false);
 				setArtSold(res.data);
-				console.log(res.data);
 			})
 			.catch(() => {
 				setSpinning(false);
@@ -45,7 +44,7 @@ function BuyerOrderItems(props) {
 				</StyledButtonContainer>
 				<StyledOrderContainer>
 					{artSold.length > 0
-						? artSold.map((art) => <BuyerItem art={art} />)
+						? artSold.map((art) => <BuyerItem key={art._id} art={art} />)
 						: <div className="nothing">Nothing here yet</div>
 					}
 				</StyledOrderContainer>

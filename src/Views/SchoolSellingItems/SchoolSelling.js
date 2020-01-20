@@ -36,7 +36,7 @@ function SchoolSelling(props) {
 			<MainContainer>
 				<StyledOrderContainer>
 					{artSold.length > 0
-						? artSold.map((art) => <SchoolCollectionItem art={art} />)
+						? artSold.map((art) => <SchoolCollectionItem key={art._id} art={art} />)
 						: <div className="nothing">Nothing here yet</div>
 					}
 				</StyledOrderContainer>

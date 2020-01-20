@@ -2,7 +2,6 @@ import React from 'react';
 import { CollectionItemContainer } from '../SchoolsSoldItems/SchoolsSoldItemsStyle';
 
 function SchoolCollectionItem({ art }) {
-    console.log(art)
     return (
         <CollectionItemContainer>
             <div className="order-img">
