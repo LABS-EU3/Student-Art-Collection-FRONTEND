@@ -148,10 +148,20 @@ display: none
         font-size: 2rem;
         padding: 0.6rem 5rem;
         cursor: pointer;
+
+        &:focus {
+          outline: none;
+          border: none
+        }
         &:hover {
           opacity: 0.7;
           transition: opacity 0.1s ease-in-out;
         }
+        }
+
+        &:focus {
+          outline: none;
+          border: none
         }
       }
       }

@@ -16,8 +16,8 @@ function ArtViewModal(props) {
     }
 
     const clickBuy = () => {
-        if(props.loggedInUser.userId){
-            console.log("Art has been bought!")
+        if (props.loggedInUser.userId) {
+            console.log(props.loggedInUser);
         }
         else {
             props.history.push('/login');
@@ -39,18 +39,24 @@ function ArtViewModal(props) {
                     <div className="right-modal">
                         <div className='cont'>
                             <div className="title">
-                            <h1>{props.browseArtState.artInModal.name}</h1>
-                            <h2>by {props.browseArtState.artInModal.artistName ? props.browseArtState.artInModal.artistName : 'Anonymous'}</h2>
+                                <h1>{props.browseArtState.artInModal.name}</h1>
+                                <h2>by {props.browseArtState.artInModal.artistName ? props.browseArtState.artInModal.artistName : 'Anonymous'}</h2>
                             </div>
                             <div className="about">
                                 {props.browseArtState.artInModal.description ? props.browseArtState.artInModal.description : "No description provided"}
                             </div>
                             <div className="price">
-                            <h3>£{props.browseArtState.artInModal.price}.00</h3>
-                            <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
-                            <h5>Quantity: {props.browseArtState.artInModal.quantity ? props.browseArtState.artInModal.quantity : "Out of Stock"}</h5>
+                                <h3>£{props.browseArtState.artInModal.price}.00</h3>
+                                <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
+                                <h5>Quantity: {props.browseArtState.artInModal.quantity ? props.browseArtState.artInModal.quantity : "Out of Stock"}</h5>
                             </div>
-                            <button onClick={clickBuy}>Buy</button>
+                            <button
+                                style={props.loggedInUser.type === 'school' ? { backgroundColor: 'grey', cursor: 'not-allowed' } : null}
+                                onClick={props.loggedInUser.type !== 'school' ? clickBuy : null}
+                                title={props.loggedInUser.type === 'school' ? "Schools cannot buy art." : null}
+                                >
+                                Buy
+                                </button>
                         </div>
                     </div>
                 </div>
