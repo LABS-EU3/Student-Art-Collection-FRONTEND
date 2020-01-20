@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithBase } from '../../AxiosCustom';
 import { connect } from 'react-redux';
-import EditModal from './EditModal';
 import Modal from 'react-modal';
-import { Button } from './EditModalStyle';
-import EditArtForm from './EditArtForm';
-import { Formik } from 'formik';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
-import Test from '../Test';
+import EditForm from '../Test';
 
 const customStyles = {
   content: {
@@ -39,43 +36,33 @@ Modal.setAppElement('body');
 function ArtForSale(props) {
   const [artForSale, setArtForSale] = useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [editArt, setEditArt] = useState(null);
 
-  function openModal(art) {
+  function openModal() {
     setIsOpen(true);
-    setEditArt(art);
+    // setEditArt(art);
   }
 
   function closeModal() {
     setIsOpen(false);
   }
   const id = props.loggedInUser._id;
-  console.log(id);
 
   useEffect(() => {
     axiosWithBase()
       .get(`/art/selling/${id}`)
       .then(res => {
-        // debugger;
         setArtForSale(res.data);
-        console.log(res);
-        // debugger;
       })
-      .catch(error => {
-        console.log(error);
+      .catch(() => {
+        toast.error('cannot get art')
       });
-  }, []);
-
-  const editArtHandle = values => {
-    debugger;
-  };
+  }, [artForSale]);
 
   return (
     <StyledDiv>
       {artForSale ? (
         artForSale.length ? (
           artForSale.map(art => {
-            debugger;
             return (
               <>
                 <StyledBox>
@@ -84,27 +71,16 @@ function ArtForSale(props) {
                     <h2>{art.name}</h2>
                     <h3>{art.artistName}</h3>
                     <h3>{`${art.height} x ${art.width}`}</h3>
-                    <h2>£{art.price}</h2>
+                    <h2>${art.price}</h2>
                   </div>
-                  <button onClick={() => openModal(art)}>Edit</button>
+                  <button onClick={openModal}>Edit</button>
                 </StyledBox>
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
                   style={customStyles}
                 >
-                  {/* <h3>Hello you there</h3> */}
-                  {/* <Formik
-                    initialValues={art}
-                    onSubmit={editArtHandle}
-                    component={EditArtForm}
-                  /> */}
-                  {/* <EditArtForm
-                    art={art}
-                    closeModal={closeModal}
-                    editArtHandle={editArtHandle}
-                  /> */}
-                  <Test editArt={editArt} />
+                  <EditForm editArt={art} />
                 </Modal>
               </>
             );
@@ -115,6 +91,20 @@ function ArtForSale(props) {
       ) : (
         <h2>spinner</h2>
       )}
+      <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+          closeButton={false}
+          style={{
+            'font-size': '1.5rem',
+            width: '400px',
+            'text-align': 'center'
+          }}
+      />
     </StyledDiv>
   );
 }
