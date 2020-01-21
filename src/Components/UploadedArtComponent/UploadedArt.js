@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditForm from '../Test';
-import {MainContainer2,StyledOrderContainer,CollectionItemContainer, SellingSection} from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
+import { MainContainer2, StyledOrderContainer, CollectionItemContainer, SellingSection } from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
 import Spinner from '../Spinner';
 
 const customStyles = {
@@ -53,7 +53,7 @@ function ArtForSale(props) {
 
   return (
     <MainContainer2>
-      {!spinner ?  (
+      {!spinner ? (
         artForSale.length ? (
           artForSale.map(art => {
             return (
@@ -64,27 +64,27 @@ function ArtForSale(props) {
                       <img src={art.picture} alt={art.name} />
                     </div>
                     <SellingSection>
-                    <div>
-                      <span>{art.name}</span>
-                      <span>{art.artistName}</span>
-                    </div>
-                    <div>
-                      <span>{`${art.height} x ${art.width}`}</span>
-                      <span>${art.price}</span>
-                    </div>
+                      <div>
+                        <span>{art.name}</span>
+                        <span>{art.artistName}</span>
+                      </div>
+                      <div>
+                        <span>{`${art.height} x ${art.width}`}</span>
+                        <span>${art.price}</span>
+                      </div>
                     </SellingSection>
                     <button onClick={openModal}>Edit</button>
                   </CollectionItemContainer>
-                 
-                 
+
+
                 </StyledOrderContainer>
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
                   style={customStyles}
                 >
-                  <EditForm 
-                    editArt={art} 
+                  <EditForm
+                    editArt={art}
                     onRequestClose={closeModal}
 
                   />
@@ -93,24 +93,26 @@ function ArtForSale(props) {
             );
           })
         ) : (
-          <div className='nothing'>Nothing here yet!</div>
-        )
+            <div className='nothing'>Nothing here yet!</div>
+          )
       ) : (
-        <Spinner />
-      )}
+          <div className="nothing">
+            <Spinner />
+          </div>
+        )}
       <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar
-          pauseOnVisibilityChange
-          draggable
-          pauseOnHover
-          closeButton={false}
-          style={{
-            'font-size': '1.5rem',
-            width: '400px',
-            'text-align': 'center'
-          }}
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+        closeButton={false}
+        style={{
+          'font-size': '1.5rem',
+          width: '400px',
+          'text-align': 'center'
+        }}
       />
     </MainContainer2>
   );
