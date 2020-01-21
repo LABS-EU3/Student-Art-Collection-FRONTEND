@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditForm from '../Test';
-import {MainContainer,StyledOrderContainer,CollectionItemContainer, SellingSection} from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
+import {MainContainer2,StyledOrderContainer,CollectionItemContainer, SellingSection} from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
 import Spinner from '../Spinner';
 
 const customStyles = {
@@ -31,7 +31,6 @@ function ArtForSale(props) {
 
   function openModal() {
     setIsOpen(true);
-    // setEditArt(art);
   }
 
   function closeModal() {
@@ -53,7 +52,7 @@ function ArtForSale(props) {
   }, [modalIsOpen]);
 
   return (
-    <MainContainer>
+    <MainContainer2>
       {!spinner ?  (
         artForSale.length ? (
           artForSale.map(art => {
@@ -113,7 +112,7 @@ function ArtForSale(props) {
             'text-align': 'center'
           }}
       />
-    </MainContainer>
+    </MainContainer2>
   );
 }
 

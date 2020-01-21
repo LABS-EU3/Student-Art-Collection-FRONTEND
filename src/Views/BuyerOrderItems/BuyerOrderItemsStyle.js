@@ -5,7 +5,15 @@ export const MainContainer = styled.section`
 	width: 90%;
 	height: 90%;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+`;
+
+export const MainContainer2 = styled.section`
+	width: 90%;
+	height: 90%;
+	display: flex;
+	justify-content: flex-start;
 	font-family: 'Roboto', sans-serif;
 `;
 
@@ -128,7 +136,7 @@ h3:nth-child(4) {
 
 export const SellingSection = styled.div`
 	display: flex;
-	justify-content: space-evenly;
+	// justify-content: space-evenly;
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-items: space-between;

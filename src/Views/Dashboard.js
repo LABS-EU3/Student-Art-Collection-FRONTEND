@@ -52,7 +52,6 @@ function Dashboard (){
 					<Route exact path="/myaccount" component={Profile} />
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
-					{/* <Route exact path="/selling" component={SchoolSelling} /> */}
 					<Route exact path="/selling/forsale" component={UploadedArt} />
 				</div>
 			</div>
