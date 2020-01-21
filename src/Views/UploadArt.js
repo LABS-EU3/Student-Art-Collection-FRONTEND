@@ -73,14 +73,14 @@ function UploadArt({ loggedInUser, closeModal }) {
 
     axiosWithBase()
       .post(`/art/upload/${loggedInUser._id}`, formData)
-      .then(data => {
+      .then(() => {
+        toast.success('Success!');
         actions.resetForm();
         setSpinning(false);
         setSubmitted(true);
         closeModal();
       })
-      .catch(error => {
-        console.log(error.response);
+      .catch(() => {
         setSpinning(false);
         toast.error('Error uploading art.');
       });
@@ -94,7 +94,6 @@ function UploadArt({ loggedInUser, closeModal }) {
         </StyledSpinner>
       ) : (
         <>
-          {!submitted ? (
             <div>
               <div>
                 <Upload type="file" onChange={uploadArtPic} />
@@ -106,9 +105,6 @@ function UploadArt({ loggedInUser, closeModal }) {
                 component={UploadArtForm}
               />
             </div>
-          ) : (
-            toast.success('Art successfully uploaded')
-          )}
           <ToastContainer
             position="bottom-center"
             bodyClassName="toast"

@@ -51,7 +51,13 @@ function SchoolSelling(props) {
 	}
 
 	return (
-		<Spinner />
+		<MainContainer>
+			<StyledOrderContainer>
+				<div className="nothing">
+					{/* <Spinner /> */}
+				</div>
+			</StyledOrderContainer >
+		</MainContainer >
 	);
 }
 

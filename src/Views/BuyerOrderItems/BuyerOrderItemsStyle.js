@@ -15,6 +15,16 @@ export const MainContainer2 = styled.section`
 	display: flex;
 	justify-content: flex-start;
 	font-family: 'Roboto', sans-serif;
+
+		.nothing {
+			width: 100%;
+			height: 100%;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+
+			font-size: 2rem;
+		}
 `;
 
 export const StyledButtonContainer = styled.div`
