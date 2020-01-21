@@ -3,6 +3,10 @@
 
 ### Scripts
 
+## Installing
+
+`npm install`: Installs all the dependencies needed for the frontend part of the app
+
 ## Running
 
 `npm start`: Runs only the front-end client.
