@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
@@ -18,6 +20,11 @@ const StyledDiv = styled.div`
     font-size: 3rem;
     padding: 2rem 0;
   }
+
+   a {
+     width: 100%;
+     text-align: center;
+   }
 `;
 
 const StyledForm = styled(Form)`
@@ -87,10 +94,13 @@ const LoginForm = ({ isLoading }) => {
         <StyledError name="password" component="div" />
         <button type="submit">Login</button>
       </StyledForm>
+      <Link to="/signup">Not a member yet? Click here.</Link>
+
       <SocialAuthButton
         isSchool={false}
         url={baseURL+'auth/google'}
       />
+      
     </StyledDiv>
   );
 };

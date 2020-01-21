@@ -133,7 +133,6 @@ const Login = ({
         closeButton={false}
       />
       <ResetPassword />
-      <Link to="/signup">Not a member yet? Click here.</Link>
     </StyledForm>
   );
 };
