@@ -93,7 +93,7 @@ function ArtForSale(props) {
             );
           })
         ) : (
-          <h1> no art </h1>
+          <div className='nothing'>Nothing here yet!</div>
         )
       ) : (
         <Spinner />
