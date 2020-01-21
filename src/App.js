@@ -28,7 +28,6 @@ function App() {
       <GlobalStyle />
       <Route path="/browse" component={ArtViewModal} />
       <Navbar />
-      {/* <Modal /> */}
       <Route exact path="/" component={LandingPage} />
       <Route path='/contact' component={ContactPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
