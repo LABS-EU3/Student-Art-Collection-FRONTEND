@@ -9,6 +9,7 @@ import Profile from '../Components/DashboardComponents/Profile';
 import SellingNav from '../Components/SellingDashboardComponents/SellingNav';
 import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
+import SchoolSelling from './SchoolSellingItems/SchoolSelling';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
 
 
@@ -49,7 +50,7 @@ function Dashboard (){
 				<Route path="/selling" component={SellingNav} />
 				<div className="right-side">
 					<Route exact path="/myaccount" component={Profile} />
-					<Route exact path= "/myaccount/orders" component={BuyerOrderItems}/>
+					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
 				</div>

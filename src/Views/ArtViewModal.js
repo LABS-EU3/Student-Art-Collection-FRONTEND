@@ -10,8 +10,6 @@ import DisplayArt from '../Components/BuyModalComponents/DisplayArtModal';
 import SuccessfulPurchase from '../Components/BuyModalComponents/SuccessfulPurchase';
 import { axiosWithBase } from '../AxiosCustom';
 
-
-
 function ArtViewModal(props) {
     const [requestingPurchase, setRequestingPurchase] = useState(false);
 
@@ -29,7 +27,7 @@ function ArtViewModal(props) {
         if (props.loggedInUser._id) {
             const details = {
                 buyerId: props.loggedInUser._id,
-                SchoolId: props.browseArtState.artInModal.userId,
+                schoolId: props.browseArtState.artInModal.userId,
                 quantity: 1,
                 totalAmount: props.browseArtState.artInModal.price,
                 status: "completed"
@@ -43,6 +41,7 @@ function ArtViewModal(props) {
                     props.history.push('/browse/success');
                 })
                 .catch(err => {
+                    console.log(err.response);
                     setRequestingPurchase(false);
                     toast.error("There was a problem with your purchase")
                 })

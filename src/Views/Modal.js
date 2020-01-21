@@ -28,18 +28,18 @@ function UploadModal() {
     setIsOpen(false);
   }
 
-  return (
-    <div>
-      <Button onClick={openModal}>Upload Art</Button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
-        <UploadArt closeModal={closeModal} />
-      </Modal>
-    </div>
-  );
+    return (
+      <>
+        <Button onClick={openModal}>Upload Art</Button>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+        >
+          <UploadArt closeModal={closeModal}/>
+        </Modal>
+      </>
+    );
 }
 
 export default UploadModal;
