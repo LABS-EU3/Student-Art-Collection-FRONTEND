@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditForm from '../Test';
 import {MainContainer,StyledOrderContainer,CollectionItemContainer, SellingSection} from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
+import Spinner from '../Spinner';
 
 const customStyles = {
   content: {
@@ -26,6 +27,7 @@ Modal.setAppElement('body');
 function ArtForSale(props) {
   const [artForSale, setArtForSale] = useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [spinner, setSpinning] = useState(true);
 
   function openModal() {
     setIsOpen(true);
@@ -42,15 +44,17 @@ function ArtForSale(props) {
       .get(`/art/selling/${id}`)
       .then(res => {
         setArtForSale(res.data);
+        setSpinning(false)
       })
       .catch(() => {
+        setSpinning(false)
         toast.error('cannot get art')
       });
   }, [modalIsOpen]);
 
   return (
     <MainContainer>
-      {artForSale ? (
+      {!spinner ?  (
         artForSale.length ? (
           artForSale.map(art => {
             return (
@@ -93,7 +97,7 @@ function ArtForSale(props) {
           <h1> no art </h1>
         )
       ) : (
-        <h2>spinner</h2>
+        <Spinner />
       )}
       <ToastContainer
           position="top-center"

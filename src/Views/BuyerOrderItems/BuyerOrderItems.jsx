@@ -54,6 +54,20 @@ function BuyerOrderItems(props) {
 						: <div className="nothing">Nothing here yet</div>
 					}
 				</StyledOrderContainer>
+				<ToastContainer
+					position="top-center"
+					autoClose={2000}
+					hideProgressBar
+					pauseOnVisibilityChange
+					draggable
+					pauseOnHover
+					closeButton={false}
+					style={{
+						'font-size': '1.5rem',
+						width: '400px',
+						'text-align': 'center'
+				}}
+      />
 			</MainContainer>
 		);
 	}
