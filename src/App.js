@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import './App.css';
 import Navbar from './Components/NavBar';
+import ErrorBoundary from './Components/error-boundary/error-boundary.component'
 import LandingPage from './Views/LandingPage';
 import Register from './Views/Register';
 import ConfirmationSent from './Views/ConfirmationSent';
@@ -26,8 +27,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+       <Navbar />
+      <Switch>
+      <ErrorBoundary>
       <Route path="/browse" component={ArtViewModal} />
-      <Navbar />
       <Route exact path="/" component={LandingPage} />
       <Route path='/contact' component={ContactPage} />
       <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
@@ -40,6 +43,8 @@ function App() {
       <Route path="/resetpasswordsent" component={PasswordResetSent} />
       <Route path="/resetpassword" component={PasswordReset} />
       <Route path="/browse" component={BrowseArt} />
+      </ErrorBoundary>
+      </Switch>
     </ThemeProvider>
   );
 }
