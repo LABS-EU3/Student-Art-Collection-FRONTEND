@@ -27,6 +27,11 @@
 
 React is the current industry standard that offers a lot of out of the box benefits. It is fast, efficient, and scalable. Due to the large community, finding solutions to potential problems and reference material is much easier, even for a potential dev without a lot of experience who would like to contribute to Main Course. | [View Dependency](https://reactjs.org/docs/getting-started.html)
 
+### Redux
+
+Simply put, Redux is a state management tool. While it’s mostly used with React, it can be used with any other JavaScript framework or library. It is lightweight at 2KB (including dependencies), so you don’t have to worry about it making your application’s asset size bigger. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store. Let’s dive a little deeper to see why you might need a state management tool.
+
+
 ### Styled Components
 
 Has a large community and offers the ability to directly style multiple components within a file. The syntax used is familiar to JavaScript and improves code cleanliness and makes it easy to get up and going for those without a lot of css experience. Styled components are also very efficient, improving load time for users. | [View Dependency](https://www.styled-components.com/docs/)
@@ -35,11 +40,11 @@ Has a large community and offers the ability to directly style multiple componen
 Declarative routing for React. Helps in the Routing of our application.
  | [View Dependency](https://reacttraining.com/react-router/web/guides/quick-start)
  
- ### React-Toastify
- React-Toastify allow you to add notification to your app with ease. | [View Dependency](https://github.com/fkhadra/react-toastify)
+### React-Toastify
+React-Toastify allow you to add notification to your app with ease. | [View Dependency](https://github.com/fkhadra/react-toastify)
  
  
-##Front-End Dependencies `(Development)`
+## Front-End Dependencies `(Development)`
 
 ### Eslint
 Eslint is the dominant linting tool for NodeJS and it makes it possible to establish a clear coding convention for a team or project, as well as aiding in catching various bugs such as variables improperly scoped. | [View Dependency](https://eslint.org/)
