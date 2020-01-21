@@ -37,9 +37,8 @@ function ContactPage() {
     const submitMessage = (values, actions) => {
         setSpinning(true);
         axiosWithBase()
-            .post('/contactus', values)
+            .post('/contact/contactus', values)
             .then(() => {
-                actions.resetForm();
                 setSpinning(false);
                 setSubmitted(true);
             })
