@@ -9,9 +9,9 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 // CONFIG STORAGE STATE
 
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['loggedInUser']
+	key: 'root',
+	storage,
+	whitelist: [ 'loggedInUser' ],
 };
 
 // configuring react-devtools
@@ -35,15 +35,10 @@ let masterReducer = {
   logInError: reducers.errorLoginReducer,
   isLoading: reducers.isLoadingReducer,
   loggedInUser: reducers.loggedInUserReducer,
+  browseArtState: reducers.browseArtReducer
 };
 
-const persistedReducer = persistReducer(
-  persistConfig,
-  combineReducers(masterReducer)
-);
+const persistedReducer = persistReducer(persistConfig, combineReducers(masterReducer));
 
-export let store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+export let store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)));
 export let persistor = persistStore(store);
