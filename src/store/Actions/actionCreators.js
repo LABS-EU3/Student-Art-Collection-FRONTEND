@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 
+
 // This is a dummy action to check that redux has been properly set. It can safely be deleted when starting to build the app
 
 export function increment() {
@@ -68,5 +69,57 @@ export function setUserDetails(user) {
   return {
     type: types.SET_USER_DETAILS,
     payload: user
+  };
+}
+
+
+// OPEN/CLOSE FILTER BAR 
+
+export function toggleFilterBar(bool) {
+  return {
+    type: types.TOGGLE_FILTER_BAR,
+    payload: bool
+  };
+}
+
+export function toggleViewModal(bool) {
+  return {
+    type: types.TOGGLE_VIEW_MODAL,
+    payload: bool
+  };
+}
+
+export function fetchArt(data) {
+  return {
+    type: types.FETCH_ART,
+    payload: data
+  };
+}
+
+export function updateArtDisplayed(data) {
+  return {
+    type: types.UPDATE_ART_DISPLAYED,
+    payload: data
+  };
+}
+
+export function selectArt(data) {
+  return {
+    type: types.SELECT_ART,
+    payload: data
+  };
+}
+
+export function setSortBy(filter) {
+  return {
+    type: types.SET_SORT_TYPE,
+    payload: filter
+  };
+}
+
+export function setSearchValues(values) {
+  return {
+    type: types.SET_SEARCH_VALUES,
+    payload: values
   };
 }
