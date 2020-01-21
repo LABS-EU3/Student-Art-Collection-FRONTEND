@@ -49,11 +49,19 @@ function BuyerOrderItems(props) {
 					}
 				</StyledOrderContainer>
 				<ToastContainer
-					position="bottom-center"
-					bodyClassName="toast"
-					autoClose={3000}
+					position="top-center"
+					autoClose={2000}
+					hideProgressBar
+					pauseOnVisibilityChange
+					draggable
+					pauseOnHover
 					closeButton={false}
-				/>
+					style={{
+						'font-size': '1.5rem',
+						width: '400px',
+						'text-align': 'center'
+				}}
+      />
 			</MainContainer>
 		);
 	}

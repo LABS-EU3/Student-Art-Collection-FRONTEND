@@ -5,18 +5,18 @@ export const MainContainer = styled.section`
 	width: 90%;
 	height: 90%;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	font-family: 'Roboto', sans-serif;
 `;
 
 export const StyledButtonContainer = styled.div`
-width: 100%
+width: 100%;
 height: 10%;
 border-bottom: 1px solid rgba(0,0,0,0.1);
 display: flex;
 justify-content: space-evenly;
 align-items: flex-end;
-`
+`;
 
 export const StyledButton = styled(NavLink)`
 	text-align: center;
@@ -73,7 +73,24 @@ export const CollectionItemContainer = styled.div`
      height: auto;
      margin-bottom: 1rem;
      cursor: pointer;
-}
+	};
+
+	button {
+		margin-top: 1rem;
+		margin-left: 35%;
+		width: 60px;
+		background-color: orange;
+		color: white;
+		border-radius: 5px;
+		outline: none;
+		border: none;
+		padding: .5rem;
+		cursor: pointer;
+		&:hover{
+			color: orange;
+			background: white;
+		}
+	}
 
   @media(max-width: 1073px) {
       flex-basis: 33.33%;
@@ -108,5 +125,23 @@ h3:nth-child(4) {
 	}
 
 `;
+
+export const SellingSection = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: space-between;
+	div {
+		display: flex;
+		justify-content: space-between;
+		align-items:center;
+		margin: 1rem 0;
+	span{
+		font-size: 1.5rem;
+	}
+	}
+`;
+
 
 

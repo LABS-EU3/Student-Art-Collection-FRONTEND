@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
-import { StyledModal, openModalStyling, StyledSuccessfulModal } from '../../Views/ArtViewModalStyling';import { Route } from 'react-router-dom';
+import { StyledModal, openModalStyling, StyledSuccessfulModal } from '../../Views/ArtViewModalStyling';
 import Success from '../../Assets/purchasesuccess.svg'
 
 
