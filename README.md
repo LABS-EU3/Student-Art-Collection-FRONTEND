@@ -29,7 +29,7 @@ React is the current industry standard that offers a lot of out of the box benef
 
 ### Redux
 
-Simply put, Redux is a state management tool. While it’s mostly used with React, it can be used with any other JavaScript framework or library. It is lightweight at 2KB (including dependencies), so you don’t have to worry about it making your application’s asset size bigger. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store. Let’s dive a little deeper to see why you might need a state management tool. | [Redux Official](https://redux.js.org) 
+Simply put, Redux is a state management tool. While it’s mostly used with React, it can be used with any other JavaScript framework or library. It is lightweight at 2KB (including dependencies), so you don’t have to worry about it making your application’s asset size bigger. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store. | [Redux Official Website](https://redux.js.org) 
 
 
 ### Styled Components
