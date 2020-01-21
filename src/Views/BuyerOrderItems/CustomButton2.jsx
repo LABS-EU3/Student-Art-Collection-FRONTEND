@@ -1,16 +1,15 @@
 import React from 'react';
-import { CustomButton2, CustomButtonWrapper } from './BuyerOrderItemsStyle';
+import { StyledButton } from './BuyerOrderItemsStyle';
 
 function CustomButton (props){
 	const path = `/myaccount/orders?status=${props.status}`;
 	return (
-		<CustomButtonWrapper>
-		<CustomButton2
+		<StyledButton
 				strict
 				to={path}
 				activeStyle={{
-					fontWeight: 'normal',
-					color: '#F79F1F',
+					borderBottom: '1px solid black',
+					color: 'rgba(0,0,0,1)',
 				}}
 				isActive={(_, { search }) => {
 					const t = search.split('');
@@ -18,8 +17,7 @@ function CustomButton (props){
 					return t.join('') === `status=${props.status}`;
 				}}>
 				{props.children}
-			</CustomButton2>
-		</CustomButtonWrapper>
+			</StyledButton>
 	);
 }
 
