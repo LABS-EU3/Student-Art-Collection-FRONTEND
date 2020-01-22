@@ -23,6 +23,8 @@ import theme from './Styles/Theme';
 import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
 
 function App() {
+  document.getElementById("root").style.height = "100%";
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

@@ -51,7 +51,7 @@ export function RegisterForm(props) {
             props.history.push('/confirmation');
           })
           .catch(err => {
-            toast.error("There was an error");
+            toast.error(err.response.statusText);
             actions.setSubmitting(false);
             props.loadingFinished();
           });
@@ -72,7 +72,7 @@ export function RegisterForm(props) {
               className="inputField"
               style={{ display: showSchool }}
             >
-              <label htmlFor="name">School Name</label>
+              {/* <label htmlFor="name">School Name</label> */}
               <input
                 name="name"
                 type="text"
@@ -90,7 +90,7 @@ export function RegisterForm(props) {
               className="inputField"
               style={{ display: showSchool }}
             >
-              <label htmlFor="description">School Description</label>
+              {/* <label htmlFor="description">School Description</label> */}
               <textarea
                 name="description"
                 type="text"
@@ -110,7 +110,7 @@ export function RegisterForm(props) {
               className="inputField"
               style={{ display: showBuyer }}
             >
-              <label htmlFor="firstName">First Name</label>
+              {/* <label htmlFor="firstName">First Name</label> */}
               <input
                 name="firstName"
                 type="text"
@@ -130,7 +130,7 @@ export function RegisterForm(props) {
               className="inputField"
               style={{ display: showBuyer }}
             >
-              <label htmlFor="lastName">Last Name</label>
+              {/* <label htmlFor="lastName">Last Name</label> */}
               <input
                 name="lastName"
                 type="text"
@@ -146,7 +146,7 @@ export function RegisterForm(props) {
               <Error touched={touched.lastName} message={errors.lastName} />
             </div>
             <div data-testid="emailField" className="inputField">
-              <label htmlFor="email">e-mail</label>
+              {/* <label htmlFor="email">e-mail</label> */}
               <input
                 name="email"
                 type="email"
@@ -160,7 +160,7 @@ export function RegisterForm(props) {
               <Error touched={touched.email} message={errors.email} />
             </div>
             <div data-testid="passwordField" className="inputField">
-              <label htmlFor="password">Password</label>
+              {/* <label htmlFor="password">Password</label> */}
               <input
                 name="password"
                 type="password"
@@ -180,10 +180,10 @@ export function RegisterForm(props) {
               Submit
           </button>
 
-            <SocialAuthButton
+            {/* <SocialAuthButton
               isSchool={props.isSchool}
-              url={baseURL+'/auth/google'}
-            />
+              url={baseURL + 'auth/google'}
+            /> */}
             <ToastContainer
               position="top-center"
               autoClose={2000}
@@ -211,7 +211,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  width: 80%;
+  width: 90%;
 
   .inputField {
     display: flex;
@@ -237,10 +237,11 @@ export const StyledForm = styled.form`
   }
 
   input {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 1px grey;
+    margin: 10px 0;
   }
 
   textarea {
@@ -252,13 +253,14 @@ export const StyledForm = styled.form`
   }
 
   button {
-    margin: 40px;
+    margin: 20px;
     background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 2rem;
     padding: 0.6rem 5rem;
+    cursor: pointer;
 
     &:hover{
       opacity: 0.7;
