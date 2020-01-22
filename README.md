@@ -11,7 +11,9 @@
     - [Redux](#redux)
     - [Styled Components](#styled-components)
     - [React Router](#react-router)
+    - [Query-String](#query-string)
     - [React-Toastify](#react-toastify)
+    - [Axios](#axios)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
 
@@ -56,8 +58,16 @@ Has a large community and offers the ability to directly style multiple componen
 Declarative routing for React. Helps in the Routing of our application.
  | [View Dependency](https://reacttraining.com/react-router/web/guides/quick-start)
 
+### Query-String
+The query-string package helps in objectifying the query parameters in our react application. | [View Dependency](https://www.npmjs.com/package/query-string)
+
 ### React-Toastify
 React-Toastify allow you to add notification to your app with ease. | [View Dependency](https://github.com/fkhadra/react-toastify)
+
+### Axios
+Axios is designed to handle http requests and responses. Axios deals with responses using Promises, so it's streamlined and easy to use in our code. Axios uses methods like get() and post() that perform http GET and POST requests for retrieving or creating resources.
+[View Dependency](https://www.npmjs.com/package/axios)
+
 
 
 ## Front-End Dependencies `(Development)`
