@@ -15,6 +15,7 @@
     - [React-Toastify](#react-toastify)
     - [Axios](#axios)
     - [Redux Thunk](#redux-thunk)
+    - [React Modal](#react-modal)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
 
@@ -71,6 +72,9 @@ Axios is designed to handle http requests and responses. Axios deals with respon
 
 ### Redux Thunk
 Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. [View Dependency](https://www.npmjs.com/package/redux-thunk)
+
+### React Modal
+This dependency allows us to add dialogs to  out app for lightboxes, user notifications, or completely custom content. [View Dependency](https://www.npmjs.com/package/react-modal)
 
 
 
