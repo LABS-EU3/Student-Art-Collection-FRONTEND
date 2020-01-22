@@ -19,6 +19,7 @@
     - [Jsonwebtoken](#jsonwebtoken)
     - [Redux-Persist](#redux-persist)
     - [Formik](#formik)
+    - [Jest-Mock-Axios](#jest-mock-axios)
     - [Yup](#yup)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
@@ -89,6 +90,9 @@ Redux persist is a library allowing to save the redux store in the local storage
 ### Formik
 Formik is a small library that helps you with the 3 most annoying parts: Getting values in and out of form state. Validation and error messages. Handling form submission.
 [View Dependency](https://www.npmjs.com/package/formik)
+
+### Jest-Mock-Axios
+This is a light-weight, easy to use synchronous Axios mock for unit testing with Jest. [View Dependency](https://www.npmjs.com/package/jest-mock-axios)
 
 ### Yup
 Yup is a JavaScript object schema validator and object parser. [View Dependency](https://www.npmjs.com/package/yup)
