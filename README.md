@@ -1,6 +1,6 @@
-# Table of Contents- [Table of Contents](#table-of-contents)
-- [Table of Contents- Table of Contents](#table-of-contents--table-of-contents)
-- [Student-Art-Collection-FRONTEND](#student-art-collection-frontend)
+## Student Art Collection Frontend
+
+## Table of Contents
 - [Scripts](#scripts)
   - [Installing](#installing)
   - [Running](#running)
@@ -29,8 +29,6 @@
     - [Husky](#husky)
     - [Lint-Staged](#lint-staged)
     - [Prettier](#prettier)
-
-# Student-Art-Collection-FRONTEND
 
 # Scripts
 
