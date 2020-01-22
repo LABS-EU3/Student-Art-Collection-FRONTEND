@@ -21,6 +21,9 @@
     - [Formik](#formik)
     - [Jest-Mock-Axios](#jest-mock-axios)
     - [Yup](#yup)
+    - [Jest-Dom](#jest-dom)
+    - [User-Event](#user-event)
+    - [Testing-Libary](#testing-libary)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
     - [Husky](#husky)
@@ -100,6 +103,14 @@ This is a light-weight, easy to use synchronous Axios mock for unit testing with
 ### Yup
 Yup is a JavaScript object schema validator and object parser. [View Dependency](https://www.npmjs.com/package/yup)
 
+### Jest-Dom
+jest-dom is a companion library for React Testing Library that provides custom DOM element matchers for Jest npm install --save-dev @testing-library/jest-dom. [View Dependency](https://testing-library.com/docs/ecosystem-jest-dom)
+
+### User-Event
+user-event tries to simulate the real events that would happen in the browser as the user interacts with it. [View Dependency](https://www.npmjs.com/package/@testing-library/user-event)
+
+### Testing-Libary
+Simple and complete React DOM testing utilities that encourage good testing practices. [View Dependency](https://github.com/testing-library/react-testing-library)
 
 
 
