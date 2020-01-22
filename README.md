@@ -23,6 +23,9 @@
     - [Yup](#yup)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
+    - [Husky](#husky)
+    - [Lint-Staged](#lint-staged)
+    - [Prettier](#prettier)
 
 # Student-Art-Collection-FRONTEND
 
@@ -104,3 +107,12 @@ Yup is a JavaScript object schema validator and object parser. [View Dependency]
 
 ### Eslint
 Eslint is the dominant linting tool for NodeJS and it makes it possible to establish a clear coding convention for a team or project, as well as aiding in catching various bugs such as variables improperly scoped. | [View Dependency](https://eslint.org/)
+
+### Husky
+Husky can prevent bad git commit, git push and more 🐶 woof! [View Dependency](https://www.npmjs.com/package/husky)
+
+### Lint-Staged
+Run linters against staged git files and don't let 💩 slip into your code base! [View Dependency](https://www.npmjs.com/package/lint-staged)
+
+### Prettier
+Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary. [View Dependency](https://www.npmjs.com/package/prettier)
