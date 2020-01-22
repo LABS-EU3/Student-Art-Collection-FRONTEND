@@ -14,6 +14,7 @@
     - [Query-String](#query-string)
     - [React-Toastify](#react-toastify)
     - [Axios](#axios)
+    - [Redux Thunk](#redux-thunk)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
 
@@ -67,6 +68,9 @@ React-Toastify allow you to add notification to your app with ease. | [View Depe
 ### Axios
 Axios is designed to handle http requests and responses. Axios deals with responses using Promises, so it's streamlined and easy to use in our code. Axios uses methods like get() and post() that perform http GET and POST requests for retrieving or creating resources.
 [View Dependency](https://www.npmjs.com/package/axios)
+
+### Redux Thunk
+Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. [View Dependency](https://www.npmjs.com/package/redux-thunk)
 
 
 
