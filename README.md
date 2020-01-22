@@ -16,6 +16,9 @@
     - [Axios](#axios)
     - [Redux Thunk](#redux-thunk)
     - [React Modal](#react-modal)
+    - [Jsonwebtoken](#jsonwebtoken)
+    - [Redux-Persist](#redux-persist)
+    - [Yup](#yup)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
 
@@ -75,6 +78,16 @@ Redux Thunk is a middleware that lets you call action creators that return a fun
 
 ### React Modal
 This dependency allows us to add dialogs to  out app for lightboxes, user notifications, or completely custom content. [View Dependency](https://www.npmjs.com/package/react-modal)
+
+### Jsonwebtoken
+It is used for authenticating users. [View Dependency](https://www.npmjs.com/package/jsonwebtoken)
+
+### Redux-Persist
+Redux persist is a library allowing to save the redux store in the local storage of your browser. [View Dependency](https://www.npmjs.com/package/redux-persist)
+
+### Yup
+Yup is a JavaScript object schema validator and object parser. [View Dependency](https://www.npmjs.com/package/yup)
+
 
 
 
