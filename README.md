@@ -18,6 +18,7 @@
     - [React Modal](#react-modal)
     - [Jsonwebtoken](#jsonwebtoken)
     - [Redux-Persist](#redux-persist)
+    - [Formik](#formik)
     - [Yup](#yup)
   - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
     - [Eslint](#eslint)
@@ -84,6 +85,10 @@ It is used for authenticating users. [View Dependency](https://www.npmjs.com/pac
 
 ### Redux-Persist
 Redux persist is a library allowing to save the redux store in the local storage of your browser. [View Dependency](https://www.npmjs.com/package/redux-persist)
+
+### Formik
+Formik is a small library that helps you with the 3 most annoying parts: Getting values in and out of form state. Validation and error messages. Handling form submission.
+[View Dependency](https://www.npmjs.com/package/formik)
 
 ### Yup
 Yup is a JavaScript object schema validator and object parser. [View Dependency](https://www.npmjs.com/package/yup)
