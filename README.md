@@ -1,6 +1,23 @@
+# Table of Contents- [Table of Contents](#table-of-contents)
+- [Table of Contents- Table of Contents](#table-of-contents--table-of-contents)
+- [Student-Art-Collection-FRONTEND](#student-art-collection-frontend)
+- [Scripts](#scripts)
+  - [Installing](#installing)
+  - [Running](#running)
+- [Environment Variables](#environment-variables)
+- [Tech-Stack](#tech-stack)
+  - [Front-End Dependencies `(Production)`](#front-end-dependencies-production)
+    - [React](#react)
+    - [Redux](#redux)
+    - [Styled Components](#styled-components)
+    - [React Router](#react-router)
+    - [React-Toastify](#react-toastify)
+  - [Front-End Dependencies `(Development)`](#front-end-dependencies-development)
+    - [Eslint](#eslint)
+
 # Student-Art-Collection-FRONTEND
 
-### Scripts
+# Scripts
 
 ## Installing
 
