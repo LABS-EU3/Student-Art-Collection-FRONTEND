@@ -123,3 +123,12 @@ export function setSearchValues(values) {
     payload: values
   };
 }
+
+// Messaging 
+
+export function retrieveMessages(messages) {
+  return {
+    type: types.RETRIEVE_MESSAGES,
+    payload: messages
+  }
+};

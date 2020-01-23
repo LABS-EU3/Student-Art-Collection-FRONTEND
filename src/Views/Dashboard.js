@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../store/Actions/actionCreators';
+import firebase from "../config/firebaseConfig";
 
 import DashNav from '../Components/DashboardComponents/DashNav';
 import Profile from '../Components/DashboardComponents/Profile';
@@ -11,6 +12,8 @@ import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
 import Messaging from './Messaging';
+
+const db = firebase.firestore();
 
 
 const DashboardContainer = styled.div`
@@ -42,7 +45,31 @@ const DashboardContainer = styled.div`
 		}
 	}
 `;
-function Dashboard (){
+function Dashboard (props){
+
+
+	useEffect(() => {
+		const fetchMessages = async () => {
+	
+		  try {
+			const snapshot = await db
+			  .collection("messages")
+			  .where('receiver_id', "==", props.loggedInUser._id)
+			  .get();
+	
+			const messages = snapshot.docs.map(x =>
+			  Object.assign({ id: x.id }, x.data(), {
+				sendAt: x.data().sendAt.toDate()
+			  })
+			);
+	
+			props.retrieveMessages(messages);
+		  } catch (error) {
+			props.retrieveMessages([]);
+		  }
+		};
+		fetchMessages();
+	  }, []);
 	return (
 		<DashboardContainer>
 			<div className="dashboard">

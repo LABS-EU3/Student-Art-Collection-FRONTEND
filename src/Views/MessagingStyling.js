@@ -46,7 +46,7 @@ export const StyledMessageContainer = styled.div`
 
         h2{
             font-weight: 580;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             width: 30%;
         }
 

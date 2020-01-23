@@ -35,3 +35,7 @@ export const UPDATE_ART_DISPLAYED = 'UPDATE_ART_DISPLAYED';
 export const SELECT_ART = 'SELECT_ART';
 export const SET_SORT_TYPE = 'SET_SORT_BY';
 export const SET_SEARCH_VALUES = 'SET_SEARCH_VALUES';
+
+// Messaging 
+
+export const RETRIEVE_MESSAGES = 'RETRIEVE_MESSAGES';

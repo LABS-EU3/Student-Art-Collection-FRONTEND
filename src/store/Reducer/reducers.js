@@ -116,3 +116,16 @@ export function browseArtReducer(state = initialBrowseArtState, action) {
       return state;
   }
 }
+
+const initialMessageState = {
+	messages: []
+}
+
+export function messageReducer (state = initialMessageState, action){
+	switch (action.type) {
+		case types.RETRIEVE_MESSAGES:
+			return {...state, messages: action.payload};
+		default:
+			return state;
+	}
+}
