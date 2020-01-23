@@ -66,6 +66,7 @@ function Messaging(props) {
               sentAt={message.sendAt.toDateString()}
               read={message.read}
               key={message.id}
+              id={message.id}
             />
           );
         })}

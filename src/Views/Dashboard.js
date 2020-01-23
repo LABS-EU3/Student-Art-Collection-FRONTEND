@@ -78,7 +78,8 @@ function Dashboard (props){
 				<div className="right-side">
 					<Route exact path="/myaccount" component={Profile} />
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
-					<Route path= "/myaccount/messages" component={Messaging}/>
+					<Route exact path= "/myaccount/messages" component={Messaging}/>
+					<Route exact path= "/myaccount/messages/:id" component={Profile}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
 				</div>
