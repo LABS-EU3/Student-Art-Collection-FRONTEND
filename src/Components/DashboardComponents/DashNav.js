@@ -77,7 +77,7 @@ function DashNav({ loggedInUser }) {
                     {!isBuyer ? <NavLink exact to='/selling/forsale'>Dashboard</NavLink> : null}
                     <NavLink exact to='/myaccount'>Profile</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/orders?status=all'>Orders</NavLink> : null}
-                    <NavLink to='/myaccount/messages'>Messages</NavLink>
+                    <NavLink to='/myaccount/messages?status=inbox'>Messages</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/wishlist'>Wishlist</NavLink> : null}
                     <NavLink to='/myaccount/help'>Help</NavLink>
                 </nav>
