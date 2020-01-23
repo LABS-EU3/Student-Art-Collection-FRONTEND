@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../store/Actions/actionCreators";
 import queryString from "query-string";
@@ -15,30 +15,8 @@ import MessagePreview from "../Components/MessagingComponents/MessagePreview";
 const db = firebase.firestore();
 
 function Messaging(props) {
-  const [messages, setMessages] = useState([]);
   const { status } = queryString.parse(props.location.search);
   const sendOrReceive = status === "inbox" ? "Sender" : "Recipient";
-
-  useEffect(() => {
-      const fetchMessages = async () => {
-        try {
-          const snapshot = await db
-            .collection("messages")
-            .where("received_id", "==", props.loggedInUser._id)
-            .get();
-
-          const messages = snapshot.docs.map(x =>
-            Object.assign({ id: x.id }, x.data(), {
-              sendAt: x.data().sendAt.toDate()
-            })
-          );
-            props.retrieveSentMessages(messages);
-        } catch (error) {
-          setMessages([]);
-        }
-      };
-      fetchMessages();
-  }, []);
 
   return (
     <StyledContainer>
