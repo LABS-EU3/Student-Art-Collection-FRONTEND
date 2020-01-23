@@ -13,7 +13,7 @@ import { DummyData } from "../Components/MessagingComponents/DummyMessages";
 function Messaging(props) {
   const { status } = queryString.parse(props.location.search);
 
-  const sendOrReceive = status === 'inbox' ? 'Sender' : "Recipient"
+  const sendOrReceive = status === 'inbox' ? 'Sender' : "Recipient";
 
   return (
     <StyledContainer>

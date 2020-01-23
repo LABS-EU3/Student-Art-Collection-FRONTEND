@@ -6,7 +6,6 @@ export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "Roboto", sans-serif;
-//   border: 1px solid red;
 `;
 
 export const StyledNavigationContainer = styled.nav`

@@ -29,6 +29,11 @@ export const StyledMessagePreview = styled.div`
   justify-content: space-between;
   padding: 0 3rem;
 
+   @media(max-width: 750px) {
+       font-size: 0.7rem;
+       padding: 0;
+   }
+
   h2,
   h3 {
     width: 28%;
@@ -52,6 +57,10 @@ export const StyledMessagePreview = styled.div`
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
     font-size: 0.8rem;
+
+    @media(max-width: 450px){
+        display: none;
+    }
 
     :hover {
       opacity: 0.5;
