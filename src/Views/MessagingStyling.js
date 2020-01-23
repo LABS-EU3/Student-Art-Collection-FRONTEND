@@ -25,16 +25,16 @@ export const StyledMessageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+  overflow-y: scroll;
 
   .titles {
     width: 95%;
     height: 2.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin-top: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 2rem 3rem;
 
         h2{
             font-weight: 580;

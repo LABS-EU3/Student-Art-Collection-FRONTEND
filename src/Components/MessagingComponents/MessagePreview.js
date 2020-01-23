@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyledMessagePreview } from './MessagingComponentStyles';
 
-function MessagePreview() {
+function MessagePreview(props) {
     return (
         <StyledMessagePreview>
-            <h2>Wanstead High School</h2>
-            <h3>Inquiry about Painting</h3>
-            <h3>10/1/2020</h3>
-            <h4>Delete</h4>
+            <h2>{props.name}</h2>
+            <h3>{props.subject}</h3>
+            <h3>{props.sentAt}</h3>
+            <button>Delete</button>
         </StyledMessagePreview>
     )
 }
