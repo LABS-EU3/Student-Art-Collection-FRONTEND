@@ -26,6 +26,15 @@ export const StyledMessageContainer = styled.div`
   padding-top: 2rem;
   overflow-y: scroll;
 
+  .nothing {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+  }
+
   .titles {
     width: 95%;
     height: 2.5rem;
@@ -45,4 +54,5 @@ export const StyledMessageContainer = styled.div`
             width: 10%;
         }
   }
+
 `;

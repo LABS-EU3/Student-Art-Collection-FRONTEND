@@ -3,7 +3,7 @@ import { StyledMessagePreview } from './MessagingComponentStyles';
 
 function MessagePreview(props) {
     return (
-        <StyledMessagePreview>
+        <StyledMessagePreview style={props.read ? null : {backgroundColor: 'rgba(34, 56, 76, 0.03)'}}>
             <h2>{props.name}</h2>
             <h3>{props.subject}</h3>
             <h3>{props.sentAt}</h3>
