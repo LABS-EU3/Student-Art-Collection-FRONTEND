@@ -22,7 +22,6 @@ export const CustomButton = styled(NavLink)`
 export const StyledMessagePreview = styled.div`
   width: 95%;
   height: 2.5rem;
-//   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
@@ -37,6 +36,11 @@ export const StyledMessagePreview = styled.div`
   h2,
   h3 {
     width: 28%;
+  }
+
+  a {
+      width: 28%;
+
   }
 
   h2 {
@@ -72,3 +76,44 @@ export const StyledMessagePreview = styled.div`
     }
   }
 `;
+
+export const StyledMessageBox = styled.div`
+width: 70%;
+height: 80%;
+box-shadow: 0px 6px 15px rgba(0,0,0,0.05);
+display: flex;
+flex-direction: column;
+font-family: 'Roboto', sans-serif;
+  .from, .subject {
+      height: 10%;
+      width: 90%;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center; 
+
+        h3 {
+            font-size: 1.2rem;
+            margin: 0 3rem;
+            width: 5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+  }
+
+  .message {
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+        p {
+            font-size: 1.5rem;
+        }
+  }
+
+  .buttons {
+      width: 100%;
+      height: 20%;
+
+  }
+`

@@ -126,9 +126,16 @@ export function setSearchValues(values) {
 
 // Messaging 
 
-export function retrieveMessages(messages) {
+export function retrieveInboxMessages(messages) {
   return {
-    type: types.RETRIEVE_MESSAGES,
+    type: types.RETRIEVE_INBOX_MESSAGES,
+    payload: messages
+  }
+};
+
+export function retrieveSentMessages(messages) {
+  return {
+    type: types.RETRIEVE_SENT_MESSAGES,
     payload: messages
   }
 };

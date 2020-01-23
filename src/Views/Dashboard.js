@@ -12,6 +12,7 @@ import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
 import Messaging from './Messaging';
+import MessageFulLView from '../Components/MessagingComponents/MessageFullView'
 
 const db = firebase.firestore();
 
@@ -63,9 +64,9 @@ function Dashboard (props){
 			  })
 			);
 	
-			props.retrieveMessages(messages);
+			props.retrieveInboxMessages(messages);
 		  } catch (error) {
-			props.retrieveMessages([]);
+			props.retrieveInboxMessages([]);
 		  }
 		};
 		fetchMessages();
@@ -79,7 +80,7 @@ function Dashboard (props){
 					<Route exact path="/myaccount" component={Profile} />
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route exact path= "/myaccount/messages" component={Messaging}/>
-					<Route exact path= "/myaccount/messages/:id" component={Profile}/>
+					<Route exact path= "/myaccount/messages/:id" component={MessageFulLView}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
 				</div>

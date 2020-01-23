@@ -20,14 +20,11 @@ function Messaging(props) {
   const sendOrReceive = status === "inbox" ? "Sender" : "Recipient";
 
   useEffect(() => {
-    if (status === "inbox") {
-      setMessages(props.messages.messages);
-    } else {
       const fetchMessages = async () => {
         try {
           const snapshot = await db
             .collection("messages")
-            .where("sender_id", "==", props.loggedInUser._id)
+            .where("received_id", "==", props.loggedInUser._id)
             .get();
 
           const messages = snapshot.docs.map(x =>
@@ -35,15 +32,13 @@ function Messaging(props) {
               sendAt: x.data().sendAt.toDate()
             })
           );
-
-          setMessages(messages);
+            props.retrieveSentMessages(messages);
         } catch (error) {
           setMessages([]);
         }
       };
       fetchMessages();
-    }
-  });
+  }, []);
 
   return (
     <StyledContainer>
@@ -58,7 +53,7 @@ function Messaging(props) {
           <h2>Date</h2>
           <h3></h3>
         </div>
-        {messages.map(message => {
+        {props.messages.received.map(message => {
           return (
             <MessagePreview
               name={message.name}
