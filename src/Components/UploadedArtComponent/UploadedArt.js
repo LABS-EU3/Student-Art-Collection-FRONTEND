@@ -46,7 +46,7 @@ function ArtForSale(props) {
     axiosWithBase()
       .delete(`/art/selling/${id}`)
       .then(res => {
-        const updatedArt = artForSale.filter(art._id !== res._id)
+        const updatedArt = artForSale.filter(art => art._id !== res._id);
         setArtForSale(updatedArt);
         setSpinning(false);
       })
@@ -94,7 +94,9 @@ function ArtForSale(props) {
                       </div>
                     </SellingSection>
                     <div className="buttons">
-                      <button className="edit" onClick={openModal}>Edit</button>
+                      <button className="edit" onClick={openModal}>
+                        Edit
+                      </button>
                       <button
                         onClick={() => deleteArt(art._id)}
                         className="delete"
