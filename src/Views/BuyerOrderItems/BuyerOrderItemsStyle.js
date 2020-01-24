@@ -93,9 +93,17 @@ export const CollectionItemContainer = styled.div`
      cursor: pointer;
 	};
 
+	.buttons {
+		display: flex;
+		flex direction: row;
+		justify-content: space-evenly;
+		padding: 10px 0;
+		// border: 1px solid red;
+	}
+
 	button {
-		margin-top: 1rem;
-		margin-left: 35%;
+		// margin-top: 1rem;
+		// margin-left: 35%;
 		width: 60px;
 		background-color: orange;
 		color: white;

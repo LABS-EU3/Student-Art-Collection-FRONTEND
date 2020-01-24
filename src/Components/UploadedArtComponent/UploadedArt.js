@@ -36,6 +36,11 @@ function ArtForSale(props) {
   function closeModal() {
     setIsOpen(false);
   }
+
+  function deleteArt(artId) {
+    console.log(artId);
+
+  }
   const id = props.loggedInUser._id;
 
   useEffect(() => {
@@ -55,9 +60,9 @@ function ArtForSale(props) {
     <MainContainer2>
       {!spinner ? (
         artForSale.length ? (
-          artForSale.map(art => {
+          artForSale.map((art) => {
             return (
-              <>
+              <>§
                 <StyledOrderContainer key={art.name}>
                   <CollectionItemContainer>
                     <div className="order-img">
@@ -73,7 +78,10 @@ function ArtForSale(props) {
                         <span>${art.price}</span>
                       </div>
                     </SellingSection>
-                    <button onClick={openModal}>Edit</button>
+                    <div className='buttons'>
+                      <button onClick={openModal}>Edit</button>
+                      <button onClick={() => deleteArt(art._id)} style={{backgroundColor: 'red'}}>Delete</button>
+                    </div>
                   </CollectionItemContainer>
 
 
