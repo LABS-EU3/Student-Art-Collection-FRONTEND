@@ -46,7 +46,7 @@ function ArtForSale(props) {
     axiosWithBase()
       .delete(`/art/selling/${id}`)
       .then(res => {
-        const updatedArt = artForSale.filter(art != res)
+        const updatedArt = artForSale.filter(art._id !== res._id)
         setArtForSale(updatedArt);
         setSpinning(false);
       })
