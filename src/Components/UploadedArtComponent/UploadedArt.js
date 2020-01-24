@@ -41,20 +41,23 @@ function ArtForSale(props) {
     setIsOpen(false);
   }
 
-  function deleteArt(artId) {
-    console.log(artId);
-    axiosWithBase()
-      .delete(`/art/selling/${id}`)
-      .then(res => {
-        const updatedArt = artForSale.filter(art => art._id !== res._id);
-        setArtForSale(updatedArt);
-        setSpinning(false);
-      })
-      .catch(() => {
-        setSpinning(false);
-        toast.error("cannot delete art");
-      });
+  function deleteArt(art) {
+    const response = window.confirm(`Confirm deletion of: ${art.name}`);
+    if (response) {
+      axiosWithBase()
+        .delete(`/art/selling/${id}`)
+        .then(res => {
+          const updatedArt = artForSale.filter(art => art._id !== res._id);
+          setArtForSale(updatedArt);
+          setSpinning(false);
+        })
+        .catch(() => {
+          setSpinning(false);
+          toast.error("cannot delete art");
+        });
+    }
   }
+
   const id = props.loggedInUser._id;
 
   useEffect(() => {
@@ -98,7 +101,7 @@ function ArtForSale(props) {
                         Edit
                       </button>
                       <button
-                        onClick={() => deleteArt(art._id)}
+                        onClick={() => deleteArt(art)}
                         className="delete"
                       >
                         Delete
