@@ -8,6 +8,7 @@ import SocialAuthButton from "../Components/SocilaAuthButton";
 import { baseURL } from "../AxiosCustom";
 import { Link } from "react-router-dom";
 import mountains from "../Assets/mountains.jpg";
+import register from "../Assets/register.svg";
 
 function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
@@ -23,9 +24,9 @@ function Register(props) {
       <Container>
         <Content>
           <div className="title">
-            <h1>Create a {isSchool ? "School" : "Buyer"} Account</h1>
-            <h3 className="greenButton" onClick={() => setIsSchool(!isSchool)}>
-              change to {isSchool ? "Buyer" : "School"}
+            <h1>Register as a {isSchool ? "School" : "Buyer"}</h1>
+            <h3 className="changeType" onClick={() => setIsSchool(!isSchool)}>
+              Register as a {isSchool ? "Buyer" : "School"}
             </h3>
           </div>
           <RegisterForm {...props} isSchool={isSchool} />
@@ -34,8 +35,13 @@ function Register(props) {
               <SocialAuthButton url={baseURL + "auth/google"} />
             </div>
           )}
-          <Link to="/login"><h4>Already a member?</h4></Link>
+          <Link to="/login">
+            <h4>Already a member?</h4>
+          </Link>
         </Content>
+        <ImageDiv>
+          <img src={register} alt="man with a form" />
+        </ImageDiv>
       </Container>
     );
   }
@@ -45,21 +51,43 @@ export default connect(state => state, actionCreators)(Register);
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  height: 95vh;
-  background-image: url(${mountains});
-  background-size: cover;
+  height: 90vh
 
   @media (max-width: 700px) {
     background-image: none
   }
+
+  @media (max-height: 900px) {
+    height: 100%;
+    width: 100%
+  }
+`;
+
+const ImageDiv = styled.div`
+  width: 40%;
+  max-width: 700px;
+  height: 600px;
+  image: cover;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+
 `;
 
 export const Content = styled.div`
   background-color: rgba(255, 255, 255, 0.88);
-  width: 600px;
+  border: 1px solid grey
+  width: 40%;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,15 +95,25 @@ export const Content = styled.div`
   font-family: ‘Roboto’, sans-serif;
 
   padding: 80px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
+    padding: 40px 0px;
     width: 90%
+    border: none
+  }
+
+  @media (max-height: 950px) {
+    border: none
+  }
+
+  img {
+    width: 500px;
   }
 
   .title {
-    display flex;
-    flex-direction column;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 90px;
@@ -85,7 +123,7 @@ export const Content = styled.div`
     margin: 20px 0 40px 0;
   }
   
-  .greenButton {
+  .changeType {
     color: white;
     border-radius: 5px;
     background-color: green;
@@ -95,6 +133,7 @@ export const Content = styled.div`
   h1 {
     font-size: 3rem
     font-weight: bold
+    text-align: center
   }
   
   h3 {
