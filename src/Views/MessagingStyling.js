@@ -15,6 +15,23 @@ export const StyledNavigationContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+    a {
+        font-size: 2rem;
+        width: 14rem;
+        text-align: center;
+        padding-bottom: 0.5rem;
+        color: rgba(0,0,0,0.5);
+        border-bottom: 1px solid white;
+
+        :hover {
+            color: rgba(0,0,0,1);
+        }
+    }
+    .active {
+        color: black;
+        border-bottom: 1px solid black;
+
+    }
 `;
 
 export const StyledMessageContainer = styled.div`
