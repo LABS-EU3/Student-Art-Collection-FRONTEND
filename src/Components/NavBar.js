@@ -11,7 +11,6 @@ import UserIcon from '../Assets/user.png';
 const NavContainer = styled.div`
   width: 100vw;
   height: 6rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   /* see example in line below how to use themes set in the ThemeProvider by Styled Components */
   /* background: ${props => props.theme.red}; */
   .navigation {

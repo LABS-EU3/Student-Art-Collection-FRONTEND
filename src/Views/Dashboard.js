@@ -17,7 +17,7 @@ import MessageFulLView from '../Components/MessagingComponents/MessageFullView'
 
 const DashboardContainer = styled.div`
 	width: 100vw;
-	height: 92vh;
+	height: 91vh;
 	background-color: #f9f9f9;
 	display: flex;
 	justify-content: center;
