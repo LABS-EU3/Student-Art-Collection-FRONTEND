@@ -97,7 +97,7 @@ export const CollectionItemContainer = styled.div`
 		display: flex;
 		flex direction: row;
 		justify-content: space-evenly;
-		padding: 10px 0;
+		padding-top: 15px;
 		// border: 1px solid red;
 	}
 
