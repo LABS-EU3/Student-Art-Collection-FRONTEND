@@ -39,21 +39,21 @@ function ArtForSale(props) {
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function deleteArt(artId) {
+    console.log(artId);
     axiosWithBase()
       .delete(`/art/selling/${id}`)
       .then(res => {
-        setArtForSale(res.data);
+        const updatedArt = artForSale.filter(art != res)
+        setArtForSale(updatedArt);
         setSpinning(false);
       })
       .catch(() => {
         setSpinning(false);
         toast.error("cannot delete art");
       });
-  }
-
-  function deleteArt(artId) {
-    console.log(artId);
-
   }
   const id = props.loggedInUser._id;
 
@@ -78,7 +78,7 @@ function ArtForSale(props) {
             return (
               <>
                 §
-                <StyledOrderContainer key={art.name}>
+                <StyledOrderContainer key={art._id}>
                   <CollectionItemContainer>
                     <div className="order-img">
                       <img src={art.picture} alt={art.name} />
@@ -94,10 +94,10 @@ function ArtForSale(props) {
                       </div>
                     </SellingSection>
                     <div className="buttons">
-                      <button onClick={openModal}>Edit</button>
+                      <button className="edit" onClick={openModal}>Edit</button>
                       <button
                         onClick={() => deleteArt(art._id)}
-                        style={{ backgroundColor: "red" }}
+                        className="delete"
                       >
                         Delete
                       </button>
