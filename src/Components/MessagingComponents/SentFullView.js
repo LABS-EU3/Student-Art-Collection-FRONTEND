@@ -5,7 +5,7 @@ import * as actionCreators from "../../store/Actions/actionCreators";
 
 import { StyledMessageBox } from "./MessagingComponentStyles";
 
-function MessageFulLView(props) {
+function SentFullView (props) {
   const [messageContent, setMessageContent] = useState(null);
   const { id } = props.match.params;
 
@@ -29,7 +29,7 @@ function MessageFulLView(props) {
   return (
     <StyledMessageBox>
       <div className="from">
-        <h3>From: </h3>
+        <h3>To: </h3>
         <h2>{messageContent.name ? messageContent.name : ""}</h2>
       </div>
       <div className="subject">
@@ -41,10 +41,10 @@ function MessageFulLView(props) {
       </div>
       <div className="buttons">
         <Link id="back" to='/myaccount/messages'>⬸</Link>
-        <Link to='/myaccount/reply'>Reply</Link>
       </div>
     </StyledMessageBox>
   );
 }
 
-export default connect(state => state, actionCreators)(MessageFulLView);
+export default connect(state => state, actionCreators)(SentFullView
+  );

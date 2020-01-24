@@ -28,17 +28,10 @@ export const StyledMessagePreview = styled.div`
   justify-content: space-between;
   padding: 0 3rem;
 
-<<<<<<< Updated upstream
-   @media(max-width: 750px) {
-       font-size: 0.7rem;
-       padding: 0;
-   }
-=======
   @media (max-width: 750px) {
     font-size: 0.7rem;
     padding: 0;
   }
->>>>>>> Stashed changes
 
   h2,
   h3 {
@@ -46,12 +39,7 @@ export const StyledMessagePreview = styled.div`
   }
 
   a {
-<<<<<<< Updated upstream
-      width: 28%;
-
-=======
     width: 28%;
->>>>>>> Stashed changes
   }
 
   h2 {

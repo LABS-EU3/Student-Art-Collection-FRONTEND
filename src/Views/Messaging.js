@@ -12,7 +12,6 @@ import {
 import Inbox from "../Components/MessagingComponents/Inbox";
 import Sent from "../Components/MessagingComponents/Sent";
 
-
 function Messaging(props) {
   const { status } = queryString.parse(props.location.search);
   const sendOrReceive = status === "inbox" ? "Sender" : "Recipient";

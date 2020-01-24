@@ -11,7 +11,8 @@ import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
 import Messaging from './Messaging';
-import MessageFulLView from '../Components/MessagingComponents/MessageFullView'
+import InboxFullView from '../Components/MessagingComponents/InboxFullView'
+import SentFullView from '../Components/MessagingComponents/SentFullView';
 
 
 
@@ -54,8 +55,8 @@ function Dashboard (){
 					<Route exact path="/myaccount" component={Profile} />
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route path= "/myaccount/messages" component={Messaging}/>
-					<Route exact path= "/myaccount/received/:id" component={MessageFulLView}/>
-					<Route exact path= "/myaccount/sent/:id" component={MessageFulLView}/>
+					<Route exact path= "/myaccount/received/:id" component={InboxFullView}/>
+					<Route exact path= "/myaccount/sent/:id" component={SentFullView}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
 				</div>
