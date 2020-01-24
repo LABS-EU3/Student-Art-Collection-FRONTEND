@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
 
@@ -38,7 +39,10 @@ function MessageFulLView(props) {
       <div className="message">
         <p>{messageContent.message ? messageContent.message : ""}</p>
       </div>
-      <div className="buttons"></div>
+      <div className="buttons">
+        <Link id="back" to='/myaccount/messages'>⬸</Link>
+        <Link to='/myaccount/reply'>Reply</Link>
+      </div>
     </StyledMessageBox>
   );
 }

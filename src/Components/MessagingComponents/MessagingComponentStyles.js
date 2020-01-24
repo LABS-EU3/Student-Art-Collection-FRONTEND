@@ -28,10 +28,17 @@ export const StyledMessagePreview = styled.div`
   justify-content: space-between;
   padding: 0 3rem;
 
+<<<<<<< Updated upstream
    @media(max-width: 750px) {
        font-size: 0.7rem;
        padding: 0;
    }
+=======
+  @media (max-width: 750px) {
+    font-size: 0.7rem;
+    padding: 0;
+  }
+>>>>>>> Stashed changes
 
   h2,
   h3 {
@@ -39,8 +46,12 @@ export const StyledMessagePreview = styled.div`
   }
 
   a {
+<<<<<<< Updated upstream
       width: 28%;
 
+=======
+    width: 28%;
+>>>>>>> Stashed changes
   }
 
   h2 {
@@ -78,45 +89,72 @@ export const StyledMessagePreview = styled.div`
 `;
 
 export const StyledMessageBox = styled.div`
-width: 70%;
-height: 80%;
-box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
-display: flex;
-flex-direction: column;
-font-family: 'Roboto', sans-serif;
-padding-top: 1rem;
-  .from, .subject {
-      height: 10%;
-      width: 100%;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      display: flex;
-      align-items: center; 
+  width: 70%;
+  height: 80%;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  padding-top: 1rem;
+  .from,
+  .subject {
+    height: 10%;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
 
-        h3 {
-            font-size: 1.2rem;
-            margin: 0 3rem;
-            width: 5rem;
-        }
+    h3 {
+      font-size: 1.2rem;
+      margin: 0 3rem;
+      width: 5rem;
+    }
 
-        h2 {
-            font-size: 1.5rem;
-        }
+    h2 {
+      font-size: 1.5rem;
+    }
   }
 
   .message {
+    width: 100%;
+    height: 60%;
+    padding: 2rem;
+    overflow: scroll;
+    p {
+      font-size: 1.5rem;
       width: 100%;
-      height: 100%;
-      padding: 2rem;
-      overflow: scroll;
-        p {
-            font-size: 1.5rem;
-            width: 100%;
-        }
+    }
   }
 
   .buttons {
-      width: 100%;
-      height: 20%;
+    padding: 2rem 3.5rem;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 
+    a {
+      height: 35px;
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 2rem;
+      padding: 0.6rem 5rem;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.1s ease-in-out;
+      }
+    }
+
+    #back {
+      background-color: white;
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 3rem;
+      width: auto;
+      padding: 0 1rem;
+    }
   }
-`
+`;
