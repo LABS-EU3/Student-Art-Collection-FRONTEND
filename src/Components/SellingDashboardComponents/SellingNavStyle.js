@@ -21,7 +21,6 @@ export const DashNavStyle = styled.div`
     div {
         height: 85%;
         width: 100%;
-        // background-color: rgba(50,50,50,0.3);
         border-right: 1px solid rgba(0,0,0,0.1);  
         display: flex;
         align-items: center;

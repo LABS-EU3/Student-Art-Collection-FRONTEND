@@ -27,7 +27,7 @@ function DisplayArt(props) {
                                 {props.browseArtState.artInModal.description ? props.browseArtState.artInModal.description : "No description provided"}
                             </div>
                             <div className="price">
-                                <h3>£{props.browseArtState.artInModal.price}.00</h3>
+                                <h3>${props.browseArtState.artInModal.price}.00</h3>
                                 <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
                                 <h5>Quantity: {props.browseArtState.artInModal.quantity < 1 || props.browseArtState.artInModal.quantity === null  ? "Out of Stock" : props.browseArtState.artInModal.quantity}</h5>
                             </div>

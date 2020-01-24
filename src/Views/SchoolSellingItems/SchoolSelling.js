@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,23 +7,19 @@ import { axiosWithBase } from '../../AxiosCustom';
 
 import {
 	MainContainer,
-	StyledButtonContainer,
 	StyledOrderContainer
 } from '../BuyerOrderItems/BuyerOrderItemsStyle';
 import Spinner from '../../Components/Spinner';
-import CollectionItem from './CollectionItem';
-import CustomButton from './CustomButton';
+import SchoolCollectionItem from './SchoolCollectionItem';
 
-function SchoolsSoldItems(props) {
+function SchoolSelling(props) {
 	const [artSold, setArtSold] = useState([]);
 	const [spinner, setSpinning] = useState(true);
-	const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
 	useEffect(
 		() => {
-			const orderStatus = status ? status : 'all';
 			axiosWithBase()
-				.get(`/art/sold/order/${id}?status=${orderStatus}`)
+				.get(`/art/selling/${id}`)
 				.then((res) => {
 					setSpinning(false);
 					setArtSold(res.data);
@@ -34,19 +29,14 @@ function SchoolsSoldItems(props) {
 					setSpinning(false)
 				});
 		},
-		[status],
+		[],
 	);
 	if (!spinner) {
 		return (
 			<MainContainer>
-				<StyledButtonContainer>
-					<CustomButton status="all">All</CustomButton>
-					<CustomButton status="pending">Pending</CustomButton>
-					<CustomButton status="sent">Sent</CustomButton>
-				</StyledButtonContainer>
 				<StyledOrderContainer>
 					{artSold.length > 0
-						? artSold.map((art) => <CollectionItem key={art._id} art={art} />)
+						? artSold.map((art) => <SchoolCollectionItem key={art._id} art={art} />)
 						: <div className="nothing">Nothing here yet</div>
 					}
 				</StyledOrderContainer>
@@ -61,8 +51,14 @@ function SchoolsSoldItems(props) {
 	}
 
 	return (
-		<Spinner />
+		<MainContainer>
+			<StyledOrderContainer>
+				<div className="nothing">
+					{/* <Spinner /> */}
+				</div>
+			</StyledOrderContainer >
+		</MainContainer >
 	);
 }
 
-export default connect((state) => state)(SchoolsSoldItems);
+export default connect((state) => state)(SchoolSelling);

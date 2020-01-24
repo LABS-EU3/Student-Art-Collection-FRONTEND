@@ -25,7 +25,6 @@ const DashNavStyle = styled.div`
     div {
         height: 85%;
         width: 100%;
-        // background-color: rgba(50,50,50,0.3);
         border-right: 1px solid rgba(0,0,0,0.1);  
         display: flex;
         align-items: center;
@@ -75,9 +74,9 @@ function DashNav({ loggedInUser }) {
         <DashNavStyle>
             <div>
                 <nav>
-                    {!isBuyer ? <NavLink exact to='/selling'>Dashboard</NavLink> : null}
+                    {!isBuyer ? <NavLink exact to='/selling/forsale'>Dashboard</NavLink> : null}
                     <NavLink exact to='/myaccount'>Profile</NavLink>
-                    {isBuyer ? <NavLink to='/myaccount/orders'>Orders</NavLink> : null}
+                    {isBuyer ? <NavLink to='/myaccount/orders?status=all'>Orders</NavLink> : null}
                     <NavLink to='/myaccount/messages'>Messages</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/wishlist'>Wishlist</NavLink> : null}
                     <NavLink to='/myaccount/help'>Help</NavLink>

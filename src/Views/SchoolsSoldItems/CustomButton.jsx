@@ -8,8 +8,8 @@ function CustomButtonComponent (props){
 				strict
 				to={path}
 				activeStyle={{
-					fontWeight: 'bold',
-                    color: 'orange',
+					borderBottom: '1px solid black',
+					color: 'rgba(0,0,0,1)',
 				}}
 				isActive={(_, { search }) => {
 					const t = search.split('');

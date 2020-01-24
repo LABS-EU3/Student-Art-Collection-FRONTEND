@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Button = styled.button`
   width: 70%;
+  margin-left: 25px;
   border: none;
   background-color: orange;
   color: white;
@@ -15,8 +16,9 @@ export const Button = styled.button`
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
 
+
   &:hover {
       opacity: 0.7;
       transition: opacity 0.2s ease-in-out;
   }
-`
+  `

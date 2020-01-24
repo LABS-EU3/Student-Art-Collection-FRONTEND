@@ -20,7 +20,7 @@ function BrowseCard(props) {
             <img src={props.image} alt={props.alt} />
             <div className="art-info">
                 <h2>{props.title}</h2>
-                <h3>{props.artist}</h3>
+                <h3>{props.artistName}</h3>
                 <h3>{props.dimensions}</h3>
                 <h2>£{props.price}</h2>
             </div>

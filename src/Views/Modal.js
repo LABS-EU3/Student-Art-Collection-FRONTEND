@@ -4,32 +4,32 @@ import UploadArt from './UploadArt';
 import { Button } from './ModalStyle';
 
 const customStyles = {
-  content : {
+  content: {
     width: '80%',
     height: '80%',
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
   }
 };
 
-Modal.setAppElement ("body");
+Modal.setAppElement('body');
 
-function UploadModal(){
-  const [modalIsOpen,setIsOpen] = React.useState(false);
+function UploadModal() {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
 
-  function closeModal(){
+  function closeModal() {
     setIsOpen(false);
   }
 
     return (
-      <div>
+      <>
         <Button onClick={openModal}>Upload Art</Button>
         <Modal
           isOpen={modalIsOpen}
@@ -38,7 +38,7 @@ function UploadModal(){
         >
           <UploadArt closeModal={closeModal}/>
         </Modal>
-      </div>
+      </>
     );
 }
 

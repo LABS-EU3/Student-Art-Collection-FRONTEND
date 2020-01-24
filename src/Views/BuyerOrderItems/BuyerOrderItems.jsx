@@ -7,61 +7,67 @@ import 'react-toastify/dist/ReactToastify.css';
 import { axiosWithBase } from '../../AxiosCustom';
 
 import {
-	BuyerItemsContainer,
 	MainContainer,
-	ButtonsContainer,
-	CustomButtonWrapper
+	StyledButtonContainer,
+	StyledOrderContainer
 } from './BuyerOrderItemsStyle';
 
 import Spinner from '../../Components/Spinner';
 import BuyerItem from './BuyerItem';
 import CustomButton from './CustomButton2'
 
-function BuyerOrderItems (props){
-	const [ artSold, setArtSold ] = useState(null);
-    const { status } = queryString.parse(props.location.search);
+function BuyerOrderItems(props) {
+	const [artSold, setArtSold] = useState([]);
+	const [spinner, setSpinning] = useState(true);
+	const { status } = queryString.parse(props.location.search);
 	const id = props.loggedInUser._id;
 	useEffect(() => {
 		const orderStatus = status ? status : 'all';
 		axiosWithBase()
 			.get(`/art/sold/order/buyer/${id}?status=${orderStatus}`)
-			.then((res) => setArtSold(res.data))
-			.catch(() => toast.error('could not fetch items'));
+			.then((res) => {
+				setSpinning(false);
+				setArtSold(res.data);
+			})
+			.catch(() => {
+				setSpinning(false);
+				toast.error('Could not retrieve your orders');
+			});
 	}, [status]);
-
-	return (
-		<MainContainer>
-				<ButtonsContainer>
-					<CustomButtonWrapper>
-						<CustomButton status="all">All</CustomButton>
-						<CustomButton status="pending">Pending</CustomButton>
-						<CustomButton status="sent">Sent</CustomButton>
-					</CustomButtonWrapper>
-				</ButtonsContainer>
-			<BuyerItemsContainer>
-				{artSold ? artSold.length === 0 ? (
-					<h1 className="not-sold">You haven't ordered any art</h1>
-				) : (
-					artSold.map((art) => <BuyerItem art={art} />)
-				) : (
-					<div style={{display:'flex', justifyContent: 'flex-end'}}>
-						<Spinner />
-					</div>
-				)}
+	if (!spinner) {
+		return (
+			<MainContainer>
+				<StyledButtonContainer>
+					<CustomButton status="all">All</CustomButton>
+					<CustomButton status="pending">Pending</CustomButton>
+					<CustomButton status="sent">Sent</CustomButton>
+				</StyledButtonContainer>
+				<StyledOrderContainer>
+					{artSold.length > 0
+						? artSold.map((art) => <BuyerItem key={art._id} art={art} />)
+						: <div className="nothing">Nothing here yet</div>
+					}
+				</StyledOrderContainer>
 				<ToastContainer
-					position="bottom-center"
-					autoClose={3000}
+					position="top-center"
+					autoClose={2000}
+					hideProgressBar
 					pauseOnVisibilityChange
 					draggable
 					pauseOnHover
 					closeButton={false}
 					style={{
-						fontSize: '1.3rem',
-						textAlign: 'center',
-					}}
-				/>
-			</BuyerItemsContainer>
-		</MainContainer>
+						'font-size': '1.5rem',
+						width: '400px',
+						'text-align': 'center'
+				}}
+      />
+			</MainContainer>
+		);
+	}
+
+	return (
+		<Spinner />
 	);
 }
 

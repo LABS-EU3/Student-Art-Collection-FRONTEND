@@ -23,7 +23,7 @@ export const StyledName = styled(Field)`
   height: 50px;
   padding: 20px;
   border-radius: 3px;
-  outline-color: gray;
+
   @media(max-width: 500px) {
         width: 100%;
     }
