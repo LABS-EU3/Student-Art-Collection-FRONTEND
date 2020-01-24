@@ -16,6 +16,7 @@ function Inbox(props) {
               read={message.read}
               key={message.id}
               id={message.id}
+              type="received"
             />
           );
         })

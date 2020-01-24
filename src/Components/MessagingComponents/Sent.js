@@ -40,6 +40,7 @@ function Sent(props) {
               read={message.read}
               key={message.id}
               id={message.id}
+              type="sent"
             />
           );
         })
