@@ -32,19 +32,20 @@ function ArtViewModal(props) {
                 totalAmount: props.browseArtState.artInModal.price,
                 status: "completed"
             }
-
-            setRequestingPurchase(true);
-            axiosWithBase()
-                .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)
-                .then(() => {
-                    setRequestingPurchase(false);
-                    props.history.push('/browse/success');
-                })
-                .catch(err => {
-                    console.log(err.response);
-                    setRequestingPurchase(false);
-                    toast.error("There was a problem with your purchase")
-                })
+            debugger;
+            props.history.push('/payment')
+            // setRequestingPurchase(true);
+            // axiosWithBase()
+            //     .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)
+            //     .then(() => {
+            //         setRequestingPurchase(false);
+            //         props.history.push('/browse/success');
+            //     })
+            //     .catch(err => {
+            //         console.log(err.response);
+            //         setRequestingPurchase(false);
+            //         toast.error("There was a problem with your purchase")
+            //     })
         }
         else {
             props.history.push('/login');

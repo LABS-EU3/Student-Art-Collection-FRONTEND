@@ -34,6 +34,7 @@ const ContactPage = lazy(() => import('./Views/Contact'));
 const BrowseArt = lazy(() => import('./Views/BrowseArt'));
 const ArtViewModal = lazy(() => import('./Views/ArtViewModal'));
 const PasswordReset = lazy(() => import('./Components/resetPassword/PasswordReset'));
+const StripePayment = lazy(() => import('./Views/StripePage/Payment'));
 
 function App (){
 	return (
@@ -58,6 +59,7 @@ function App (){
 						<Route path="/confirmation" component={ConfirmationSent} />
 						<Route path="/success" component={ConfirmationSuccess} />
 						<Route path="/contact" component={ContactPage} />
+						<Route path="/payment" component={StripePayment} />
 					</Suspense>
 				</ErrorBoundary>
 			</Switch>

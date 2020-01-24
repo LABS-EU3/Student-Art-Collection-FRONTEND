@@ -77,10 +77,12 @@ const StripeConnect = styled.a`
 }
 `;
 export default function StripeRegistration() {
+    const stripeClientId = process.env.REACT_APP_STRIPE_CLIENT_ID
+    const stripeLink = `https://connect.stripe.com/express/oauth/authorize?client_id=${stripeClientId}`
     return (
         <>
             <StripeConnect 
-                href="#" 
+                href={stripeLink} 
             >
                 <span>Connect with Stripe</span>
             </StripeConnect>

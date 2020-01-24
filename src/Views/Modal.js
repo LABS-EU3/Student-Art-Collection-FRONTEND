@@ -40,7 +40,7 @@ function UploadModal({state}) {
           onRequestClose={closeModal}
           style={customStyles}
         >
-          {!loggedInUser.stripe ? 
+          {!loggedInUser.stripe_user_id ? 
             <StripeRegistration /> : 
             <UploadArt 
               closeModal={closeModal}

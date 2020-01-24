@@ -1,15 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import queryString from 'query-string';
+import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import Spinner from '../../Components/Spinner';
 import {axiosWithBase} from '../../AxiosCustom';
-export default function CallBackRedirect() {
+import { Redirect } from 'react-router-dom';
+function CallBackRedirect(props) {
     const [spinner, updateSpinner] = useState(true);
 
-    useEffect(() =>{
-        // the whole logic goes here
-        axiosWithBase().post(url)
-    }, [])
+     useEffect(() =>{
+        const {state} = props;
+        const {location} = props
+        const parse = queryString.parse(location.search);
+    //     // the whole logic goes here
+        axiosWithBase()
+            .post("/payments/fetchcredentials", {id: state.loggedInUser._id, authCode:parse.code})
+            .then(() => {
+                toast.success('congratulations you can now upload art');
+                props.history.push('/myaccount')
+            }).catch(()=> toast.error('operation failed'))
+     }, [])
     return (
         <div>
             {spinner && <Spinner />}
@@ -21,4 +31,10 @@ export default function CallBackRedirect() {
 			/>
         </div>
     )
-}
+};
+
+const mapStateToProps = state => ({
+    state
+});
+
+export default connect(mapStateToProps)(CallBackRedirect)

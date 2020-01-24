@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import EditForm from '../Test';
 import { MainContainer2, StyledOrderContainer, CollectionItemContainer, SellingSection } from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
 import Spinner from '../Spinner';
-import StripeRegistration from '../Stripe/RegistrationButton';
 
 const customStyles = {
   content: {
@@ -76,8 +75,6 @@ function ArtForSale(props) {
                     </SellingSection>
                     <button onClick={openModal}>Edit</button>
                   </CollectionItemContainer>
-
-                  <StripeRegistration />
                 </StyledOrderContainer>
                 <Modal
                   isOpen={modalIsOpen}
@@ -98,7 +95,7 @@ function ArtForSale(props) {
           )
       ) : (
           <div className="nothing">
-            <Spinner />
+            <Spinner/>
           </div>
         )}
       <ToastContainer
