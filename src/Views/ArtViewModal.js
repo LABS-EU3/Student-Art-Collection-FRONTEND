@@ -32,8 +32,7 @@ function ArtViewModal(props) {
                 totalAmount: props.browseArtState.artInModal.price,
                 status: "completed"
             }
-            debugger;
-            props.history.push('/payment')
+            return props.history.push('/payment')
             // setRequestingPurchase(true);
             // axiosWithBase()
             //     .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)

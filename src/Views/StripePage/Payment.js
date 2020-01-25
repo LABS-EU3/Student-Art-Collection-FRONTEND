@@ -6,13 +6,22 @@ import { axiosWithBase } from '../../AxiosCustom';
 import CheckoutForm from './CheckoutForm';
 
 function Payment(props) {
+    const [stripe, setStripe] = useState(null)
     const [spinner, updateSpinner] = useState(true);
+    const [payementIntent, updatePaymentIntent] = useState(null)
     useEffect(()=>{
-        console.log({props})
-        const {artInModal} = props.state.browseArtState
-        console.log(artInModal);
+        if (window.Stripe) {
+            setStripe(window.Stripe(process.env.REACT_APP_STRIPE_API_KEY));
+          } else {
+            document.querySelector('#stripe-js').addEventListener('load', () => {
+              // Create Stripe instance once Stripe.js loads
+              setStripe(window.Stripe(process.env.REACT_APP_STRIPE_API_KEY));
+            });
+          }
+        const {artInModal} = props.state.browseArtState;
+        console.log({artInModal})
         if(!Object.keys(artInModal).length){
-             props.history.push('/browse');
+             return props.history.push('/browse');
         }
         const data = {
             totalAmount: artInModal.price,
@@ -27,18 +36,26 @@ function Payment(props) {
             }
         }
         axiosWithBase()
-            .post('url', data)
-            .then(() => {
+            .post('/payments/pamentintent', data)
+            .then((res) => {
+                console.log({res})
+                // update payment intent to state here
+                updatePaymentIntent(res.data.payementIntent)
                 updateSpinner(false)
             })
-            .catch(() => updateSpinner(false))
-    })
+            .catch(() => {
+                updateSpinner(false)
+            })
+    }, []);
+    console.log(process.env.REACT_APP_STRIPE_API_KEY)
     return (
         <div>
             {spinner ? <Spinner/> : (
-            <StripeProvider apiKey="pk_test_lW1J20zz5XlCFJ4QCBnfx8GG00J7WlDte4">
+            <StripeProvider stripe={stripe}>
                 <Elements>
-                    <CheckoutForm />
+                    <CheckoutForm 
+                        payementIntent={payementIntent}
+                    />
                 </Elements>
             </StripeProvider>
             )}

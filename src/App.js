@@ -10,6 +10,7 @@ import './App.css';
 import Spinner from './Components/Spinner';
 import Navbar from './Components/NavBar';
 import ErrorBoundary from './Components/error-boundary/error-boundary.component';
+import StripePayment from './Views/StripePage/Payment';
 // import LandingPage from './Views/LandingPage';
 // import Register from './Views/Register';
 // import ConfirmationSent from './Views/ConfirmationSent';
@@ -34,7 +35,7 @@ const ContactPage = lazy(() => import('./Views/Contact'));
 const BrowseArt = lazy(() => import('./Views/BrowseArt'));
 const ArtViewModal = lazy(() => import('./Views/ArtViewModal'));
 const PasswordReset = lazy(() => import('./Components/resetPassword/PasswordReset'));
-const StripePayment = lazy(() => import('./Views/StripePage/Payment'));
+// const StripePayment = lazy(() => import('./Views/StripePage/Payment'));
 
 function App (){
 	return (
