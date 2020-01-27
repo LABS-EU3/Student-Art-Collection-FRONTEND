@@ -112,6 +112,13 @@ export const StyledMessageBox = styled.div`
       font-size: 1.5rem;
       width: 100%;
     }
+
+    textarea {
+      font-size: 1.5rem;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   }
 
   .buttons {

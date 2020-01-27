@@ -13,7 +13,7 @@ import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
 import Messaging from './Messaging';
 import InboxFullView from '../Components/MessagingComponents/InboxFullView'
 import SentFullView from '../Components/MessagingComponents/SentFullView';
-
+import Reply from '../Components/MessagingComponents/Reply';
 
 
 const DashboardContainer = styled.div`
@@ -56,6 +56,7 @@ function Dashboard (){
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route path= "/myaccount/messages" component={Messaging}/>
 					<Route exact path= "/myaccount/received/:id" component={InboxFullView}/>
+					<Route exact path= "/myaccount/reply/:id" component={Reply}/>
 					<Route exact path= "/myaccount/sent/:id" component={SentFullView}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
