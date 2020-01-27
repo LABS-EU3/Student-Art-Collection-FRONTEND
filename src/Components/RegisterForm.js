@@ -1,28 +1,26 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Formik } from 'formik';
-import Error from '../helpers/Error';
+import React from "react";
+import styled from "styled-components";
+import { Formik } from "formik";
+import Error from "../helpers/Error";
 import {
   validationSchemaSchool,
   validationSchemaBuyer
-} from '../helpers/validationSchema';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { axiosWithBase, baseURL } from '../AxiosCustom';
-import SocialAuthButton from '../Components/SocilaAuthButton';
+} from "../helpers/validationSchema";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { axiosWithBase, baseURL } from "../AxiosCustom";
+import SocialAuthButton from "../Components/SocilaAuthButton";
 
 const initalSignupForm = {
-  name: '',
-  description: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: ''
+  name: "",
+  description: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: ""
 };
 
 export function RegisterForm(props) {
-  const showSchool = props.isSchool ? 'flex' : 'none';
-  const showBuyer = !props.isSchool ? 'flex' : 'none';
 
   return (
     <Formik
@@ -33,7 +31,7 @@ export function RegisterForm(props) {
       onSubmit={(values, actions) => {
         props.loadingStarted();
         const newUser = {
-          type: props.isSchool ? 'school' : 'buyer',
+          type: props.isSchool ? "school" : "buyer",
           name: values.name,
           description: values.description,
           firstname: values.firstName,
@@ -43,15 +41,15 @@ export function RegisterForm(props) {
         };
         actions.setSubmitting(true);
         axiosWithBase()
-          .post('/signup', newUser)
+          .post("/signup", newUser)
           .then(() => {
             actions.resetForm();
             actions.setSubmitting(false);
             props.loadingFinished();
-            props.history.push('/confirmation');
+            props.history.push("/confirmation");
           })
           .catch(err => {
-            toast.error("There was an error");
+            toast.error(err.response.statusText);
             actions.setSubmitting(false);
             props.loadingFinished();
           });
@@ -66,13 +64,10 @@ export function RegisterForm(props) {
         handleSubmit,
         isSubmitting
       }) => (
-          <StyledForm onSubmit={handleSubmit}>
-            <div
-              data-testid="nameField"
-              className="inputField"
-              style={{ display: showSchool }}
-            >
-              <label htmlFor="name">School Name</label>
+        <StyledForm onSubmit={handleSubmit}>
+          {props.isSchool ? (
+            <div data-testid="nameField" className="inputField">
+              {/* <label htmlFor="name">School Name</label> */}
               <input
                 name="name"
                 type="text"
@@ -81,36 +76,13 @@ export function RegisterForm(props) {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
-                className={touched.name && errors.name ? 'has-error' : null}
+                className={touched.name && errors.name ? "has-error" : null}
               />
               <Error touched={touched.name} message={errors.name} />
             </div>
-            <div
-              data-testid="descriptionField"
-              className="inputField"
-              style={{ display: showSchool }}
-            >
-              <label htmlFor="description">School Description</label>
-              <textarea
-                name="description"
-                type="text"
-                placeholder="This is optional"
-                id="description"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.description}
-                className={
-                  touched.description && errors.description ? 'has-error' : null
-                }
-              />
-              <Error touched={touched.description} message={errors.description} />
-            </div>
-            <div
-              data-testid="firstNameField"
-              className="inputField"
-              style={{ display: showBuyer }}
-            >
-              <label htmlFor="firstName">First Name</label>
+          ) : (
+            <div data-testid="firstNameField" className="inputField">
+              {/* <label htmlFor="firstName">First Name</label> */}
               <input
                 name="firstName"
                 type="text"
@@ -120,17 +92,41 @@ export function RegisterForm(props) {
                 onBlur={handleBlur}
                 value={values.firstName}
                 className={
-                  touched.firstName && errors.firstName ? 'has-error' : null
+                  touched.firstName && errors.firstName ? "has-error" : null
                 }
               />
               <Error touched={touched.firstName} message={errors.firstName} />
             </div>
+          )}
+          {props.isSchool ? (
+            <div
+              data-testid="descriptionField"
+              className="inputField"
+            >
+              {/* <label htmlFor="description">School Description</label> */}
+              <textarea
+                name="description"
+                type="text"
+                placeholder="Enter school description (optional)"
+                id="description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description}
+                className={
+                  touched.description && errors.description ? "has-error" : null
+                }
+              />
+              <Error
+                touched={touched.description}
+                message={errors.description}
+              />
+            </div>
+          ) : (
             <div
               data-testid="lastNameField"
               className="inputField"
-              style={{ display: showBuyer }}
             >
-              <label htmlFor="lastName">Last Name</label>
+              {/* <label htmlFor="lastName">Last Name</label> */}
               <input
                 name="lastName"
                 type="text"
@@ -140,66 +136,68 @@ export function RegisterForm(props) {
                 onBlur={handleBlur}
                 value={values.lastName}
                 className={
-                  touched.lastName && errors.lastName ? 'has-error' : null
+                  touched.lastName && errors.lastName ? "has-error" : null
                 }
               />
               <Error touched={touched.lastName} message={errors.lastName} />
             </div>
-            <div data-testid="emailField" className="inputField">
-              <label htmlFor="email">e-mail</label>
-              <input
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                className={touched.email && errors.email ? 'has-error' : null}
-              />
-              <Error touched={touched.email} message={errors.email} />
-            </div>
-            <div data-testid="passwordField" className="inputField">
-              <label htmlFor="password">Password</label>
-              <input
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                className={
-                  touched.password && errors.password ? 'has-error' : null
-                }
-              />
-              <Error touched={touched.password} message={errors.password} />
-            </div>
+          )}
 
-            <button type="submit" disabled={isSubmitting}>
-              Submit
+          <div data-testid="emailField" className="inputField">
+            {/* <label htmlFor="email">e-mail</label> */}
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              id="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              className={touched.email && errors.email ? "has-error" : null}
+            />
+            <Error touched={touched.email} message={errors.email} />
+          </div>
+          <div data-testid="passwordField" className="inputField">
+            {/* <label htmlFor="password">Password</label> */}
+            <input
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              id="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              className={
+                touched.password && errors.password ? "has-error" : null
+              }
+            />
+            <Error touched={touched.password} message={errors.password} />
+          </div>
+
+          <button type="submit" disabled={isSubmitting}>
+            Submit
           </button>
 
-            <SocialAuthButton
+          {/* <SocialAuthButton
               isSchool={props.isSchool}
-              url={baseURL+'/auth/google'}
-            />
-            <ToastContainer
-              position="top-center"
-              autoClose={2000}
-              hideProgressBar
-              pauseOnVisibilityChange
-              draggable
-              pauseOnHover
-              closeButton={false}
-              style={{
-                'font-size': '1.5rem',
-                width: '400px',
-                'text-align': 'center'
-              }}
-            />
-          </StyledForm>
-        )}
+              url={baseURL + 'auth/google'}
+            /> */}
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              "font-size": "1.5rem",
+              width: "400px",
+              "text-align": "center"
+            }}
+          />
+        </StyledForm>
+      )}
     </Formik>
   );
 }
@@ -211,7 +209,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  width: 80%;
+  width: 90%;
 
   .inputField {
     display: flex;
@@ -233,14 +231,15 @@ export const StyledForm = styled.form`
 
   label {
     font-size: 2rem;
-    padding: 15px 0 10px 0
+    padding: 15px 0 10px 0;
   }
 
   input {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 1px grey;
+    margin: 10px 0;
   }
 
   textarea {
@@ -252,15 +251,16 @@ export const StyledForm = styled.form`
   }
 
   button {
-    margin: 40px;
+    margin: 20px;
     background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 2rem;
     padding: 0.6rem 5rem;
+    cursor: pointer;
 
-    &:hover{
+    &:hover {
       opacity: 0.7;
       transition: opacity 0.1s ease-in-out;
     }
