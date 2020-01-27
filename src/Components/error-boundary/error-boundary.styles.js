@@ -21,5 +21,5 @@ export const ErrorImageContainer = styled.div`
 
 export const ErrorImageText = styled.h2`
   font-size: 28px;
-  color: #2f8e89;
+  color: ${props => props.theme.buttonOrange};
 `;

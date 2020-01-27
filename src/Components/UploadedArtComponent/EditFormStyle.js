@@ -8,7 +8,7 @@ export const StyledForm = styled(Form)`
 
   input {
      border: none;
-     border: 1px solid lightgrey;
+     border: 1px solid ligh${props => props.theme.lightGrey};
    }
 `;
 
@@ -82,8 +82,8 @@ export const StyledDetails = styled(Field)`
 
 export const Button = styled.button`
   margin: 10px auto;
-    background-color: orange;
-    color: white;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;

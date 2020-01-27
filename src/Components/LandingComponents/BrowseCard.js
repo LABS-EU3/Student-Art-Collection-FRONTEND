@@ -26,14 +26,14 @@ img {
     width: 100%;
     opacity: 0.5;
     transition: .5s ease;
-    background-color: rgba(0,0,0, 0.6);
+    background-color: ${props => props.theme.modalGrey};
 
     &:hover {
       opacity: 1;
     }
   }
   .text {
-    color: white;
+    color: ${props => props.theme.white};
     position: absolute;
     font-size: 2.7rem;
     font-family: 'Julius Sans One', sans-serif;

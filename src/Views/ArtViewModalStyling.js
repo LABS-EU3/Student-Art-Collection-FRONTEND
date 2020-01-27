@@ -3,7 +3,7 @@ export const StyledModal = styled.div`
 .close {
 width: 100vw;
 height: 100vh;
-background-color: rgba(0,0,0,0.4);  
+background-color: ${props => props.theme.lightGrey};  
 position: fixed;
 z-index: 99;
 display: none
@@ -12,7 +12,7 @@ display: none
   width: 80vw;
   height: 80vh;
   display: flex;
-  background-color: white;
+  background-color: ${props => props.theme.white};
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   position: absolute;
   left: 50%;
@@ -89,7 +89,7 @@ display: none
 
       h2 {
         font-size: 2rem;
-        color: darkgrey;
+        color: ${props => props.theme.black};
 
         @media(max-width:1200px) {
           font-size: 1.8rem;
@@ -102,7 +102,7 @@ display: none
 
       h3 {
         font-size: 3.5rem;
-        color: #4e9982;
+        color: ${props => props.theme.lightGrey};
         margin-bottom: 5px;
 
         @media(max-width:1200px) {
@@ -116,12 +116,12 @@ display: none
       
       h4 {
         font-size: 1.4rem;
-        color: rgba(0,0,0,0.6);
+        color: ${props => props.theme.lightGrey};
       }
 
       h5 {
         font-size: 1.7rem;
-        color: rgba(0,0,0,1);
+        color: ${props => props.theme.black};
         margin-top: 1rem;
       }
        p {
@@ -141,8 +141,8 @@ display: none
 
       button {
         width: 100%;
-        background-color: #ff6347;
-        color: white;
+        background-color: ${props => props.theme.buttonOrange};
+        color: ${props => props.theme.white};
         border: none;
         border-radius: 5px;
         font-size: 2rem;
@@ -178,7 +178,7 @@ export const StyledSuccessfulModal = styled.div`
 width: 80vw;
   height: 80vh;
   display: flex;
-  background-color: white;
+  background-color: ${props => props.theme.white};
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   position: absolute;
   left: 50%;

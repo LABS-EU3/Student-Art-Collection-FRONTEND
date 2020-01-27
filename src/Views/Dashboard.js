@@ -14,20 +14,20 @@ import UploadedArt from "../Components/UploadedArtComponent/UploadedArt";
 import ConfirmDelete from "./ConfirmDelete";
 
 const DashboardContainer = styled.div`
-  width: 100vw;
-  height: 92vh;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 100vw;
+	height: 92vh;
+	background-color: ${props => props.theme.veryLightGrey};
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-  .dashboard {
-    width: 85%;
-    height: 90%;
-    background-color: white;
-    box-shadow: 0px 13px 13px rgba(0, 0, 0, 0.04);
-    border-radius: 5px;
-    display: flex;
+	.dashboard {
+		width: 85%;
+		height: 90%;
+		background-color: ${props => props.theme.white};
+		box-shadow: 0px 13px 13px rgba(0, 0, 0, 0.04);
+		border-radius: 5px;
+		display: flex;
 
     @media (max-width: 500px) {
       width: 100%;

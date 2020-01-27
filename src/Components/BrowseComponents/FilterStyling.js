@@ -4,7 +4,7 @@ export const StyledHero = styled.div`
 width: 100%;
 height: 0px;
 overflow: hidden;
-background-color: #fafafa;
+background-color: ${props => props.theme.veryLightGrey};
 background-size: cover;
 display: flex;
 align-items: center;
@@ -17,8 +17,9 @@ transition: height 0.3s ease-in-out;
         width: 180px;
         height: 57px;
         border: none;
-        background-color: rgba(0,0,0,0.04);
-        font-color: rgba(10,0,0,0.7);
+        background-color: ${props => props.theme.white};
+        border: 1px solid ${props => props.theme.white};
+        font-color: ${props => props.theme.black};
         font-size: 1.5rem;
         text-align: left;
         margin: 0px 10px;
@@ -35,7 +36,9 @@ transition: height 0.3s ease-in-out;
 
         &:hover {
             opacity: 0.7;
-            transition: opacity 0.3s ease-in-out
+            transition: border 0.2s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
+            border: 1px solid ${props => props.theme.buttonOrange};
         }
 
         &:focus {
@@ -46,9 +49,9 @@ transition: height 0.3s ease-in-out;
     input {
         width: 320px;
         height: 57px;
-        border: 1px solid rgba(0, 0, 71, 0.3);
-        background-color: white;;
-        font-color: rgba(10,0,0,0.7);
+        border: 1px solid ${props => props.theme.white};
+        background-color: ${props => props.theme.white};
+        font-color: ${props => props.theme.black};
         font-size: 1.5rem;
         text-align: left;
         margin: 0px 10px;
@@ -66,7 +69,7 @@ transition: height 0.3s ease-in-out;
 
         &:hover {
             opacity: 0.7;
-            border: 1px solid rgba(0, 0, 71, 0.05   );
+            border: 1px solid ${props => props.theme.buttonOrange};
             transition: opacity 0.3s ease-in-out;
             transition: border 0.2s ease-in-out;
         }
@@ -81,8 +84,8 @@ transition: height 0.3s ease-in-out;
         width: 180px;
         height: 45px;
         margin: 0 20px;
-        background-color: #ff6347;
-        color: white;
+        background-color: ${props => props.theme.buttonOrange};
+        color: ${props => props.theme.white};
         border: none;
         border-radius: 5px;
         font-size: 1.5rem;

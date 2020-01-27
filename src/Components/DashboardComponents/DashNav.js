@@ -11,7 +11,7 @@ const DashNavStyle = styled.div`
     align-items: center;
     font-family: 'Roboto', sans-serif;  
     font-size: 1.5rem;
-    color: rgba(0,0,0,0.5);
+    color: ${props => props.theme.lightGrey}
 
     @media(max-width: 500px) {
         width: 150px;
@@ -25,7 +25,7 @@ const DashNavStyle = styled.div`
     div {
         height: 85%;
         width: 100%;
-        border-right: 1px solid rgba(0,0,0,0.1);  
+        border-right: 1px solid ${props => props.theme.veryLightGrey};  
         display: flex;
         align-items: center;
     }
@@ -40,21 +40,22 @@ const DashNavStyle = styled.div`
 
         a {
             width: 60%;
+            color: ${props => props.theme.lightGrey};
             padding: 0.5rem;
             text-align: center;
             transition: color 0.2s ease-in-out;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid ${props => props.theme.white};
 
             &:hover {
-                color: rgba(0,0,0,0.8);
+                color: r${props => props.theme.black};
                 transition: color 0.2s ease-in-out;
             }
         }
     }
 
     .active {
-        color: rgba(0,0,0,1);
-        border-bottom: 1px solid black;
+        color: ${props => props.theme.black};
+        border-bottom: 1px solid ${props => props.theme.black};
     }
 `
 
