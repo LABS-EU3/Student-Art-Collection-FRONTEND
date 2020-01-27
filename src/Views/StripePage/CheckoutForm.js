@@ -140,7 +140,7 @@ function CheckoutForm(props) {
     // User clicked submit
     ev.preventDefault();
     try{
-        const result = await props.stripe.confirmCardPayment('props.payementIntent');
+        const result = await props.stripe.confirmCardPayment(props.payementIntent);
         console.log(result)
     }catch (error) {
         console.error(error)
