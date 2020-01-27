@@ -3,13 +3,12 @@ import styled from 'styled-components'
 export const Button = styled.button`
   width: 70%;
   border: none;
-  background-color: orange;
-  color: white;
+  background-color: ${props => props.theme.buttonOrange};
+  color: ${props => props.theme.white};
   height: 40px;
   font-size: 1.5rem;
   margin-top: 5px;
   border-radius: 10px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.0);
   cursor: pointer;
   outline: none;
   opacity: 1;

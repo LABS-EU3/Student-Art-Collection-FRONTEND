@@ -19,7 +19,7 @@ flex-direction: row-reverse;
 
 .heroText {
     text-align: center;
-    color: white;
+    color: ${props => props.theme.white};
     font-family: 'Julius Sans One', sans-serif;
     font-size: 7rem;
     margin: 13rem 13rem;
@@ -37,7 +37,7 @@ flex-direction: row-reverse;
 
     button {
         background: none;
-        color: white;
+        color: ${props => props.theme.white};
         font-size: 1.5rem;
         width: 14rem;
         height: 4rem;

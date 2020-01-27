@@ -11,8 +11,6 @@ import UserIcon from '../Assets/user.png';
 const NavContainer = styled.div`
   width: 100vw;
   height: 6rem;
-  /* see example in line below how to use themes set in the ThemeProvider by Styled Components */
-  /* background: ${props => props.theme.red}; */
   .navigation {
     height: 100%;
     width: 75vw;
@@ -21,6 +19,7 @@ const NavContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    color: ${props => props.theme.black};
 
     @media (max-width: 900px) {
       width: 90vw;
@@ -50,7 +49,11 @@ const NavContainer = styled.div`
       justify-content: space-between;
       font-family: 'Roboto', sans-serif;
 
-      @media (max-width: 900px) {
+      @media (max-width: 1100px) {
+        width: 50%;
+      }
+
+      @media (max-width: 1000px) {
         display: none;
       }
 
@@ -105,7 +108,7 @@ const Hamburger = styled.div`
     background-color: black;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 100px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

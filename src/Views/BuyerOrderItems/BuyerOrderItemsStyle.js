@@ -22,7 +22,6 @@ export const MainContainer2 = styled.section`
 			display:flex;
 			justify-content: center;
 			align-items: center;
-
 			font-size: 2rem;
 		}
 `;
@@ -30,7 +29,7 @@ export const MainContainer2 = styled.section`
 export const StyledButtonContainer = styled.div`
 width: 100%;
 height: 10%;
-border-bottom: 1px solid rgba(0,0,0,0.1);
+border-bottom: ${props => props.theme.veryLightGrey};
 display: flex;
 justify-content: space-evenly;
 align-items: flex-end;
@@ -40,12 +39,12 @@ export const StyledButton = styled(NavLink)`
 	text-align: center;
 	width: 15%;
 	transition: color 0.2s ease-in-out;
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid ${props => props.theme.white};
 	padding-bottom: 0.5rem;
 	font-size: 1.5rem;
-	color: rgba(0,0,0,0.5);
+	color: ${props => props.theme.lightGrey};
 	&:hover {
-		color: rgba(0,0,0,0.8);
+		color: ${props => props.theme.black};
 		transition: color 0.2s ease-in-out;
 	}
 
@@ -73,8 +72,8 @@ overflow-y: scroll;
 export const CollectionItemContainer = styled.div`	
 	 max-height: auto;
 	-ms-flex: auto;
-	background: #ffffff;
-	box-shadow: 0px 6px 18px rgba(0,0,0,.06);
+	background: ${props => props.theme.white};
+	box-shadow: 0px 6px 18px rgba(0,0,0,0.06);
 	width: 100%;
 	max-width: 250px;
 	margin: 2em;
@@ -97,16 +96,16 @@ export const CollectionItemContainer = styled.div`
 		margin-top: 1rem;
 		margin-left: 35%;
 		width: 60px;
-		background-color: orange;
-		color: white;
+		background-color: ${props => props.theme.buttonOrange};
+		color: ${props => props.theme.white};
 		border-radius: 5px;
 		outline: none;
 		border: none;
 		padding: .5rem;
 		cursor: pointer;
 		&:hover{
-			color: orange;
-			background: white;
+			color: ${props => props.theme.buttonOrange};
+			background: ${props => props.theme.white};
 		}
 	}
 
@@ -139,14 +138,13 @@ h3 {
 }
 
 h3:nth-child(4) {
-		color: green;
+		color: ${props => props.theme.buttonOrange};
 	}
 
 `;
 
 export const SellingSection = styled.div`
 	display: flex;
-	// justify-content: space-evenly;
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-items: space-between;

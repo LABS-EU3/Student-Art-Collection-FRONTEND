@@ -36,8 +36,8 @@ button {
     width: 160px;
     height: 45px;
     margin: 0 40px;
-    background-color: #ff6347;
-    color: white;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 1.5rem;

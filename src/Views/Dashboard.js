@@ -18,8 +18,8 @@ import Reply from '../Components/MessagingComponents/Reply';
 
 const DashboardContainer = styled.div`
 	width: 100vw;
-	height: 91vh;
-	background-color: #f9f9f9;
+	height: 92vh;
+	background-color: ${props => props.theme.veryLightGrey};
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -27,7 +27,7 @@ const DashboardContainer = styled.div`
 	.dashboard {
 		width: 85%;
 		height: 90%;
-		background-color: white;
+		background-color: ${props => props.theme.white};
 		box-shadow: 0px 13px 13px rgba(0, 0, 0, 0.04);
 		border-radius: 5px;
 		display: flex;
