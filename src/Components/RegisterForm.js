@@ -54,7 +54,7 @@ export function RegisterForm(props) {
             props.history.push("/confirmation");
           })
           .catch(err => {
-            toast.error("There was an error");
+            toast.error(err.response.statusText);
             actions.setSubmitting(false);
             props.loadingFinished();
           });
@@ -70,86 +70,81 @@ export function RegisterForm(props) {
         isSubmitting
       }) => (
         <StyledForm onSubmit={handleSubmit}>
-          <div
-            data-testid="nameField"
-            className="inputField"
-            style={{ display: showSchool }}
-          >
-            <label htmlFor="name">School Name</label>
-            <input
-              name="name"
-              type="text"
-              placeholder="Enter your school name"
-              id="name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-              className={touched.name && errors.name ? "has-error" : null}
-            />
-            <Error touched={touched.name} message={errors.name} />
-          </div>
-          <div
-            data-testid="descriptionField"
-            className="inputField"
-            style={{ display: showSchool }}
-          >
-            <label htmlFor="description">School Description</label>
-            <textarea
-              name="description"
-              type="text"
-              placeholder="This is optional"
-              id="description"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.description}
-              className={
-                touched.description && errors.description ? "has-error" : null
-              }
-            />
-            <Error touched={touched.description} message={errors.description} />
-          </div>
-          <div
-            data-testid="firstNameField"
-            className="inputField"
-            style={{ display: showBuyer }}
-          >
-            <label htmlFor="firstName">First Name</label>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="Enter your first name"
-              id="firstName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.firstName}
-              className={
-                touched.firstName && errors.firstName ? "has-error" : null
-              }
-            />
-            <Error touched={touched.firstName} message={errors.firstName} />
-          </div>
-          <div
-            data-testid="lastNameField"
-            className="inputField"
-            style={{ display: showBuyer }}
-          >
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              name="lastName"
-              type="text"
-              placeholder="Enter your last name"
-              id="lastName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastName}
-              className={
-                touched.lastName && errors.lastName ? "has-error" : null
-              }
-            />
-            <Error touched={touched.lastName} message={errors.lastName} />
-          </div>
+          {props.isSchool ? (
+            <div data-testid="nameField" className="inputField">
+              <input
+                name="name"
+                type="text"
+                placeholder="Enter your school name"
+                id="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                className={touched.name && errors.name ? "has-error" : null}
+              />
+              <Error touched={touched.name} message={errors.name} />
+            </div>
+          ) : (
+            <div data-testid="firstNameField" className="inputField">
+              <input
+                name="firstName"
+                type="text"
+                placeholder="Enter your first name"
+                id="firstName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.firstName}
+                className={
+                  touched.firstName && errors.firstName ? "has-error" : null
+                }
+              />
+              <Error touched={touched.firstName} message={errors.firstName} />
+            </div>
+          )}
+          {props.isSchool ? (
+            <div
+              data-testid="descriptionField"
+              className="inputField"
+            >
+              <textarea
+                name="description"
+                type="text"
+                placeholder="Enter school description (optional)"
+                id="description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description}
+                className={
+                  touched.description && errors.description ? "has-error" : null
+                }
+              />
+              <Error
+                touched={touched.description}
+                message={errors.description}
+              />
+            </div>
+          ) : (
+            <div
+              data-testid="lastNameField"
+              className="inputField"
+            >
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Enter your last name"
+                id="lastName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
+                className={
+                  touched.lastName && errors.lastName ? "has-error" : null
+                }
+              />
+              <Error touched={touched.lastName} message={errors.lastName} />
+            </div>
+          )}
+
           <div data-testid="emailField" className="inputField">
-            <label htmlFor="email">E-mail</label>
             <input
               name="email"
               type="email"
@@ -162,9 +157,7 @@ export function RegisterForm(props) {
             />
             <Error touched={touched.email} message={errors.email} />
           </div>
-
           <div data-testid="passwordField" className="inputField">
-            <label htmlFor="password">Password</label>
             <input
               name="password"
               type="password"
@@ -179,28 +172,10 @@ export function RegisterForm(props) {
             />
             <Error touched={touched.password} message={errors.password} />
           </div>
-          <div data-testid="passwordField" className="inputField">
-          <label htmlFor="password">Location</label>
-            <AlgoliaPlaces
-            
-              placeholder="Write an address here"
-              options={{
-                appId: "plE5TDMGUFLT",
-                apiKey: "ec0b572cd3fd3c7b6b56b4db34563c5f",
-                type: "address"
-                
-              }}
-            />
-          </div>
 
-          <button className="abutton" type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
-
-          <SocialAuthButton
-            isSchool={props.isSchool}
-            url={baseURL + "/auth/google"}
-          />
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -228,7 +203,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  width: 80%;
+  width: 90%;
 
   .inputField {
     display: flex;
@@ -245,7 +220,7 @@ export const StyledForm = styled.form`
   }
   .valid {
     font-size: 1rem;
-    color: green;
+    color: ${props => props.theme.buttonOrange};
   }
 
   label {
@@ -254,28 +229,30 @@ export const StyledForm = styled.form`
   }
 
   input {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 1px ${props => props.theme.lightGrey};
+    margin: 10px 0;
   }
 
   textarea {
     font-size: 1.5rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 0.5px ${props => props.theme.lightGrey};
     height: 80px;
   }
 
   .abutton {
-    margin: 40px;
-    background-color: green;
-    color: white;
+    margin: 20px;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;
     padding: 0.6rem 5rem;
+    cursor: pointer;
 
     &:hover {
       opacity: 0.7;

@@ -11,7 +11,7 @@ const MissionContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 4rem;
-    border-top: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid ${props => props.theme.lightGrey};
 
     @media(max-width: 940px) {
         flex-direction: column;
@@ -54,7 +54,7 @@ const MissionContainer = styled.div`
 
         button {
             background: none;
-            color: rgba(0,0,0,1);
+            color: ${props => props.theme.black};
             font-size: 1.5rem;
             width: 12rem;
             height: 3rem;
