@@ -62,6 +62,8 @@ const DashNavStyle = styled.div`
 function DashNav(props) {
     const [isBuyer, setIsBuyer] = useState(null);
 
+const notification = props.messages.notifications > 0 ? <span>{props.messages.notifications}</span> : null;
+
     useEffect(() => {
         if (props.loggedInUser.type === 'buyer') {
             setIsBuyer(true);
@@ -78,7 +80,7 @@ function DashNav(props) {
                     {!isBuyer ? <NavLink exact to='/selling/forsale'>Dashboard</NavLink> : null}
                     <NavLink exact to='/myaccount'>Profile</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/orders?status=all'>Orders</NavLink> : null}
-                    <NavLink to='/myaccount/messages'>Messages</NavLink>
+                    <NavLink to='/myaccount/messages' style={props.messages.notifications > 0 ? {color: 'red'} : null}>Messages {notification}</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/wishlist'>Wishlist</NavLink> : null}
                     <NavLink to='/myaccount/help'>Help</NavLink>
                 </nav>
