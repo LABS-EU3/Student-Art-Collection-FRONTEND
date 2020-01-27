@@ -11,7 +11,7 @@ import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
 import SchoolSelling from './SchoolSellingItems/SchoolSelling';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
-
+import StripeCallBackPage from './StripePage/CallBackPage';
 
 const DashboardContainer = styled.div`
 	width: 100vw;
@@ -53,6 +53,7 @@ function Dashboard (){
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
+					<Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
 				</div>
 			</div>
 		</DashboardContainer>

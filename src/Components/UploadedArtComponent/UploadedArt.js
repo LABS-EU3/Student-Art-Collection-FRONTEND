@@ -75,8 +75,6 @@ function ArtForSale(props) {
                     </SellingSection>
                     <button onClick={openModal}>Edit</button>
                   </CollectionItemContainer>
-
-
                 </StyledOrderContainer>
                 <Modal
                   isOpen={modalIsOpen}
@@ -97,7 +95,7 @@ function ArtForSale(props) {
           )
       ) : (
           <div className="nothing">
-            <Spinner />
+            <Spinner/>
           </div>
         )}
       <ToastContainer
