@@ -144,6 +144,21 @@ export const StyledMessageBox = styled.div`
       }
     }
 
+    button {
+      height: 38px;
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 2rem;
+      padding: 0.6rem 5rem;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.1s ease-in-out;
+      }
+    }
+
     #back {
       background-color: white;
       color: rgba(0, 0, 0, 0.8);

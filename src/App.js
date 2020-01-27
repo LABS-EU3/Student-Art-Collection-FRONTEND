@@ -16,7 +16,6 @@ import Spinner from "./Components/Spinner";
 import ErrorBoundary from "./Components/error-boundary/error-boundary.component";
 
 import Navbar from "./Components/NavBar";
-
 const LandingPage = lazy(() => import("./Views/LandingPage"));
 const Register = lazy(() => import("./Views/Register"));
 const ConfirmationSent = lazy(() => import("./Views/ConfirmationSent"));
@@ -42,16 +41,17 @@ function App(props) {
       const fetchMessages = async () => {
         try {
           const snapshot = await db
-			.collection("messages")
-            .orderBy("sentAt", "desc")
-            .where("receiver_id", "==", props.loggedInUser._id)
+            .collection("messages")
+			.where("receiver_id", "==", props.loggedInUser._id)
             .get();
 
           const messages = snapshot.docs.map(x =>
             Object.assign({ id: x.id }, x.data())
           );
+          console.log("success");
           props.retrieveInboxMessages(messages);
         } catch (error) {
+          console.log("error " + error);
           props.retrieveInboxMessages([]);
         }
       };
