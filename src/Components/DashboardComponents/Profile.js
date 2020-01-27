@@ -293,10 +293,11 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                         ) : null}
                         <div className="data-row">
                              <h2>Shipping Address</h2>
-
+                             <input name="shippingAddress"/>
                         </div>
                         <div className="data-row">
                             <h2>Billing Address</h2>
+                            <input name="billingAddress"/>
                         </div>
                         {"name" in editedUserDetails ? (
                             <div className="data-row">
