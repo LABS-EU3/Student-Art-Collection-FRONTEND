@@ -13,14 +13,18 @@ export const StyledForm = styled(Form)`
     height: 50px;
     padding-left: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 0.5px ${props => props.theme.lightGrey};
     font-size: 1.4rem;
     margin-bottom: 20px;
+
+     :hover{
+      background-color: ${props => props.theme.veryLightGrey}
+     }
   }
   button {
     margin: 40px auto;
-    background-color: #ff6347;
-    color: white;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;

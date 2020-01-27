@@ -9,7 +9,6 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosWithBase, baseURL } from "../AxiosCustom";
-import SocialAuthButton from "../Components/SocilaAuthButton";
 
 const initalSignupForm = {
   name: "",
@@ -67,7 +66,6 @@ export function RegisterForm(props) {
         <StyledForm onSubmit={handleSubmit}>
           {props.isSchool ? (
             <div data-testid="nameField" className="inputField">
-              {/* <label htmlFor="name">School Name</label> */}
               <input
                 name="name"
                 type="text"
@@ -82,7 +80,6 @@ export function RegisterForm(props) {
             </div>
           ) : (
             <div data-testid="firstNameField" className="inputField">
-              {/* <label htmlFor="firstName">First Name</label> */}
               <input
                 name="firstName"
                 type="text"
@@ -103,7 +100,6 @@ export function RegisterForm(props) {
               data-testid="descriptionField"
               className="inputField"
             >
-              {/* <label htmlFor="description">School Description</label> */}
               <textarea
                 name="description"
                 type="text"
@@ -126,7 +122,6 @@ export function RegisterForm(props) {
               data-testid="lastNameField"
               className="inputField"
             >
-              {/* <label htmlFor="lastName">Last Name</label> */}
               <input
                 name="lastName"
                 type="text"
@@ -144,7 +139,6 @@ export function RegisterForm(props) {
           )}
 
           <div data-testid="emailField" className="inputField">
-            {/* <label htmlFor="email">e-mail</label> */}
             <input
               name="email"
               type="email"
@@ -158,7 +152,6 @@ export function RegisterForm(props) {
             <Error touched={touched.email} message={errors.email} />
           </div>
           <div data-testid="passwordField" className="inputField">
-            {/* <label htmlFor="password">Password</label> */}
             <input
               name="password"
               type="password"
@@ -177,11 +170,6 @@ export function RegisterForm(props) {
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
-
-          {/* <SocialAuthButton
-              isSchool={props.isSchool}
-              url={baseURL + 'auth/google'}
-            /> */}
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -226,7 +214,7 @@ export const StyledForm = styled.form`
   }
   .valid {
     font-size: 1rem;
-    color: green;
+    color: ${props => props.theme.buttonOrange};
   }
 
   label {
@@ -238,7 +226,7 @@ export const StyledForm = styled.form`
     font-size: 1.8rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 1px grey;
+    border: solid 1px ${props => props.theme.lightGrey};
     margin: 10px 0;
   }
 
@@ -246,14 +234,14 @@ export const StyledForm = styled.form`
     font-size: 1.5rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 0.5px ${props => props.theme.lightGrey};
     height: 80px;
   }
 
   button {
     margin: 20px;
-    background-color: green;
-    color: white;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;

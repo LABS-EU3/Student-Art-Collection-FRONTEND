@@ -10,7 +10,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-color: white;
+color: ${props => props.theme.white};
 font-family: 'Roboto', sans-serif;
 
     h1 {

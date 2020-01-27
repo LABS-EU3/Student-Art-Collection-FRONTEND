@@ -7,8 +7,8 @@ import Spinner from "../Components/Spinner";
 import SocialAuthButton from "../Components/SocilaAuthButton";
 import { baseURL } from "../AxiosCustom";
 import { Link } from "react-router-dom";
-import mountains from "../Assets/mountains.jpg";
 import register from "../Assets/register.svg";
+import register2 from "../Assets/register2.svg";
 
 function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
@@ -40,7 +40,7 @@ function Register(props) {
           </Link>
         </Content>
         <ImageDiv>
-          <img src={register} alt="man with a form" />
+          <img src={register2} alt="man with a form" />
         </ImageDiv>
       </Container>
     );
@@ -53,7 +53,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 90vh
 
   @media (max-width: 700px) {
     background-image: none
@@ -84,8 +83,8 @@ const ImageDiv = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: rgba(255, 255, 255, 0.88);
-  border: 1px solid grey
+  background-color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme.lightGrey};
   width: 40%;
   max-width: 700px;
   display: flex;
@@ -124,15 +123,14 @@ export const Content = styled.div`
   }
   
   .changeType {
-    color: white;
+    color: ${props => props.theme.white};
     border-radius: 5px;
-    background-color: green;
+    background-color: ${props => props.theme.buttonOrange};
     cursor: pointer;
   }
   
   h1 {
     font-size: 3rem
-    font-weight: bold
     text-align: center
   }
   

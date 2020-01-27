@@ -12,7 +12,7 @@ width: 100%;
   margin-bottom: 20px;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #F5F5F5;
+  background-color: ${props => props.theme.veryLightGrey};
   border-radius: 5px;
 
   @media(max-width: 500px) {
