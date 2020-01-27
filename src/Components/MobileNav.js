@@ -8,8 +8,8 @@ const MobileNavStyle = styled.div`
     width: 0px;
     overflow: hidden;
     height : 100vh;
-    background-color: black;
-    color: white;
+    background-color: ${props => props.theme.black};
+    color: ${props => props.theme.white};
     opacity: 0.8;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ const MobileNavStyle = styled.div`
     margin-top: 8rem;
 
     a:hover{
-        color: darkgrey;
+        color: ${props => props.theme.buttonOrange};
     }
 }
 
@@ -47,7 +47,7 @@ const MobileNavStyle = styled.div`
 }
 
 .active {
-    color: orange;
+    color: ${props => props.theme.buttonOrange};
 }
 `
 
