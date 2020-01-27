@@ -7,7 +7,7 @@ export const DashNavStyle = styled.div`
     align-items: center;
     font-family: 'Roboto', sans-serif;  
     font-size: 1.5rem;
-    color: rgba(0,0,0,0.5);
+    color: ${props => props.theme.lightGrey};
 
     @media(max-width: 500px) {
         width: 150px;
@@ -21,7 +21,7 @@ export const DashNavStyle = styled.div`
     div {
         height: 85%;
         width: 100%;
-        border-right: 1px solid rgba(0,0,0,0.1);  
+        border-right: 1px solid ${props => props.theme.veryLightGrey};  
         display: flex;
         align-items: center;
     }
@@ -39,10 +39,10 @@ export const DashNavStyle = styled.div`
             padding: 0.5rem;
             text-align: center;
             transition: color 0.2s ease-in-out;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid ${props => props.theme.white};
 
             &:hover {
-                color: rgba(0,0,0,0.8);
+                color: ${props => props.theme.modalGrey};
                 transition: color 0.2s ease-in-out;
             }
 
@@ -54,13 +54,12 @@ export const DashNavStyle = styled.div`
         button {
             width: 70%;
             border: none;
-            background-color: orange;
-            color: white;
+            background-color: ${props => props.theme.buttonOrange};
+            color: ${props => props.theme.white};
             height: 40px;
             font-size: 1.5rem;
             margin-top: 20px;
             border-radius: 10px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.0);
             cursor: pointer;
             outline: none;
             opacity: 1;
@@ -75,7 +74,7 @@ export const DashNavStyle = styled.div`
     }
 
     .active {
-        color: rgba(0,0,0,1);
-        border-bottom: 1px solid black;
+        color: ${props => props.theme.black};
+        border-bottom: 1px solid ${props => props.theme.black};
     }
 `

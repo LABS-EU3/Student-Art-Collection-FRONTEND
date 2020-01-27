@@ -8,7 +8,8 @@ export const StyledForm = styled(Form)`
 
   input {
      border: none;
-     border: 1px solid lightgrey;
+     background-color: ${props => props.theme.veryLightGrey}
+     border: 1px solid light${props => props.theme.lightGrey};
    }
 `;
 
@@ -23,7 +24,7 @@ export const StyledName = styled(Field)`
   height: 50px;
   padding: 20px;
   border-radius: 3px;
-  outline-color: gray;
+  outline-color: ${props => props.theme.lightGrey};
   @media(max-width: 500px) {
         width: 100%;
     }
@@ -82,8 +83,8 @@ export const StyledDetails = styled(Field)`
 
 export const Button = styled.button`
   margin: 10px auto;
-    background-color: orange;
-    color: white;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;
