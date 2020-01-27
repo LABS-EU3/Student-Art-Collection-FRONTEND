@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
 import firebase from "../../config/firebaseConfig";
@@ -29,11 +30,14 @@ function Reply(props) {
     db.collection("messages")
       .doc()
       .set(testSubmitObject)
-      .then(function() {
-        console.log("Document successfully written!");
+      .then(() => {
+          toast.success('Message sent');
+          setTimeout(() => {
+            props.history.push('/myaccount/messages');
+          }, 2000)
       })
-      .catch(function(error) {
-        console.error("Error writing document: ", error);
+      .catch(() => {
+          toast.error("There was an error sending your message.")
       });
   };
 
@@ -55,25 +59,33 @@ function Reply(props) {
     return <StyledMessageBox />;
   }
   return (
-    <StyledMessageBox>
-      <div className="from">
-        <h3>To: </h3>
-        <h2>{messageContent.name ? messageContent.name : ""}</h2>
-      </div>
-      <div className="subject">
-        <h3>Subject: </h3>
-        <h2>RE: {messageContent.subject ? messageContent.subject : ""}</h2>
-      </div>
-      <div className="message">
-        <textarea value={messageBody} autoFocus onChange={changeHandler} />
-      </div>
-      <div className="buttons">
-        <Link id="back" to="/myaccount/messages">
-          ⬸
-        </Link>
-        <button onClick={submit}>Send</button>
-      </div>
-    </StyledMessageBox>
+    <>
+      <StyledMessageBox>
+        <div className="from">
+          <h3>To: </h3>
+          <h2>{messageContent.name ? messageContent.name : ""}</h2>
+        </div>
+        <div className="subject">
+          <h3>Subject: </h3>
+          <h2>RE: {messageContent.subject ? messageContent.subject : ""}</h2>
+        </div>
+        <div className="message">
+          <textarea value={messageBody} autoFocus onChange={changeHandler} />
+        </div>
+        <div className="buttons">
+          <Link id="back" to="/myaccount/messages">
+            ⬸
+          </Link>
+          <button onClick={submit}>Send</button>
+        </div>
+      </StyledMessageBox>
+      <ToastContainer
+        position="top-center"
+        bodyClassName="toast"
+        autoClose={1999}
+        closeButton={false}
+      />
+    </>
   );
 }
 
