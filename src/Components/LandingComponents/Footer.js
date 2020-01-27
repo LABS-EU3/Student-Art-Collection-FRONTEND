@@ -9,7 +9,7 @@ const FooterMain = styled.footer`
     font-family: 'Roboto', sans-serif;
     font-size: 1.3rem;
     max-width: 1300px;
-    border-top: 1px solid rgba(0,0,0,0.3);
+    border-top: 1px solid ${props => props.theme.lightGrey};
     height: 100px;
     margin: 0 auto;
     display: flex;

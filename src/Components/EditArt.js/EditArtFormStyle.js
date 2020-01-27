@@ -13,7 +13,7 @@ export const Upload = styled.input`
   height: 60px;
   padding: 50px;
   box-sizing: border-box;
-  background-color: #f5f5f5;
+  background-color: ${props => props.theme.buttonOrange};
   border-radius: 5px;
 
   @media (max-width: 500px) {

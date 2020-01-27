@@ -21,7 +21,7 @@ const SpinnerContainer = styled.div`
     display: block;
     width: 25%;
     height: 25%;
-    background-color: black;
+    background-color: ${props => props.theme.black};
     border-radius: 100%;
     animation: sk-chase-dot-before 2s infinite ease-in-out both;
   }

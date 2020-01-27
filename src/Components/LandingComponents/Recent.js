@@ -11,7 +11,7 @@ import Recent4 from '../../Assets/recent4.jpg'
 const RecentContainer = styled.div` 
     margin: 6rem auto;
     max-width: 1300px;
-    border-top: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid ${props => props.theme.lightGrey};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@ const RecentContainer = styled.div`
     h1 {
         font-family: 'Roboto', sans-serif;
         font-size: 1.7rem;
-        color: rgba(0,0,0,0.8);
+        color: ${props => props.theme.modalGrey};
         margin-top: 4rem;
     }
 

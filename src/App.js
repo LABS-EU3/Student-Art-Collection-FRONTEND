@@ -51,12 +51,10 @@ function App (){
 						<Route path="/browse" component={ArtViewModal} />
 						<Route path="/browse" component={BrowseArt} />
 						<Route path="/myaccount" component={Dashboard} />
-
 						<Route path="/selling" component={Dashboard} />
 						<Route path="/resetpassword" component={PasswordReset} />
 						<Route path="/resetpasswordrequest" component={ResetPasswordForm} />
 						<Route path="/resetpasswordsent" component={PasswordResetSent} />
-
 						<Route path="/confirmation" component={ConfirmationSent} />
 						<Route path="/success" component={ConfirmationSuccess} />
 						<Route path="/contact" component={ContactPage} />
