@@ -112,6 +112,18 @@ display: none
         @media(max-width:700px) {
           font-size: 1.8remem;
            }
+      } 
+
+      .title a {
+        width: 30%;
+        height: 2.5rem;
+        background-color: #ff6347;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
       }
       
       h4 {

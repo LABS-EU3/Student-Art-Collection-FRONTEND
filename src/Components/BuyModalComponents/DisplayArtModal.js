@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
+import { Link } from 'react-router-dom';
 import { StyledModal, openModalStyling } from '../../Views/ArtViewModalStyling';
 
 
@@ -21,7 +22,8 @@ function DisplayArt(props) {
                         <div className='cont'>
                             <div className="title">
                                 <h1>{props.browseArtState.artInModal.name}</h1>
-                                <h2>by {props.browseArtState.artInModal.artistName ? props.browseArtState.artInModal.artistName : 'Anonymous'}</h2>
+                                <h2>by {props.browseArtState.artInModal.artistName ? props.browseArtState.artInModal.artistName : 'Anonymous'} </h2>
+                                <Link to='/myaccount'>Message</Link>
                             </div>
                             <div className="about">
                                 {props.browseArtState.artInModal.description ? props.browseArtState.artInModal.description : "No description provided"}
