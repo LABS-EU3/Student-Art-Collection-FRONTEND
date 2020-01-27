@@ -1,38 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
+import firebase from "../../config/firebaseConfig";
 
 import { StyledMessageBox } from "./MessagingComponentStyles";
 
-function Reply
-(props) {
+const db = firebase.firestore();
+
+function Reply(props) {
   const [messageContent, setMessageContent] = useState(null);
-  const [messageBody, setMessageBody] = useState("")
+  const [messageBody, setMessageBody] = useState("");
   const { id } = props.match.params;
 
   const changeHandler = e => {
-      setMessageBody(e.target.value);
-  }
+    setMessageBody(e.target.value);
+  };
 
   const submit = () => {
-      const testSubmitObject = {
-          message: messageBody,
-          sender_id: props.loggedInUser._id,
-          receiver_id: messageContent.sender_id,
-          read: false,
-          timestamp: Date.now(),
-          subject: `RE: ${messageContent.subject}`
-      }
-      console.log(testSubmitObject);
-  }
+    const testSubmitObject = {
+      message: messageBody,
+      sender_id: props.loggedInUser._id,
+      receiver_id: messageContent.sender_id,
+      read: false,
+      timestamp: Date.now(),
+      subject: `RE: ${messageContent.subject}`
+    };
+    db.collection("messages")
+      .doc()
+      .set(testSubmitObject)
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  };
 
   useEffect(() => {
     let thisData = props.messages.received.filter(x => {
       return id == x.id;
     });
     if (thisData.length !== 0) {
-        setMessageContent(thisData[0]);
+      setMessageContent(thisData[0]);
     } else {
       thisData = props.messages.sent.filter(x => {
         return id == x.id;
@@ -55,19 +65,16 @@ function Reply
         <h2>RE: {messageContent.subject ? messageContent.subject : ""}</h2>
       </div>
       <div className="message">
-          <textarea 
-          value={messageBody} 
-          autoFocus
-          onChange={changeHandler}
-          />
+        <textarea value={messageBody} autoFocus onChange={changeHandler} />
       </div>
       <div className="buttons">
-        <Link id="back" to='/myaccount/messages'>⬸</Link>
+        <Link id="back" to="/myaccount/messages">
+          ⬸
+        </Link>
         <button onClick={submit}>Send</button>
       </div>
     </StyledMessageBox>
   );
 }
 
-export default connect(state => state, actionCreators)(Reply
-  );
+export default connect(state => state, actionCreators)(Reply);
