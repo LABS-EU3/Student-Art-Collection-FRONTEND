@@ -19,7 +19,6 @@ function Payment(props) {
       });
     }
     const { artInModal } = props.state.browseArtState;
-    console.log({ artInModal });
     if (!Object.keys(artInModal).length) {
       return props.history.push('/browse');
     }
@@ -30,16 +29,12 @@ function Payment(props) {
       schoolId: artInModal.userId._id,
       stripeUserId: artInModal.userId.stripe_user_id,
       metadata: {
-        school: artInModal.userId,
-        buyer: props.state.loggedInUser,
-        product: artInModal
+        "quantity": "1"
       }
     };
-    console.log({ data });
     axiosWithBase()
       .post(`/payments/${artInModal._id}/paymentintent`, data)
       .then(res => {
-        console.log(res.data.clientSecret, '<< this is the client secret');
         // update payment intent to state here
         updatePaymentIntent(res.data.clientSecret);
         updateSpinner(false);
@@ -48,7 +43,6 @@ function Payment(props) {
         updateSpinner(false);
       });
   }, []);
-  console.log(process.env.REACT_APP_STRIPE_API_KEY);
   const { artInModal } = props.state.browseArtState;
   return (
     <div>

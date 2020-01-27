@@ -6,11 +6,13 @@ import {
   CardNumberElement
 } from 'react-stripe-elements';
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
 import CardSvg from '../../Assets/credit_card.svg';
 
 const CheckoutSection = styled.section`
   padding: 1rem;
-  background-color: #f6f9fc;
+  /* background-color: #f6f9fc; */
+  background: ${props => props.theme.white};
   height: 100vh;
   h1 {
     font-size: 3rem;
@@ -35,7 +37,8 @@ const Checkout = styled.div`
     }
   }
   label {
-    color: #6b7c93;
+    /* color: #6b7c93; */
+    color: ${props => props.theme.lightGrey};
     font-weight: 300;
     letter-spacing: 0.025em;
   }
@@ -49,13 +52,15 @@ const Checkout = styled.div`
     line-height: 40px;
     padding: 0 14px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    color: #fff;
+    /* color: #fff; */
+    color: ${props => props.theme.white};
     border-radius: 4px;
     font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.025em;
-    background-color: #6772e5;
+    /* background-color: #6772e5; */
+    background-color :${props => props.theme.buttonOrange};
     text-decoration: none;
     -webkit-transition: all 150ms ease;
     transition: all 150ms ease;
@@ -75,15 +80,13 @@ const Checkout = styled.div`
     @media (max-width: 500px) {
       width: 80%;
     }
-    /* margin-bottom: 40px;
-      padding-bottom: 40px;
-      border-bottom: 3px solid #e6ebf1; */
   }
 
   button:hover {
-    color: #fff;
+    /* color: #fff; */
+    opacity: 0.7;
     cursor: pointer;
-    background-color: #7795f8;
+    /* background-color: #7795f8; */
     transform: translateY(-1px);
     box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
   }
@@ -101,7 +104,8 @@ const Checkout = styled.div`
     border: 0;
     outline: 0;
     border-radius: 4px;
-    background: white;
+    /* background: white; */
+    background: ${props => props.theme.white}
   }
 
   input::placeholder {
@@ -141,14 +145,11 @@ function CheckoutForm(props) {
       }
     };
   };
-  console.log({ props });
   const submit = async ev => {
     // User clicked submit
     ev.preventDefault();
-    console.log({ev}, '<< event')
-    console.log(props.payementIntent, '<< from the checkout form component');
     try {
-      const result = await props.stripe.confirmCardPayment(
+      await props.stripe.confirmCardPayment(
         props.payementIntent,
         {
           payment_method: {
@@ -156,9 +157,12 @@ function CheckoutForm(props) {
           }
         }
       );
-      console.log(result);
+        setTimeout(()=>{
+          toast.success('your payment order has been recieved kindly check your email')
+        }, 3000)
+        props.history.push('/browse')
     } catch (error) {
-      console.error(error);
+      toast.error('error initiating your payment')
     }
   };
 

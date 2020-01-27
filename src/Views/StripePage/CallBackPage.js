@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import Spinner from '../../Components/Spinner';
 import {axiosWithBase} from '../../AxiosCustom';
-import { Redirect } from 'react-router-dom';
 function CallBackRedirect(props) {
     const [spinner, updateSpinner] = useState(true);
 
@@ -16,9 +15,14 @@ function CallBackRedirect(props) {
         axiosWithBase()
             .post("/payments/fetchcredentials", {id: state.loggedInUser._id, authCode:parse.code})
             .then(() => {
-                toast.success('congratulations you can now upload art');
+                updateSpinner(false)
+                setTimeout(() =>{
+                    toast.success('congratulations you can now upload art');
+                }, 3000)
                 props.history.push('/myaccount')
-            }).catch(()=> toast.error('operation failed'))
+            }).catch(()=> {
+                toast.error('operation failed')
+            })
      }, [])
     return (
         <div>

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/Actions/actionCreators';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 import { StyledModal, openModalStyling } from './ArtViewModalStyling';
 import { Route } from 'react-router-dom';
 import Spinner from '../Components/Spinner';
 import DisplayArt from '../Components/BuyModalComponents/DisplayArtModal';
 import SuccessfulPurchase from '../Components/BuyModalComponents/SuccessfulPurchase';
-import { axiosWithBase } from '../AxiosCustom';
 
 function ArtViewModal(props) {
     const [requestingPurchase, setRequestingPurchase] = useState(false);
@@ -25,26 +24,7 @@ function ArtViewModal(props) {
 
     const clickBuy = () => {
         if (props.loggedInUser._id) {
-            const details = {
-                buyerId: props.loggedInUser._id,
-                schoolId: props.browseArtState.artInModal.userId,
-                quantity: 1,
-                totalAmount: props.browseArtState.artInModal.price,
-                status: "completed"
-            }
             return props.history.push('/payment')
-            // setRequestingPurchase(true);
-            // axiosWithBase()
-            //     .post(`/art/buyart/${props.browseArtState.artInModal._id}`, details)
-            //     .then(() => {
-            //         setRequestingPurchase(false);
-            //         props.history.push('/browse/success');
-            //     })
-            //     .catch(err => {
-            //         console.log(err.response);
-            //         setRequestingPurchase(false);
-            //         toast.error("There was a problem with your purchase")
-            //     })
         }
         else {
             props.history.push('/login');
