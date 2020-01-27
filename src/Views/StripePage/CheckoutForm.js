@@ -152,10 +152,7 @@ function CheckoutForm(props) {
         props.payementIntent,
         {
           payment_method: {
-            card: props.elements.getElement('card')
-            // billing_details: {
-            //   name: 'Jenny Rosen'
-            // }
+            card: props.elements.getElement('cardNumber')
           }
         }
       );

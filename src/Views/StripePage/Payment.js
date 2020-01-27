@@ -49,12 +49,17 @@ function Payment(props) {
       });
   }, []);
   console.log(process.env.REACT_APP_STRIPE_API_KEY);
+  const { artInModal } = props.state.browseArtState;
   return (
     <div>
       {spinner ? (
         <Spinner />
       ) : (
-        <StripeProvider stripe={stripe}>
+        <StripeProvider 
+            // stripe={stripe}
+            apiKey={process.env.REACT_APP_STRIPE_API_KEY}
+            stripeAccount={artInModal.userId.stripe_user_id}
+            >
           <Elements>
             <CheckoutForm payementIntent={payementIntent} />
           </Elements>
