@@ -42,17 +42,22 @@ function App(props) {
         try {
           const snapshot = await db
             .collection("messages")
-			.where("receiver_id", "==", props.loggedInUser._id)
+            .where("receiver_id", "==", props.loggedInUser._id)
             .get();
 
           const messages = snapshot.docs.map(x =>
             Object.assign({ id: x.id }, x.data())
           );
-          console.log("success");
           props.retrieveInboxMessages(messages);
+
+          const notifications = props.messages.received.filter(x => {
+            return !x.read;
+          });
+
+          props.setNotifications(notifications.length);
         } catch (error) {
-          console.log("error " + error);
           props.retrieveInboxMessages([]);
+          props.setNotifications(0);
         }
       };
       fetchMessages();

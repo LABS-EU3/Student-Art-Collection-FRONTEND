@@ -139,3 +139,10 @@ export function retrieveSentMessages(messages) {
     payload: messages
   }
 };
+
+export function setNotifications(number) {
+  return {
+    type: types.SET_NOTIFICATIONS,
+    payload: number
+  }
+}

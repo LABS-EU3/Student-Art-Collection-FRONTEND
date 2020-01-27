@@ -59,17 +59,17 @@ const DashNavStyle = styled.div`
     }
 `
 
-function DashNav({ loggedInUser }) {
+function DashNav(props) {
     const [isBuyer, setIsBuyer] = useState(null);
 
     useEffect(() => {
-        if (loggedInUser.type === 'buyer') {
+        if (props.loggedInUser.type === 'buyer') {
             setIsBuyer(true);
         }
-        else if (loggedInUser.type === 'school') {
+        else if (props.loggedInUser.type === 'school') {
             setIsBuyer(false);
         }
-    }, [loggedInUser.type])
+    }, [props.loggedInUser.type])
 
     return (
         <DashNavStyle>

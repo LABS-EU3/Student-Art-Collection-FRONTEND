@@ -130,7 +130,8 @@ export function browseArtReducer(state = initialBrowseArtState, action) {
 
 const initialMessageState = {
   received: [],
-  sent: []
+  sent: [],
+  notifications: 0
 };
 
 export function messageReducer(state = initialMessageState, action) {
@@ -139,6 +140,8 @@ export function messageReducer(state = initialMessageState, action) {
       return { ...state, received: action.payload };
     case types.RETRIEVE_SENT_MESSAGES:
       return { ...state, sent: action.payload };
+    case types.SET_NOTIFICATIONS:
+      return { ...state, notifications: action.payload };
     default:
       return state;
   }

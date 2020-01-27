@@ -114,16 +114,16 @@ display: none
            }
       } 
 
-      .title a {
-        width: 30%;
-        height: 2.5rem;
-        background-color: #ff6347;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        text-align: center;
+       .img-cont{
+        width: 30px;
+
+         img {
+          max-width: 100%;
+          height: auto;
+           :hover {
+             opacity: 0.5;
+           }
+        }
       }
       
       h4 {
