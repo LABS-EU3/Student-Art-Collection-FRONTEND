@@ -12,7 +12,7 @@ function Inbox(props) {
             <MessagePreview
               name={message.name}
               subject={message.subject}
-              sentAt={message.sendAt.toDateString()}
+              sentAt={message.sentAt}
               read={message.read}
               key={message.id}
               id={message.id}

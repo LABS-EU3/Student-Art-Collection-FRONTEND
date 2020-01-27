@@ -24,20 +24,21 @@ function Reply(props) {
       sender_id: props.loggedInUser._id,
       receiver_id: messageContent.sender_id,
       read: false,
-      timestamp: Date.now(),
-      subject: `RE: ${messageContent.subject}`
+      subject: `RE: ${messageContent.subject}`,
+      name: props.loggedInUser.type === 'school' ? props.loggedInUser.name : props.loggedInUser.firstname,
+      sentAt: new Date().toDateString()
     };
     db.collection("messages")
       .doc()
       .set(testSubmitObject)
       .then(() => {
-          toast.success('Message sent');
-          setTimeout(() => {
-            props.history.push('/myaccount/messages');
-          }, 2000)
+        toast.success("Message sent");
+        setTimeout(() => {
+          props.history.push("/myaccount/messages");
+        }, 2000);
       })
       .catch(() => {
-          toast.error("There was an error sending your message.")
+        toast.error("There was an error sending your message.");
       });
   };
 

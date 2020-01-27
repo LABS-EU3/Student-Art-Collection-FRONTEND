@@ -16,9 +16,7 @@ function Sent(props) {
           .get();
 
         const messages = snapshot.docs.map(x =>
-          Object.assign({ id: x.id }, x.data(), {
-            sendAt: x.data().sendAt.toDate()
-          })
+          Object.assign({ id: x.id }, x.data())
         );
 
         props.retrieveSentMessages(messages);
@@ -36,7 +34,7 @@ function Sent(props) {
             <MessagePreview
               name={message.name}
               subject={message.subject}
-              sentAt={message.sendAt.toDateString()}
+              sentAt={message.sentAt}
               read={message.read}
               key={message.id}
               id={message.id}

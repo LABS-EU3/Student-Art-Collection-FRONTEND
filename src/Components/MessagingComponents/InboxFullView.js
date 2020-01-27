@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
+import firebase from "../../config/firebaseConfig";
 
 import { StyledMessageBox } from "./MessagingComponentStyles";
 
-function InboxFullView
-(props) {
+const db = firebase.firestore();
+
+function InboxFullView(props) {
   const [messageContent, setMessageContent] = useState(null);
   const { id } = props.match.params;
 
   useEffect(() => {
+    db.collection("messages")
+      .doc(id)
+      .update({
+        read: true
+      });
+
     let thisData = props.messages.received.filter(x => {
       return id == x.id;
     });
@@ -41,12 +49,13 @@ function InboxFullView
         <p>{messageContent.message ? messageContent.message : ""}</p>
       </div>
       <div className="buttons">
-        <Link id="back" to='/myaccount/messages'>⬸</Link>
+        <Link id="back" to="/myaccount/messages">
+          ⬸
+        </Link>
         <Link to={`/myaccount/reply/${id}`}>Reply</Link>
       </div>
     </StyledMessageBox>
   );
 }
 
-export default connect(state => state, actionCreators)(InboxFullView
-  );
+export default connect(state => state, actionCreators)(InboxFullView);
