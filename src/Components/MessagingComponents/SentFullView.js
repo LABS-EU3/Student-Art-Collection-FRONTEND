@@ -40,7 +40,7 @@ function SentFullView (props) {
         <p>{messageContent.message ? messageContent.message : ""}</p>
       </div>
       <div className="buttons">
-        <Link id="back" to='/myaccount/messages'>⬸</Link>
+        <Link id="back" to='/myaccount/messages/sent'>⬸</Link>
       </div>
     </StyledMessageBox>
   );
