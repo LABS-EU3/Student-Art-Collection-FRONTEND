@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
+import { Field } from 'formik';
+import AlgoliaPlaces from "../../helpers/algolia";
 import { axiosWithBase } from "../../AxiosCustom";
 import * as actions from "../../store/Actions/actionCreators";
 import queryString from "query-string";

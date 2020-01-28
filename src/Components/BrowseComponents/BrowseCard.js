@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
 import { StyledBox } from './BrowseCardStyling';
+import calculateDistance from '../../helpers/distance';
 
 
 function BrowseCard(props) {

@@ -23,7 +23,7 @@ function ArtContainer(props) {
         return null;
     }
     
-
+    console.log(props, 'my new props')
     useEffect(() => {
         axiosWithBase()
             .get(`/art/search?searchQuery=${props.browseArtState.searchQuery}&pagination=12&filter=${props.browseArtState.filter}&sortBy=${props.browseArtState.sortBy}&sortType=${props.browseArtState.sortType}&page=${page}`)
@@ -70,6 +70,7 @@ function ArtContainer(props) {
                             price={art.price}
                             key={art.public_picture_id}
                             id={art.public_picture_id}
+                            distance={'hello'}
                         />
                     )
                 })

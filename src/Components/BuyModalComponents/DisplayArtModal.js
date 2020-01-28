@@ -2,9 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
 import { StyledModal, openModalStyling } from '../../Views/ArtViewModalStyling';
-
+import calculateDistance from '../../helpers/distance';
 
 function DisplayArt(props) {
+    let length;
+    const distance = () => {
+        const {userLocation} = props.loggedInUser;
+        const {userId} = Object.keys(props.browseArtState.artInModal).length && props.browseArtState.artInModal.userId
+        if(userId && userLocation) {
+            const buyer = {
+                lat: userLocation.latitude,
+                lng: userLocation.longitude
+            };
+            const school = {
+                lat: userId.userLocation.latitude,
+                lng: userId.userLocation.longitude
+            }
+            length = calculateDistance(buyer, school).toFixed(3);
+        }
+        return length;
+    }
     return (
         <StyledModal >
             <div className='close' style={props.browseArtState.artModalOpen ? openModalStyling : null} onClick={props.closeModal}>
@@ -29,6 +46,7 @@ function DisplayArt(props) {
                             <div className="price">
                                 <h3>${props.browseArtState.artInModal.price}.00</h3>
                                 <h4>{props.browseArtState.artInModal.height}cm x {props.browseArtState.artInModal.width}cm</h4>
+                                {props.loggedInUser ? props.loggedInUser.type === 'buyer' ? props.loggedInUser.userLocation ? <h5> {distance()}km away </h5> : null : null: null}
                                 <h5>Quantity: {props.browseArtState.artInModal.quantity < 1 || props.browseArtState.artInModal.quantity === null  ? "Out of Stock" : props.browseArtState.artInModal.quantity}</h5>
                             </div>
                             <button
