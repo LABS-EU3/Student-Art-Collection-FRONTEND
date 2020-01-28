@@ -13,12 +13,9 @@ export default function ConfirmDelete(props) {
       .then(res => {
         const updatedArt = props.artForSale.filter(art => art._id !== res.data._id);
         props.setArtForSale(updatedArt);
-        console.log(res);
         document.location.reload();
       })
-      .catch((error) => {
-        console.log(error.message);
-        
+      .catch(() => {
         toast.error("cannot delete art");
       });
   }
