@@ -45,6 +45,8 @@ export function RegisterForm(props) {
         };
         if (localStorage.getItem("address") === null) {
           toast.error("Location is required");
+          actions.setSubmitting(false);
+          props.loadingFinished();
           return;
         }
         props.loadingStarted();
