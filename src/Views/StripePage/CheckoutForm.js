@@ -5,6 +5,7 @@ import {
   CardCVCElement,
   CardNumberElement
 } from 'react-stripe-elements';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { ToastContainer, toast } from 'react-toastify';
 import CardSvg from '../../Assets/credit_card.svg';
@@ -209,4 +210,4 @@ function CheckoutForm(props) {
   );
 }
 
-export default injectStripe(CheckoutForm);
+export default injectStripe(withRouter(CheckoutForm));
