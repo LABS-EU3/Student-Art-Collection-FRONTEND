@@ -25,7 +25,7 @@ function CallBackRedirect(props) {
             })
      }, [])
     return (
-        <div>
+        <div className='div'>
             {spinner && <Spinner />}
             <ToastContainer
                 position="bottom-center"
