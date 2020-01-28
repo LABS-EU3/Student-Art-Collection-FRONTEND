@@ -12,7 +12,7 @@ import register2 from "../Assets/register2.svg";
 
 function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
-
+  console.log(baseURL,'here is the baseurl')
   if (props.isLoading) {
     return (
       <Content>
@@ -32,7 +32,7 @@ function Register(props) {
           <RegisterForm {...props} isSchool={isSchool} />
           {isSchool ? null : (
             <div className="googleButtonContainer">
-              <SocialAuthButton url={baseURL + "auth/google"} />
+              <SocialAuthButton url={baseURL+"/auth/google"} />
             </div>
           )}
           <Link to="/login">
@@ -100,7 +100,7 @@ export const Content = styled.div`
 
   @media (max-width: 900px) {
     padding: 40px 0px;
-    width: 90%
+    width: 90%;
     border: none
   }
 
@@ -136,12 +136,12 @@ export const Content = styled.div`
   }
   
   h1 {
-    font-size: 3rem
+    font-size: 3rem;
     text-align: center
   }
   
   h3 {
-    font-size: 2rem
+    font-size: 2rem;
     padding: 0.6rem 2.6rem
   }
   

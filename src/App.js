@@ -6,10 +6,12 @@ import GlobalStyle from "./Styles/GlobalStyle";
 // import theme
 import theme from "./Styles/Theme";
 // import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
+
 import "./App.css";
 import Spinner from "./Components/Spinner";
 import ErrorBoundary from "./Components/error-boundary/error-boundary.component";
-
+import StripePayment from './Views/StripePage/Payment';
+  
 const Navbar = lazy(() => import("./Components/NavBar"));
 const LandingPage = lazy(() => import("./Views/LandingPage"));
 const Register = lazy(() => import("./Views/Register"));
@@ -51,6 +53,8 @@ function App() {
             <Route path="/confirmation" component={ConfirmationSent} />
             <Route path="/success" component={ConfirmationSuccess} />
             <Route path="/contact" component={ContactPage} />
+    
+            <Route path="/payment" component={StripePayment} />
           </Suspense>
         </ErrorBoundary>
       </Switch>

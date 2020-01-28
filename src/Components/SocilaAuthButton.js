@@ -14,7 +14,7 @@ export default function SocialAuthButton(props) {
     width: 200px;
 
     img {
-      max-height: auto
+      max-height: auto;
       max-width: 100%
     }
 

@@ -6,6 +6,8 @@ const SpinnerContainer = styled.div`
   height: 40px;
   position: relative;
   animation: sk-chase 2.5s infinite linear both;
+  /* left: 40%; */
+  /* margin-top: 20%; */
   .sk-chase-dot {
     width: 100%;
     height: 100%;

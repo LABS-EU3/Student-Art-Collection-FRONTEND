@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Route } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../store/Actions/actionCreators";
+import React from 'react';
+import styled from 'styled-components';
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../store/Actions/actionCreators';
 
-import DashNav from "../Components/DashboardComponents/DashNav";
-import Profile from "../Components/DashboardComponents/Profile";
-import SellingNav from "../Components/SellingDashboardComponents/SellingNav";
-import BuyerOrderItems from "./BuyerOrderItems/BuyerOrderItems";
-import SchoolsSoldItems from "./SchoolsSoldItems/SchoolsSoldItems";
-import SchoolSelling from "./SchoolSellingItems/SchoolSelling";
-import UploadedArt from "../Components/UploadedArtComponent/UploadedArt";
+import DashNav from '../Components/DashboardComponents/DashNav';
+import Profile from '../Components/DashboardComponents/Profile';
+import SellingNav from '../Components/SellingDashboardComponents/SellingNav';
+import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
+import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
+import SchoolSelling from './SchoolSellingItems/SchoolSelling';
+import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
 import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
+import StripeCallBackPage from './StripePage/CallBackPage';
 
 const DashboardContainer = styled.div`
 	width: 100vw;
@@ -42,42 +43,23 @@ const DashboardContainer = styled.div`
     }
   }
 `;
-function Dashboard() {
-  // const [confirmDelete, setConfirmDelete] = useState("");
-  // console.log(confirmDelete);
-
-  return (
-    <DashboardContainer>
-      <div className="dashboard">
-        <Route path="/myaccount" component={DashNav} />
-        <Route path="/selling" component={SellingNav} />
-        <div className="right-side">
-          <Route exact path="/myaccount" component={Profile} />
-          <Route path="/myaccount/orders" component={BuyerOrderItems} />
-          <Route exact path="/selling/sold" component={SchoolsSoldItems} />
-          <Route
-            path="/selling/forsale"
-            render={props => (
-							<UploadedArt 
-								{...props} 
-								// setConfirmDelete={setConfirmDelete}
-							/>
-            )}
-          />
-          <Route
-            path="/selling/forsale/delete/:id"
-            render={props => (
-              <ConfirmDelete
-                {...props}
-								// confirmDelete={confirmDelete}
-								// setConfirmDelete={setConfirmDelete}
-              />
-            )}
-          />
-        </div>
-      </div>
-    </DashboardContainer>
-  );
+function Dashboard (){
+	return (
+		<DashboardContainer>
+			<div className="dashboard">
+				<Route path="/myaccount" component={DashNav} />
+				<Route path="/selling" component={SellingNav} />
+				<div className="right-side">
+					<Route exact path="/myaccount" component={Profile} />
+					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
+					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
+					<Route exact path="/selling/forsale" component={UploadedArt} />
+          <Route exact path="/selling/forsale/delete/:id" component={ConfirmDelete} />
+					<Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
+				</div>
+			</div>
+		</DashboardContainer>
+	);
 }
 
 export default connect(state => state, actions)(Dashboard);

@@ -64,7 +64,7 @@ const ResetPassword = () => {
           placeholder="Type your new password"
         />
         <StyledError name="password" component="div" />
-        <button>Reset Password</button>
+        <button type='submit'>Reset Password</button>
       </StyledForm>
     </StyledDiv>
   );
