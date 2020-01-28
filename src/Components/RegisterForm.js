@@ -42,7 +42,7 @@ export function RegisterForm(props) {
           lastname: values.lastName,
           email: values.email,
           password: values.password,
-          location: values.location
+          location: ''
         };
         console.log(newUser)
         actions.setSubmitting(true);
