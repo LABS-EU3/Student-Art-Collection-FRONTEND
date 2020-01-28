@@ -33,7 +33,6 @@ export function RegisterForm(props) {
       }
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
-        props.loadingStarted();
         const newUser = {
           type: props.isSchool ? "school" : "buyer",
           name: values.name,
@@ -42,10 +41,14 @@ export function RegisterForm(props) {
           lastname: values.lastName,
           email: values.email,
           password: values.password,
-          location: ''
+          userLocation: JSON.parse(localStorage.getItem("address"))
         };
-        console.log(newUser)
-        debugger
+        if (localStorage.getItem("address") === null) {
+          toast.error("Location is required");
+          return;
+        }
+        props.loadingStarted();
+
         actions.setSubmitting(true);
         axiosWithBase()
           .post("/signup", newUser)
@@ -54,6 +57,7 @@ export function RegisterForm(props) {
             actions.setSubmitting(false);
             props.loadingFinished();
             props.history.push("/confirmation");
+            localStorage.clear("address");
           })
           .catch(err => {
             toast.error(err.response.statusText);
@@ -169,8 +173,7 @@ export function RegisterForm(props) {
             <Error touched={touched.password} message={errors.password} />
           </div>
           <div data-testid="locationField" className="inputField">
-          <Field name="location" component={AlgoliaPlaces} />
-            <Error touched={touched.location} message={errors.location} />
+            <Field name="location" component={AlgoliaPlaces} />
           </div>
 
           <button className="abutton" type="submit" disabled={isSubmitting}>
