@@ -1,36 +1,37 @@
-import React from 'react';
-import styled from 'styled-components';
-import './SocialAuthButton.css';
-import GoogleIcon from '../Assets/google.png'
+import React from "react";
+import styled from "styled-components";
+import "./SocialAuthButton.css";
+import GoogleIcon from "../Assets/btn_google_signin_dark_normal_web@2x.png";
+
 export default function SocialAuthButton(props) {
-const display = props.isSchool ? "none" : "flex";
-const Button = styled.div`
-    display: ${display};
+  const Button = styled.div`
+    width: 100%;
+    display: flex;
     justify-content: center;
-    margin: 1rem 4rem;
-    a {
-        margin: 0 1rem; 
-        &:hover{
-          opacity: 0.7;
-          transition: opacity 0.1s ease-in-out;
-        }
+  margin-top: 10px;
+  div {
+
+    width: 200px;
+
+    img {
+      max-height: auto;
+      max-width: 100%
     }
-    @media (max-width:600px) {
-        margin: 1rem;
-        span.label {
-            display: none;
-        }
+
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
     }
-`;
-    return (
-        <Button>
-         <span className="label">Buyer Sign in with:</span>
+  }
+  `;
+
+  return (
+    <Button>
+      <div>
         <a href={props.url}>
-                <div id="customBtn" className="customGPlusSignIn">
-                    <img src={GoogleIcon} alt="google icon" className="icon"/>
-                    <span className="buttonText">Google Sign In</span>
-                </div>
-         </a>
-        </Button>
-    )
+          <img src={GoogleIcon} alt="" />
+        </a>
+      </div>
+    </Button>
+  );
 }

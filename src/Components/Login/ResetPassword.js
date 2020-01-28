@@ -6,10 +6,9 @@ import styled from 'styled-components';
 import * as actionCreators from '../../store/Actions/actionCreators';
 
 const StyledDiv = styled.div`
-  font-family: ‘Roboto’, sans-serif;
-  padding: 2rem;
+  margin: 10px 0 30px 0;
   h2 {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   span {
     text-decoration: underline;

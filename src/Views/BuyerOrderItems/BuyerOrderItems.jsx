@@ -34,9 +34,9 @@ function BuyerOrderItems(props) {
 				toast.error('Could not retrieve your orders');
 			});
 	}, [status]);
-	if (!spinner) {
 		return (
 			<MainContainer>
+			{spinner && <Spinner />}
 				<StyledButtonContainer>
 					<CustomButton status="all">All</CustomButton>
 					<CustomButton status="pending">Pending</CustomButton>
@@ -65,10 +65,5 @@ function BuyerOrderItems(props) {
 			</MainContainer>
 		);
 	}
-
-	return (
-		<Spinner />
-	);
-}
 
 export default connect((state) => state)(BuyerOrderItems);

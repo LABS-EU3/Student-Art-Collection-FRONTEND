@@ -11,7 +11,7 @@ const DashNavStyle = styled.div`
     align-items: center;
     font-family: 'Roboto', sans-serif;  
     font-size: 1.5rem;
-    color: rgba(0,0,0,0.5);
+    color: ${props => props.theme.lightGrey}
 
     @media(max-width: 500px) {
         width: 150px;
@@ -25,7 +25,7 @@ const DashNavStyle = styled.div`
     div {
         height: 85%;
         width: 100%;
-        border-right: 1px solid rgba(0,0,0,0.1);  
+        border-right: 1px solid ${props => props.theme.veryLightGrey};  
         display: flex;
         align-items: center;
     }
@@ -40,35 +40,38 @@ const DashNavStyle = styled.div`
 
         a {
             width: 60%;
+            color: ${props => props.theme.lightGrey};
             padding: 0.5rem;
             text-align: center;
             transition: color 0.2s ease-in-out;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid ${props => props.theme.white};
 
             &:hover {
-                color: rgba(0,0,0,0.8);
+                color: r${props => props.theme.black};
                 transition: color 0.2s ease-in-out;
             }
         }
     }
 
     .active {
-        color: rgba(0,0,0,1);
-        border-bottom: 1px solid black;
+        color: ${props => props.theme.black};
+        border-bottom: 1px solid ${props => props.theme.black};
     }
 `
 
-function DashNav({ loggedInUser }) {
+function DashNav(props) {
     const [isBuyer, setIsBuyer] = useState(null);
 
+const notification = props.messages.notifications > 0 ? <span>{props.messages.notifications}</span> : null;
+
     useEffect(() => {
-        if (loggedInUser.type === 'buyer') {
+        if (props.loggedInUser.type === 'buyer') {
             setIsBuyer(true);
         }
-        else if (loggedInUser.type === 'school') {
+        else if (props.loggedInUser.type === 'school') {
             setIsBuyer(false);
         }
-    }, [loggedInUser.type])
+    }, [props.loggedInUser.type])
 
     return (
         <DashNavStyle>
@@ -77,7 +80,7 @@ function DashNav({ loggedInUser }) {
                     {!isBuyer ? <NavLink exact to='/selling/forsale'>Dashboard</NavLink> : null}
                     <NavLink exact to='/myaccount'>Profile</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/orders?status=all'>Orders</NavLink> : null}
-                    <NavLink to='/myaccount/messages'>Messages</NavLink>
+                    <NavLink to='/myaccount/messages' style={props.messages.notifications > 0 ? {color: 'red'} : null}>Messages {notification}</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/wishlist'>Wishlist</NavLink> : null}
                     <NavLink to='/myaccount/help'>Help</NavLink>
                 </nav>
