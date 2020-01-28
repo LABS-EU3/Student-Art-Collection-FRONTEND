@@ -48,6 +48,7 @@ function App(props) {
           const messages = snapshot.docs.map(x =>
             Object.assign({ id: x.id }, x.data())
           );
+
           props.retrieveInboxMessages(messages);
 
           const notifications = props.messages.received.filter(x => {
@@ -55,6 +56,7 @@ function App(props) {
           });
 
           props.setNotifications(notifications.length);
+          document.title = `artFunder - ${notifications.length} - `
         } catch (error) {
           props.retrieveInboxMessages([]);
           props.setNotifications(0);
@@ -62,7 +64,7 @@ function App(props) {
       };
       fetchMessages();
     }
-  }, [props.history.location]);
+  }, [props.history.location, props.loggedInUser._id]);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
