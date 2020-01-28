@@ -1,6 +1,6 @@
 import React from "react";
 import AlgoliaPlaces from "algolia-places-react";
-require('dotenv').config()
+
 
 export default () => {
   return (
@@ -20,8 +20,8 @@ export default () => {
         )
       }
       options={{
-        appId: process.env.APP_ID,
-        apiKey: process.env.APP_KEY,
+        appId: process.env.REACT_APP_APP_ID,
+        apiKey: process.env.REACT_APP_APP_KEY,
         type: "address"
       }}
     />
