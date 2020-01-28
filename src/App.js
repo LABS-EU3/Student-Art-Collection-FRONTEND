@@ -71,14 +71,15 @@ function App(props) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Navbar />
+      
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
+            <Route path="/browse" component={ArtViewModal} />
+            <Route path='/' component={Navbar} />
             <Route exact path="/" component={LandingPage} />
             <Route path="/signup" component={Register} />
             <Route path="/login" component={Login} />
-            <Route path="/browse" component={ArtViewModal} />
             <Route path="/browse" component={BrowseArt} />
             <Route path="/myaccount" component={Dashboard} />
 
