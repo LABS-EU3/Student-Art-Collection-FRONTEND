@@ -16,6 +16,7 @@ import SentFullView from '../Components/MessagingComponents/SentFullView';
 import Reply from '../Components/MessagingComponents/Reply';
 import NewMessage from '../Components/MessagingComponents/NewMessage';
 import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
+import StripeCallBackPage from './StripePage/CallBackPage';
 
 
 const DashboardContainer = styled.div`
@@ -48,8 +49,6 @@ const DashboardContainer = styled.div`
   }
 `;
 function Dashboard() {
-  // const [confirmDelete, setConfirmDelete] = useState("");
-  // console.log(confirmDelete);
 
   return (
     <DashboardContainer>
@@ -65,12 +64,12 @@ function Dashboard() {
 					<Route exact path= "/myaccount/newmessage/:id" component={NewMessage}/>
 					<Route exact path= "/myaccount/sent/:id" component={SentFullView}/>
           <Route exact path="/selling/sold" component={SchoolsSoldItems} />
+          <Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
           <Route
             path="/selling/forsale"
             render={props => (
 							<UploadedArt 
 								{...props} 
-								// setConfirmDelete={setConfirmDelete}
 							/>
             )}
           />
@@ -79,8 +78,6 @@ function Dashboard() {
             render={props => (
               <ConfirmDelete
                 {...props}
-								// confirmDelete={confirmDelete}
-								// setConfirmDelete={setConfirmDelete}
               />
             )}
           />

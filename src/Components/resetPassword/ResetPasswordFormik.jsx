@@ -54,7 +54,7 @@ const ResetPasswordFormik = () => {
       <StyledForm>
         <Field name="email" type="email" placeholder="write your email" />
         <ErrorMessage name="email" component="div" />
-        <button>Reset Password</button>
+        <button type='submit'>Reset Password</button>
       </StyledForm>
     </StyledDiv>
   );

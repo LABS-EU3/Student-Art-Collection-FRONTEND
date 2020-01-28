@@ -84,6 +84,12 @@ export const StyledMessageBox = styled.div`
   flex-direction: column;
   font-family: "Roboto", sans-serif;
   padding-top: 1rem;
+
+  @media(max-width: 800px){
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+  }
   .from,
   .subject {
     height: 10%;
@@ -91,6 +97,8 @@ export const StyledMessageBox = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
+
+
 
     h3 {
       font-size: 1.2rem;

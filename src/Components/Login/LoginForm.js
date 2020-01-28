@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Field, ErrorMessage } from "formik";
-import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 import { connect } from "react-redux";
