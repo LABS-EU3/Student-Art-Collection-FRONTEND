@@ -202,7 +202,7 @@ export const StyledForm = styled.form`
   .inputField {
     display: flex;
     flex-direction: column;
-    margin: 2px 0;
+    // margin: 2px 0;
     width: 100%;
   }
   .has-error {
@@ -215,11 +215,6 @@ export const StyledForm = styled.form`
   .valid {
     font-size: 1rem;
     color: ${props => props.theme.buttonOrange};
-  }
-
-  label {
-    font-size: 2rem;
-    padding: 15px 0 10px 0;
   }
 
   input {
