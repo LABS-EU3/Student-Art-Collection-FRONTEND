@@ -5,8 +5,8 @@ export default () => {
   return (
     <AlgoliaPlaces
       placeholder="Write an address here"
-      onChange={({ rawAnswer }) => console.log(rawAnswer)} 
-      onSuggestions={({ rawAnswer }) => console.log(2, rawAnswer)} 
+      onChange={({ suggestionIndex }) => console.log(suggestionIndex)} 
+      onSuggestions={({ query }) => console.log(2,query)} 
       options={{
         appId: "plE5TDMGUFLT",
         apiKey: "ec0b572cd3fd3c7b6b56b4db34563c5f",

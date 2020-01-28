@@ -45,6 +45,7 @@ export function RegisterForm(props) {
           location: values.location
         };
         console.log(newUser)
+        debugger
         actions.setSubmitting(true);
         axiosWithBase()
           .post("/signup", newUser)
