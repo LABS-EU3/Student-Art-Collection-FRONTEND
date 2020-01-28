@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actions from '../store/Actions/actionCreators';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Route } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../store/Actions/actionCreators";
 
-import DashNav from '../Components/DashboardComponents/DashNav';
-import Profile from '../Components/DashboardComponents/Profile';
-import SellingNav from '../Components/SellingDashboardComponents/SellingNav';
-import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
-import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
-import SchoolSelling from './SchoolSellingItems/SchoolSelling';
-import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
-
+import DashNav from "../Components/DashboardComponents/DashNav";
+import Profile from "../Components/DashboardComponents/Profile";
+import SellingNav from "../Components/SellingDashboardComponents/SellingNav";
+import BuyerOrderItems from "./BuyerOrderItems/BuyerOrderItems";
+import SchoolsSoldItems from "./SchoolsSoldItems/SchoolsSoldItems";
+import SchoolSelling from "./SchoolSellingItems/SchoolSelling";
+import UploadedArt from "../Components/UploadedArtComponent/UploadedArt";
+import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
 
 const DashboardContainer = styled.div`
 	width: 100vw;
@@ -29,34 +29,55 @@ const DashboardContainer = styled.div`
 		border-radius: 5px;
 		display: flex;
 
-		@media (max-width: 500px) {
-			width: 100%;
-			height: 100%;
-		}
+    @media (max-width: 500px) {
+      width: 100%;
+      height: 100%;
+    }
 
-		.right-side {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
+    .right-side {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `;
-function Dashboard (){
-	return (
-		<DashboardContainer>
-			<div className="dashboard">
-				<Route path="/myaccount" component={DashNav} />
-				<Route path="/selling" component={SellingNav} />
-				<div className="right-side">
-					<Route exact path="/myaccount" component={Profile} />
-					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
-					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
-					<Route exact path="/selling/forsale" component={UploadedArt} />
-				</div>
-			</div>
-		</DashboardContainer>
-	);
+function Dashboard() {
+  // const [confirmDelete, setConfirmDelete] = useState("");
+  // console.log(confirmDelete);
+
+  return (
+    <DashboardContainer>
+      <div className="dashboard">
+        <Route path="/myaccount" component={DashNav} />
+        <Route path="/selling" component={SellingNav} />
+        <div className="right-side">
+          <Route exact path="/myaccount" component={Profile} />
+          <Route path="/myaccount/orders" component={BuyerOrderItems} />
+          <Route exact path="/selling/sold" component={SchoolsSoldItems} />
+          <Route
+            path="/selling/forsale"
+            render={props => (
+							<UploadedArt 
+								{...props} 
+								// setConfirmDelete={setConfirmDelete}
+							/>
+            )}
+          />
+          <Route
+            path="/selling/forsale/delete/:id"
+            render={props => (
+              <ConfirmDelete
+                {...props}
+								// confirmDelete={confirmDelete}
+								// setConfirmDelete={setConfirmDelete}
+              />
+            )}
+          />
+        </div>
+      </div>
+    </DashboardContainer>
+  );
 }
 
-export default connect((state) => state, actions)(Dashboard);
+export default connect(state => state, actions)(Dashboard);

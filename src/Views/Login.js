@@ -1,23 +1,22 @@
-import React from 'react';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as actionCreators from '../store/Actions/actionCreators';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Formik } from "formik";
+import * as yup from "yup";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import * as actionCreators from "../store/Actions/actionCreators";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 // COMPONENTS
 
-import LoginForm from '../Components/Login/LoginForm';
-import ResetPassword from '../Components/Login/ResetPassword';
-import { axiosWithBase } from '../AxiosCustom';
-
+import LoginForm from "../Components/Login/LoginForm";
+import ResetPassword from "../Components/Login/ResetPassword";
+import { axiosWithBase } from "../AxiosCustom";
 
 const initialValues = {
-  email: '',
-  password: ''
+  email: "",
+  password: ""
 };
 
 // make it an env variable
@@ -53,6 +52,22 @@ const StyledForm = styled.div`
   border-radius: 10px;
   padding: 80px 20px;
   font-family: ‘Roboto’, sans-serif;
+  
+  @media (max-width: 900px) {
+    padding: 40px 0px;
+    width: 90%
+    border: none
+  }
+
+  @media (max-height: 950px) {
+    border: none
+  }
+
+  h4 {
+    margin-top: 35px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
 `;
 
 const Login = ({
@@ -69,7 +84,7 @@ const Login = ({
     loadingStarted();
     resetErrorLogin();
     axiosWithBase()
-      .post('/login', values)
+      .post("/login", values)
       .then(res => {
         // this won't work as there is no login endpoint in the backend yet
         loadingFinished();
@@ -77,24 +92,24 @@ const Login = ({
         resetErrorLogin();
         if (!res.data.token) {
           switch (res.data.message) {
-            case 'please check your email address to confirm account':
-              history.push('/confirmation');
+            case "please check your email address to confirm account":
+              history.push("/confirmation");
               break;
             default:
               return res.data.message;
           }
         } else {
-          localStorage.setItem('authorization', res.data.token);
+          localStorage.setItem("authorization", res.data.token);
           setLoggedInUser(res.data.user);
-          history.push('/');
+          history.push("/");
         }
       })
       .catch(error => {
         loadingFinished();
         if (!error.response) {
-          errorLogin('Something went wrong. Please contact us so we can help.');
+          errorLogin("Something went wrong. Please contact us so we can help.");
           toast.error(
-            'Something went wrong. Please contact us so we can help.'
+            "Something went wrong. Please contact us so we can help."
           );
         } else {
           switch (error.response.status) {
@@ -108,10 +123,10 @@ const Login = ({
               break;
             default:
               errorLogin(
-                'Something went wrong. Please contact us so we can help.'
+                "Something went wrong. Please contact us so we can help."
               );
               toast.error(
-                'Something went wrong. Please contact us so we can help.'
+                "Something went wrong. Please contact us so we can help."
               );
           }
         }
@@ -132,7 +147,9 @@ const Login = ({
         autoClose={3000}
         closeButton={false}
       />
-      <ResetPassword />
+      <Link to="/signup">
+        <h4>Register here.</h4>
+      </Link>
     </StyledForm>
   );
 };
