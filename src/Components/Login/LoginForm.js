@@ -1,19 +1,20 @@
-import React from 'react';
-import { Form, Field, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
 
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as actionCreators from '../../store/Actions/actionCreators';
+import styled from "styled-components";
+import { connect } from "react-redux";
+import * as actionCreators from "../../store/Actions/actionCreators";
 
-import Spinner from '../Spinner';
-import SocialAuthButton from '../SocilaAuthButton';
-import { baseURL } from '../../AxiosCustom'
+import Spinner from "../Spinner";
+import SocialAuthButton from "../SocilaAuthButton";
+import { baseURL } from "../../AxiosCustom";
+import ResetPassword from "./ResetPassword";
 
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 75%;
   font-family: ‘Roboto’, sans-serif;
   h1 {
@@ -21,10 +22,10 @@ const StyledDiv = styled.div`
     padding: 2rem 0;
   }
 
-   a {
-     width: 100%;
-     text-align: center;
-   }
+  a {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const StyledForm = styled(Form)`
@@ -32,19 +33,18 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 100%;
-  label {
-    font-size: 2rem;
-    padding: 1rem 0;
-  }
+  width: 90%;
+
   input {
+    font-size: 1.8rem;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: solid 0.5px ${props => props.theme.lightGrey};
+    margin: 15px 0;
   }
   button {
-    margin: 40px auto;
+    margin: 20px auto;
     background-color: ${props => props.theme.buttonOrange};
     color: ${props => props.theme.white};
     border: none;
@@ -76,7 +76,7 @@ const LoginForm = ({ isLoading }) => {
     <StyledDiv>
       <h1>Sign In</h1>
       <StyledForm>
-        <label htmlFor="email">email</label>
+        {/* <label htmlFor="email">email</label> */}
         <Field
           name="email"
           type="email"
@@ -85,7 +85,7 @@ const LoginForm = ({ isLoading }) => {
           placeholder="Enter your email"
         />
         <StyledError name="email" component="div" />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label> */}
         <Field
           name="password"
           type="password"
@@ -95,13 +95,10 @@ const LoginForm = ({ isLoading }) => {
         <StyledError name="password" component="div" />
         <button type="submit">Login</button>
       </StyledForm>
-      <Link to="/signup">Not a member yet? Click here.</Link>
+      <ResetPassword />
 
-      <SocialAuthButton
-        isSchool={false}
-        url={baseURL+'/auth/google'}
-      />
-      
+
+      <SocialAuthButton isSchool={false} url={baseURL + "/auth/google"} />
     </StyledDiv>
   );
 };
