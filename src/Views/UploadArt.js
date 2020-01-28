@@ -79,6 +79,7 @@ function UploadArt({ loggedInUser, closeModal }) {
         setSpinning(false);
         setSubmitted(true);
         closeModal();
+        document.location.reload();
       })
       .catch(() => {
         setSpinning(false);
