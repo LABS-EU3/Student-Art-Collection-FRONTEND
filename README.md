@@ -1,4 +1,5 @@
 ## Student Art Collection Frontend
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aec77a38-35ea-4299-ae5d-f08408c0a43f/deploy-status)](https://app.netlify.com/sites/artfunder-development/deploys)
 
 ## Table of Contents
 - [Scripts](#scripts)
