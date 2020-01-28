@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import Error from "../helpers/Error";
 import {
   validationSchemaSchool,
@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosWithBase, baseURL } from "../AxiosCustom";
 import SocialAuthButton from "../Components/SocilaAuthButton";
-import AlgoliaPlaces from "algolia-places-react";
+import AlgoliaPlaces from "../helpers/algolia";
 
 const initalSignupForm = {
   name: "",
@@ -19,7 +19,7 @@ const initalSignupForm = {
   lastName: "",
   email: "",
   password: "",
-  Location: ""
+  location: ""
 };
 
 export function RegisterForm(props) {
@@ -42,8 +42,9 @@ export function RegisterForm(props) {
           lastname: values.lastName,
           email: values.email,
           password: values.password,
-          Location: <AlgoliaPlaces/>
+          location: values.location
         };
+        console.log(newUser)
         actions.setSubmitting(true);
         axiosWithBase()
           .post("/signup", newUser)
@@ -102,10 +103,7 @@ export function RegisterForm(props) {
             </div>
           )}
           {props.isSchool ? (
-            <div
-              data-testid="descriptionField"
-              className="inputField"
-            >
+            <div data-testid="descriptionField" className="inputField">
               <textarea
                 name="description"
                 type="text"
@@ -124,10 +122,7 @@ export function RegisterForm(props) {
               />
             </div>
           ) : (
-            <div
-              data-testid="lastNameField"
-              className="inputField"
-            >
+            <div data-testid="lastNameField" className="inputField">
               <input
                 name="lastName"
                 type="text"
@@ -172,8 +167,12 @@ export function RegisterForm(props) {
             />
             <Error touched={touched.password} message={errors.password} />
           </div>
+          <div data-testid="locationField" className="inputField">
+          <Field name="location" component={AlgoliaPlaces} />
+            <Error touched={touched.location} message={errors.location} />
+          </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button className="abutton" type="submit" disabled={isSubmitting}>
             Submit
           </button>
           <ToastContainer

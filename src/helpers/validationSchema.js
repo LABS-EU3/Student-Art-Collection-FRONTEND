@@ -13,6 +13,8 @@ export const validationSchemaSchool = Yup.object().shape({
     .min(8, "must be at least 8 charaters")
     .max(127, "must be shorter than 127")
     .required("this is a required field"),
+
+
 });
 
 export const validationSchemaBuyer = Yup.object().shape({
@@ -32,4 +34,5 @@ export const validationSchemaBuyer = Yup.object().shape({
     .min(8, "must be at least 8 charaters")
     .max(127, "must be shorter than 127")
     .required("this is a required field"),
+
 });
