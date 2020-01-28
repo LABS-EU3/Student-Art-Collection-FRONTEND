@@ -57,7 +57,7 @@ export const StyledButton = styled(NavLink)`
 export const StyledOrderContainer = styled.div`
 width: 100%;
 height: 90%;
-overflow-y: scroll;
+// overflow-y: scroll;
 
 	.nothing{
 		width: 100%;
@@ -69,46 +69,46 @@ overflow-y: scroll;
 	}
 `
 
-export const CollectionItemContainer = styled.div`	
-	 max-height: auto;
-	-ms-flex: auto;
-	background: ${props => props.theme.white};
-	box-shadow: 0px 6px 18px rgba(0,0,0,0.06);
-	width: 100%;
-	max-width: 250px;
-	margin: 2em;
-	padding: 2em;
-	display:inline-block;
-	border: 1px solid rgba(0, 0, 0, 0.02);
-	font-family: 'Roboto', sans-serif;
-	transition: all 0.3s cubic-bezier(.25,.8,.25,0.5);
-	&:hover {
-        box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.05);
-    };
-    img {
-     max-width: 100%;
-     height: auto;
-     margin-bottom: 1rem;
-     cursor: pointer;
-	};
+// export const CollectionItemContainer = styled.div`	
+// 	 max-height: auto;
+// 	-ms-flex: auto;
+// 	background: ${props => props.theme.white};
+// 	box-shadow: 0px 6px 18px rgba(0,0,0,0.06);
+// 	width: 100%;
+// 	max-width: 250px;
+// 	margin: 2em;
+// 	padding: 2em;
+// 	display:inline-block;
+// 	border: 1px solid rgba(0, 0, 0, 0.02);
+// 	font-family: 'Roboto', sans-serif;
+// 	transition: all 0.3s cubic-bezier(.25,.8,.25,0.5);
+// 	&:hover {
+//         box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.05);
+//     };
+//     img {
+//      max-width: 100%;
+//      height: auto;
+//      margin-bottom: 1rem;
+//      cursor: pointer;
+// 	};
 
-	button {
-		margin-top: 1rem;
-		margin-left: 35%;
-		width: 60px;
-		background-color: ${props => props.theme.buttonOrange};
-		color: ${props => props.theme.white};
-		border-radius: 5px;
-		outline: none;
-		border: none;
-		padding: .5rem;
-		cursor: pointer;
-		&:hover{
-			color: ${props => props.theme.buttonOrange};
-			background: ${props => props.theme.white};
-		}
-  }
-`
+// 	button {
+// 		margin-top: 1rem;
+// 		margin-left: 35%;
+// 		width: 60px;
+// 		background-color: ${props => props.theme.buttonOrange};
+// 		color: ${props => props.theme.white};
+// 		border-radius: 5px;
+// 		outline: none;
+// 		border: none;
+// 		padding: .5rem;
+// 		cursor: pointer;
+// 		&:hover{
+// 			color: ${props => props.theme.buttonOrange};
+// 			background: ${props => props.theme.white};
+// 		}
+//   }
+// `
 
 export const CollectionItemContainer = styled.div`
   max-height: auto;

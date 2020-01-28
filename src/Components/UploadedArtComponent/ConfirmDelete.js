@@ -9,7 +9,7 @@ export default function ConfirmDelete(props) {
 
   function deleteArt(id) {
     axiosWithBase()
-      .delete(`/art/selling/${id}`)
+      .delete(`/product/${id}`)
       .then(res => {
         const updatedArt = props.artForSale.filter(art => art._id !== res._id);
         props.setArtForSale(updatedArt);
