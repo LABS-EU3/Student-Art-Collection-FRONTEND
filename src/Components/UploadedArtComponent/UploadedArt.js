@@ -111,6 +111,8 @@ function ArtForSale(props) {
                     <ConfirmDelete
                       setIsOpen={setIsOpen}
                       artToDelete={artToDelete}
+                      artForSale={artForSale}
+                      setArtForSale={setArtForSale}
                     />
                   ) : (
                     <EditForm editArt={art} onRequestClose={closeModal} />

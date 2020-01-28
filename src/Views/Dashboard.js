@@ -11,7 +11,7 @@ import BuyerOrderItems from "./BuyerOrderItems/BuyerOrderItems";
 import SchoolsSoldItems from "./SchoolsSoldItems/SchoolsSoldItems";
 import SchoolSelling from "./SchoolSellingItems/SchoolSelling";
 import UploadedArt from "../Components/UploadedArtComponent/UploadedArt";
-import ConfirmDelete from "./ConfirmDelete";
+import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
 
 const DashboardContainer = styled.div`
 	width: 100vw;

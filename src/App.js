@@ -10,7 +10,7 @@ import './App.css';
 import Spinner from './Components/Spinner';
 import Navbar from './Components/NavBar';
 import ErrorBoundary from './Components/error-boundary/error-boundary.component';
-import ConfirmDelete from './Views/ConfirmDelete';
+import ConfirmDelete from './Components/UploadedArtComponent/ConfirmDelete';
 // import LandingPage from './Views/LandingPage';
 // import Register from './Views/Register';
 // import ConfirmationSent from './Views/ConfirmationSent';

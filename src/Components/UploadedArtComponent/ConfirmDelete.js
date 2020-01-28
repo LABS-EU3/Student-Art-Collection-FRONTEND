@@ -9,12 +9,16 @@ export default function ConfirmDelete(props) {
 
   function deleteArt(id) {
     axiosWithBase()
-      .delete(`/product/${id}`)
+      .delete(`art/product/${id}`)
       .then(res => {
-        const updatedArt = props.artForSale.filter(art => art._id !== res._id);
+        const updatedArt = props.artForSale.filter(art => art._id !== res.data._id);
         props.setArtForSale(updatedArt);
+        console.log(res);
+        
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error.message);
+        
         toast.error("cannot delete art");
       });
   }
