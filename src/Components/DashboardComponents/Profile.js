@@ -34,13 +34,13 @@ const ProfileContainer = styled.div`
       height: 100px;
       border-radius: 50%;
       margin-bottom: 0.7rem;
-      background-color: rgba(56, 56, 188, 0.3);
+      background-color: ${props => props.theme.photoContainer};
       display: flex;
       justify-content: center;
       align-items: center;
 
       h1 {
-        color: white;
+        color: ${props => props.theme.white};
         font-size: 5rem;
       }
 
@@ -52,7 +52,7 @@ const ProfileContainer = styled.div`
     }
 
     span {
-      color: #fd7135;
+      color: ${props => props.theme.buttonOrange};
       cursor: pointer;
       margin-top: 10px;
 
@@ -74,7 +74,7 @@ const ProfileContainer = styled.div`
     .data-row {
       width: 100%;
       height: 3rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 3px solid ${props => props.theme.veryLightGrey};
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -87,11 +87,11 @@ const ProfileContainer = styled.div`
         border: 0;
         text-align: right;
         width: 300px;
-        color: rgba(0, 0, 0, 0.7);
+        color: ${props => props.theme.lightGrey};
 
         &:focus {
           outline: none;
-          color: orange;
+          color: ${props => props.theme.buttonOrange};
         }
 
         @media (max-width: 775px) {
@@ -110,9 +110,9 @@ const ProfileContainer = styled.div`
     #cancel {
       width: 106px;
       height: 36px;
-      background: #ffa439;
-      border: none;
-      color: white;
+      background: ${props => props.theme.white};
+      border: 1px solid ${props => props.theme.lightGrey};
+      color: ${props => props.theme.black};
       border-radius: 4px;
       cursor: pointer;
       transition: opacity 0.2s ease-in-out;
@@ -131,8 +131,8 @@ const ProfileContainer = styled.div`
     #save {
       width: 106px;
       height: 36px;
-      background: rgba(49, 215, 21, 0.8);
-      color: white;
+      background: ${props => props.theme.buttonOrange};
+      color: ${props => props.theme.white};
       border: none;
       margin-left: 1rem;
       cursor: pointer;
@@ -173,9 +173,11 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             lastname: editedUserDetails.lastname,
             email: editedUserDetails.email,
             name: editedUserDetails.name,
-            description: editedUserDetails.description
+            description: editedUserDetails.description,
+            shippingAddress: editedUserDetails.shippingAddress,
+            billingAddress: editedUserDetails.billingAddress
         };
-
+            console.log(editedUser);
         axiosWithBase()
             .patch(`/updateProfile/${loggedInUser.userId}`, editedUser)
             .then(() => {
@@ -291,6 +293,16 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                                 />
                             </div>
                         ) : null}
+                        {"firstname" in editedUserDetails ? (
+                            <div className="data-row">
+                             <h2>Shipping Address</h2>
+                             <input name="shippingAddress" value={editedUserDetails.shippingAddress} onChange={changeHandler}/>
+                        </div> ) : null }
+                        {"firstname" in editedUserDetails ? (
+                        <div className="data-row">
+                            <h2>Billing Address</h2>
+                            <input name="billingAddress" value={editedUserDetails.billingAddress} onChange={changeHandler}/>
+                        </div> ) : null}
                         {"name" in editedUserDetails ? (
                             <div className="data-row">
                                 <h2>School Name</h2>

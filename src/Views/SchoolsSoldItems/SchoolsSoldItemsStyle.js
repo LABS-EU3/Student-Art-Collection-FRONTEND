@@ -24,7 +24,7 @@ export const SchoolsCollectionContainer = styled.section`
 export const CollectionItemContainer = styled.div`	
 	 max-height: auto;
 	-ms-flex: auto;
-	background: #ffffff;
+	background: ${props => props.theme.white};
 	box-shadow: 0px 6px 18px rgba(0,0,0,.1);
 	width: 100%;
 	max-width: 250px;
@@ -73,20 +73,20 @@ h3 {
     font-size: 1.2rem;
 }
 h3:nth-child(4) {
-		color: green;
+		color: ${props => props.theme.buttonOrange};
 	}
 
 `;
 
 export const CustomButton = styled(NavLink)`
-	background: white;
+	background: ${props => props.theme.white};
 	padding: 5px 15px;
 	font-size: 10pt;
 	font-family: 'Roboto';
 	margin-left: 0.5rem;
 	cursor: pointer;
 	&:hover {
-		color: orange;
+		color: ${props => props.theme.buttonOrange};
 	}
 	&:active {
 		box-shadow: inset 1px 1px 1px #dfdfdf;
@@ -101,7 +101,7 @@ export const ButtonsContainer = styled.div`
 	margin-bottom: 3rem;
 	position: absolute;
 	top: 17%;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid ${props => props.theme.lightGrey};
 	font-size: 17px;
 `;
 

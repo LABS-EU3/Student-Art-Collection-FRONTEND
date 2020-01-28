@@ -28,12 +28,12 @@ const StyledForm = styled(Form)`
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px lightgrey;
+    border: solid 0.5px ${props => props.theme.lightGrey};
   }
   button {
     margin: 40px auto;
-    background-color: green;
-    color: white;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;
@@ -64,7 +64,7 @@ const ResetPassword = () => {
           placeholder="Type your new password"
         />
         <StyledError name="password" component="div" />
-        <button>Reset Password</button>
+        <button type='submit'>Reset Password</button>
       </StyledForm>
     </StyledDiv>
   );

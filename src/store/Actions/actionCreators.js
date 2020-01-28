@@ -123,3 +123,26 @@ export function setSearchValues(values) {
     payload: values
   };
 }
+
+// Messaging 
+
+export function retrieveInboxMessages(messages) {
+  return {
+    type: types.RETRIEVE_INBOX_MESSAGES,
+    payload: messages
+  }
+};
+
+export function retrieveSentMessages(messages) {
+  return {
+    type: types.RETRIEVE_SENT_MESSAGES,
+    payload: messages
+  }
+};
+
+export function setNotifications(number) {
+  return {
+    type: types.SET_NOTIFICATIONS,
+    payload: number
+  }
+}

@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actionCreators from '../store/Actions/actionCreators';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionCreators from "../store/Actions/actionCreators";
 
-import MobileNav from './MobileNav';
-import SearchIcon from '../Assets/magnifying-glass.png';
-import UserIcon from '../Assets/user.png';
+import MobileNav from "./MobileNav";
+import UserIcon from "../Assets/user.png";
+import NewMessage from "../Assets/newmessage.jpg";
 
 const NavContainer = styled.div`
   width: 100vw;
   height: 6rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  /* see example in line below how to use themes set in the ThemeProvider by Styled Components */
-  /* background: ${props => props.theme.red}; */
   .navigation {
     height: 100%;
     width: 75vw;
@@ -22,6 +19,7 @@ const NavContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    color: ${props => props.theme.black};
 
     @media (max-width: 900px) {
       width: 90vw;
@@ -29,7 +27,7 @@ const NavContainer = styled.div`
     }
 
     h1 {
-      font-family: 'Shadows Into Light', cursive;
+      font-family: "Shadows Into Light", cursive;
       font-size: 4rem;
       letter-spacing: 10px;
       opacity: 1;
@@ -49,9 +47,13 @@ const NavContainer = styled.div`
       width: 40%;
       display: flex;
       justify-content: space-between;
-      font-family: 'Roboto', sans-serif;
+      font-family: "Roboto", sans-serif;
 
-      @media (max-width: 900px) {
+      @media (max-width: 1100px) {
+        width: 50%;
+      }
+
+      @media (max-width: 800px) {
         display: none;
       }
 
@@ -106,25 +108,25 @@ const Hamburger = styled.div`
     background-color: black;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 100px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 `;
 
-function NavBar({ loggedInUser, logOutUser }) {
+function NavBar({ loggedInUser, logOutUser, messages }) {
   const [menuStyle, changeMenuStyle] = useState(null);
 
   const openMobileNav = () => {
-    changeMenuStyle({ width: '50vw' });
+    changeMenuStyle({ width: "50vw" });
   };
 
   const closeMobileNav = () => {
     changeMenuStyle(null);
   };
 
-  window.addEventListener('resize', closeMobileNav);
+  window.addEventListener("resize", closeMobileNav);
 
   const logOutHandler = () => {
     localStorage.clear();
@@ -135,8 +137,8 @@ function NavBar({ loggedInUser, logOutUser }) {
     <NavContainer>
       <div className="navigation">
         <Link to="/">
-          {' '}
-          <h1>artFunder</h1>{' '}
+          {" "}
+          <h1>artFunder</h1>{" "}
         </Link>
         <nav>
           <Link to="/about">About</Link>
@@ -151,13 +153,14 @@ function NavBar({ loggedInUser, logOutUser }) {
             <Link to="/login">Log In</Link>
           )}
           <div className="icons">
-            <Link to="/search">
-              {' '}
-              <img src={SearchIcon} alt="Search icon" />
-            </Link>
             {loggedInUser.email ? (
               <Link to="/myaccount">
                 <img src={UserIcon} alt="Search icon" />
+              </Link>
+            ) : null}
+            {messages.notifications > 0 ? (
+              <Link to="/myaccount/messages">
+                <img src={NewMessage} alt="New Message" />
               </Link>
             ) : null}
           </div>
