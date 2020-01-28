@@ -29,7 +29,7 @@ function Payment(props) {
       schoolId: artInModal.userId._id,
       stripeUserId: artInModal.userId.stripe_user_id,
       metadata: {
-        "quantity": "1"
+        "quantity": 1
       }
     };
     axiosWithBase()

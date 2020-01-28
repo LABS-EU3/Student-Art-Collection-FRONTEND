@@ -16,10 +16,10 @@ function CallBackRedirect(props) {
             .post("/payments/fetchcredentials", {id: state.loggedInUser._id, authCode:parse.code})
             .then(() => {
                 updateSpinner(false)
+                toast.success('congratulations you can now upload art');
                 setTimeout(() =>{
-                    toast.success('congratulations you can now upload art');
+                   return props.history.push('/myaccount')
                 }, 3000)
-                props.history.push('/myaccount')
             }).catch(()=> {
                 toast.error('operation failed')
             })
