@@ -7,7 +7,6 @@ width: 50vw;
 height: 60vh;
 margin: 0 auto;
 margin-top: 8rem;
-// box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.04);
 
     @media(max-width: 800px){
         width: 80vw;
@@ -47,7 +46,7 @@ margin-top: 8rem;
             margin-top: 2rem;
             font-size: 1.8rem;
             text-align: center;
-            color: rgba(0,0,0,0.8);
+            color: ${props => props.theme.black};
             line-height: 1.3;
 
             @media(max-width: 350px) {
