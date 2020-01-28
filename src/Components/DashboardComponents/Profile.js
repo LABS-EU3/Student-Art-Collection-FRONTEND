@@ -173,9 +173,11 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             lastname: editedUserDetails.lastname,
             email: editedUserDetails.email,
             name: editedUserDetails.name,
-            description: editedUserDetails.description
+            description: editedUserDetails.description,
+            shippingAddress: editedUserDetails.shippingAddress,
+            billingAddress: editedUserDetails.billingAddress
         };
-
+            console.log(editedUser);
         axiosWithBase()
             .patch(`/updateProfile/${loggedInUser.userId}`, editedUser)
             .then(() => {
@@ -291,6 +293,16 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                                 />
                             </div>
                         ) : null}
+                        {"firstname" in editedUserDetails ? (
+                            <div className="data-row">
+                             <h2>Shipping Address</h2>
+                             <input name="shippingAddress" value={editedUserDetails.shippingAddress} onChange={changeHandler}/>
+                        </div> ) : null }
+                        {"firstname" in editedUserDetails ? (
+                        <div className="data-row">
+                            <h2>Billing Address</h2>
+                            <input name="billingAddress" value={editedUserDetails.billingAddress} onChange={changeHandler}/>
+                        </div> ) : null}
                         {"name" in editedUserDetails ? (
                             <div className="data-row">
                                 <h2>School Name</h2>

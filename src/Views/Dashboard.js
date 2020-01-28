@@ -11,6 +11,7 @@ import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
 import SchoolSelling from './SchoolSellingItems/SchoolSelling';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
+import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
 import StripeCallBackPage from './StripePage/CallBackPage';
 
 const DashboardContainer = styled.div`
@@ -29,18 +30,18 @@ const DashboardContainer = styled.div`
 		border-radius: 5px;
 		display: flex;
 
-		@media (max-width: 500px) {
-			width: 100%;
-			height: 100%;
-		}
+    @media (max-width: 500px) {
+      width: 100%;
+      height: 100%;
+    }
 
-		.right-side {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
+    .right-side {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `;
 function Dashboard (){
 	return (
@@ -53,6 +54,7 @@ function Dashboard (){
 					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
 					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
 					<Route exact path="/selling/forsale" component={UploadedArt} />
+          <Route exact path="/selling/forsale/delete/:id" component={ConfirmDelete} />
 					<Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
 				</div>
 			</div>
@@ -60,4 +62,4 @@ function Dashboard (){
 	);
 }
 
-export default connect((state) => state, actions)(Dashboard);
+export default connect(state => state, actions)(Dashboard);

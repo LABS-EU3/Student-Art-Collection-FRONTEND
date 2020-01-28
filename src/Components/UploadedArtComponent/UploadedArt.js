@@ -1,33 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { axiosWithBase } from '../../AxiosCustom';
-import { connect } from 'react-redux';
-import Modal from 'react-modal';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import EditForm from '../Test';
-import { MainContainer2, StyledOrderContainer, CollectionItemContainer, SellingSection } from '../../Views/BuyerOrderItems/BuyerOrderItemsStyle';
-import Spinner from '../Spinner';
+import React, { useState, useEffect } from "react";
+import { axiosWithBase } from "../../AxiosCustom";
+import { connect } from "react-redux";
+import Modal from "react-modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import EditForm from "../Test";
+import {
+  MainContainer2,
+  StyledOrderContainer,
+  CollectionItemContainer,
+  SellingSection
+} from "../../Views/BuyerOrderItems/BuyerOrderItemsStyle";
+import Spinner from "../Spinner";
+import ConfirmDelete from "./ConfirmDelete";
 
 const customStyles = {
   content: {
-    width: '80%',
-    height: '80%',
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
+    width: "80%",
+    height: "80%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   }
 };
 
-
-Modal.setAppElement('body');
+Modal.setAppElement("body");
 
 function ArtForSale(props) {
   const [artForSale, setArtForSale] = useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [spinner, setSpinning] = useState(true);
+  const [artToDelete, setArtToDelete] = useState(null);
 
   function openModal() {
     setIsOpen(true);
@@ -36,6 +42,7 @@ function ArtForSale(props) {
   function closeModal() {
     setIsOpen(false);
   }
+
   const id = props.loggedInUser._id;
 
   useEffect(() => {
@@ -43,11 +50,11 @@ function ArtForSale(props) {
       .get(`/art/selling/${id}`)
       .then(res => {
         setArtForSale(res.data);
-        setSpinning(false)
+        setSpinning(false);
       })
       .catch(() => {
-        setSpinning(false)
-        toast.error('cannot get art')
+        setSpinning(false);
+        toast.error("cannot get art");
       });
   }, [modalIsOpen]);
 
@@ -58,7 +65,7 @@ function ArtForSale(props) {
           artForSale.map(art => {
             return (
               <>
-                <StyledOrderContainer key={art.name}>
+                <StyledOrderContainer key={art._id}>
                   <CollectionItemContainer>
                     <div className="order-img">
                       <img src={art.picture} alt={art.name} />
@@ -73,7 +80,26 @@ function ArtForSale(props) {
                         <span>${art.price}</span>
                       </div>
                     </SellingSection>
-                    <button onClick={openModal}>Edit</button>
+                    <div className="buttons">
+                      <button
+                        className="edit"
+                        onClick={() => {
+                          setArtToDelete(null);
+                          openModal();
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setArtToDelete(art);
+                          openModal();
+                        }}
+                        className="delete"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </CollectionItemContainer>
                 </StyledOrderContainer>
                 <Modal
@@ -81,23 +107,28 @@ function ArtForSale(props) {
                   onRequestClose={closeModal}
                   style={customStyles}
                 >
-                  <EditForm
-                    editArt={art}
-                    onRequestClose={closeModal}
-
-                  />
+                  {artToDelete ? (
+                    <ConfirmDelete
+                      setIsOpen={setIsOpen}
+                      artToDelete={artToDelete}
+                      artForSale={artForSale}
+                      setArtForSale={setArtForSale}
+                    />
+                  ) : (
+                    <EditForm editArt={art} onRequestClose={closeModal} />
+                  )}
                 </Modal>
               </>
             );
           })
         ) : (
-            <div className='nothing'>Nothing here yet!</div>
-          )
+          <div className="nothing">Nothing here yet!</div>
+        )
       ) : (
-          <div className="nothing">
-            <Spinner/>
-          </div>
-        )}
+        <div className="nothing">
+          <Spinner />
+        </div>
+      )}
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -107,9 +138,9 @@ function ArtForSale(props) {
         pauseOnHover
         closeButton={false}
         style={{
-          'font-size': '1.5rem',
-          width: '400px',
-          'text-align': 'center'
+          "font-size": "1.5rem",
+          width: "400px",
+          "text-align": "center"
         }}
       />
     </MainContainer2>

@@ -52,7 +52,9 @@ export default connect(state => state, actionCreators)(Register);
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin: 3vh 0;
   align-items: center;
+  // border: 1px solid red
 
   @media (max-width: 700px) {
     background-image: none
@@ -127,6 +129,10 @@ export const Content = styled.div`
     border-radius: 5px;
     background-color: ${props => props.theme.buttonOrange};
     cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
+    }
   }
   
   h1 {
