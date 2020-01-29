@@ -1,17 +1,15 @@
 import React from "react";
 
-import Search from "../Components/SchoolComponents/Search";
-import ArtContainer from "../Components/BrowseComponents/BrowseArtContainer";
-import Footer from "../Components/LandingComponents/Footer";
 import SchoolHero from "../Components/SchoolComponents/SchoolHero";
+import Search from "../Components/SchoolComponents/Search";
 import SchoolContainer from "../Components/SchoolComponents/SchoolContainer";
+import Footer from "../Components/LandingComponents/Footer";
 
 export default function Schools() {
   return (
     <>
       <SchoolHero />
       <Search />
-      <ArtContainer />
       <SchoolContainer />
       <Footer />
     </>

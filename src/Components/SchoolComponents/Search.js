@@ -25,11 +25,11 @@ function Search(props) {
           name="search"
           onChange={changeHandler}
           value={inputs.search}
-          placeholder="Search by..."
+          placeholder="Search..."
         />
         <select value={inputs.type} name="type" onChange={changeHandler}>
-          <option value="name">Title</option>
-          <option value="artistName">Artist</option>
+          <option value="name">School Name</option>
+          <option value="description">Description</option>
           <option value="category">Category</option>
           <option value="medium">Medium</option>
           <option value="description">Description</option>
@@ -48,42 +48,55 @@ export default connect(state => state, actionCreators)(Search);
 const StyledFilter = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
-
-    // height: 0px;
+    justify-content: space-evenly;
+    border: 1px solid red;
+    width: 100%;
+    // max-width: 1000px;
+    height: 60px;
+    padding: 10px;
+    
     background-color: ${props => props.theme.veryLightGrey};
     color: white;
     font-family: 'Roboto', sans-serif;
 
-    select {
+    @media(min-width: 1000px) {
+      justify-content: center;
+    }
+
+    @media(max-width:500px) {
+      flex-direction: column;
+      justify-content: space-between;
+      height: 200px;
+    }
+
+    
+    input {
         width: 30%;
-        max-width: 250px;
-        height: 57px;
-        border: none;
-        background-color: ${props => props.theme.white};
+        height: 100%;
+        max-width: 320px;
         border: 1px solid ${props => props.theme.white};
+        background-color: ${props => props.theme.white};
         font-color: ${props => props.theme.black};
         font-size: 1.5rem;
-        text-align: left;
-        margin: 0px 10px;
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out
-        cursor: pointer;
+        padding-left: 10px;
         border: 1px solid red;
         border-radius: 5px;
+        transition: opacity 0.3s ease-in-out
+
+        @media(min-width: 1000px) {
+          margin: 0 10px;
+        }
 
         @media(max-width:500px) {
-            width:100px;
-            height: 50px;
-            font-size: 1rem;
+            width: 90%;
+            height: 40px;
         }
 
         &:hover {
             opacity: 0.7;
-            transition: border 0.2s ease-in-out;
-            transition: opacity 0.3s ease-in-out;
             border: 1px solid ${props => props.theme.buttonOrange};
+            transition: opacity 0.3s ease-in-out;
+            transition: border 0.2s ease-in-out;
         }
 
         &:focus {
@@ -91,34 +104,38 @@ const StyledFilter = styled.div`
             border: none;
         }
     }
-    input {
-        width: 30%;
+
+    select {
+        width: 25%;
+        height: 100%;
         max-width: 320px;
-        height: 57px;
-        border: 1px solid ${props => props.theme.white};
+        // max-width: 250px;
+        border: none;
         background-color: ${props => props.theme.white};
+        border: 1px solid ${props => props.theme.white};
         font-color: ${props => props.theme.black};
         font-size: 1.5rem;
         text-align: left;
-        margin: 0px 10px;
         opacity: 1;
-        padding-left: 10px;
         transition: opacity 0.3s ease-in-out
+        cursor: pointer;
         border: 1px solid red;
         border-radius: 5px;
-        transition: border 0.2s ease-in-out;
+
+        @media(min-width: 1000px) {
+          margin: 0 10px;
+        }
 
         @media(max-width:500px) {
-            width:150px;
-            height: 50px;
-            font-size: 1rem;
+          width: 90%;
+          height: 40px;
         }
 
         &:hover {
             opacity: 0.7;
-            border: 1px solid ${props => props.theme.buttonOrange};
-            transition: opacity 0.3s ease-in-out;
             transition: border 0.2s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
+            border: 1px solid ${props => props.theme.buttonOrange};
         }
 
         &:focus {
@@ -130,7 +147,7 @@ const StyledFilter = styled.div`
     button {
         width: 20%;
         max-width: 200px;
-        height: 45px;
+        height: 100%;
         background-color: ${props => props.theme.buttonOrange};
         color: ${props => props.theme.white};
         border: none;
@@ -142,9 +159,14 @@ const StyledFilter = styled.div`
           transition: opacity 0.1s ease-in-out;
         }
 
-        @media(max-width:500px){
-            margin: 0 10px;
+        @media(min-width: 1000px) {
+          margin: 0 10px;
         }
+
+        @media(max-width:500px) {
+          width: 90%;
+          height: 40px;
+      }
     
         &:focus {
             outline: none;

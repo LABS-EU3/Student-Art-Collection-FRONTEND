@@ -22,6 +22,11 @@ const StyledHero = styled.div`
   color: ${props => props.theme.white};
   font-family: "Roboto", sans-serif;
 
+  @media (max-width: 500px) {
+    height: 110px
+  }
+
+
   h1 {
     font-size: 5rem;
     font-weight: 550;
