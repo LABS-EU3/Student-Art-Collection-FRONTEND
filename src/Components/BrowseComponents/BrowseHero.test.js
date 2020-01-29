@@ -33,7 +33,7 @@ afterEach(rtl.cleanup);
 
 describe('renders component as expected', () => {
   test('renders correct title', () => {
-    expect(wrapper.queryByText(/browse original art/i)).toBeInTheDocument();
+    expect(wrapper.queryByTestId('hero')).toBeInTheDocument();
   });
   test('renders background image', () => {
     expect(wrapper.getByTestId('hero')).toHaveStyle(
