@@ -51,7 +51,6 @@ describe('click changes text of button', () => {
     rtl.fireEvent.click(wrapper.queryByText(/hide filters/i));
   });
   test('text of shoe filters turns back to show filters when clicked twice', () => {
-    wrapper.debug();
     rtl.fireEvent.click(wrapper.queryByText(/show filters/i));
     rtl.fireEvent.click(wrapper.queryByText(/hide filters/i));
     expect(wrapper.queryByText(/hide filters/i)).not.toBeInTheDocument();

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { getByTestId } from '@testing-library/react';
+import { getByTestId, cleanup, render } from '@testing-library/react';
 
 // CONFIG
 import { store, persistor } from '../../store/index';
@@ -17,7 +17,7 @@ import BrowseHero from './BrowseHero';
 let wrapper;
 
 beforeEach(() => {
-  wrapper = rtl.render(
+  wrapper = render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
@@ -29,7 +29,7 @@ beforeEach(() => {
     </Provider>
   );
 });
-afterEach(rtl.cleanup);
+afterEach(cleanup);
 
 describe('renders component as expected', () => {
   test('renders correct title', () => {
