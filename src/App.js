@@ -15,6 +15,7 @@ import theme from "./Styles/Theme";
 
 import "./App.css";
 import Spinner from "./Components/Spinner";
+import AppSpinner from "./Components/AppSpinner";
 import ErrorBoundary from "./Components/error-boundary/error-boundary.component";
 import StripePayment from './Views/StripePage/Payment';
   
@@ -22,7 +23,7 @@ const Navbar = lazy(() => import("./Components/NavBar"));
 const LandingPage = lazy(() => import("./Views/LandingPage"));
 const Register = lazy(() => import("./Views/Register"));
 const ConfirmationSent = lazy(() => import("./Views/ConfirmationSent"));
-const ConfirmationSuccess = lazy(() => import("./Views/PasswordResetSent"));
+const ConfirmationSuccess = lazy(() => import("./Views/ConfirmationSuccess"));
 const PasswordResetSent = lazy(() => import("./Views/PasswordResetSent"));
 const ResetPasswordForm = lazy(() =>
   import("./Components/resetPassword/ResetPasswordForm")
@@ -74,7 +75,7 @@ function App(props) {
       
       <Switch>
         <ErrorBoundary>
-          <Suspense fallback={<Spinner />}>
+          <Suspense fallback={<AppSpinner />}>
             <Route path="/browse" component={ArtViewModal} />
             <Route path='/' component={Navbar} />
             <Route exact path="/" component={LandingPage} />
