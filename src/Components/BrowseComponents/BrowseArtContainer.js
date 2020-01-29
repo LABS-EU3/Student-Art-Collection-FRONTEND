@@ -37,7 +37,7 @@ function ArtContainer(props) {
             })
         props.toggleViewModal(false);
     }, [page, props.browseArtState.sortBy, props.browseArtState.searchQuery, props.browseArtState.sortBy, props.browseArtState.sortType,
-        props.browseArtState.filter, browseArtState])
+        props.browseArtState.filter])
 
     if (spinning) {
         return (
