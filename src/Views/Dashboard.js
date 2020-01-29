@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Route } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../store/Actions/actionCreators";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../store/Actions/actionCreators';
 
-import DashNav from "../Components/DashboardComponents/DashNav";
-import Profile from "../Components/DashboardComponents/Profile";
-import SellingNav from "../Components/SellingDashboardComponents/SellingNav";
-import BuyerOrderItems from "./BuyerOrderItems/BuyerOrderItems";
-import SchoolsSoldItems from "./SchoolsSoldItems/SchoolsSoldItems";
-import SchoolSelling from "./SchoolSellingItems/SchoolSelling";
-import UploadedArt from "../Components/UploadedArtComponent/UploadedArt";
+import DashNav from '../Components/DashboardComponents/DashNav';
+import Profile from '../Components/DashboardComponents/Profile';
+import SellingNav from '../Components/SellingDashboardComponents/SellingNav';
+import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
+import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
+import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
+import Messaging from './Messaging';
+import InboxFullView from '../Components/MessagingComponents/InboxFullView'
+import SentFullView from '../Components/MessagingComponents/SentFullView';
+import Reply from '../Components/MessagingComponents/Reply';
+import NewMessage from '../Components/MessagingComponents/NewMessage';
 import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
+import StripeCallBackPage from './StripePage/CallBackPage';
+
 
 const DashboardContainer = styled.div`
 	width: 100vw;
@@ -43,8 +49,6 @@ const DashboardContainer = styled.div`
   }
 `;
 function Dashboard() {
-  // const [confirmDelete, setConfirmDelete] = useState("");
-  // console.log(confirmDelete);
 
   return (
     <DashboardContainer>
@@ -54,13 +58,18 @@ function Dashboard() {
         <div className="right-side">
           <Route exact path="/myaccount" component={Profile} />
           <Route path="/myaccount/orders" component={BuyerOrderItems} />
+          <Route path= "/myaccount/messages" component={Messaging}/>
+					<Route exact path= "/myaccount/received/:id" component={InboxFullView}/>
+					<Route exact path= "/myaccount/reply/:id" component={Reply}/>
+					<Route exact path= "/myaccount/newmessage/:id" component={NewMessage}/>
+					<Route exact path= "/myaccount/sent/:id" component={SentFullView}/>
           <Route exact path="/selling/sold" component={SchoolsSoldItems} />
+          <Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
           <Route
             path="/selling/forsale"
             render={props => (
 							<UploadedArt 
 								{...props} 
-								// setConfirmDelete={setConfirmDelete}
 							/>
             )}
           />
@@ -69,8 +78,6 @@ function Dashboard() {
             render={props => (
               <ConfirmDelete
                 {...props}
-								// confirmDelete={confirmDelete}
-								// setConfirmDelete={setConfirmDelete}
               />
             )}
           />

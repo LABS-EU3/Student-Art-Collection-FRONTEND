@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import Error from "../helpers/Error";
 import {
   validationSchemaSchool,
@@ -9,6 +9,8 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosWithBase, baseURL } from "../AxiosCustom";
+import SocialAuthButton from "../Components/SocilaAuthButton";
+import AlgoliaPlaces from "../helpers/algolia";
 
 const initalSignupForm = {
   name: "",
@@ -16,10 +18,13 @@ const initalSignupForm = {
   firstName: "",
   lastName: "",
   email: "",
-  password: ""
+  password: "",
+  location: ""
 };
 
 export function RegisterForm(props) {
+  const showSchool = props.isSchool ? "flex" : "none";
+  const showBuyer = !props.isSchool ? "flex" : "none";
 
   return (
     <Formik
@@ -28,7 +33,6 @@ export function RegisterForm(props) {
       }
       initialValues={initalSignupForm}
       onSubmit={(values, actions) => {
-        props.loadingStarted();
         const newUser = {
           type: props.isSchool ? "school" : "buyer",
           name: values.name,
@@ -36,8 +40,17 @@ export function RegisterForm(props) {
           firstname: values.firstName,
           lastname: values.lastName,
           email: values.email,
-          password: values.password
+          password: values.password,
+          userLocation: JSON.parse(localStorage.getItem("address"))
         };
+        if (localStorage.getItem("address") === null) {
+          toast.error("Location is required");
+          actions.setSubmitting(false);
+          props.loadingFinished();
+          return;
+        }
+        props.loadingStarted();
+
         actions.setSubmitting(true);
         axiosWithBase()
           .post("/signup", newUser)
@@ -46,6 +59,7 @@ export function RegisterForm(props) {
             actions.setSubmitting(false);
             props.loadingFinished();
             props.history.push("/confirmation");
+            localStorage.clear("address");
           })
           .catch(err => {
             toast.error(err.response.statusText);
@@ -96,10 +110,7 @@ export function RegisterForm(props) {
             </div>
           )}
           {props.isSchool ? (
-            <div
-              data-testid="descriptionField"
-              className="inputField"
-            >
+            <div data-testid="descriptionField" className="inputField">
               <textarea
                 name="description"
                 type="text"
@@ -118,10 +129,7 @@ export function RegisterForm(props) {
               />
             </div>
           ) : (
-            <div
-              data-testid="lastNameField"
-              className="inputField"
-            >
+            <div data-testid="lastNameField" className="inputField">
               <input
                 name="lastName"
                 type="text"
@@ -166,8 +174,11 @@ export function RegisterForm(props) {
             />
             <Error touched={touched.password} message={errors.password} />
           </div>
+          <div data-testid="locationField" className="inputField">
+            <Field name="location" component={AlgoliaPlaces} />
+          </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button className="abutton" type="submit" disabled={isSubmitting}>
             Submit
           </button>
           <ToastContainer
@@ -233,7 +244,7 @@ export const StyledForm = styled.form`
     height: 80px;
   }
 
-  button {
+  .abutton {
     margin: 20px;
     background-color: ${props => props.theme.buttonOrange};
     color: ${props => props.theme.white};

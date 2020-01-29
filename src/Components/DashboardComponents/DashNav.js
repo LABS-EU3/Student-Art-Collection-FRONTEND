@@ -59,17 +59,19 @@ const DashNavStyle = styled.div`
     }
 `
 
-function DashNav({ loggedInUser }) {
+function DashNav(props) {
     const [isBuyer, setIsBuyer] = useState(null);
 
+const notification = props.messages.notifications > 0 ? <span>{props.messages.notifications}</span> : null;
+
     useEffect(() => {
-        if (loggedInUser.type === 'buyer') {
+        if (props.loggedInUser.type === 'buyer') {
             setIsBuyer(true);
         }
-        else if (loggedInUser.type === 'school') {
+        else if (props.loggedInUser.type === 'school') {
             setIsBuyer(false);
         }
-    }, [loggedInUser.type])
+    }, [props.loggedInUser.type])
 
     return (
         <DashNavStyle>
@@ -78,7 +80,7 @@ function DashNav({ loggedInUser }) {
                     {!isBuyer ? <NavLink exact to='/selling/forsale'>Dashboard</NavLink> : null}
                     <NavLink exact to='/myaccount'>Profile</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/orders?status=all'>Orders</NavLink> : null}
-                    <NavLink to='/myaccount/messages'>Messages</NavLink>
+                    <NavLink to='/myaccount/messages' style={props.messages.notifications > 0 ? {color: 'red'} : null}>Messages {notification}</NavLink>
                     {isBuyer ? <NavLink to='/myaccount/wishlist'>Wishlist</NavLink> : null}
                     <NavLink to='/myaccount/help'>Help</NavLink>
                 </nav>
