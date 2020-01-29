@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -9,10 +9,15 @@ import Profile from '../Components/DashboardComponents/Profile';
 import SellingNav from '../Components/SellingDashboardComponents/SellingNav';
 import BuyerOrderItems from './BuyerOrderItems/BuyerOrderItems';
 import SchoolsSoldItems from './SchoolsSoldItems/SchoolsSoldItems';
-import SchoolSelling from './SchoolSellingItems/SchoolSelling';
 import UploadedArt from '../Components/UploadedArtComponent/UploadedArt'
+import Messaging from './Messaging';
+import InboxFullView from '../Components/MessagingComponents/InboxFullView'
+import SentFullView from '../Components/MessagingComponents/SentFullView';
+import Reply from '../Components/MessagingComponents/Reply';
+import NewMessage from '../Components/MessagingComponents/NewMessage';
 import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
 import StripeCallBackPage from './StripePage/CallBackPage';
+
 
 const DashboardContainer = styled.div`
 	width: 100vw;
@@ -43,23 +48,43 @@ const DashboardContainer = styled.div`
     }
   }
 `;
-function Dashboard (){
-	return (
-		<DashboardContainer>
-			<div className="dashboard">
-				<Route path="/myaccount" component={DashNav} />
-				<Route path="/selling" component={SellingNav} />
-				<div className="right-side">
-					<Route exact path="/myaccount" component={Profile} />
-					<Route path= "/myaccount/orders" component={BuyerOrderItems}/>
-					<Route exact path="/selling/sold" component={SchoolsSoldItems} />
-					<Route exact path="/selling/forsale" component={UploadedArt} />
-          <Route exact path="/selling/forsale/delete/:id" component={ConfirmDelete} />
-					<Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
-				</div>
-			</div>
-		</DashboardContainer>
-	);
+function Dashboard() {
+
+  return (
+    <DashboardContainer>
+      <div className="dashboard">
+        <Route path="/myaccount" component={DashNav} />
+        <Route path="/selling" component={SellingNav} />
+        <div className="right-side">
+          <Route exact path="/myaccount" component={Profile} />
+          <Route path="/myaccount/orders" component={BuyerOrderItems} />
+          <Route path= "/myaccount/messages" component={Messaging}/>
+					<Route exact path= "/myaccount/received/:id" component={InboxFullView}/>
+					<Route exact path= "/myaccount/reply/:id" component={Reply}/>
+					<Route exact path= "/myaccount/newmessage/:id" component={NewMessage}/>
+					<Route exact path= "/myaccount/sent/:id" component={SentFullView}/>
+          <Route exact path="/selling/sold" component={SchoolsSoldItems} />
+          <Route exact path="/myaccount/stripe/registration" component={StripeCallBackPage} />
+          <Route
+            path="/selling/forsale"
+            render={props => (
+							<UploadedArt 
+								{...props} 
+							/>
+            )}
+          />
+          <Route
+            path="/selling/forsale/delete/:id"
+            render={props => (
+              <ConfirmDelete
+                {...props}
+              />
+            )}
+          />
+        </div>
+      </div>
+    </DashboardContainer>
+  );
 }
 
 export default connect(state => state, actions)(Dashboard);

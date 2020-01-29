@@ -5,7 +5,7 @@ width: 100vw;
 height: 100vh;
 background-color: ${props => props.theme.lightGrey};  
 position: fixed;
-z-index: 99;
+z-index: 999;
 display: none
 
 .modal {
@@ -112,6 +112,18 @@ display: none
         @media(max-width:700px) {
           font-size: 1.8remem;
            }
+      } 
+
+       .img-cont{
+        width: 30px;
+
+         img {
+          max-width: 100%;
+          height: auto;
+           :hover {
+             opacity: 0.5;
+           }
+        }
       }
       
       h4 {

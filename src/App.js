@@ -1,6 +1,12 @@
-import React, { lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import * as actionCreators from "./store/Actions/actionCreators";
+import "./App.css";
+import firebase from "./config/firebaseConfig";
+
 // global style
 import GlobalStyle from "./Styles/GlobalStyle";
 // import theme
@@ -30,15 +36,47 @@ const PasswordReset = lazy(() =>
   import("./Components/resetPassword/PasswordReset")
 );
 
-function App() {
+const db = firebase.firestore();
+
+function App(props) {
+  useEffect(() => {
+    if (props.loggedInUser._id) {
+      const fetchMessages = async () => {
+        try {
+          const snapshot = await db
+            .collection("messages")
+            .where("receiver_id", "==", props.loggedInUser._id)
+            .get();
+
+          const messages = snapshot.docs.map(x =>
+            Object.assign({ id: x.id }, x.data())
+          );
+
+          props.retrieveInboxMessages(messages);
+
+          const notifications = props.messages.received.filter(x => {
+            return !x.read;
+          });
+
+          props.setNotifications(notifications.length);
+          document.title = `artFunder - ${notifications.length} - `
+        } catch (error) {
+          props.retrieveInboxMessages([]);
+          props.setNotifications(0);
+        }
+      };
+      fetchMessages();
+    }
+  }, [props.history.location, props.loggedInUser._id]);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Route path="/browse" component={ArtViewModal} />
-            <Route path="/" component={Navbar} />
+            <Route path='/' component={Navbar} />
             <Route exact path="/" component={LandingPage} />
             <Route path="/signup" component={Register} />
             <Route path="/login" component={Login} />
@@ -62,4 +100,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(connect(state => state, actionCreators)(App));

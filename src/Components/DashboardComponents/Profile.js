@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
-import { Field } from 'formik';
-import AlgoliaPlaces from "../../helpers/algolia";
+import places from 'places.js';
 import { axiosWithBase } from "../../AxiosCustom";
 import * as actions from "../../store/Actions/actionCreators";
 import queryString from "query-string";
@@ -170,6 +169,20 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
     }
 
     const submit = () => {
+        const placesAutocomplete = places({
+            appId: process.env.REACT_APP_APP_ID,
+            apiKey: process.env.REACT_APP_APP_KEY,
+            container: document.querySelector('#address-input'),
+            templates: {
+                value: function(suggestion) {
+                  return suggestion.name;
+                }
+            }
+        }).configure({type: 'address'});
+        placesAutocomplete.on('change', (e) => {
+            console.log(e.suggestion.administrative)
+        })
+        console.log(placesAutocomplete.getVal(), 'hello console.log')
         const editedUser = {
             firstname: editedUserDetails.firstname,
             lastname: editedUserDetails.lastname,
@@ -197,6 +210,18 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             [e.target.name]: e.target.value
         });
     };
+    
+    const locationChangeHandler = (e) => {
+        const placesAutocomplete = places({
+            appId: process.env.REACT_APP_APP_ID,
+            apiKey: process.env.REACT_APP_APP_KEY,
+            container: document.querySelector('#address-input')
+        });
+        placesAutocomplete.on('change', (e) => {
+            console.log(e.suggestion.administrative)
+        })
+        console.log(placesAutocomplete.getVal(), 'hello console.log')
+    }
 
     const cancel = () => {
         setEditedUserDetails(loggedInUser);
@@ -303,7 +328,12 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                         {"firstname" in editedUserDetails ? (
                         <div className="data-row">
                             <h2>Billing Address</h2>
-                            <input name="billingAddress" value={editedUserDetails.billingAddress} onChange={changeHandler}/>
+                            {/* <AlgoliaPlaces value="Hello"/> */}
+                            <input name="billingAddress" 
+                                value={editedUserDetails.billingAddress} 
+                                onChange={() => locationChangeHandler()}
+                                id="address-input"
+                            />
                         </div> ) : null}
                         {"name" in editedUserDetails ? (
                             <div className="data-row">
