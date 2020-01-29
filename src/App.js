@@ -22,7 +22,7 @@ const Navbar = lazy(() => import("./Components/NavBar"));
 const LandingPage = lazy(() => import("./Views/LandingPage"));
 const Register = lazy(() => import("./Views/Register"));
 const ConfirmationSent = lazy(() => import("./Views/ConfirmationSent"));
-const ConfirmationSuccess = lazy(() => import("./Views/PasswordResetSent"));
+const ConfirmationSuccess = lazy(() => import("./Views/ConfirmationSuccess"));
 const PasswordResetSent = lazy(() => import("./Views/PasswordResetSent"));
 const ResetPasswordForm = lazy(() =>
   import("./Components/resetPassword/ResetPasswordForm")
