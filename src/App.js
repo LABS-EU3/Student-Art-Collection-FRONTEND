@@ -15,6 +15,7 @@ import theme from "./Styles/Theme";
 
 import "./App.css";
 import Spinner from "./Components/Spinner";
+import AppSpinner from "./Components/AppSpinner";
 import ErrorBoundary from "./Components/error-boundary/error-boundary.component";
 import StripePayment from './Views/StripePage/Payment';
   
@@ -74,7 +75,7 @@ function App(props) {
       
       <Switch>
         <ErrorBoundary>
-          <Suspense fallback={<Spinner />}>
+          <Suspense fallback={<AppSpinner />}>
             <Route path="/browse" component={ArtViewModal} />
             <Route path='/' component={Navbar} />
             <Route exact path="/" component={LandingPage} />
