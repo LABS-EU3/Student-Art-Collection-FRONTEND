@@ -6,7 +6,6 @@ import { StyledModal, openModalStyling } from "../../Views/ArtViewModalStyling";
 import Message from "../../Assets/message.svg";
 
 function DisplayArt(props) {
-    console.log(Object.keys(props.browseArtState.artInModal).length ? props.browseArtState.artInModal.userId._id : 'hello')
   return (
     <StyledModal>
       <div
@@ -34,12 +33,19 @@ function DisplayArt(props) {
                     : "Anonymous"}{" "}
                 </h2>
                 {props.loggedInUser._id ? (
+                  <Link
+                    to={`/myaccount/newmessage/${
+                      Object.keys(props.browseArtState.artInModal).length
+                        ? props.browseArtState.artInModal.userId._id
+                        : null
+                    }`}
+                  >
                     <div className="img-cont">
                       <img src={Message} alt="message envelope" />
                     </div>
-                    <Link to={`/myaccount/newmessage/`}>
-                      Helo
                   </Link>
+                ) : null}
+              </div>
               <div className="about">
                 {props.browseArtState.artInModal.description
                   ? props.browseArtState.artInModal.description
