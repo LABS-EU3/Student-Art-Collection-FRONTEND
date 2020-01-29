@@ -49,9 +49,8 @@ const StyledFilter = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    border: 1px solid red;
+    // border: 1px solid red;
     width: 100%;
-    // max-width: 1000px;
     height: 60px;
     padding: 10px;
     
