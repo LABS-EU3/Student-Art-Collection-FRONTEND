@@ -23,6 +23,7 @@ const Login = lazy(() => import("./Views/Login"));
 const Dashboard = lazy(() => import("./Views/Dashboard"));
 const ContactPage = lazy(() => import("./Views/Contact"));
 const BrowseArt = lazy(() => import("./Views/BrowseArt"));
+const Schools = lazy(() => import("./Views/Schools"));
 const ArtViewModal = lazy(() => import("./Views/ArtViewModal"));
 const PasswordReset = lazy(() =>
   import("./Components/resetPassword/PasswordReset")
@@ -41,6 +42,7 @@ function App() {
             <Route path="/signup" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/browse" component={BrowseArt} />
+            <Route path="/schools" component={Schools} />
             <Route path="/myaccount" component={Dashboard} />
 
             <Route path="/selling" component={Dashboard} />
