@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -84,6 +84,9 @@ const ProfileContainer = styled.div`
         font-size: 1.1rem;
       }
 
+      .algolia-places{
+        width: auto;  
+      }
       input {
         border: 0;
         text-align: right;
@@ -157,6 +160,16 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
     const [editedUserDetails, setEditedUserDetails] = useState({});
     const [waiting, setWaiting] = useState(true);
     const [photo, setPhoto] = useState(null);
+    const [element, setElement] = useState(null);
+    const [adreess, setAddress] = useState(null)    
+    const [location, setLocation] = useState({
+        name: null,
+        administrative: null,
+        country: null,
+        latitude: null,
+        longitude: null,
+        postCode: null
+    });
 
     const urlString = queryString.parse(props.location.search);
 
@@ -168,31 +181,17 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
         return googleID;
     }
 
+
+
     const submit = () => {
-        const placesAutocomplete = places({
-            appId: process.env.REACT_APP_APP_ID,
-            apiKey: process.env.REACT_APP_APP_KEY,
-            container: document.querySelector('#address-input'),
-            templates: {
-                value: function(suggestion) {
-                  return suggestion.name;
-                }
-            }
-        }).configure({type: 'address'});
-        placesAutocomplete.on('change', (e) => {
-            console.log(e.suggestion.administrative)
-        })
-        console.log(placesAutocomplete.getVal(), 'hello console.log')
         const editedUser = {
             firstname: editedUserDetails.firstname,
             lastname: editedUserDetails.lastname,
             email: editedUserDetails.email,
             name: editedUserDetails.name,
             description: editedUserDetails.description,
-            shippingAddress: editedUserDetails.shippingAddress,
-            billingAddress: editedUserDetails.billingAddress
+            userLocation: location,
         };
-            console.log(editedUser);
         axiosWithBase()
             .patch(`/updateProfile/${loggedInUser.userId}`, editedUser)
             .then(() => {
@@ -211,18 +210,6 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
         });
     };
     
-    const locationChangeHandler = (e) => {
-        const placesAutocomplete = places({
-            appId: process.env.REACT_APP_APP_ID,
-            apiKey: process.env.REACT_APP_APP_KEY,
-            container: document.querySelector('#address-input')
-        });
-        placesAutocomplete.on('change', (e) => {
-            console.log(e.suggestion.administrative)
-        })
-        console.log(placesAutocomplete.getVal(), 'hello console.log')
-    }
-
     const cancel = () => {
         setEditedUserDetails(loggedInUser);
     };
@@ -253,6 +240,10 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             .then(res => {
                 setLoggedInUser(res.data);
                 setEditedUserDetails(res.data);
+                setLocation(res.data.userLocation);
+                if(res.data.userLocation) {
+                    setAddress(`${res.data.userLocation.name} ${res.data.userLocation.administrative} ${res.data.userLocation.country}`)
+                }
                 setWaiting(false);
             })
             .catch(() => {
@@ -260,7 +251,11 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                 toast.error("There was an error retrieving your information.");
             });
     };
-
+    // let element
+    let creteRefHandler = e => {
+        setElement(e)
+    } 
+    // let placesAutocomplete
     useEffect(() => {
         if (loggedInUser.userId) {
             populateUserDetails(loggedInUser.userId);
@@ -268,8 +263,21 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             const authId = googleUserDetails(urlString);
             populateUserDetails(authId);
         }
-    }, []);
-
+        if(!waiting && element)  {
+                const placesAutocomplete = places({
+                    appId: process.env.REACT_APP_APP_ID,
+                    apiKey: process.env.REACT_APP_APP_KEY,
+                    container: element
+                });
+                placesAutocomplete.on('change', (e)=>{
+                    setLocation({...e.suggestion, 
+                        postCode:e.suggestion.postcode, 
+                        latitude:e.suggestion.latlng.lat, 
+                        longitude:e.suggestion.latlng.lng 
+                    });
+                })
+            }
+    }, [element]);
     if (!waiting) {
         return (
             <>
@@ -320,18 +328,12 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                                 />
                             </div>
                         ) : null}
-                        {"firstname" in editedUserDetails ? (
-                            <div className="data-row">
-                             <h2>Shipping Address</h2>
-                             <input name="shippingAddress" value={editedUserDetails.shippingAddress} onChange={changeHandler}/>
-                        </div> ) : null }
-                        {"firstname" in editedUserDetails ? (
+                        {"email" in editedUserDetails ? (
                         <div className="data-row">
                             <h2>Billing Address</h2>
-                            {/* <AlgoliaPlaces value="Hello"/> */}
                             <input name="billingAddress" 
-                                value={editedUserDetails.billingAddress} 
-                                onChange={() => locationChangeHandler()}
+                                ref={creteRefHandler}
+                                defaultValue={adreess}
                                 id="address-input"
                             />
                         </div> ) : null}

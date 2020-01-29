@@ -7,7 +7,6 @@ import Spinner from "../Components/Spinner";
 import SocialAuthButton from "../Components/SocilaAuthButton";
 import { baseURL } from "../AxiosCustom";
 import { Link } from "react-router-dom";
-import register from "../Assets/register.svg";
 import register2 from "../Assets/register2.svg";
 
 function Register(props) {
