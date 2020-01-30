@@ -12,7 +12,7 @@ import Spinner from "../Components/Spinner";
 
 import LoginForm from "../Components/Login/LoginForm";
 import SocialAuthButton from '../Components/SocilaAuthButton';
-import { axiosWithBase } from "../AxiosCustom";
+import { axiosWithBase, baseURL } from "../AxiosCustom";
 
 const initialValues = {
   email: "",
@@ -46,12 +46,22 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     flex-direction: column;
     align-items: center;
 
+    @media(max-width: 590px) {
+      width: 100%;
+      height: 100%;
+    }
+
     h1 {
       font-size: 2.5rem;
       font-weight: bold;
       color: rgba(0,0,25,0.8);
       margin: 5rem 0 2.5rem 0;
+
+      @media(max-width: 590px) {
+        font-size: 1.8reml
+      }
     }
+
     h2 {
       width: 70%;
       margin: 1em auto;

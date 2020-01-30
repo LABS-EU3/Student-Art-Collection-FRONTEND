@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
 
+
+
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,6 +30,14 @@ const StyledForm = styled(Form)`
     transition: all 0.3s ease-in-out;
     border-radius: 5px;
 
+    @media(max-width: 590px) {
+      width: 350px;
+    }
+
+    @media(max-width: 390px) {
+      width: 290px;
+    }
+
     :hover {
       background-color: rgba(238, 243, 248, 0.1);
       transition: all 0.3s ease-in-out;
@@ -42,11 +52,21 @@ const StyledForm = styled(Form)`
   .links {
     width: 430px;
     display: flex;
-    justify-content: space-evenly;
-    padding: 0 1rem;
+    justify-content: space-between;
+    padding: 0 2rem;
+
+    @media(max-width: 590px) {
+      width: 290px  ;
+      padding: 0;
+    }
+
     a {
       font-size: 1.2rem;
       color: ${props => props.theme.lightGrey};
+
+      @media(max-width: 590px) {
+        font-size: 1rem;
+      }
 
       :hover {
         color: ${props => props.theme.black};
@@ -56,17 +76,20 @@ const StyledForm = styled(Form)`
   }
 
   button {
-    margin: 2.5rem 0;
+    width: 190px;
+    margin: 4.5rem 0 1rem 0;
     background-color: ${props => props.theme.buttonOrange};
     color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 0.6rem 5rem;
     cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+
     &:hover {
       opacity: 0.7;
-      transition: opacity 0.1s ease-in-out;
+      transition: opacity 0.2s ease-in-out;
     }
     :focus {
       outline: none;
@@ -76,13 +99,15 @@ const StyledForm = styled(Form)`
 
 const StyledError = styled(ErrorMessage)`
   color: red;
-  padding: 0.5rem 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  width: 410px;
 `;
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  console.log(props)
   return (
     <StyledDiv>
+        <StyledError name="email" component="h6" />
       <StyledForm>
         <Field
           name="email"
@@ -91,21 +116,19 @@ const LoginForm = () => {
           className="field"
           placeholder="Enter your email"
         />
-        <StyledError name="email" component="div" />
+        <StyledError name="password" component="h6" />
         <Field
           name="password"
           type="password"
           data-testid="passwordField"
           placeholder="Enter your password"
         />
-        {/* <StyledError name="password" component="div" /> */}
         <div className="links">
-          <Link to="/resetpasswordrequest">Forgetten password?</Link>
-          <Link to="/signup">Not yet a member? Sign up</Link>
+          <Link to="/signup">Not yet a member?</Link>
+          <Link to="/resetpasswordrequest">Forgotten password?</Link>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Log in</button>
       </StyledForm>
-      {/* <SocialAuthButton isSchool={false} url={baseURL + "/auth/google"} />   */}
     </StyledDiv>
   );
 };
