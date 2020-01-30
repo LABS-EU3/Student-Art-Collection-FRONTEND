@@ -11,9 +11,10 @@ import NewMessage from "../Assets/newmessage.jpg";
 const NavContainer = styled.div`
   width: 100vw;
   height: 6rem;
+
   .navigation {
     height: 100%;
-    width: 75vw;
+    width: 80vw;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -21,7 +22,7 @@ const NavContainer = styled.div`
     padding: 0 2rem;
     color: ${props => props.theme.black};
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       width: 90vw;
       padding: 0 1rem;
     }
