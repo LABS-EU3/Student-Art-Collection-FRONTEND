@@ -39,7 +39,6 @@ beforeEach(() => {
               artistName={browseArtState.artistName}
               dimensions={browseArtState.dimensions}
               price={browseArtState.price}
-              toggleViewModal={true}
             />
           </Router>
         </Provider>
