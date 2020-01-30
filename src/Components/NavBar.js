@@ -53,7 +53,7 @@ const NavContainer = styled.div`
         width: 55%;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 800px) {
         display: none;
       }
 
@@ -108,7 +108,7 @@ const Hamburger = styled.div`
     background-color: ${props => props.theme.black};
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 800px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -116,10 +116,10 @@ const Hamburger = styled.div`
 `;
 
 function NavBar({ loggedInUser, logOutUser, messages }) {
-  const [menuStyle, changeMenuStyle] = useState(null);
+  const [menuStyle, changeMenuStyle] = useState({ width: "100vw" });
 
   const openMobileNav = () => {
-    changeMenuStyle({ width: "50vw" });
+    changeMenuStyle({ width: "100vw" });
   };
 
   const closeMobileNav = () => {

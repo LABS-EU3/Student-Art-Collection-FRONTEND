@@ -65,7 +65,7 @@ function ArtContainer(props) {
                             image={art.picture}
                             alt={art.name}
                             title={art.name}
-                            artist={art.artist}
+                            artistName={art.artistName}
                             dimensions={`${art.height} x ${art.width}`}
                             price={art.price}
                             key={art.public_picture_id}
