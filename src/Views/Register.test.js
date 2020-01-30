@@ -24,10 +24,6 @@ beforeEach(() => {
 });
 afterEach(rtl.cleanup);
 
-test('renders correct title', () => {
-  expect(wrapper.queryByText(/register as a buyer/i)).toBeInTheDocument();
-});
-
 test('renders the form', () => {
   expect(wrapper.getByPlaceholderText(/enter your first name/i)).toBeInTheDocument();
   expect(wrapper.getByPlaceholderText(/enter your last name/i)).toBeInTheDocument();
