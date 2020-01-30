@@ -5,6 +5,7 @@ const theme = {
   lightGrey: 'rgba(0,0,0,0.4)',
   veryLightGrey: '#fafafa',
   buttonOrange: '#ff6347',
+  secondaryColor: '#FF4787',
   modalGrey: 'rgba(0,0,0,0.6)',
   photoContainer: 'rgba(56, 56, 188, 0.3)',
   // fonts
