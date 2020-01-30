@@ -43,7 +43,7 @@ export function RegisterForm(props) {
           password: values.password,
           userLocation: JSON.parse(localStorage.getItem("address"))
         };
-        console.log(newUser)
+        
         if (localStorage.getItem("address") === null) {
           toast.error("Location is required");
           actions.setSubmitting(false);

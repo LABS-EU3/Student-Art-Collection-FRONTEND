@@ -13,6 +13,8 @@ export default () => {
             name: suggestion.name,
             administrative: suggestion.administrative,
             country: suggestion.country,
+            latitude: suggestion.latlng.lat,
+            longitude: suggestion.latlng.lng,
             location:{
               type: 'Point',
               coordinates: [suggestion.latlng.lng, suggestion.latlng.lat]
