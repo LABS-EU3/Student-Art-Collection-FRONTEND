@@ -19,6 +19,7 @@ import StripePayment from './Views/StripePage/Payment';
   
 const Navbar = lazy(() => import("./Components/NavBar"));
 const LandingPage = lazy(() => import("./Views/LandingPage"));
+const AboutPage = lazy(() => import("./Views/About"));
 const Register = lazy(() => import("./Views/Register"));
 const ConfirmationSent = lazy(() => import("./Views/ConfirmationSent"));
 const ConfirmationSuccess = lazy(() => import("./Views/ConfirmationSuccess"));
@@ -34,6 +35,7 @@ const ArtViewModal = lazy(() => import("./Views/ArtViewModal"));
 const PasswordReset = lazy(() =>
   import("./Components/resetPassword/PasswordReset")
 );
+
 
 const db = firebase.firestore();
 
@@ -77,6 +79,7 @@ function App(props) {
             <Route path="/browse" component={ArtViewModal} />
             <Route path='/' component={Navbar} />
             <Route exact path="/" component={LandingPage} />
+            <Route path='/about' component={AboutPage} />
             <Route path="/signup" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/browse" component={BrowseArt} />
