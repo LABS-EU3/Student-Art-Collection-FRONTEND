@@ -15,16 +15,10 @@ function SchoolCard(props) {
 
   return (
     <StyledCard onClick={populateViewModal}>
-      {/* <img src={props.image} alt={props.alt} /> */}
-      {/* <div className="art-info"> */}
         <h2>{props.name}</h2>
         <h3>{props.email}</h3>
         <img src={props.photo} alt='profile' />
-        
-        <p>{props.description}</p>
-        {/* <h3>{props.dimensions}</h3> */}
-        {/* <h2>£{props.price}</h2> */}
-      {/* </div> */}
+        <button>send a message</button>
     </StyledCard>
   );
 }
