@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../store/Actions/actionCreators";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const MobileNavStyle = styled.div`
   font-size: 2rem;
@@ -52,32 +54,40 @@ const MobileNavStyle = styled.div`
   }
 `;
 
-function MobileNav({ styling, closeNav }) {
+function MobileNav(props) {
   return (
-    <MobileNavStyle style={styling}>
-      <div className="close" onClick={closeNav}>
+    <MobileNavStyle style={props.styling}>
+      <div className="close" onClick={props.closeNav}>
         x
       </div>
       <div className="side-nav-bar">
-        <NavLink onClick={closeNav} to="/about">
+        <NavLink onClick={props.closeNav} to="/about">
           About
         </NavLink>
-        <NavLink onClick={closeNav} to="/browse">
+        <NavLink onClick={props.closeNav} to="/browse">
           Browse
         </NavLink>
-        <NavLink onClick={closeNav} to="/schools">
+        <NavLink onClick={props.closeNav} to="/schools">
           Schools
         </NavLink>
-        <NavLink onClick={closeNav} to="/contact">
+        <NavLink onClick={props.closeNav} to="/contact">
           Contact
         </NavLink>
-        <NavLink onClick={closeNav} to="/myaccount">
-          {" "}
-          Login
-        </NavLink>
+        {props.loggedInUser.email ? (
+          <Link to="/" onClick={props.logOut}>
+            Log Out
+          </Link>
+        ) : (
+          <Link to="/login">Log In</Link>
+        )}
+        <div className="icons">
+          {props.loggedInUser.email ? (
+            <Link to="/myaccount">My Account{props.messages.notifications > 0 ? `(${props.messages.notifications})` : null}</Link>
+          ) : null}
+        </div>
       </div>
     </MobileNavStyle>
   );
 }
 
-export default MobileNav;
+export default connect(state => state, actionCreators)(MobileNav);

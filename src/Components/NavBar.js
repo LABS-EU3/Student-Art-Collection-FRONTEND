@@ -170,7 +170,7 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
           <div></div>
           <div></div>
         </Hamburger>
-        <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
+        <MobileNav styling={menuStyle} closeNav={closeMobileNav} logOut={logOutHandler}/>
       </div>
     </NavContainer>
   );
