@@ -14,20 +14,22 @@ function SchoolCard(props) {
   };
 
   return (
-    <StyledBox onClick={populateViewModal}>
+    <StyledCard onClick={populateViewModal}>
       {/* <img src={props.image} alt={props.alt} /> */}
       {/* <div className="art-info"> */}
         <h2>{props.name}</h2>
-        <h2>{props.description}</h2>
-        {/* <h3>{props.artistName}</h3> */}
+        <h3>{props.email}</h3>
+        <img src={props.photo} alt='profile' />
+        
+        <p>{props.description}</p>
         {/* <h3>{props.dimensions}</h3> */}
         {/* <h2>£{props.price}</h2> */}
       {/* </div> */}
-    </StyledBox>
+    </StyledCard>
   );
 }
 
-const StyledBox = styled.div`
+const StyledCard = styled.div`
   max-height: auto;
   flex-basis: 25%;
   -ms-flex: auto;
@@ -36,6 +38,7 @@ const StyledBox = styled.div`
   padding: 10px 20px;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  border: 1px solid red
 
   img {
     max-width: 100%;

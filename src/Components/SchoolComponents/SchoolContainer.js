@@ -2,17 +2,12 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
 import { axiosWithBase } from "../../AxiosCustom";
+import styled from "styled-components";
 import SchoolCard from "./SchoolCard";
-import {
-  StyledContainer,
-  StyledEmptyContainer,
-  StyledButtonContainer
-} from "./BrowseArtContainerStyling";
 import Spinner from "../Spinner";
 
 function ArtSchoolContainer(props) {
-  const [spinning, setSpinning] = useState(false);
-  // const [spinning, setSpinning] = useState(true);
+  const [spinning, setSpinning] = useState(true);
   const [page, setPage] = useState(1);
   const [upperPageLimit, setUpperPageLimit] = useState(null);
 
@@ -27,81 +22,19 @@ function ArtSchoolContainer(props) {
     return null;
   };
 
-  // useEffect(() => {
-  //   axiosWithBase()
-  //     .get(
-  //       `/art/search?searchQuery=${props.browseArtState.searchQuery}&pagination=12&filter=${props.browseArtState.filter}&sortBy=${props.browseArtState.sortBy}&sortType=${props.browseArtState.sortType}&page=${page}`
-  //     )
-  //     .then(res => {
-  //       setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
-  //       props.fetchArt(res.data.art);
-  //       setSpinning(false);
-  //     })
-  //     .catch(() => {
-  //       props.fetchArt([]);
-  //       setSpinning(false);
-  //     });
-  //   props.toggleViewModal(false);
-  // }, [
-  //   page,
-  //   props.browseArtState.sortBy,
-  //   props.browseArtState.searchQuery,
-  //   props.browseArtState.sortBy,
-  //   props.browseArtState.sortType,
-  //   props.browseArtState.filter
-  // ]);
-
-  console.log("james");
-
   useEffect(() => {
-    props.fetchSchools([
-      {
-        _id: "5dfa52a33980af1bd42070a9",
-        name: "John doe",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        userId: {
-          userLocation: {
-            location: {
-              coordinates: []
-            }
-          },
-          confirmed: false,
-          _id: "5dfa52a33980af1bd42070a8",
-          name: "John doe",
-          email: "asdasdfasdf@aas.com",
-          type: "school",
-          username: "whatever",
-          createdAt: "2019-12-18T16:24:03.148Z",
-          updatedAt: "2019-12-18T16:24:03.148Z",
-          __v: 0
-        },
-        createdAt: "2019-12-18T16:24:03.425Z",
-        updatedAt: "2019-12-18T16:24:03.425Z",
-        __v: 0
-      },{
-        _id: "5dfa52a33980af1bd42070a9",
-        name: "John doe",
-        userId: {
-          userLocation: {
-            location: {
-              coordinates: []
-            }
-          },
-          confirmed: false,
-          _id: "5dfa52a33980af1bd42070a8",
-          name: "John doe",
-          email: "asdasdfasdf@aas.com",
-          type: "school",
-          username: "whatever",
-          createdAt: "2019-12-18T16:24:03.148Z",
-          updatedAt: "2019-12-18T16:24:03.148Z",
-          __v: 0
-        },
-        createdAt: "2019-12-18T16:24:03.425Z",
-        updatedAt: "2019-12-18T16:24:03.425Z",
-        __v: 0
-      },
-    ]);
+    axiosWithBase()
+      .get('/schools')
+      .then(res => {
+        setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
+        props.fetchSchools(res.data);
+        setSpinning(false);
+      })
+      .catch(() => {
+        props.fetchArt([]);
+        setSpinning(false);
+      });
+    props.toggleViewModal(false);
   }, []);
 
   if (spinning) {
@@ -115,16 +48,16 @@ function ArtSchoolContainer(props) {
   return (
     <>
       <StyledContainer>
-        <div className="grid-row">
           {props.browseSchoolState.map(school => {
             return (
               <SchoolCard
                 name={school.name}
                 description={school.description}
+                email={school.userId.email}
+                photo={school.userId.profile_picture}
               />
             );
           })}
-        </div>
       </StyledContainer>
       <StyledButtonContainer>
         {page === 1 ? null : (
@@ -137,5 +70,57 @@ function ArtSchoolContainer(props) {
     </>
   );
 }
+
+export const StyledContainer = styled.div`
+  max-width: 1290px;
+  margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  border: 3px solid green
+`;
+
+export const StyledEmptyContainer = styled.div`
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+  }
+`;
+
+export const StyledButtonContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 160px;
+    height: 45px;
+    margin: 0 40px;
+    background-color: ${props => props.theme.buttonOrange};
+    color: ${props => props.theme.white};
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+`;
 
 export default connect(state => state, actionCreators)(ArtSchoolContainer);
