@@ -78,7 +78,7 @@ const StyledFilter = styled.div`
         font-color: ${props => props.theme.black};
         font-size: 1.5rem;
         padding-left: 10px;
-        border: 1px solid red;
+        border: 1px solid grey;
         border-radius: 5px;
         transition: opacity 0.3s ease-in-out
 
