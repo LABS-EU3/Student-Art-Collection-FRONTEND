@@ -116,7 +116,7 @@ const Hamburger = styled.div`
 `;
 
 function NavBar({ loggedInUser, logOutUser, messages, setNotifications }) {
-  const [menuStyle, changeMenuStyle] = useState({ width: "100vw" });
+  const [menuStyle, changeMenuStyle] = useState(null);
 
   const openMobileNav = () => {
     changeMenuStyle({ width: "100vw" });
