@@ -115,7 +115,7 @@ const Hamburger = styled.div`
   }
 `;
 
-function NavBar({ loggedInUser, logOutUser, messages }) {
+function NavBar({ loggedInUser, logOutUser, messages, setNotifications }) {
   const [menuStyle, changeMenuStyle] = useState({ width: "100vw" });
 
   const openMobileNav = () => {
@@ -130,7 +130,9 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
 
   const logOutHandler = () => {
     localStorage.clear();
+    setNotifications(0);
     logOutUser();
+
   };
 
   return (
