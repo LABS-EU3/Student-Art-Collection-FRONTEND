@@ -5,7 +5,6 @@ export const StyledContainer = styled.div`
   height: 90%;
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif;
 `;
 
 export const StyledNavigationContainer = styled.nav`

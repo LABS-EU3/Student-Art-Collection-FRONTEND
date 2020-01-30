@@ -58,7 +58,6 @@ display: none
       width: 50%;
       display: flex;
       align-items: center;
-      font-family: 'Roboto', sans-serif;
 
       @media(max-width:700px) {
         width: 100vw;
@@ -199,7 +198,6 @@ width: 80vw;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
 
   .img-cont {
     width: 40%;

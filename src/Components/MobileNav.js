@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 const MobileNavStyle = styled.div`
-    font-family: 'Roboto', sans-serif;
     font-size: 2rem;
     width: 0px;
     overflow: hidden;

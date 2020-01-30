@@ -8,7 +8,6 @@ width: 250px;
 position: relative;
 padding: 10px 20px;
 box-sizing: border-box;
-font-family: 'Roboto', sans-serif;
 
     img {
      max-width: 100%;

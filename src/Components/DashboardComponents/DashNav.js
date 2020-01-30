@@ -9,7 +9,6 @@ const DashNavStyle = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    font-family: 'Roboto', sans-serif;  
     font-size: 1.5rem;
     color: ${props => props.theme.lightGrey}
 

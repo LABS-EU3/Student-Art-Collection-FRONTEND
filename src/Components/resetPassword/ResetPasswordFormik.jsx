@@ -8,7 +8,6 @@ const StyledDiv = styled.div`
   align-items: flex-start;
   width: 50%;
   margin: 0 auto;
-  font-family: ‘Roboto’, sans-serif;
   h1 {
     font-size: 3rem;
     padding: 2rem 0;

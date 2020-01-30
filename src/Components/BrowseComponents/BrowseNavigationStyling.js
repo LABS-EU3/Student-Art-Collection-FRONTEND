@@ -12,7 +12,6 @@ justify-content: center;
      display: flex;
      align-items: center;
      justify-content: center;
-     font-family: 'Roboto', sans-serif;
 
      button, select {
          width: 220px;

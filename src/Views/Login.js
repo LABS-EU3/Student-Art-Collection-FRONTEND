@@ -48,10 +48,9 @@ const StyledForm = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid 0.5px lightgrey;
+  border: solid 0.5px ${props => props.theme.lightGrey};
   border-radius: 10px;
   padding: 80px 20px;
-  font-family: ‘Roboto’, sans-serif;
   
   @media (max-width: 900px) {
     padding: 40px 0px;

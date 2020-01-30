@@ -16,7 +16,6 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Roboto", sans-serif;
 
   .top-container {
     display: flex;

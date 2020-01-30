@@ -93,7 +93,6 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: ‘Roboto’, sans-serif;
 
   padding: 80px 20px;
   border-radius: 5px;

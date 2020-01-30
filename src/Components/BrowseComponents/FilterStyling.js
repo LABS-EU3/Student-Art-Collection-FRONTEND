@@ -9,8 +9,7 @@ background-size: cover;
 display: flex;
 align-items: center;
 justify-content: center;
-color: white;
-font-family: 'Roboto', sans-serif;
+color:  ${props => props.theme.white};
 transition: height 0.3s ease-in-out;
 
      select {

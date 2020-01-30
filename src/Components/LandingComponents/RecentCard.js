@@ -5,7 +5,6 @@ const Box = styled.div`
 max-width: 290px;
 margin: 12px;
 position: relative;
-font-family: 'Roboto', sans-serif;
 
 @media(max-width: 628px)
 {

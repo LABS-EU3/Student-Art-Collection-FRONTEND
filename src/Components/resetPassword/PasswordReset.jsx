@@ -37,7 +37,6 @@ const StyledForm = styled.div`
   border: solid 0.5px ${props => props.theme.lightGrey};
   border-radius: 10px;
   padding: 80px 20px;
-  font-family: ‘Roboto’, sans-serif;
 `;
 
 const PasswordReset = ({

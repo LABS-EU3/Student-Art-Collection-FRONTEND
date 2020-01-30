@@ -15,7 +15,6 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   width: 75%;
-  font-family: ‘Roboto’, sans-serif;
   h1 {
     font-size: 3rem;
     padding: 2rem 0;

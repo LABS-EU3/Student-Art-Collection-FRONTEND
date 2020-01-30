@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 
 export const CustomButton = styled(NavLink)`
   font-size: 2rem;
-  font-family: "Roboto";
   color: rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid white;
   padding-bottom: 0.3rem;
@@ -82,7 +81,6 @@ export const StyledMessageBox = styled.div`
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif;
   padding-top: 1rem;
 
   @media(max-width: 800px){

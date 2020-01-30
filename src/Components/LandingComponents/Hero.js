@@ -20,7 +20,7 @@ flex-direction: row-reverse;
 .heroText {
     text-align: center;
     color: ${props => props.theme.white};
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: ${props => props.theme.heroFont};
     font-size: 7rem;
     margin: 13rem 13rem;
     @media(max-width: 800px) {

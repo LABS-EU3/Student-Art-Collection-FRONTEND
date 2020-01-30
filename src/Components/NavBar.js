@@ -47,7 +47,6 @@ const NavContainer = styled.div`
       width: 40%;
       display: flex;
       justify-content: space-between;
-      // font-family: "Roboto", sans-serif;
 
       @media (max-width: 1100px) {
         width: 55%;
@@ -105,7 +104,7 @@ const Hamburger = styled.div`
   div {
     width: 100%;
     height: 2px;
-    background-color: black;
+    background-color: ${props => props.theme.black};
   }
 
   @media (max-width: 900px) {
