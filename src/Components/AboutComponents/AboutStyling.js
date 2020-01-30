@@ -51,6 +51,10 @@ export const StyledTeamContainer = styled.div`
       color: ${props => props.theme.modalGrey};
       margin-top: 4rem;
       text-align: center;
+
+      @media(max-width: 590px){
+        width: 90%;
+    }
   }
 
   .container {
@@ -60,6 +64,10 @@ export const StyledTeamContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
 
+    @media(max-width: 700px){
+        padding: 0;
+    }
+
     .team-member {
       max-width: 18%;
       margin: 3rem;
@@ -67,11 +75,25 @@ export const StyledTeamContainer = styled.div`
       flex-direction: column;
       align-items: center;
 
+      @media(max-width: 700px){
+          max-width: 36%;
+      }
+
+      @media(max-width: 490px){
+        max-width: 80%;
+    }
+
+
       a {
         margin-top: 1.5rem;
         text-decoration: none;
         font-size: 1.7rem;
         transition: opacity 0.2s ease-in-out;
+        text-align: center;
+
+        @media(max-width: 490px){
+            font-size: 2rem;
+        }
 
         :hover {
           opacity: 0.6;
