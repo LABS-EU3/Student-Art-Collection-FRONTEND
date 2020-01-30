@@ -53,7 +53,7 @@ const StyledBackground = styled.div`
       }
       button {
         width: 120px;
-        background-color: ${props => props.theme.secondaryColor};
+        background-color: ${props => props.theme.buttonOrange};
         color: ${props => props.theme.white};
         border: none;
         border-radius: 5px;

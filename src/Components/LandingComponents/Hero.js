@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import HeroImage from '../../Assets/hero.jpg';
+import HeroImage1 from '../../Assets/hero1.jpg';
 
 const HeroBanner = styled.div`
 width: 100%;
 height: 480px;
-background: url(${HeroImage});
+background: url(${HeroImage1});
 background-size: cover;
 display flex;
 flex-direction: row-reverse;
