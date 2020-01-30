@@ -11,10 +11,8 @@ import firebase from "./config/firebaseConfig";
 import GlobalStyle from "./Styles/GlobalStyle";
 // import theme
 import theme from "./Styles/Theme";
-// import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
 
 import "./App.css";
-import Spinner from "./Components/Spinner";
 import AppSpinner from "./Components/AppSpinner";
 import ErrorBoundary from "./Components/error-boundary/error-boundary.component";
 import StripePayment from './Views/StripePage/Payment';

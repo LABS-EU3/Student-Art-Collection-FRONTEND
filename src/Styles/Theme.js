@@ -8,7 +8,9 @@ const theme = {
   modalGrey: 'rgba(0,0,0,0.6)',
   photoContainer: 'rgba(56, 56, 188, 0.3)',
   // fonts
-  logoFont:  "Sue Ellen Francisco, cursive"
+  logoFont:  "Sue Ellen Francisco, cursive",
+  heroFont: "Julius Sans One, sans-serif",
+  mainFont: "Roboto, sans-serif"
 };
 
 export default theme;

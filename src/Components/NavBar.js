@@ -47,13 +47,13 @@ const NavContainer = styled.div`
       width: 40%;
       display: flex;
       justify-content: space-between;
-      font-family: "Roboto", sans-serif;
+      // font-family: "Roboto", sans-serif;
 
       @media (max-width: 1100px) {
-        width: 50%;
+        width: 55%;
       }
 
-      @media (max-width: 800px) {
+      @media (max-width: 900px) {
         display: none;
       }
 
@@ -108,7 +108,7 @@ const Hamburger = styled.div`
     background-color: black;
   }
 
-  @media (max-width: 100px) {
+  @media (max-width: 900px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
