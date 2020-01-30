@@ -8,11 +8,8 @@ import {
 } from "../helpers/validationSchema";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { axiosWithBase, baseURL } from "../AxiosCustom";
-import SocialAuthButton from "../Components/SocilaAuthButton";
+import { axiosWithBase } from "../AxiosCustom";
 import AlgoliaPlaces from "../helpers/algolia";
-
-
 
 const initalSignupForm = {
   name: "",
@@ -25,9 +22,6 @@ const initalSignupForm = {
 };
 
 export function RegisterForm(props) {
-  const showSchool = props.isSchool ? "flex" : "none";
-  const showBuyer = !props.isSchool ? "flex" : "none";
-
   return (
     <Formik
       validationSchema={
@@ -206,8 +200,8 @@ export function RegisterForm(props) {
 export default RegisterForm;
 
 const test = {
-  marginBottom: '1rem'
-}
+  marginBottom: "1rem"
+};
 
 export const StyledForm = styled.form`
   display: flex;
@@ -232,14 +226,14 @@ export const StyledForm = styled.form`
     color: ${props => props.theme.buttonOrange};
   }
 
-    input {
-      font-size: 1.2rem;
-      padding: 10px;
-      height: 50px;
-      border: none;
-      border-radius: 5px;
-      background-color: rgba(238, 243, 248, 0.5);
-    }
+  input {
+    font-size: 1.2rem;
+    padding: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(238, 243, 248, 0.5);
+  }
 
   textarea {
     font-size: 1.2rem;

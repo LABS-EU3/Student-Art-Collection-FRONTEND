@@ -12,19 +12,18 @@ function Team() {
   return (
     <StyledTeamContainer>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Consequat semper
-        viverra nam libero justo laoreet sit. At urna condimentum mattis
-        pellentesque id nibh. Leo integer malesuada nunc vel risus commodo
-        viverra maecenas accumsan. Ut venenatis tellus in metus vulputate. A
-        erat nam at lectus urna. Congue mauris rhoncus aenean vel elit. Diam
-        quis enim lobortis scelerisque. Augue mauris augue neque gravida in
-        fermentum et sollicitudin ac. Congue nisi vitae suscipit tellus mauris a
-        diam. Nec feugiat in fermentum posuere urna nec tincidunt praesent
-        semper. Mi proin sed libero enim. Integer feugiat scelerisque varius
-        morbi enim nunc faucibus. Amet consectetur adipiscing elit pellentesque.
-        Lacus sed turpis tincidunt id aliquet risus. Felis eget nunc lobortis
-        mattis aliquam faucibus.
+        Artfunder was designed, developed and deployed by a small team of Lambda
+        students from all corners of the globe. Our mission was to provide a
+        platform for art schools and art departments to generate much needed
+        income from the very products they already produce: artwork. In a vastly
+        competitive and exponentially growing education environment, the Arts
+        often get left behind due to the lack of obvious career path and earning
+        potential. Nonetheless, these schools provide an essential space for
+        emerging creatives and future creators to hone their skills;
+        underfunding in the 21st Century is almost unthinkable. By bringing our
+        technical skills and passion for the arts together, we have developed a
+        space for creative incubators of the future to ensure their funding and
+        future is safe.
       </p>
       <h1>Meet the team</h1>
       <div className="container">
