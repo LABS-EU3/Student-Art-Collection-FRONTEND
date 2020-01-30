@@ -27,9 +27,9 @@ const NavContainer = styled.div`
     }
 
     h1 {
-      font-family: "Shadows Into Light", cursive;
-      font-size: 4rem;
-      letter-spacing: 10px;
+      font-family: ${props => props.theme.logoFont};
+      font-size: 3.3rem;
+      letter-spacing: 5px;
       opacity: 1;
       transition: opacity 0.3s ease-in-out;
 
@@ -138,7 +138,7 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
       <div className="navigation">
         <Link to="/">
           {" "}
-          <h1>artFunder</h1>{" "}
+          <h1>ARTFUNDER</h1>{" "}
         </Link>
         <nav>
           <Link to="/about">About</Link>
