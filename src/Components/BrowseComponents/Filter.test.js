@@ -53,4 +53,7 @@ describe('renders search feature', () => {
     expect(wrapper.queryByText(/description/i)).toBeInTheDocument();
     expect(wrapper.queryByText(/style/i)).toBeInTheDocument();
   });
+  test('click search', () => {
+    rtl.fireEvent.click(wrapper.queryByText(/search/i));
+  });
 });

@@ -86,7 +86,7 @@ const SpinnerContainer = styled.div`
 function Spinner() {
   return (
     <>
-      <SpinnerContainer>
+      <SpinnerContainer data-testid="spinner">
         <div className="sk-chase-dot"></div>
         <div className="sk-chase-dot"></div>
         <div className="sk-chase-dot"></div>

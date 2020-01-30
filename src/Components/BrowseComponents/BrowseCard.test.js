@@ -66,3 +66,9 @@ describe('component render', () => {
     expect(wrapper.queryByText(/99/)).toBeInTheDocument();
   });
 });
+describe('modal is triggered', () => {
+  test('modal gets triggered', () => {
+    const card = wrapper.queryByTestId('card');
+    rtl.fireEvent.click(card);
+  });
+});

@@ -1,14 +1,14 @@
-import React from "react";
-import { Form, Field, ErrorMessage } from "formik";
+import React from 'react';
+import { Form, Field, ErrorMessage } from 'formik';
 
-import styled from "styled-components";
-import { connect } from "react-redux";
-import * as actionCreators from "../../store/Actions/actionCreators";
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/Actions/actionCreators';
 
-import Spinner from "../Spinner";
-import SocialAuthButton from "../SocilaAuthButton";
-import { baseURL } from "../../AxiosCustom";
-import ResetPassword from "./ResetPassword";
+import Spinner from '../Spinner';
+import SocialAuthButton from '../SocilaAuthButton';
+import { baseURL } from '../../AxiosCustom';
+import ResetPassword from './ResetPassword';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -70,7 +70,7 @@ const LoginForm = ({ isLoading }) => {
   if (isLoading) {
     return <Spinner />;
   }
-
+  console.log(isLoading);
   return (
     <StyledDiv>
       <h1>Sign In</h1>
@@ -96,8 +96,7 @@ const LoginForm = ({ isLoading }) => {
       </StyledForm>
       <ResetPassword />
 
-
-      <SocialAuthButton isSchool={false} url={baseURL + "/auth/google"} />
+      <SocialAuthButton isSchool={false} url={baseURL + '/auth/google'} />
     </StyledDiv>
   );
 };
