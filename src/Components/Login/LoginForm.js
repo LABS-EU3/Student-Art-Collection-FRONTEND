@@ -1,61 +1,76 @@
 import React from "react";
 import { Form, Field, ErrorMessage } from "formik";
-
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
-
-import Spinner from "../Spinner";
-import SocialAuthButton from "../SocilaAuthButton";
-import { baseURL } from "../../AxiosCustom";
-import ResetPassword from "./ResetPassword";
 
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 75%;
-  h1 {
-    font-size: 3rem;
-    padding: 2rem 0;
-  }
-
-  a {
-    width: 100%;
-    text-align: center;
-  }
 `;
 
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  width: 90%;
 
   input {
-    font-size: 1.8rem;
-    width: 100%;
-    padding: 10px;
+    width: 430px;
+    height: 55px;
+    margin: 1rem 0;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    background-color: rgba(238, 243, 248, 0.5);
+    border: 1px solid ${props => props.theme.white};
+    transition: all 0.3s ease-in-out;
     border-radius: 5px;
-    border: solid 0.5px ${props => props.theme.lightGrey};
-    margin: 15px 0;
+
+    :hover {
+      background-color: rgba(238, 243, 248, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    :focus {
+    border: 1px solid ${props => props.theme.lightGrey};
+    outline: none;
+    }
   }
+
+  .links {
+    width: 430px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 1rem;
+    a {
+      font-size: 1.2rem;
+      color: ${props => props.theme.lightGrey};
+
+      :hover {
+        color: ${props => props.theme.black};
+        text-decoration: underline;
+      }
+    }
+  }
+
   button {
-    margin: 20px auto;
+    margin: 2.5rem 0;
     background-color: ${props => props.theme.buttonOrange};
     color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
     font-size: 2rem;
     padding: 0.6rem 5rem;
+    cursor: pointer;
     &:hover {
       opacity: 0.7;
       transition: opacity 0.1s ease-in-out;
     }
-  }
-  * {
-    padding: 2rem 0;
+    :focus {
+      outline: none;
+    }
   }
 `;
 
@@ -65,16 +80,10 @@ const StyledError = styled(ErrorMessage)`
   font-size: 1rem;
 `;
 
-const LoginForm = ({ isLoading }) => {
-  if (isLoading) {
-    return <Spinner />;
-  }
-
+const LoginForm = () => {
   return (
     <StyledDiv>
-      <h1>Sign In</h1>
       <StyledForm>
-        {/* <label htmlFor="email">email</label> */}
         <Field
           name="email"
           type="email"
@@ -83,20 +92,20 @@ const LoginForm = ({ isLoading }) => {
           placeholder="Enter your email"
         />
         <StyledError name="email" component="div" />
-        {/* <label htmlFor="password">Password</label> */}
         <Field
           name="password"
           type="password"
           data-testid="passwordField"
           placeholder="Enter your password"
         />
-        <StyledError name="password" component="div" />
+        {/* <StyledError name="password" component="div" /> */}
+        <div className="links">
+          <Link to="/resetpasswordrequest">Forgetten password?</Link>
+          <Link to="/signup">Not yet a member? Sign up</Link>
+        </div>
         <button type="submit">Login</button>
       </StyledForm>
-      <ResetPassword />
-
-
-      <SocialAuthButton isSchool={false} url={baseURL + "/auth/google"} />
+      {/* <SocialAuthButton isSchool={false} url={baseURL + "/auth/google"} />   */}
     </StyledDiv>
   );
 };

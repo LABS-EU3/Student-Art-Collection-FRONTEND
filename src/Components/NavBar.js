@@ -132,7 +132,6 @@ function NavBar({ loggedInUser, logOutUser, messages, setNotifications }) {
     localStorage.clear();
     setNotifications(0);
     logOutUser();
-
   };
 
   return (
@@ -172,7 +171,11 @@ function NavBar({ loggedInUser, logOutUser, messages, setNotifications }) {
           <div></div>
           <div></div>
         </Hamburger>
-        <MobileNav styling={menuStyle} closeNav={closeMobileNav} logOut={logOutHandler}/>
+        <MobileNav
+          styling={menuStyle}
+          closeNav={closeMobileNav}
+          logOut={logOutHandler}
+        />
       </div>
     </NavContainer>
   );
