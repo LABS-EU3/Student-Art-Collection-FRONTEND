@@ -29,6 +29,7 @@ test('renders correct title', () => {
 });
 
 test('renders the form', () => {
+  wrapper.debug()
   expect(wrapper.getByPlaceholderText(/enter your first name/i)).toBeInTheDocument();
   expect(wrapper.getByPlaceholderText(/enter your last name/i)).toBeInTheDocument();
   expect(wrapper.getByPlaceholderText(/enter your email/i)).toBeInTheDocument();
