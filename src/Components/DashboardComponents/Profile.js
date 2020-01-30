@@ -168,7 +168,11 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
         country: null,
         latitude: null,
         longitude: null,
-        postCode: null
+        postCode: null,
+        location: {
+            type: 'Point',
+            coordinates: []
+        }
     });
 
     const urlString = queryString.parse(props.location.search);
@@ -273,7 +277,8 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                     setLocation({...e.suggestion, 
                         postCode:e.suggestion.postcode, 
                         latitude:e.suggestion.latlng.lat, 
-                        longitude:e.suggestion.latlng.lng 
+                        longitude:e.suggestion.latlng.lng,
+                        location: {type: 'Point', coordinates: [e.suggestion.latlng.lng,e.suggestion.latlng.lat]}
                     });
                 })
             }
