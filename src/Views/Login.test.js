@@ -74,7 +74,6 @@ describe('when isLoading is true', () => {
     expect(wrapper.queryByTestId('spinner')).toBeInTheDocument();
   });
   test('does not render reset password', () => {
-    wrapper.debug();
     expect(wrapper.queryByTestId('resetpassword')).toBeNull();
   });
 });

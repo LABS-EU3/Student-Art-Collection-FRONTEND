@@ -5,44 +5,32 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { cleanup, render, queryByTestId } from '@testing-library/react';
 
 // CONFIG
-import { store, persistor } from '../../store/index';
+import { persistor, store } from '../store/index';
 
 // COMPONENTS
-
-import BrowseCard from './BrowseCard';
-import { toggleViewModal } from '../../store/Actions/actionCreators';
+import Contact from './Contact';
 
 let wrapper;
 
-const browseArtState = {
-  image: 'testname',
-  alt: 'test alt',
-  title: 'test title',
-  artistName: 'test artist name',
-  dimensions: '30 x 30',
-  price: 99
-};
-
 beforeEach(() => {
-  wrapper = render(
+  wrapper = rtl.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           <Router>
-            <Dashboard />
+            <Contact />
           </Router>
         </Provider>
       </PersistGate>
     </Provider>
   );
 });
-afterEach(cleanup);
+afterEach(rtl.cleanup);
 
-describe('it renders', () => {
-    test('it render', () => {
-        wrapper.debug()
-    })
-})
+describe('form renders', () => {
+  test('form renders', () => {
+    expect(wrapper.queryByTestId('contactForm')).toBeInTheDocument();
+  });
+});

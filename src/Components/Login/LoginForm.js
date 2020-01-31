@@ -70,7 +70,6 @@ const LoginForm = ({ isLoading }) => {
   if (isLoading) {
     return <Spinner />;
   }
-  console.log(isLoading);
   return (
     <StyledDiv>
       <h1>Sign In</h1>
