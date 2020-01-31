@@ -60,7 +60,7 @@ function TeamMember(props) {
       <div className="img-cont">
         <img src={props.photo} alt={props.name} />
       </div>
-      <a href={props.url}>{props.name}</a>
+      <a href={props.url}target="_blank" rel="noopener noreferrer">{props.name}</a>
     </div>
   );
 }
