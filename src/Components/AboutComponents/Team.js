@@ -1,14 +1,25 @@
 import React from "react";
 import { StyledTeamContainer } from "./AboutStyling";
-import Rory from "../../Assets/team/rory.jpeg";
-import Vincent from "../../Assets/team/vincent.jpeg";
-import Pere from "../../Assets/team/pere.jpeg";
-import Brenda from "../../Assets/team/brenda.jpeg";
-import James from "../../Assets/team/james.png";
-import Tobi from "../../Assets/team/tobi.jpeg";
-import Petar from "../../Assets/team/petar.jpeg";
+import teamData from "./TeamData";
 
 function Team() {
+  const shuffle = array => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  };
+
+  const randomTeamList = shuffle(teamData);
   return (
     <StyledTeamContainer>
       <p>
@@ -27,51 +38,29 @@ function Team() {
       </p>
       <h1>Meet the team</h1>
       <div className="container">
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={Vincent} alt="Nmeregini Vincent" />
-          </div>
-          <a href="#">Nmeregini Vincent</a>
-        </div>
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={Rory} alt="Ruairidh Flint" />
-          </div>
-          <a href="#">Ruairidh Flint</a>
-        </div>
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={Brenda} alt="Brenda Joshua" />
-          </div>
-          <a href="#">Brenda Joshua</a>
-        </div>
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={Pere} alt="Pere Sola Claver" />
-          </div>
-          <a href="#">Pere Sola Claver</a>
-        </div>
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={Petar} alt="Petar Scepanovic" />
-          </div>
-          <a href="#">Petar Scepanovic</a>
-        </div>
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={James} alt="James Grantham" />
-          </div>
-          <a href="#">James Grantham</a>
-        </div>
-        <div className="team-member">
-          <div className="img-cont">
-            <img src={Tobi} alt="Oloruntobi Awoderu" />
-          </div>
-          <a href="#">Oloruntobi Awoderu</a>
-        </div>
+        {randomTeamList.map(member => {
+          return (
+            <TeamMember
+              name={member.name}
+              url={member.url}
+              photo={member.photo}
+            />
+          );
+        })}
       </div>
     </StyledTeamContainer>
   );
 }
 
 export default Team;
+
+function TeamMember(props) {
+  return (
+    <div className="team-member">
+      <div className="img-cont">
+        <img src={props.photo} alt={props.name} />
+      </div>
+      <a href={props.url}>{props.name}</a>
+    </div>
+  );
+}

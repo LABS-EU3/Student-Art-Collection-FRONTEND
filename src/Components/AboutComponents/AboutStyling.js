@@ -110,6 +110,7 @@ export const StyledTeamContainer = styled.div`
           height: auto;
           border-radius: 50%;
           transition: transform 0.3s ease-in-out;
+          
           :hover {
             transform: rotate(180deg);
             transition: transform 0.5s ease-in-out;
