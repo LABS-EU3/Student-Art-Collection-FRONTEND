@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+
+  "gcm_sender_id": "103953800507",
+  "short_name": "Art-funder App",
+  "name": "Art-funder App",
   "icons": [
     {
       "src": "favicon.ico",

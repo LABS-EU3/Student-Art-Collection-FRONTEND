@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as actionCreators from "./store/Actions/actionCreators";
 import "./App.css";
-import firebase from "./config/firebaseConfig";
-
+import {firebase, messaging} from "./config/firebaseConfig";
+import messagingHelper from './config/messagingHelper';
 // global style
 import GlobalStyle from "./Styles/GlobalStyle";
 // import theme
@@ -40,8 +40,15 @@ const PasswordReset = lazy(() =>
 const db = firebase.firestore();
 
 function App(props) {
+  console.log('Im in the app')
+  messaging.onMessage((payload) => {
+    alert('hello')
+    console.log(payload)
+  });    
   useEffect(() => {
+    navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
     if (props.loggedInUser._id) {
+      messagingHelper(props) 
       const fetchMessages = async () => {
         try {
           const snapshot = await db
