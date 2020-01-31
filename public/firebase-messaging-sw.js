@@ -1,8 +1,6 @@
 importScripts('https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/7.7.0/firebase-messaging.js');
 // importScripts('/__/firebase/init.js');
-
-console.log(process.env.REACT_APP_FIREBASE_API);
 const firebaseConfig = {
     apiKey: "AIzaSyBGRG_s_iXodcT_ixaqzyuoL5rj51j5Nm4",
     authDomain: "artfunder.firebaseapp.com",
@@ -30,14 +28,11 @@ messaging.setBackgroundMessageHandler(function(payload) {
       }
     })
     .then(() => {
-      return registration.showNotification("my notification title");
+      return registration.showNotification("you have a message in art-funder.com");
     });
   return promiseChain;
 });
 
 self.addEventListener('notificationclick', function(event) {
-    // do what you want
-    // ...
-    console.log(event, 'from service worker')
-    alert('hellooo')
-  });
+
+});

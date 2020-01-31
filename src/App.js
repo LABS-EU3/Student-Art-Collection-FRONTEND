@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import * as actionCreators from "./store/Actions/actionCreators";
 import "./App.css";
 import {firebase, messaging} from "./config/firebaseConfig";
@@ -40,13 +41,10 @@ const PasswordReset = lazy(() =>
 const db = firebase.firestore();
 
 function App(props) {
-  console.log('Im in the app')
-  messaging.onMessage((payload) => {
-    alert('hello')
-    console.log(payload)
-  });    
   useEffect(() => {
-    navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
+    navigator.serviceWorker.addEventListener("message", () => {
+      toast.info('you have a new message')
+    });
     if (props.loggedInUser._id) {
       messagingHelper(props) 
       const fetchMessages = async () => {
@@ -104,6 +102,20 @@ function App(props) {
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              "font-size": "1.5rem",
+              width: "400px",
+              "textAlign": "center"
+            }}
+      />
     </ThemeProvider>
   );
 }

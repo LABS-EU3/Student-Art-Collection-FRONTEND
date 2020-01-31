@@ -8,8 +8,7 @@ import {
 } from "../helpers/validationSchema";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { axiosWithBase, baseURL } from "../AxiosCustom";
-import SocialAuthButton from "../Components/SocilaAuthButton";
+import { axiosWithBase } from "../AxiosCustom";
 import AlgoliaPlaces from "../helpers/algolia";
 
 const initalSignupForm = {

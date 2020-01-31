@@ -9,18 +9,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import store from './store';
 import { store, persistor } from './store/index';
+import sw from './helpers/sw'
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./firebase-messaging-sw.js")
-    .then(function(registration) {
-      console.log("Registration successful, scope is:", registration.scope);
-    })
-    .catch(function(err) {
-      console.log("Service worker registration failed, error:", err);
-    });
-}
-
+sw();
 const app = (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
