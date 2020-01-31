@@ -14,6 +14,7 @@ export const StyledNavigationContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
     a {
         font-size: 2rem;
         width: 14rem;
@@ -21,6 +22,10 @@ export const StyledNavigationContainer = styled.nav`
         padding-bottom: 0.5rem;
         color: rgba(0,0,0,0.5);
         border-bottom: 1px solid white;
+
+        @media(max-width: 500px){
+          font-size: 1.4rem;
+        }
 
         :hover {
             color: rgba(0,0,0,1);
@@ -49,6 +54,11 @@ export const StyledMessageContainer = styled.div`
       justify-content: center;
       align-items: center;
       font-size: 2rem;
+
+      @media(max-width: 500px){
+        font-size: 1.4rem;
+        height: 30vh;
+      }
   }
 
   .titles {

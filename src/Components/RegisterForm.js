@@ -18,7 +18,7 @@ const initalSignupForm = {
   lastName: "",
   email: "",
   password: "",
-  location: ""
+  userLocation: ""
 };
 
 export function RegisterForm(props) {
@@ -39,6 +39,7 @@ export function RegisterForm(props) {
           password: values.password,
           userLocation: JSON.parse(localStorage.getItem("address"))
         };
+        
         if (localStorage.getItem("address") === null) {
           toast.error("Location is required");
           actions.setSubmitting(false);
@@ -171,7 +172,7 @@ export function RegisterForm(props) {
             <Error touched={touched.password} message={errors.password} />
           </div>
           <div data-testid="locationField" className="inputField">
-            <Field name="location" component={AlgoliaPlaces} />
+            <Field name="userLocation" component={AlgoliaPlaces} />
           </div>
 
           <button className="abutton" type="submit" disabled={isSubmitting}>
@@ -260,3 +261,4 @@ export const StyledForm = styled.form`
     }
   }
 `;
+
