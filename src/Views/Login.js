@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 // COMPONENTS
 
 import LoginForm from "../Components/Login/LoginForm";
-import ResetPassword from "../Components/Login/ResetPassword";
 import { axiosWithBase } from "../AxiosCustom";
 
 const initialValues = {
@@ -22,11 +21,6 @@ const initialValues = {
 // make it an env variable
 
 // login endpoint pending build of real endpoint in the backend repo
-
-// const loginEndpoint = 'http://localhost:9000/login';
-// // const loginEndpoint =
-// //   process.env.REACT_APP_LOGIN_ENDPOINT ||
-// //   'https://art-finder-staging.herokuapp.com/login';
 
 // validation schema by yup plugged into formik
 
