@@ -18,6 +18,6 @@ firebase.firestore().settings({ });
 
 const messaging = firebase.messaging();
 
-messaging.usePublicVapidKey('BPVl8gdm136JeAgDKVg7E8NwGZGT2Dm3LOZkXpw2k0XbNUmKCXirn2AWZLcftGyu5HFR_BfMtXO2xJlnbihOteU')
+messaging.usePublicVapidKey(process.env.REACT_APP_FIREBASE_PUBLIC_KEY)
 
 export  {firebase, messaging};
