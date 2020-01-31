@@ -60,7 +60,7 @@ function App(props) {
           });
 
           props.setNotifications(notifications.length);
-          document.title = `artFunder - ${notifications.length} - `
+          document.title = notifications.length ? `artFunder - ${notifications.length} - ` : "artFunder"
         } catch (error) {
           props.retrieveInboxMessages([]);
           props.setNotifications(0);
