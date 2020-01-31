@@ -48,7 +48,7 @@ const StyledBackground = styled.div`
       display: flex;
       justify-content: space-evenly;
       margin-bottom: 1.5rem;
-      @media(max-width: 450px){
+      @media (max-width: 450px) {
         width: 85%;
       }
       button {
@@ -99,9 +99,13 @@ function Register(props) {
   const [isSchool, setIsSchool] = useState(false);
   if (props.isLoading) {
     return (
-      <Content>
-        <Spinner />
-      </Content>
+      <StyledBackground>
+        <div className="container">
+          <div style={{width: '100%', height: '100%', display: 'flex', justifyContent:'center', alignItems:'center'}}>
+            <Spinner />
+          </div>
+        </div>
+      </StyledBackground>
     );
   } else {
     return (
