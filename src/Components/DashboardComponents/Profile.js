@@ -73,18 +73,19 @@ const ProfileContainer = styled.div`
     .data-row {
       width: 100%;
       height: 3rem;
-      border-bottom: 3px solid ${props => props.theme.veryLightGrey};
+      border-bottom: 1px solid rgba(0,0,0,0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
 
       h2 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
 
       input {
         border: 0;
         text-align: right;
+        font-size: 1.2rem;
         width: 300px;
         color: ${props => props.theme.lightGrey};
 
@@ -93,7 +94,7 @@ const ProfileContainer = styled.div`
           color: ${props => props.theme.buttonOrange};
         }
 
-        @media (max-width: 775px) {
+        @media (max-width: 850px) {
           width: 50%;
         }
       }
