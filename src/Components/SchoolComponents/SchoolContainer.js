@@ -27,6 +27,8 @@ function ArtSchoolContainer(props) {
       .get('/schools')
       .then(res => {
         setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
+        console.log(res.data);
+        
         props.fetchSchools(res.data);
         setSpinning(false);
       })
@@ -78,7 +80,8 @@ export const StyledContainer = styled.div`
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: flex-start;
-  border: 3px solid green
+  border: 3px solid green;
+  height: 200px
 `;
 
 export const StyledEmptyContainer = styled.div`

@@ -34,6 +34,7 @@ const StyledCard = styled.div`
   font-family: "Roboto", sans-serif;
   border: 1px solid red
 
+
   img {
     max-width: 100%;
     height: auto;
