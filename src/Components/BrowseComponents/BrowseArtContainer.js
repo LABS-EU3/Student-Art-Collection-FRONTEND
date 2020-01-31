@@ -22,11 +22,10 @@ function ArtContainer(props) {
         }
         return null;
     }
-    
-
+    const {browseArtState} = props
     useEffect(() => {
         axiosWithBase()
-            .get(`/art/search?searchQuery=${props.browseArtState.searchQuery}&pagination=12&filter=${props.browseArtState.filter}&sortBy=${props.browseArtState.sortBy}&sortType=${props.browseArtState.sortType}&page=${page}`)
+            .get(`/art/search?searchQuery=${browseArtState.searchQuery}&pagination=12&filter=${browseArtState.filter}&sortBy=${browseArtState.sortBy}&sortType=${browseArtState.sortType}&page=${page}`)
             .then((res) => {
                 setUpperPageLimit(Math.ceil(res.data.totalCount/12))
                 props.fetchArt(res.data.art)

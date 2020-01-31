@@ -206,6 +206,20 @@ function CheckoutForm(props) {
           <button>Pay</button>
         </form>
       </Checkout>
+      <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              "font-size": "1.5rem",
+              width: "400px",
+              "text-align": "center"
+            }}
+          />
     </CheckoutSection>
   );
 }
