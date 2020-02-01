@@ -18,7 +18,6 @@ function NewMessage(props) {
   const changeHandler = e => {
     setMessageBody(e.target.value);
   };
-
   const submit = () => {
     const testSubmitObject = {
       message: messageBody,

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
 import {firebase} from "../../config/firebaseConfig";
 
+import pushNotification from '../../helpers/pushNotification.fcm'
 import { StyledMessageBox } from "./MessagingComponentStyles";
 
 const db = firebase.firestore();
@@ -31,7 +32,8 @@ function Reply(props) {
     db.collection("messages")
       .doc()
       .set(testSubmitObject)
-      .then(() => {
+      .then(async () => {
+        await pushNotification(messageContent.sender_id)
         toast.success("Message sent");
         setTimeout(() => {
           props.history.push("/myaccount/messages");
