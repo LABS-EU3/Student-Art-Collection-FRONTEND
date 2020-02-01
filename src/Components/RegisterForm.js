@@ -43,10 +43,10 @@ export function RegisterForm(props) {
           email: values.email,
           password: values.password,
           userLocation: JSON.parse(localStorage.getItem("address")),
-          location: JSON.parse(localStorage.getItem('coordinates'))
+          location: JSON.parse(localStorage.getItem("coordinates"))
         };
-        console.log(newUser)
-        if (localStorage.getItem("address") === null ) {
+
+        if (localStorage.getItem("address") === null) {
           toast.error("Location is required");
           actions.setSubmitting(false);
           props.loadingFinished();
@@ -55,7 +55,7 @@ export function RegisterForm(props) {
         props.loadingStarted();
 
         actions.setSubmitting(true);
-        console.log(newUser)
+
         axiosWithBase()
           .post("/signup", newUser)
           .then(() => {
@@ -64,7 +64,7 @@ export function RegisterForm(props) {
             props.loadingFinished();
             props.history.push("/confirmation");
             localStorage.removeItem("address");
-            localStorage.removeItem('coordinates')
+            localStorage.removeItem("coordinates");
           })
           .catch(err => {
             toast.error(err.response.statusText);
