@@ -17,7 +17,7 @@ import ConfirmDelete from "./ConfirmDelete";
 const customStyles = {
   content: {
     width: "80%",
-    height: "80%",
+    height: "90%",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -26,7 +26,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)"
   },
   overlay: {
-    background: "rgba(0,0,0,0.6)"
+    background: "rgba(0,0,0,0.3)"
   }
 };
 
@@ -42,7 +42,7 @@ const deleteStyles = {
     transform: "translate(-50%, -50%)"
   },
   overlay: {
-    background: "rgba(0,0,0,0.6)"
+    background: "rgba(0,0,0,0.3)"
   }
 };
 
@@ -84,42 +84,40 @@ function ArtForSale(props) {
           artForSale.map(art => {
             return (
               <>
-                <StyledOrderContainer key={art._id}>
-                  <CollectionItemContainer>
-                    <div className="order-img">
-                      <img src={art.picture} alt={art.name} />
+                <CollectionItemContainer>
+                  <div className="order-img">
+                    <img src={art.picture} alt={art.name} />
+                  </div>
+                  <SellingSection>
+                    <div>
+                      <span>{art.name}</span>
+                      <span>{art.artistName}</span>
                     </div>
-                    <SellingSection>
-                      <div>
-                        <span>{art.name}</span>
-                        <span>{art.artistName}</span>
-                      </div>
-                      <div>
-                        <span>${art.price}</span>
-                      </div>
-                    </SellingSection>
-                    <div className="buttons">
-                      <button
-                        className="edit"
-                        onClick={() => {
-                          setArtToDelete(null);
-                          openModal();
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          setArtToDelete(art);
-                          openModal();
-                        }}
-                        className="delete"
-                      >
-                        Delete
-                      </button>
+                    <div>
+                      <span>${art.price}</span>
                     </div>
-                  </CollectionItemContainer>
-                </StyledOrderContainer>
+                  </SellingSection>
+                  <div className="buttons">
+                    <button
+                      className="edit"
+                      onClick={() => {
+                        setArtToDelete(null);
+                        openModal();
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => {
+                        setArtToDelete(art);
+                        openModal();
+                      }}
+                      className="delete"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </CollectionItemContainer>
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}

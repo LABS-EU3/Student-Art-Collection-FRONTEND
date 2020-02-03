@@ -11,8 +11,10 @@ export const MainContainer = styled.section`
 export const MainContainer2 = styled.section`
 	width: 90%;
 	height: 90%;
-	display: flex;
-	justify-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow-y: scroll;
 
 		.nothing {
 			width: 100%;
@@ -78,6 +80,7 @@ export const CollectionItemContainer = styled.div`
   padding: 2em;
   display: inline-block;
   border: 1px solid rgba(0, 0, 0, 0.02);
+
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 0.5);
   &:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
@@ -105,18 +108,18 @@ export const CollectionItemContainer = styled.div`
 		}
 		
 		.edit {
-			background-color: orange;
-			border: 1px solid orange;
-			color: white;
+			background-color: ${props => props.theme.white};
+			border: 1px solid ${props => props.theme.black};
+      color:${props => props.theme.black};
+      transition: opacity 0.2s ease-in-out;
 			&:hover {
-        color: orange;
-				background: white;
+        opacity: 0.5;
+        transition: opacity 0.2s ease-in-out;
       }
 		}
 		
 		.delete {
-			background-color: red;
-			border: 1px solid red;
+			background-color: ${props => props.theme.buttonOrange};
 			color: white;
 			&:hover {
         color: red;

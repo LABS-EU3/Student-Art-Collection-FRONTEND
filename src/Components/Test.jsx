@@ -1,22 +1,17 @@
-import React from 'react';
-import { Formik} from 'formik';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {axiosWithBase} from '../AxiosCustom';
+import React from "react";
+import { Formik } from "formik";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { axiosWithBase } from "../AxiosCustom";
 import {
   StyledForm,
   StyledError,
-  StyledName,
-  StyledDesc,
-  StyledDimension,
-  StyledDetails,
+  StyledInput,
   Button,
-  Title,
-  Details
-} from './UploadArt Component/UploadArtFormStyle';
+  Title
+} from "./UploadedArtComponent/EditFormStyle";
 
-
-const Test = ({editArt, onRequestClose}) => {
+const Test = ({ editArt, onRequestClose }) => {
   const initialValues = {
     name: editArt.name,
     artistName: editArt.artistName,
@@ -34,13 +29,13 @@ const Test = ({editArt, onRequestClose}) => {
   const submitHandle = values => {
     axiosWithBase()
       .put(`/art/edit/${editArt._id}`, values)
-        .then(() =>{
-          onRequestClose()
-          toast.success('product updated succesfully')
-        })
-        .catch(() =>{
-          toast.error("cannot update Item")
-        })
+      .then(() => {
+        onRequestClose();
+        toast.success("product updated succesfully");
+      })
+      .catch(() => {
+        toast.error("cannot update Item");
+      });
   };
   return (
     <div>
@@ -56,85 +51,127 @@ const Test = ({editArt, onRequestClose}) => {
 const TestForm = () => {
   return (
     <>
-    <StyledForm>
-      <Title>
-        <StyledError name="name" component="div" />
-        <label> Name:
-        <StyledName name="name" type="text" placeholder="name" /> 
-        </label>
-        <StyledError name="artistName" component="div" />
-        <label> Artist Name:
-        <StyledName name="artistName" type="text" placeholder="artistName" /> 
-        </label>
-      </Title>
-      <Details>
-        <StyledError name="description" component="div" />
-        <label> Description:
-        <StyledDesc name="description" type="text" placeholder="description" />
-        
-        </label>
-        <StyledError name="width" component="div" />
-        <label> Width:
-        <StyledDimension name="width" type="text" placeholder="width" />  
-        </label>
-        <StyledError name="height" component="div" />
-        <label> Height:
-        <StyledDimension name="height" type="text" placeholder="height" />
-        
-        </label>
-        <StyledError name="quantity" component="div" />
-        <label> Quantity:
-        <StyledDimension name="quantity" type="text" placeholder="quantity" />  
-        </label>
-        <StyledError name="category" component="div" />
-        <label> Category:
-        <StyledDetails name="category" type="text" placeholder="category" />
-        </label>
-        <StyledError name="price" component="div" />
-        <label> Price:
-        <StyledDetails name="price" type="text" placeholder="price" />
-        </label>
-        <StyledError name="medium" component="div" />
-        <label> Medium:
-        <StyledDetails name="medium" type="text" placeholder="medium" />
-        
-        </label>
-        <StyledError name="subject" component="div" />
-        <label> Subject:
-        <StyledDetails name="subject" type="text" placeholder="subject" />
-        
-        </label>
-        <StyledError name="materials" component="div" />
-        <label> Materials:
-        <StyledDetails name="materials" type="text" placeholder="materials" />
-        </label>
-        <StyledError name="style" component="div" />
-        <label> Style:
-          <StyledDetails name="style" type="text" placeholder="style" />
-        </label>
-      </Details>
-      <h1>
-        I agree to the terms and conditions and I have all relevant permissions
-        to upload and sell this artwork{' '}
-        <input type="checkbox" id="agree" value="check" />{' '}
-      </h1>
-      <Button type="submit">Submit</Button>
-    </StyledForm>
-    <ToastContainer
-              position="top-center"
-              autoClose={2000}
-              hideProgressBar
-              pauseOnVisibilityChange
-              draggable
-              pauseOnHover
-              closeButton={false}
-              style={{
-                'font-size': '1.5rem',
-                width: '400px',
-                'text-align': 'center'
-              }}
+      <StyledForm>
+        <Title>
+          <div className="fieldName">
+            <h3>Name: </h3>
+            <StyledInput name="name" type="text" placeholder="name" />
+          </div>
+          <div className="fieldName">
+            <h3>Artist Name: </h3>
+            <StyledInput
+              name="artistName"
+              type="text"
+              placeholder="artistName"
             />
-        </>
+          </div>
+        </Title>
+        <Title>
+          <div className="fieldName">
+            <h3>Description: </h3>
+            <StyledInput
+              name="description"
+              type="text"
+              placeholder="description"
+            />
+          </div>
+          <div className="fieldName">
+            <h3> Quantity: </h3>
+            <StyledInput name="quantity" type="text" placeholder="quantity" />
+          </div>
+        </Title>
+        <Title>
+          <div className="fieldName">
+            <h3>Width: </h3>
+            <StyledInput name="width" type="text" placeholder="width" />
+          </div>
+          <div className="fieldName">
+            <h3> Height: </h3>
+            <StyledInput name="height" type="text" placeholder="height" />
+          </div>
+        </Title>
+        <Title>
+          <div className="fieldName">
+            <h3>Price:</h3>
+            <StyledInput name="price" type="text" placeholder="price" />
+          </div>
+          <div className="fieldName">
+            <h3> Category:</h3>
+            <StyledInput
+              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              name="category"
+              type="text"
+              placeholder="category"
+            />
+          </div>
+        </Title>
+        <Title>
+          <div className="fieldName">
+            <h3> Medium:</h3>
+            <StyledInput
+              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              name="medium"
+              type="text"
+              placeholder="medium"
+            />
+          </div>
+
+          <div className="fieldName">
+            <h3>Subject:</h3>
+            <StyledInput
+              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              name="subject"
+              type="text"
+              placeholder="subject"
+            />
+          </div>
+        </Title>
+        <Title>
+          <div className="fieldName">
+            <h3>Materials:</h3>
+            <StyledInput name="materials" type="text" placeholder="materials" />
+          </div>
+          <div className="fieldName">
+            <h3>Style:</h3>
+            <StyledInput
+              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              name="style"
+              type="text"
+              placeholder="style"
+            />
+          </div>
+        </Title>
+        <div className="errors">
+          <StyledError name="name" component="div" />
+          <StyledError name="artistName" component="div" />
+          <StyledError name="description" component="div" />
+          <StyledError name="width" component="div" />
+          <StyledError name="height" component="div" />
+          <StyledError name="quantity" component="div" />
+          <StyledError name="price" component="div" />
+        </div>
+        <h1>
+          I agree to the terms and conditions and I have all relevant
+          permissions to upload and sell this artwork{" "}
+          <input type="checkbox" id="agree" value="check" />{" "}
+        </h1>
+        <Button type="submit">Submit</Button>
+      </StyledForm>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+        closeButton={false}
+        style={{
+          "font-size": "1.5rem",
+          width: "400px",
+          "text-align": "center"
+        }}
+      />
+    </>
   );
 };
 
