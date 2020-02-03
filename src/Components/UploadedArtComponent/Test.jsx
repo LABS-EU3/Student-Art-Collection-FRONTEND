@@ -98,7 +98,10 @@ const TestForm = () => {
           <div className="fieldName">
             <h3> Category:</h3>
             <StyledInput
-              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              style={{
+                backgroundColor: "white",
+                border: "1px solid rgba(233, 238, 243, 1)"
+              }}
               name="category"
               type="text"
               placeholder="category"
@@ -109,7 +112,10 @@ const TestForm = () => {
           <div className="fieldName">
             <h3> Medium:</h3>
             <StyledInput
-              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              style={{
+                backgroundColor: "white",
+                border: "1px solid rgba(233, 238, 243, 1)"
+              }}
               name="medium"
               type="text"
               placeholder="medium"
@@ -119,7 +125,10 @@ const TestForm = () => {
           <div className="fieldName">
             <h3>Subject:</h3>
             <StyledInput
-              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              style={{
+                backgroundColor: "white",
+                border: "1px solid rgba(233, 238, 243, 1)"
+              }}
               name="subject"
               type="text"
               placeholder="subject"
@@ -129,12 +138,23 @@ const TestForm = () => {
         <Title>
           <div className="fieldName">
             <h3>Materials:</h3>
-            <StyledInput name="materials" type="text" placeholder="materials" />
+            <StyledInput
+              style={{
+                backgroundColor: "white",
+                border: "1px solid rgba(233, 238, 243, 1)"
+              }}
+              name="materials"
+              type="text"
+              placeholder="materials"
+            />
           </div>
           <div className="fieldName">
             <h3>Style:</h3>
             <StyledInput
-              style={{ backgroundColor: "rgba(238, 243, 248, 0.3)" }}
+              style={{
+                backgroundColor: "white",
+                border: "1px solid rgba(233, 238, 243, 1)"
+              }}
               name="style"
               type="text"
               placeholder="style"

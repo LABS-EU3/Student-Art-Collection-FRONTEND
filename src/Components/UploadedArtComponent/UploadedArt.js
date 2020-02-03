@@ -17,7 +17,7 @@ import ConfirmDelete from "./ConfirmDelete";
 const customStyles = {
   content: {
     width: "80%",
-    height: "90%",
+    height: "83%",
     top: "50%",
     left: "50%",
     right: "auto",
