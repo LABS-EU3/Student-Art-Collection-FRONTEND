@@ -33,6 +33,10 @@ border-bottom: ${props => props.theme.veryLightGrey};
 display: flex;
 justify-content: space-evenly;
 align-items: flex-end;
+
+@media(max-width: 500px){
+  margin: 3rem 0;
+}
 `;
 
 export const StyledButton = styled(NavLink)`
