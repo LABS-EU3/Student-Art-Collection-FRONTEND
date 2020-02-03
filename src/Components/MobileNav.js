@@ -74,15 +74,15 @@ function MobileNav(props) {
           Contact
         </NavLink>
         {props.loggedInUser.email ? (
-          <Link to="/" onClick={props.logOut}>
+          <Link  onClick={props.closeNav} to="/" onClick={props.logOut}>
             Log Out
           </Link>
         ) : (
-          <Link to="/login">Log In</Link>
+          <Link onClick={props.closeNav} to="/login">Log In</Link>
         )}
         <div className="icons">
           {props.loggedInUser.email ? (
-            <Link to="/myaccount">My Account{props.messages.notifications > 0 ? `(${props.messages.notifications})` : null}</Link>
+            <Link onClick={props.closeNav} to="/myaccount">My Account{props.messages.notifications > 0 ? `(${props.messages.notifications})` : null}</Link>
           ) : null}
         </div>
       </div>
