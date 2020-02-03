@@ -1,7 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/messaging';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API,
   authDomain: "artfunder.firebaseapp.com",
   databaseURL: "https://artfunder.firebaseio.com",
@@ -15,4 +16,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.firestore().settings({ });
 
-export default firebase;
+const messaging = firebase.messaging();
+
+messaging.usePublicVapidKey(process.env.REACT_APP_FIREBASE_PUBLIC_KEY)
+
+export  {firebase, messaging};

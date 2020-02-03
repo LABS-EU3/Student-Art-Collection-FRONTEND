@@ -3,10 +3,11 @@ import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import * as actionCreators from "./store/Actions/actionCreators";
 import "./App.css";
-import firebase from "./config/firebaseConfig";
-
+import {firebase, messaging} from "./config/firebaseConfig";
+import messagingHelper from './config/messagingHelper';
 // global style
 import GlobalStyle from "./Styles/GlobalStyle";
 // import theme
@@ -40,8 +41,15 @@ const PasswordReset = lazy(() =>
 const db = firebase.firestore();
 
 function App(props) {
+  messaging.onMessage(()=>{
+    toast.info('you have a new message')
+  })
+  // navigator.serviceWorker.addEventListener("message", () => {
+  //   toast.info('you have a new message')
+  // });
   useEffect(() => {
     if (props.loggedInUser._id) {
+      messagingHelper(props) 
       const fetchMessages = async () => {
         try {
           const snapshot = await db
@@ -98,6 +106,20 @@ function App(props) {
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              "font-size": "1.5rem",
+              width: "400px",
+              "textAlign": "center"
+            }}
+      />
     </ThemeProvider>
   );
 }
