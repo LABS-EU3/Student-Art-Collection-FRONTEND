@@ -24,6 +24,9 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)"
+  },
+  overlay: {
+    background: "rgba(0,0,0,0.6)"
   }
 };
 
@@ -72,7 +75,7 @@ function ArtForSale(props) {
         setSpinning(false);
         toast.error("cannot get art");
       });
-  }, [modalIsOpen,id]);
+  }, [modalIsOpen, id]);
 
   return (
     <MainContainer2>
@@ -92,7 +95,6 @@ function ArtForSale(props) {
                         <span>{art.artistName}</span>
                       </div>
                       <div>
-                        <span>{`${art.height} x ${art.width}`}</span>
                         <span>${art.price}</span>
                       </div>
                     </SellingSection>
@@ -121,7 +123,7 @@ function ArtForSale(props) {
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
-                  style={artToDelete ? deleteStyles: customStyles}
+                  style={artToDelete ? deleteStyles : customStyles}
                 >
                   {artToDelete ? (
                     <ConfirmDelete
