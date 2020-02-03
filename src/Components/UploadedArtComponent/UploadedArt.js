@@ -27,6 +27,22 @@ const customStyles = {
   }
 };
 
+const deleteStyles = {
+  content: {
+    width: "50%",
+    height: "20%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  },
+  overlay: {
+    background: "rgba(0,0,0,0.6)"
+  }
+};
+
 Modal.setAppElement("body");
 
 function ArtForSale(props) {
@@ -105,7 +121,7 @@ function ArtForSale(props) {
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
-                  style={customStyles}
+                  style={artToDelete ? deleteStyles: customStyles}
                 >
                   {artToDelete ? (
                     <ConfirmDelete
