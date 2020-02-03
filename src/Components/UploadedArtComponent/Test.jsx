@@ -2,14 +2,14 @@ import React from "react";
 import { Formik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { axiosWithBase } from "../AxiosCustom";
+import { axiosWithBase } from "../../AxiosCustom";
 import {
   StyledForm,
   StyledError,
   StyledInput,
   Button,
   Title
-} from "./UploadedArtComponent/EditFormStyle";
+} from "./EditFormStyle";
 
 const Test = ({ editArt, onRequestClose }) => {
   const initialValues = {

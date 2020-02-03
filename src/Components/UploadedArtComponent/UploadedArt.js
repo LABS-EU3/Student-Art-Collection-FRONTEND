@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Modal from "react-modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import EditForm from "../Test";
+import EditForm from "./Test";
 import {
   MainContainer2,
   StyledOrderContainer,
@@ -53,6 +53,7 @@ function ArtForSale(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [spinner, setSpinning] = useState(true);
   const [artToDelete, setArtToDelete] = useState(null);
+  const [artToEdit, setArtToEdit] = useState(null);
 
   function openModal() {
     setIsOpen(true);
@@ -102,6 +103,7 @@ function ArtForSale(props) {
                       className="edit"
                       onClick={() => {
                         setArtToDelete(null);
+                        setArtToEdit(art);
                         openModal();
                       }}
                     >
@@ -131,7 +133,7 @@ function ArtForSale(props) {
                       setArtForSale={setArtForSale}
                     />
                   ) : (
-                    <EditForm editArt={art} onRequestClose={closeModal} />
+                    <EditForm editArt={artToEdit} onRequestClose={closeModal} />
                   )}
                 </Modal>
               </>
