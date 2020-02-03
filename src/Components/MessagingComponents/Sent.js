@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import firebase from "../../config/firebaseConfig";
+import {firebase} from "../../config/firebaseConfig";
 import * as actionCreators from "../../store/Actions/actionCreators";
 import MessagePreview from "./MessagePreview";
 

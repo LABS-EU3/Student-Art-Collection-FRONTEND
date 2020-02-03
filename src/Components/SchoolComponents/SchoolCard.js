@@ -40,7 +40,9 @@ function SchoolCard(props) {
         <h2>{school.userLocation.postcode}</h2>
         <h2>{school.userLocation.administrative}</h2>
         <h2>({school.userLocation.country})</h2>
-        <h3>Distance to school: {school.dist.calculated}</h3>
+        <h3>{`Distance to school: ${Math.round(
+          (school.dist.calculated * 6371 * 100) / 100
+        ).toFixed(1)} km`}</h3>
         <button onClick={fetchArtSelectedSchool}>Check out art</button>
       </div>
     </StyledBox>
