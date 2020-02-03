@@ -11,14 +11,6 @@ import { axiosWithBase } from '../../AxiosCustom';
 function SchoolCard(props) {
   const { school } = props;
   const fetchArtSelectedSchool = () => {
-    axiosWithBase()
-      .get(`/art/school/art/${school._id}`)
-      .then(res => {
-        props.setArtSelectedSchool(res.data);
-      })
-      .catch(error => {
-        debugger;
-      });
     props.history.push(`/schools/${school._id}`);
   };
 

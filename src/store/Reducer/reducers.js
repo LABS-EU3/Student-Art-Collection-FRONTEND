@@ -158,7 +158,7 @@ export function browseSchoolReducer(state = initialSchoolState, action) {
   }
 }
 
-const initialArtSelectedSchool = {};
+const initialArtSelectedSchool = [];
 
 export function artSelectedSchool(
   artSelectedSchool = initialArtSelectedSchool,

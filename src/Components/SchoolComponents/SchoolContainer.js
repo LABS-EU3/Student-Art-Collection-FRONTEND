@@ -27,8 +27,6 @@ function ArtSchoolContainer(props) {
       .get('/schools/location/1234')
       .then(res => {
         setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
-        console.log(res.data);
-
         props.fetchSchools(res.data);
         setSpinning(false);
       })
