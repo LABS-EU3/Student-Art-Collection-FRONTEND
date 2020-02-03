@@ -34,7 +34,7 @@ function UploadModal({state}) {
   const {loggedInUser} = state
     return (
       <>
-        <Button onClick={openModal}>Upload Art</Button>
+        <Button onClick={openModal}>Upload</Button>
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}

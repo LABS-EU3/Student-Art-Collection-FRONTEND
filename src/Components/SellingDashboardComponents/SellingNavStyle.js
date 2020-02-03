@@ -78,6 +78,13 @@ export const DashNavStyle = styled.div`
       opacity: 1;
       transition: opacity 0.2s ease-in-out;
 
+      @media (max-width: 500px) {
+        width: 22%;
+        height: 28px;
+        margin-top: 0;
+        font-size: 1rem;
+      }
+
       &:hover {
         opacity: 0.7;
         transition: opacity 0.2s ease-in-out;
