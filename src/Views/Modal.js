@@ -8,13 +8,16 @@ import StripeRegistration from './StripePage/StripeRegistrationPage';
 const customStyles = {
   content: {
     width: '80%',
-    height: '80%',
+    height: '90%',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)'
+  },
+  overlay: {
+    background: 'rgba(0,0,0,0.6)'
   }
 };
 
@@ -29,8 +32,6 @@ function UploadModal({state}) {
   function closeModal() {
     setIsOpen(false);
   }
-
-  console.log({loggedInUser: state.loggedInUser})
   const {loggedInUser} = state
     return (
       <>

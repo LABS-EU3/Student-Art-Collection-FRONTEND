@@ -17,27 +17,27 @@ function UploadArtForm(props) {
         <StyledForm >
             <Title>
                 <StyledError name='name' component='div' />
-                <StyledName name='name' type='text' placeholder='Name' />
+                <StyledName name='name' type='text' placeholder={`Name (required)`} />
                 <StyledError name='artistName' component='div' />
-                <StyledName name='artistName' type='text' placeholder='Artist Name' />
+                <StyledName name='artistName' type='text' placeholder='Artist Name (required)' />
             </Title>
 
             <Dimensions>
                 <StyledError name='description' component='div' />
-                <StyledDesc name='description' type='text' placeholder='Description' />
+                <StyledDesc name='description' type='text' placeholder='Description (required)' />
                 <StyledError name='width' component='div' />
-                <StyledDimension name='width' type='text' placeholder='Width in CM' />
+                <StyledDimension name='width' type='text' placeholder='Width in cm (required)' />
                 <StyledError name='height' component='div' />
-                <StyledDimension name='height' type='text' placeholder='Height in CM' />
+                <StyledDimension name='height' type='text' placeholder='Height in cm (required)' />
                 <StyledError name='quantity' component='div' />
-                <StyledDimension name='quantity' type='text' placeholder='Quantity' />
+                <StyledDimension name='quantity' type='text' placeholder='Quantity (required)' />
             </Dimensions>
 
             <Details>
+                <StyledError name='price' component='div' />
+                <StyledDetails style={{backgroundColor: 'rgba(238, 243, 248, 0.5)', border: 'none'}}name='price' type='text' placeholder='Price in $ (required)' />
                 <StyledError name='category' component='div' />
                 <StyledDetails name='category' type='text' placeholder='Category' />
-                <StyledError name='price' component='div' />
-                <StyledDetails name='price' type='text' placeholder='Price in $' />
                 <StyledError name='medium' component='div' />
                 <StyledDetails name='medium' type='text' placeholder='Medium' />
                 <StyledError name='subject' component='div' />

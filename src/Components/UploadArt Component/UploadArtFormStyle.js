@@ -1,16 +1,21 @@
-import styled from 'styled-components'
-import { Form, ErrorMessage, Field } from 'formik';
+import styled from "styled-components";
+import { Form, ErrorMessage, Field } from "formik";
 
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
+  h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0.5rem;
+  }
   input {
-     border: none;
-     background-color: ${props => props.theme.veryLightGrey}
-     border: 1px solid light${props => props.theme.lightGrey};
-   }
+    font-size: 1.2rem;
+    @media (max-width: 600px) {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const StyledError = styled(ErrorMessage)`
@@ -20,18 +25,16 @@ export const StyledError = styled(ErrorMessage)`
 `;
 
 export const StyledName = styled(Field)`
-  width: 450px;
-  height: 50px;
+  width: 49%;
+  height: 60px;
   padding: 20px;
   border-radius: 3px;
-  outline-color: ${props => props.theme.lightGrey};
-  @media(max-width: 500px) {
-        width: 100%;
-    }
+  background-color: rgba(238, 243, 248, 0.5);
+  border: 1px solid rgba(238, 243, 248, 0.5);
 
-  @media(max-width: 330px) {
-        width: 100%;
-    }
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const StyledDesc = styled(Field)`
@@ -40,60 +43,59 @@ export const StyledDesc = styled(Field)`
   height: 60px;
   padding: 20px;
   border-radius: 3px;
+  border: 1px solid rgba(238, 243, 248, 0.5);
+  background-color: rgba(238, 243, 248, 0.5);
 
-  @media(max-width: 500px) {
-        width: 100%;
-    }
-
-  @media(max-width: 330px) {
-        width: 100%;
-    }
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-bottom: 0px;
+  }
 `;
 
 export const StyledDimension = styled(Field)`
-  width: 250px;
-  height: 40px;
+  width: 32%;
+  height: 60px;
   padding: 20px;
   border-radius: 3px;
+  border: 1px solid rgba(238, 243, 248, 0.5);
+  background-color: rgba(238, 243, 248, 0.5);
 
-  @media(max-width: 500px) {
-        width: 100%;
-    }
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
-  @media(max-width: 330px) {
-        width: 100%;
-    }
+  @media (max-width: 330px) {
+    width: 100%;
+  }
 `;
 
 export const StyledDetails = styled(Field)`
-  width: 450px;
+  width: 49%;
   margin-bottom: 20px;
-  height: 50px;
+  height: 60px;
   padding: 20px;
   border-radius: 3px;
+  border: 1px solid rgba(233, 238, 243, 1);
 
-  @media(max-width: 500px) {
-        width: 100%;
-    }
-
-  @media(max-width: 330px) {
-        width: 100%;
-    }
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-bottom: 0px;
+  }
 `;
 
 export const Button = styled.button`
   margin: 10px auto;
-    background-color: ${props => props.theme.buttonOrange};
-    color: ${props => props.theme.white};
-    border: none;
-    border-radius: 5px;
-    font-size: 2rem;
-    padding: 0.6rem 5rem;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.7;
-      transition: opacity 0.1s ease-in-out;
-    }
+  background-color: ${props => props.theme.buttonOrange};
+  color: ${props => props.theme.white};
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  padding: 0.6rem 5rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+    transition: opacity 0.1s ease-in-out;
+  }
 `;
 
 export const Title = styled.div`
@@ -103,11 +105,12 @@ export const Title = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 
-  @media(max-width: 500px) {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-    }
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
 `;
 
 export const Dimensions = styled.div`
@@ -124,10 +127,10 @@ export const Details = styled.div`
   justify-content: space-between;
   margin-top: 20px;
 
-  @media(max-width: 500px) {
-  display: flex;
-  flex-direction: column;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  margin-top: 0px;
   flex-wrap: wrap;
-    }
+  }
 `;
-
