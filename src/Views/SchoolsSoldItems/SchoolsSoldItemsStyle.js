@@ -5,6 +5,7 @@ export const MainContainer = styled.section`
 	box-sizing: border-box;
 	width: 90%;
 	padding: 1rem;
+	border: 1px solid red;
 `;
 
 export const SchoolsCollectionContainer = styled.section`
