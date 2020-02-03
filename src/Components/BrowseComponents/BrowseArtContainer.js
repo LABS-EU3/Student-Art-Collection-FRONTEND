@@ -11,7 +11,6 @@ import {
 import Spinner from '../Spinner';
 
 function ArtContainer(props) {
-  debugger;
   const [spinning, setSpinning] = useState(true);
   const [page, setPage] = useState(1);
   const [upperPageLimit, setUpperPageLimit] = useState(null);
@@ -24,13 +23,12 @@ function ArtContainer(props) {
         setPage(page - 1);
       }
     }
-    return null;
   };
-
+  const { browseArtState } = props;
   useEffect(() => {
     axiosWithBase()
       .get(
-        `/art/search?searchQuery=${props.browseArtState.searchQuery}&pagination=12&filter=${props.browseArtState.filter}&sortBy=${props.browseArtState.sortBy}&sortType=${props.browseArtState.sortType}&page=${page}`
+        `/art/search?searchQuery=${browseArtState.searchQuery}&pagination=12&filter=${browseArtState.filter}&sortBy=${browseArtState.sortBy}&sortType=${browseArtState.sortType}&page=${page}`
       )
       .then(res => {
         setUpperPageLimit(Math.ceil(res.data.totalCount / 12));

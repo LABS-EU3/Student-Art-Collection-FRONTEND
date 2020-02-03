@@ -15,6 +15,11 @@ export default () => {
             country: suggestion.country,
             latitude: suggestion.latlng.lat,
             longitude: suggestion.latlng.lng,
+            location:{
+              type: 'Point',
+              coordinates: [suggestion.latlng.lng, suggestion.latlng.lat]
+            },
+            
             postCode: suggestion.postcode
           })
         )

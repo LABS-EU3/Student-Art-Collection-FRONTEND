@@ -56,7 +56,7 @@ function ArtForSale(props) {
         setSpinning(false);
         toast.error("cannot get art");
       });
-  }, [modalIsOpen]);
+  }, [modalIsOpen,id]);
 
   return (
     <MainContainer2>
