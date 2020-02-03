@@ -43,10 +43,10 @@ function App(props) {
   messaging.onMessage(()=>{
     toast.info('you have a new message')
   })
+  // navigator.serviceWorker.addEventListener("message", () => {
+  //   toast.info('you have a new message')
+  // });
   useEffect(() => {
-    // navigator.serviceWorker.addEventListener("message", () => {
-    //   toast.info('you have a new message')
-    // });
     if (props.loggedInUser._id) {
       messagingHelper(props) 
       const fetchMessages = async () => {
