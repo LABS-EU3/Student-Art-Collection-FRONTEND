@@ -74,6 +74,10 @@ export const StyledMessageContainer = styled.div`
             font-weight: 580;
             font-size: 1.3rem;
             width: 30%;
+
+            @media(max-width: 590px){
+              font-size: 1rem;
+            }
         }
 
         h3 {
