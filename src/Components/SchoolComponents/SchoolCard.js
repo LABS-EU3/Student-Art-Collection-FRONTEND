@@ -1,25 +1,49 @@
-import React from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import * as actionCreators from "../../store/Actions/actionCreators";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
+import * as actionCreators from '../../store/Actions/actionCreators';
+import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
+
+// HELPERS
+import { axiosWithBase } from '../../AxiosCustom';
 
 function SchoolCard(props) {
-  const populateViewModal = () => {
-    // props.toggleViewModal(!props.browseArtState.artModalOpen);
-
-    // const test = props.browseArtState.art.filter(x => {
-    //   return x.public_picture_id === props.id;
-    // });
-    // props.selectArt(test[0]);
+  const { school } = props;
+  const fetchArtSelectedSchool = () => {
+    axiosWithBase()
+      .get(`/art/school/art/${school._id}`)
+      .then(res => {
+        props.setArtSelectedSchool(res.data);
+      })
+      .catch(error => {
+        debugger;
+      });
+    props.history.push(`/schools/${school._id}`);
   };
 
+  // const populateViewModal = () => {
+  //   // props.toggleViewModal(!props.browseArtState.artModalOpen);
+  //   // const test = props.browseArtState.art.filter(x => {
+  //   //   return x.public_picture_id === props.id;
+  //   // });
+  //   // props.selectArt(test[0]);
+  // };
+
   return (
-    <StyledCard onClick={populateViewModal}>
-        <h2>{props.name}</h2>
-        <h3>{props.email}</h3>
-        <img src={props.photo} alt='profile' />
-        <button>send a message</button>
-    </StyledCard>
+    <StyledBox>
+      {/* <div> */}
+      <img src={school.profile_picture} alt={school.userLocation.name} />
+      {/* </div> */}
+      <div className="art-info">
+        <h2>{school.userLocation.name}</h2>
+        <h2>{school.userLocation.postcode}</h2>
+        <h2>{school.userLocation.administrative}</h2>
+        <h2>({school.userLocation.country})</h2>
+        <h3>Distance to school: {school.dist.calculated}</h3>
+        <button onClick={fetchArtSelectedSchool}>Check out art</button>
+      </div>
+    </StyledBox>
   );
 }
 
@@ -31,11 +55,8 @@ const StyledCard = styled.div`
   position: relative;
   padding: 10px 20px;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  border: 1px solid red
-
-
-  img {
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid red img {
     max-width: 100%;
     height: auto;
     margin-bottom: 1rem;
@@ -75,4 +96,4 @@ const StyledCard = styled.div`
   }
 `;
 
-export default connect(state => state, actionCreators)(SchoolCard);
+export default withRouter(connect(state => state, actionCreators)(SchoolCard));
