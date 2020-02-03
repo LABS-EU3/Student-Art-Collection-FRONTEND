@@ -44,6 +44,7 @@ function Team() {
               name={member.name}
               url={member.url}
               photo={member.photo}
+              key={member.name}
             />
           );
         })}
