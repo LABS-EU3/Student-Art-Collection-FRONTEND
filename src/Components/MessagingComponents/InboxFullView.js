@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
-import firebase from "../../config/firebaseConfig";
+import {firebase} from "../../config/firebaseConfig";
 
 import { StyledMessageBox } from "./MessagingComponentStyles";
 

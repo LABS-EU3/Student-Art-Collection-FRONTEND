@@ -126,6 +126,7 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
     changeMenuStyle(null);
   };
 
+
   window.addEventListener("resize", closeMobileNav);
 
   const logOutHandler = () => {

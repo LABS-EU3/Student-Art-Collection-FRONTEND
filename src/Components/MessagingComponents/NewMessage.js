@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/Actions/actionCreators";
-import firebase from "../../config/firebaseConfig";
+import {firebase} from "../../config/firebaseConfig";
+import pushNotification from '../../helpers/pushNotification.fcm';
 
 import { StyledMessageBox } from "./MessagingComponentStyles";
 
@@ -17,7 +18,6 @@ function NewMessage(props) {
   const changeHandler = e => {
     setMessageBody(e.target.value);
   };
-
   const submit = () => {
     const testSubmitObject = {
       message: messageBody,
@@ -31,7 +31,8 @@ function NewMessage(props) {
     db.collection("messages")
       .doc()
       .set(testSubmitObject)
-      .then(() => {
+      .then(async() => {
+       await pushNotification(id);
         toast.success("Message sent");
         setTimeout(() => {
           props.history.push("/myaccount/messages");
