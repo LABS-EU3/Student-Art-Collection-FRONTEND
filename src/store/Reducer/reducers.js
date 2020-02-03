@@ -146,3 +146,14 @@ export function messageReducer(state = initialMessageState, action) {
       return state;
   }
 }
+
+const initialSchoolState = [];
+
+export function browseSchoolReducer(state = initialSchoolState, action) {
+  switch (action.type) {
+    case types.FETCH_SCHOOLS:
+      return action.payload;
+    default:
+      return state;
+  }
+}

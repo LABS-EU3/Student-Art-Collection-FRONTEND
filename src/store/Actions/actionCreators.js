@@ -146,3 +146,10 @@ export function setNotifications(number) {
     payload: number
   }
 }
+
+export function fetchSchools(data) {
+  return {
+    type: types.FETCH_SCHOOLS,
+    payload: data
+  };
+}

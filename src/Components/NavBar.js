@@ -108,7 +108,7 @@ const Hamburger = styled.div`
     background-color: black;
   }
 
-  @media (max-width: 100px) {
+  @media (max-width: 800px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

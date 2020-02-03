@@ -36,7 +36,8 @@ let masterReducer = {
   isLoading: reducers.isLoadingReducer,
   loggedInUser: reducers.loggedInUserReducer,
   browseArtState: reducers.browseArtReducer,
-  messages: reducers.messageReducer
+  messages: reducers.messageReducer,
+  browseSchoolState: reducers.browseSchoolReducer
 };
 
 const persistedReducer = persistReducer(persistConfig, combineReducers(masterReducer));
