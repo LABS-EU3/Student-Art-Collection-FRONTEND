@@ -15,6 +15,10 @@ width: 100%;
   box-sizing: border-box;
   border-radius: 5px;
 
+  :focus {
+    outline: 1px solid ${props => props.theme.buttonOrange};
+  }
+
   @media(max-width: 500px) {
         width: 100%;
         padding: 20px;

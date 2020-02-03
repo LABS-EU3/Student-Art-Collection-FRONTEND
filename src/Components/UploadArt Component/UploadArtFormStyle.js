@@ -5,6 +5,17 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  .errors{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 1rem; 
+    margin-bottom: 0.4rem;
+      div {
+        margin-right: 2rem;
+      }
+  }
   h1 {
     font-size: 1.3rem;
     text-align: center;
@@ -14,6 +25,10 @@ export const StyledForm = styled(Form)`
     font-size: 1.2rem;
     @media (max-width: 600px) {
       margin-bottom: 1rem;
+    }
+
+    :focus{
+      outline: 1px solid ${props => props.theme.buttonOrange};
     }
   }
 `;
@@ -84,7 +99,7 @@ export const StyledDetails = styled(Field)`
 `;
 
 export const Button = styled.button`
-  margin: 10px auto;
+  margin: 6px auto;
   background-color: ${props => props.theme.buttonOrange};
   color: ${props => props.theme.white};
   border: none;

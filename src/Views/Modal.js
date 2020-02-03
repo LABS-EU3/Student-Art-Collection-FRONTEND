@@ -7,8 +7,8 @@ import StripeRegistration from './StripePage/StripeRegistrationPage';
 
 const customStyles = {
   content: {
-    width: '80%',
-    height: '90%',
+    width: '84%',
+    height: '92%',
     top: '50%',
     left: '50%',
     right: 'auto',
