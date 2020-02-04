@@ -11,7 +11,6 @@ import {
 import Spinner from '../Spinner';
 
 function ArtContainer(props) {
-  debugger;
   const [spinning, setSpinning] = useState(true);
   const [page, setPage] = useState(1);
   const [upperPageLimit, setUpperPageLimit] = useState(null);
@@ -67,7 +66,7 @@ function ArtContainer(props) {
 
   return (
     <>
-      <StyledContainer>
+      <StyledContainer data-testid="styledContainer">
         <div className="grid-row">
           {props.browseArtState.artSorted
             ? props.browseArtState.artSorted.map(art => {

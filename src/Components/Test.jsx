@@ -48,6 +48,7 @@ const Test = ({editArt, onRequestClose}) => {
         initialValues={initialValues}
         onSubmit={submitHandle}
         component={TestForm}
+        data-testid="Form"
       />
     </div>
   );
@@ -56,7 +57,7 @@ const Test = ({editArt, onRequestClose}) => {
 const TestForm = () => {
   return (
     <>
-    <StyledForm>
+    <StyledForm data-testid="styledForm">
       <Title>
         <StyledError name="name" component="div" />
         <label> Name:

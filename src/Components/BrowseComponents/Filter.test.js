@@ -15,14 +15,14 @@ import { store, persistor } from '../../store/index';
 import Filter from './Filter';
 
 let wrapper;
-
+let setSearchValues;
 beforeEach(() => {
   wrapper = render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           <Router>
-            <Filter />
+            <Filter  setSearchValues={{ search: '', type: 'name' }}/>
           </Router>
         </Provider>
       </PersistGate>
@@ -56,4 +56,17 @@ describe('renders search feature', () => {
   test('click search', () => {
     rtl.fireEvent.click(wrapper.queryByText(/search/i));
   });
+  test('selects has the proper value', () =>{
+    const select = wrapper.queryByTestId('filterSelector');
+    rtl.fireEvent.change(select, {target: {value: 'name'}});
+    expect(select.value).toBe('name')
+  });
+  test('button resets', () => {
+    const reset = jest.fn(() => {
+      setSearchValues= { search: '', type: 'name' }
+    });
+    const button = wrapper.queryByTestId('resetButton');
+    rtl.fireEvent.click(button, reset);
+    expect(reset).toBeCalledTimes(0)
+  })
 });

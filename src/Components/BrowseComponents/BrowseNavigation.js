@@ -26,7 +26,7 @@ function BrowseNavigation(props) {
         >
           {props.browseArtState.filterBarOpen ? 'Hide' : 'Show'} Filters
         </button>
-        <select value={props.browseArtState.sortType} onChange={changeHandler}>
+        <select value={props.browseArtState.sortType} onChange={changeHandler} data-testid="select">
           <option value="newest">Newest</option>
           <option value="desc">Price High to Low</option>
           <option value="asc">Price Low to High</option>

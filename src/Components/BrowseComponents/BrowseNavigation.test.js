@@ -56,4 +56,22 @@ describe('click changes text of button', () => {
     expect(wrapper.queryByText(/hide filters/i)).not.toBeInTheDocument();
     expect(wrapper.queryByText(/show filters/i)).toBeInTheDocument();
   });
+
+  describe('select drops down', () =>{
+    test('it should call the onchange handler when clicked', () =>{
+      const select = wrapper.queryByTestId('select');
+      rtl.fireEvent.change(select, {target: {value: 'newest'}});
+      expect(select.value).toBe('newest')
+    })
+    test('it should call the onchange handler when clicked', () =>{
+      const select = wrapper.queryByTestId('select');
+      rtl.fireEvent.change(select, {target: {value: 'asc'}});
+      expect(select.value).toBe('asc')
+    })
+    test('it should call the onchange handler when clicked', () =>{
+      const select = wrapper.queryByTestId('select');
+      rtl.fireEvent.change(select, {target: {value: 'desc'}});
+      expect(select.value).toBe('desc')
+    })
+  })
 });
