@@ -6,7 +6,6 @@ import Twitter from '../../Assets/twitter.png'
 import Facebook from '../../Assets/facebook.png'
 
 const FooterMain = styled.footer`
-    font-family: 'Roboto', sans-serif;
     font-size: 1.3rem;
     max-width: 1300px;
     border-top: 1px solid ${props => props.theme.lightGrey};

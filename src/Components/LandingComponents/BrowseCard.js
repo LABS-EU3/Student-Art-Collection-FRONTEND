@@ -36,7 +36,6 @@ img {
     color: ${props => props.theme.white};
     position: absolute;
     font-size: 2.7rem;
-    font-family: 'Julius Sans One', sans-serif;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);

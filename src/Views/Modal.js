@@ -7,14 +7,17 @@ import StripeRegistration from './StripePage/StripeRegistrationPage';
 
 const customStyles = {
   content: {
-    width: '80%',
-    height: '80%',
+    width: '84%',
+    height: '92%',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)'
+  },
+  overlay: {
+    background: 'rgba(0,0,0,0.6)'
   }
 };
 
@@ -29,12 +32,10 @@ function UploadModal({state}) {
   function closeModal() {
     setIsOpen(false);
   }
-
-  console.log({loggedInUser: state.loggedInUser})
   const {loggedInUser} = state
     return (
       <>
-        <Button onClick={openModal}>Upload Art</Button>
+        <Button onClick={openModal}>Upload</Button>
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}

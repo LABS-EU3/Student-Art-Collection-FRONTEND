@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import HeroImage from '../../Assets/hero.jpg';
+import HeroImage1 from '../../Assets/hero1.jpg';
 
 const HeroBanner = styled.div`
 width: 100%;
 height: 480px;
-background: url(${HeroImage});
+background: url(${HeroImage1});
 background-size: cover;
 display flex;
 flex-direction: row-reverse;
@@ -20,7 +21,7 @@ flex-direction: row-reverse;
 .heroText {
     text-align: center;
     color: ${props => props.theme.white};
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: ${props => props.theme.heroFont};
     font-size: 7rem;
     margin: 13rem 13rem;
     @media(max-width: 800px) {

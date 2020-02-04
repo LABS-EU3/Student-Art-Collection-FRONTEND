@@ -1,37 +1,45 @@
-import React from 'react';
-import { Form, Field, ErrorMessage } from 'formik';
-import styled from 'styled-components';
-
-const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 50%;
-  margin: 0 auto;
-  font-family: ‘Roboto’, sans-serif;
-  h1 {
-    font-size: 3rem;
-    padding: 2rem 0;
-  }
-`;
+import React from "react";
+import { Form, Field, ErrorMessage } from "formik";
+import styled from "styled-components";
 
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  label {
-    font-size: 2rem;
-    padding: 1rem 0;
-  }
+
   input {
-    width: 100%;
-    padding: 10px;
+    width: 440px;
+    height: 60px;
+    margin: 2rem 0 1.5rem 0;
+    background-color: rgba(238, 243, 248, 0.5);
+    border: 1px solid ${props => props.theme.white};
+    transition: all 0.3s ease-in-out;
     border-radius: 5px;
-    border: solid 0.5px ${props => props.theme.lightGrey};
+    padding-left: 1rem;
+    font-size: 1.5rem;
+
+    @media (max-width: 590px) {
+      width: 360px;
+    }
+
+    @media (max-width: 370px) {
+      width: 270px;
+    }
+
+    :hover {
+      background-color: rgba(238, 243, 248, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    :focus {
+      border: 1px solid ${props => props.theme.lightGrey};
+      outline: none;
+    }
   }
+
   button {
-    margin: 40px auto;
+    margin: 0 auto;
     background-color: ${props => props.theme.buttonOrange};
     color: ${props => props.theme.white};
     border: none;
@@ -43,20 +51,14 @@ const StyledForm = styled(Form)`
       transition: opacity 0.1s ease-in-out;
     }
   }
-  * {
-    padding: 2rem 0;
-  }
 `;
 
 const ResetPasswordFormik = () => {
   return (
-    <StyledDiv>
-      <StyledForm>
-        <Field name="email" type="email" placeholder="write your email" />
-        <ErrorMessage name="email" component="div" />
-        <button type='submit'>Reset Password</button>
-      </StyledForm>
-    </StyledDiv>
+    <StyledForm>
+      <Field name="email" type="email" placeholder="Enter your email" />
+      <button type="submit">Send</button>
+    </StyledForm>
   );
 };
 

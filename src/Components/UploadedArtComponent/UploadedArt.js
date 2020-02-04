@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Modal from "react-modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import EditForm from "../Test";
+import EditForm from "./Test";
 import {
   MainContainer2,
   StyledOrderContainer,
@@ -17,13 +17,32 @@ import ConfirmDelete from "./ConfirmDelete";
 const customStyles = {
   content: {
     width: "80%",
-    height: "80%",
+    height: "83%",
     top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)"
+  },
+  overlay: {
+    background: "rgba(0,0,0,0.3)"
+  }
+};
+
+const deleteStyles = {
+  content: {
+    width: "50%",
+    height: "20%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  },
+  overlay: {
+    background: "rgba(0,0,0,0.3)"
   }
 };
 
@@ -34,6 +53,7 @@ function ArtForSale(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [spinner, setSpinning] = useState(true);
   const [artToDelete, setArtToDelete] = useState(null);
+  const [artToEdit, setArtToEdit] = useState(null);
 
   function openModal() {
     setIsOpen(true);
@@ -56,7 +76,7 @@ function ArtForSale(props) {
         setSpinning(false);
         toast.error("cannot get art");
       });
-  }, [modalIsOpen,id]);
+  }, [modalIsOpen, id]);
 
   return (
     <MainContainer2>
@@ -65,47 +85,45 @@ function ArtForSale(props) {
           artForSale.map(art => {
             return (
               <>
-                <StyledOrderContainer key={art._id}>
-                  <CollectionItemContainer>
-                    <div className="order-img">
-                      <img src={art.picture} alt={art.name} />
+                <CollectionItemContainer>
+                  <div className="order-img">
+                    <img src={art.picture} alt={art.name} />
+                  </div>
+                  <SellingSection>
+                    <div>
+                      <span>{art.name}</span>
+                      <span>{art.artistName}</span>
                     </div>
-                    <SellingSection>
-                      <div>
-                        <span>{art.name}</span>
-                        <span>{art.artistName}</span>
-                      </div>
-                      <div>
-                        <span>{`${art.height} x ${art.width}`}</span>
-                        <span>${art.price}</span>
-                      </div>
-                    </SellingSection>
-                    <div className="buttons">
-                      <button
-                        className="edit"
-                        onClick={() => {
-                          setArtToDelete(null);
-                          openModal();
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          setArtToDelete(art);
-                          openModal();
-                        }}
-                        className="delete"
-                      >
-                        Delete
-                      </button>
+                    <div>
+                      <span>${art.price}</span>
                     </div>
-                  </CollectionItemContainer>
-                </StyledOrderContainer>
+                  </SellingSection>
+                  <div className="buttons">
+                    <button
+                      className="edit"
+                      onClick={() => {
+                        setArtToDelete(null);
+                        setArtToEdit(art);
+                        openModal();
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => {
+                        setArtToDelete(art);
+                        openModal();
+                      }}
+                      className="delete"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </CollectionItemContainer>
                 <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
-                  style={customStyles}
+                  style={artToDelete ? deleteStyles : customStyles}
                 >
                   {artToDelete ? (
                     <ConfirmDelete
@@ -115,7 +133,7 @@ function ArtForSale(props) {
                       setArtForSale={setArtForSale}
                     />
                   ) : (
-                    <EditForm editArt={art} onRequestClose={closeModal} />
+                    <EditForm editArt={artToEdit} onRequestClose={closeModal} />
                   )}
                 </Modal>
               </>

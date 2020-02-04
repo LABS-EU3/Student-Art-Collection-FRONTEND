@@ -18,9 +18,8 @@ const BrowseContainer = styled.div`
     justify-content: center;
 
     h1 {
-        font-family: 'Roboto', sans-serif;
         font-size: 1.7rem;
-        color: rgba(0,0,0,0.8);
+        color: ${props => props.theme.black};
         margin-top: 4rem;
     }
 

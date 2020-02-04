@@ -11,20 +11,20 @@ import messagingHelper from './config/messagingHelper';
 // global style
 import GlobalStyle from './Styles/GlobalStyle';
 // import theme
-import theme from './Styles/Theme';
-// import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
+import theme from "./Styles/Theme";
 
 import './App.css';
 import AppSpinner from './Components/AppSpinner';
 import ErrorBoundary from './Components/error-boundary/error-boundary.component';
 import StripePayment from './Views/StripePage/Payment';
-
-const Navbar = lazy(() => import('./Components/NavBar'));
-const LandingPage = lazy(() => import('./Views/LandingPage'));
-const Register = lazy(() => import('./Views/Register'));
-const ConfirmationSent = lazy(() => import('./Views/ConfirmationSent'));
-const ConfirmationSuccess = lazy(() => import('./Views/ConfirmationSuccess'));
-const PasswordResetSent = lazy(() => import('./Views/PasswordResetSent'));
+  
+const Navbar = lazy(() => import("./Components/NavBar"));
+const LandingPage = lazy(() => import("./Views/LandingPage"));
+const AboutPage = lazy(() => import("./Views/About"));
+const Register = lazy(() => import("./Views/Register"));
+const ConfirmationSent = lazy(() => import("./Views/ConfirmationSent"));
+const ConfirmationSuccess = lazy(() => import("./Views/ConfirmationSuccess"));
+const PasswordResetSent = lazy(() => import("./Views/PasswordResetSent"));
 const ResetPasswordForm = lazy(() =>
   import('./Components/resetPassword/ResetPasswordForm')
 );
@@ -38,6 +38,7 @@ const PasswordReset = lazy(() =>
   import('./Components/resetPassword/PasswordReset')
 );
 const SchoolArt = lazy(() => import('./Views/SchoolArt'));
+
 
 const db = firebase.firestore();
 
@@ -69,7 +70,7 @@ function App(props) {
           });
 
           props.setNotifications(notifications.length);
-          document.title = `artFunder - ${notifications.length} - `;
+          document.title = notifications.length ? `artFunder - ${notifications.length} - ` : "artFunder"
         } catch (error) {
           props.retrieveInboxMessages([]);
           props.setNotifications(0);
@@ -88,6 +89,7 @@ function App(props) {
             <Route path="/browse" component={ArtViewModal} />
             <Route path="/" component={Navbar} />
             <Route exact path="/" component={LandingPage} />
+            <Route path='/about' component={AboutPage} />
             <Route path="/signup" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/browse" component={BrowseArt} />
