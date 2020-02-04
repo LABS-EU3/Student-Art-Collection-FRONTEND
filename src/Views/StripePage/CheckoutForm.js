@@ -158,7 +158,7 @@ function CheckoutForm(props) {
       );
       toast.success('your payment order has been recieved kindly check your email')
         setTimeout(()=>{
-         return props.history.push('/browse')
+         return props.history.push('/')
         }, 3000)
     } catch (error) {
       toast.error('error initiating your payment')

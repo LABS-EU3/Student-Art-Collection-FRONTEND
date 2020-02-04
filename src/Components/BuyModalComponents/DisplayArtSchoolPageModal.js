@@ -4,27 +4,8 @@ import * as actionCreators from '../../store/Actions/actionCreators';
 import { Link } from 'react-router-dom';
 import { StyledModal, openModalStyling } from '../../Views/ArtViewModalStyling';
 import Message from '../../Assets/message.svg';
-import calculateDistance from '../../helpers/distance';
 
 function DisplayArtSchoolPageModal(props) {
-  let length;
-  // const distance = () => {
-  //     const {userLocation} = props.loggedInUser;
-  //     const {userId} = Object.keys(props.browseArtState.artInModal).length && props.browseArtState.artInModal.userId
-  //     debugger
-  //     if(userId && userLocation) {
-  //         const buyer = {
-  //             lat: userLocation.latitude,
-  //             lng: userLocation.longitude
-  //         };
-  //         const school = {
-  //             lat: userId.userLocation.latitude,
-  //             lng: userId.userLocation.longitude
-  //         }
-  //         length = calculateDistance(buyer, school).toFixed(3);
-  //     }
-  //     return length;
-  //   }
   return (
     <StyledModal>
       <div
