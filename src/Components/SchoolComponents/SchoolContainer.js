@@ -55,6 +55,13 @@ function ArtSchoolContainer(props) {
       </StyledEmptyContainer>
     );
   }
+  if (props.browseSchoolState.length === 0) {
+    return (
+      <StyledContainer>
+        <h1>Sorry, there are no schools near your location.</h1>
+      </StyledContainer>
+    );
+  }
 
   return (
     <>
