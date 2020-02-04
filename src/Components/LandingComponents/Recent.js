@@ -18,7 +18,6 @@ const RecentContainer = styled.div`
     justify-content: center;
 
     h1 {
-        font-family: 'Roboto', sans-serif;
         font-size: 1.7rem;
         color: ${props => props.theme.modalGrey};
         margin-top: 4rem;

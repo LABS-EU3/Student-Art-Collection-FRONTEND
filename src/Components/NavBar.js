@@ -11,9 +11,10 @@ import NewMessage from "../Assets/newmessage.jpg";
 const NavContainer = styled.div`
   width: 100vw;
   height: 6rem;
+
   .navigation {
     height: 100%;
-    width: 75vw;
+    width: 80vw;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -21,15 +22,15 @@ const NavContainer = styled.div`
     padding: 0 2rem;
     color: ${props => props.theme.black};
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       width: 90vw;
       padding: 0 1rem;
     }
 
     h1 {
-      font-family: "Shadows Into Light", cursive;
-      font-size: 4rem;
-      letter-spacing: 10px;
+      font-family: ${props => props.theme.logoFont};
+      font-size: 3.3rem;
+      letter-spacing: 5px;
       opacity: 1;
       transition: opacity 0.3s ease-in-out;
 
@@ -47,10 +48,9 @@ const NavContainer = styled.div`
       width: 40%;
       display: flex;
       justify-content: space-between;
-      font-family: "Roboto", sans-serif;
 
       @media (max-width: 1100px) {
-        width: 50%;
+        width: 55%;
       }
 
       @media (max-width: 800px) {
@@ -105,21 +105,21 @@ const Hamburger = styled.div`
   div {
     width: 100%;
     height: 2px;
-    background-color: black;
+    background-color: ${props => props.theme.black};
   }
 
-  @media (max-width: 100px) {
+  @media (max-width: 800px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 `;
 
-function NavBar({ loggedInUser, logOutUser, messages }) {
+function NavBar({ loggedInUser, logOutUser, messages, setNotifications }) {
   const [menuStyle, changeMenuStyle] = useState(null);
 
   const openMobileNav = () => {
-    changeMenuStyle({ width: "50vw" });
+    changeMenuStyle({ width: "100vw" });
   };
 
   const closeMobileNav = () => {
@@ -131,6 +131,7 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
 
   const logOutHandler = () => {
     localStorage.clear();
+    setNotifications(0);
     logOutUser();
   };
 
@@ -139,7 +140,7 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
       <div className="navigation">
         <Link to="/">
           {" "}
-          <h1>artFunder</h1>{" "}
+          <h1>ARTFUNDER</h1>{" "}
         </Link>
         <nav>
           <Link to="/about">About</Link>
@@ -171,7 +172,11 @@ function NavBar({ loggedInUser, logOutUser, messages }) {
           <div></div>
           <div></div>
         </Hamburger>
-        <MobileNav styling={menuStyle} closeNav={closeMobileNav} />
+        <MobileNav
+          styling={menuStyle}
+          closeNav={closeMobileNav}
+          logOut={logOutHandler}
+        />
       </div>
     </NavContainer>
   );
