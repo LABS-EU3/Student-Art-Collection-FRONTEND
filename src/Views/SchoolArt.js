@@ -16,6 +16,7 @@ import {
   StyledContainer,
   StyledEmptyContainer
 } from '../Components/BrowseComponents/BrowseArtContainerStyling';
+import { StyledBox } from '../Components/BrowseComponents/BrowseCardStyling';
 
 const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
   const [spinning, setSpinning] = useState(true);
@@ -45,7 +46,9 @@ const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
       <StyledContainer>
         <div className="grid-row">
           {artSelectedSchool === 'No Art for this school at the moment' ? (
-            <div>Sorry, this school has no art</div>
+            <StyledBox>
+              <h2>Sorry, this school has no art</h2>
+            </StyledBox>
           ) : (
             artSelectedSchool.map(art => {
               return <SchoolArtCard art={art} key={art._id} />;
