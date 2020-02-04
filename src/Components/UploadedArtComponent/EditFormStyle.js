@@ -1,15 +1,26 @@
-import styled from 'styled-components'
-import { Form, ErrorMessage, Field } from 'formik';
+import styled from "styled-components";
+import { Form, ErrorMessage, Field } from "formik";
 
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 
-  input {
-     border: none;
-     border: 1px solid ligh${props => props.theme.lightGrey};
-   }
+  .errors {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 1rem;
+    margin-bottom: 0.4rem;
+    div {
+      margin-right: 2rem;
+    }
+  }
+  h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0.5rem;
+  }
 `;
 
 export const StyledError = styled(ErrorMessage)`
@@ -18,81 +29,43 @@ export const StyledError = styled(ErrorMessage)`
   font-size: 1rem;
 `;
 
-export const StyledName = styled(Field)`
-  width: 450px;
-  height: 50px;
-  padding: 20px;
-  border-radius: 3px;
-
-  @media(max-width: 500px) {
-        width: 100%;
-    }
-
-  @media(max-width: 330px) {
-        width: 100%;
-    }
-`;
-
-export const StyledDesc = styled(Field)`
-  width: 100%;
-  margin-bottom: 20px;
+export const StyledInput = styled(Field)`
   height: 60px;
   padding: 20px;
   border-radius: 3px;
-
-  @media(max-width: 500px) {
-        width: 100%;
-    }
-
-  @media(max-width: 330px) {
-        width: 100%;
-    }
+  background-color: rgba(238, 243, 248, 0.5);
+  border: 1px solid rgba(238, 243, 248, 0.5);
 `;
 
-export const StyledDimension = styled(Field)`
-  width: 250px;
-  height: 40px;
-  padding: 20px;
-  border-radius: 3px;
-
-  @media(max-width: 500px) {
-        width: 100%;
-    }
-
-  @media(max-width: 330px) {
-        width: 100%;
-    }
-`;
-
-export const StyledDetails = styled(Field)`
-  width: 450px;
+export const Description = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
-  height: 50px;
-  padding: 20px;
-  border-radius: 3px;
-
-  @media(max-width: 500px) {
-        width: 100%;
-    }
-
-  @media(max-width: 330px) {
-        width: 100%;
-    }
+  h3 {
+    width: 10%;
+    text-align: center;
+  }
+  input {
+    width: 89%;
+  }
 `;
+
 
 export const Button = styled.button`
-  margin: 10px auto;
-    background-color: ${props => props.theme.buttonOrange};
-    color: ${props => props.theme.white};
-    border: none;
-    border-radius: 5px;
-    font-size: 2rem;
-    padding: 0.6rem 5rem;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.7;
-      transition: opacity 0.1s ease-in-out;
-    }
+  margin: 6px auto;
+  background-color: ${props => props.theme.buttonOrange};
+  color: ${props => props.theme.white};
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  padding: 0.6rem 5rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+    transition: opacity 0.1s ease-in-out;
+  }
 `;
 
 export const Title = styled.div`
@@ -102,31 +75,37 @@ export const Title = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 
-  @media(max-width: 500px) {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  .fieldName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 49%;
+
+    @media (max-width: 600px){
+      width: 100%;
+      margin-bottom: 2rem;
     }
-`;
-
-export const Dimensions = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-export const Details = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-
-  @media(max-width: 500px) {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+    h3 {
+      font-size: 0.8rem;
+      width: 12%;
+      text-align: center;
+      @media(max-width: 950px){
+        width: 23%;
+      }
     }
+    input {
+      width: 87%;
+      @media(max-width: 950px){
+        width: 75%;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
 `;
 

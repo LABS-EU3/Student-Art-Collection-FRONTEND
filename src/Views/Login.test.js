@@ -18,36 +18,6 @@ let mockStore = configureStore([]);
 let store;
 
 describe('Login component', () => {
-  let wrapper;
-  beforeEach(() => {
-    store = mockStore({
-      isLoading: false
-    });
-    wrapper = rtl.render(
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Router>
-            <Login />
-          </Router>
-        </PersistGate>
-      </Provider>
-    );
-  });
-  afterEach(rtl.cleanup);
-  test('renders submit button', () => {
-    expect(wrapper.queryAllByText(/login/i)[0]).toBeInTheDocument();
-  });
-  test('renders line of text to reset password', () => {
-    expect(
-      wrapper.queryByText(/if you forgot your password/i)
-    ).toBeInTheDocument();
-  });
-  test('renders link in the password reset text', () => {
-    expect(wrapper.getByText('here').closest('a')).toHaveAttribute(
-      'href',
-      '/resetpasswordrequest'
-    );
-  });
   test('renders email and password field', () => {
     expect(wrapper.getByTestId('emailField')).toBeInTheDocument();
     expect(wrapper.getByTestId('passwordField')).toBeInTheDocument();

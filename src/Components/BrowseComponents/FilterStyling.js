@@ -9,9 +9,16 @@ background-size: cover;
 display: flex;
 align-items: center;
 justify-content: center;
-color: white;
-font-family: 'Roboto', sans-serif;
+color:  ${props => props.theme.white};
 transition: height 0.3s ease-in-out;
+ @media(max-width: 900px){
+     padding: 0 4rem;
+ }
+
+ @media(max-width: 600px) {
+     flex-direction: column; 
+     justify-content: space-evenly;
+ }
 
      select {
         width: 180px;
@@ -28,11 +35,13 @@ transition: height 0.3s ease-in-out;
         cursor: pointer;
         border-radius: 5px;
 
-        @media(max-width:500px) {
-            width:100px;
-            height: 50px;
+        @media(max-width: 600px) {
+            width: 100%; 
+            height: 30px;
             font-size: 1rem;
         }
+
+
 
         &:hover {
             opacity: 0.7;
@@ -61,9 +70,9 @@ transition: height 0.3s ease-in-out;
         border-radius: 5px;
         transition: border 0.2s ease-in-out;
 
-        @media(max-width:500px) {
-            width:150px;
-            height: 50px;
+        @media(max-width: 600px) {
+            width: 100%; 
+            height: 30px;
             font-size: 1rem;
         }
 
@@ -95,6 +104,11 @@ transition: height 0.3s ease-in-out;
           transition: opacity 0.1s ease-in-out;
         }
 
+        @media(max-width: 600px) {
+            width: 200px; 
+            height: 30px;
+        }
+
         @media(max-width:500px){
             margin: 0 10px;
         }
@@ -107,9 +121,14 @@ transition: height 0.3s ease-in-out;
         &#reset {
             width:100px;
             margin: 0;
+
+            @media(max-width: 600px) {
+                width: 200px; 
+                height: 30px;
+            }
         }
 `
 
 export const openBarStyling = {
-    "height": "160px",
+    "height": "160px"
 }

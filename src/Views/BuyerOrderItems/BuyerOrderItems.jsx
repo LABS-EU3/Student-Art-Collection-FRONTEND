@@ -16,6 +16,86 @@ import Spinner from '../../Components/Spinner';
 import BuyerItem from './BuyerItem';
 import CustomButton from './CustomButton2'
 
+const temporaryData = [
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "123",
+		status: "pending"
+	},
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "1234",
+		status: "pending"
+	},
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "1235",
+		status: "pending"
+	},
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "1236",
+		status: "pending"
+	},
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "1237",
+		status: "pending"
+	},
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "1238",
+		status: "pending"
+	},
+	{
+		transactionId: {
+		  productId: {
+			picture:
+			  "https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+			price: 123
+		  }
+		},
+		_id: "1239",
+		status: "pending"
+	}
+  ];
+
 function BuyerOrderItems(props) {
 	const [artSold, setArtSold] = useState([]);
 	const [spinner, setSpinning] = useState(true);

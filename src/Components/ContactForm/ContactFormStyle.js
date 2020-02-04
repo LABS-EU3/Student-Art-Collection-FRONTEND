@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-import { Form, ErrorMessage } from 'formik';
-
+import styled from "styled-components";
+import { Form, ErrorMessage } from "formik";
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -15,11 +14,17 @@ export const StyledForm = styled(Form)`
     border-radius: 5px;
     border: solid 0.5px ${props => props.theme.lightGrey};
     font-size: 1.4rem;
+    transition: background-color 0.2s ease-in-out;
     margin-bottom: 20px;
 
-     :hover{
-      background-color: ${props => props.theme.veryLightGrey}
-     }
+    :hover {
+      background-color: ${props => props.theme.veryLightGrey};
+      transition: background-color 0.2s ease-in-out;
+    }
+    :focus {
+      background-color: ${props => props.theme.veryLightGrey};
+      outline: none;
+    }
   }
   button {
     margin: 40px auto;

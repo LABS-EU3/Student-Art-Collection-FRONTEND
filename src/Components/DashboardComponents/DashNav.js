@@ -5,28 +5,29 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/Actions/actionCreators';
 
 const DashNavStyle = styled.div`
-  width: 220px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
-  color: ${props => props.theme.lightGrey} @media (max-width: 500px) {
-    width: 150px;
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 330px) {
-    font-size: 1rem;
-  }
-
-  div {
-    height: 85%;
-    width: 100%;
-    border-right: 1px solid ${props => props.theme.veryLightGrey};
+    width: 220px;
+    height: 100%;
     display: flex;
     align-items: center;
-  }
+    font-size: 1.5rem;
+    color: ${props => props.theme.lightGrey};
+
+    @media(max-width: 500px) {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+    
+    div {
+        height: 85%;
+        width: 100%;
+        border-right: 1px solid ${props => props.theme.veryLightGrey};  
+        display: flex;
+        align-items: center;
+
+        @media(max-width: 500px) {
+            font-size: 1.2rem;
+        }
+    }
 
   nav {
     width: 100%;
@@ -36,18 +37,33 @@ const DashNavStyle = styled.div`
     align-items: center;
     justify-content: space-evenly;
 
-    a {
-      width: 60%;
-      color: ${props => props.theme.lightGrey};
-      padding: 0.5rem;
-      text-align: center;
-      transition: color 0.2s ease-in-out;
-      border-bottom: 1px solid ${props => props.theme.white};
+        @media(max-width: 500px) {
+            flex-direction: row;
+            height: 50px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-evenly;
+        }
 
-      &:hover {
-        color: r ${props => props.theme.black};
-        transition: color 0.2s ease-in-out;
-      }
+        a {
+            width: 60%;
+            color: ${props => props.theme.lightGrey};
+            padding: 0.5rem;
+            text-align: center;
+            transition: color 0.2s ease-in-out;
+            border-bottom: 1px solid ${props => props.theme.white};
+
+            @media(max-width: 500px) {
+                width: 18%;
+                padding: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+
+            &:hover {
+                color: ${props => props.theme.black};
+                transition: color 0.2s ease-in-out;
+            }
+        }
     }
   }
 

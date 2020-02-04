@@ -11,9 +11,13 @@ export const Upload = styled.input`
 width: 100%;
   margin-bottom: 20px;
   padding: 20px;
+  background-color: rgba(238, 243, 248, 0.5);
   box-sizing: border-box;
-  background-color: ${props => props.theme.veryLightGrey};
   border-radius: 5px;
+
+  :focus {
+    outline: 1px solid ${props => props.theme.buttonOrange};
+  }
 
   @media(max-width: 500px) {
         width: 100%;

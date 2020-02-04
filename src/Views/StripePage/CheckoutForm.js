@@ -30,7 +30,6 @@ const Checkout = styled.div`
   align-content: center;
   height: 70vh;
   font-size: 18px;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   img {
     max-width: 40%;
     @media (max-width: 500px) {
@@ -99,7 +98,6 @@ const Checkout = styled.div`
     max-width: 500px;
     padding: 10px 14px;
     font-size: 1em;
-    font-family: 'Source Code Pro', monospace;
     box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
       rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
     border: 0;
@@ -206,6 +204,20 @@ function CheckoutForm(props) {
           <button>Pay</button>
         </form>
       </Checkout>
+      <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              "font-size": "1.5rem",
+              width: "400px",
+              "text-align": "center"
+            }}
+          />
     </CheckoutSection>
   );
 }
