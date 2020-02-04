@@ -14,19 +14,11 @@ function SchoolCard(props) {
     props.history.push(`/schools/${school._id}`);
   };
 
-  // const populateViewModal = () => {
-  //   // props.toggleViewModal(!props.browseArtState.artModalOpen);
-  //   // const test = props.browseArtState.art.filter(x => {
-  //   //   return x.public_picture_id === props.id;
-  //   // });
-  //   // props.selectArt(test[0]);
-  // };
-
   return (
     <StyledBox>
-      {/* <div> */}
-      <img src={school.profile_picture} alt={school.userLocation.name} />
-      {/* </div> */}
+      {!school.profile_picture ? null : (
+        <img src={school.profile_picture} alt={school.userLocation.name} />
+      )}
       <div className="art-info">
         <h2>{school.userLocation.name}</h2>
         <h2>{school.userLocation.postcode}</h2>
