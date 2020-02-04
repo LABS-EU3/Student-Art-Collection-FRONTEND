@@ -7,6 +7,7 @@ import * as actionCreators from '../store/Actions/actionCreators';
 import SchoolArtCard from '../Components/SchoolComponents/SchoolArtCard';
 import SchoolPageHero from '../Components/SchoolComponents/SchoolPageHero';
 import Spinner from '../Components/Spinner';
+import Footer from '../Components/LandingComponents/Footer';
 
 // HELPERS
 import { axiosWithBase } from '../AxiosCustom';
@@ -56,6 +57,7 @@ const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
           )}
         </div>
       </StyledContainer>
+      <Footer />
     </>
   );
 };
