@@ -8,6 +8,10 @@ import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
 // HELPERS
 import { axiosWithBase } from '../../AxiosCustom';
 
+// ASSETS
+
+import placeholderPhoto from '../../Assets/No-Location-Placeholder.png';
+
 function SchoolCard(props) {
   const { school } = props;
   const fetchArtSelectedSchool = () => {
@@ -16,9 +20,12 @@ function SchoolCard(props) {
 
   return (
     <StyledBox>
-      {!school.profile_picture ? null : (
-        <img src={school.profile_picture} alt={school.userLocation.name} />
-      )}
+      <img
+        src={
+          !school.profile_picture ? placeholderPhoto : school.profile_picture
+        }
+        alt={school.userLocation.name}
+      />
       <div className="art-info">
         <h2>{school.userLocation.name}</h2>
         <h2>{school.userLocation.postcode}</h2>
