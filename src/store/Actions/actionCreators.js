@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
 
-
 // This is a dummy action to check that redux has been properly set. It can safely be deleted when starting to build the app
 
 export function increment() {
@@ -72,8 +71,7 @@ export function setUserDetails(user) {
   };
 }
 
-
-// OPEN/CLOSE FILTER BAR 
+// OPEN/CLOSE FILTER BAR
 
 export function toggleFilterBar(bool) {
   return {
@@ -124,25 +122,39 @@ export function setSearchValues(values) {
   };
 }
 
-// Messaging 
+// Messaging
 
 export function retrieveInboxMessages(messages) {
   return {
     type: types.RETRIEVE_INBOX_MESSAGES,
     payload: messages
-  }
-};
+  };
+}
 
 export function retrieveSentMessages(messages) {
   return {
     type: types.RETRIEVE_SENT_MESSAGES,
     payload: messages
-  }
-};
+  };
+}
 
 export function setNotifications(number) {
   return {
     type: types.SET_NOTIFICATIONS,
     payload: number
-  }
+  };
+}
+
+export function fetchSchools(data) {
+  return {
+    type: types.FETCH_SCHOOLS,
+    payload: data
+  };
+}
+
+export function setArtSelectedSchool(data) {
+  return {
+    type: types.SET_ART_SELECTED_SCHOOL,
+    payload: data
+  };
 }
