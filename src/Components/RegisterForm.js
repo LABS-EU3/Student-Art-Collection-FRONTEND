@@ -172,7 +172,7 @@ export function RegisterForm(props) {
           <div data-testid="locationField" className="inputField">
             <Field name="userLocation" component={AlgoliaPlaces} />
           </div>
-          <button className="abutton" type="submit" disabled={isSubmitting}>
+          <button className="abutton" type="submit" disabled={isSubmitting} data-testid="submitButton">
             Sign up
           </button>
           <ToastContainer

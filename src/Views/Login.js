@@ -81,6 +81,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     h2:after {
       margin: 0 -55% 0 .5em;
     }
+  }
 `;
 
 const StyledForm = styled.div`
@@ -158,7 +159,7 @@ const Login = ({
   };
   if (spinning) {
     return (
-      <StyledBackground>
+      <StyledBackground data-testid="spinner">
         <div className="container">
           <div
             style={{
