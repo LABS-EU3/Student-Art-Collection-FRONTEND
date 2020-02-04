@@ -1,4 +1,4 @@
-import * as types from "../Actions/actionTypes";
+import * as types from '../Actions/actionTypes';
 
 // set initial values for slices of state below
 const initialCount = 0;
@@ -21,7 +21,7 @@ export function countReducer(count = initialCount, action) {
 
 const initialLogInError = {
   isError: false,
-  errorMessage: ""
+  errorMessage: ''
 };
 
 export function errorLoginReducer(logInError = initialLogInError, action) {
@@ -34,7 +34,7 @@ export function errorLoginReducer(logInError = initialLogInError, action) {
     case types.RESET_ERROR_ON_LOGIN:
       return {
         isError: false,
-        message: ""
+        message: ''
       };
     default:
       return logInError;
@@ -57,20 +57,20 @@ export function isLoadingReducer(isLoading = false, action) {
 // SLICE OF STATE TO KEEP TRACK OF LOGGED IN USER
 
 const initialLoggedInUser = {
-  confirmed: "",
-  _id: "",
-  email: "",
-  type: "",
-  password: "",
-  createdAt: "",
-  updatedAt: "",
-  __v: "",
-  profile_picture: "",
-  firstname: "",
-  lastname: "",
-  name: "",
-  description: "",
-  userId: ""
+  confirmed: '',
+  _id: '',
+  email: '',
+  type: '',
+  password: '',
+  createdAt: '',
+  updatedAt: '',
+  __v: '',
+  profile_picture: '',
+  firstname: '',
+  lastname: '',
+  name: '',
+  description: '',
+  userId: ''
 };
 
 export function loggedInUserReducer(
@@ -93,10 +93,10 @@ const initialBrowseArtState = {
   art: [],
   artSorted: [],
   artInModal: {},
-  sortType: "",
-  sortBy: "",
-  searchQuery: "",
-  filter: ""
+  sortType: '',
+  sortBy: '',
+  searchQuery: '',
+  filter: ''
 };
 
 export function browseArtReducer(state = initialBrowseArtState, action) {
@@ -144,5 +144,30 @@ export function messageReducer(state = initialMessageState, action) {
       return { ...state, notifications: action.payload };
     default:
       return state;
+  }
+}
+
+const initialSchoolState = [];
+
+export function browseSchoolReducer(state = initialSchoolState, action) {
+  switch (action.type) {
+    case types.FETCH_SCHOOLS:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const initialArtSelectedSchool = [];
+
+export function artSelectedSchool(
+  artSelectedSchool = initialArtSelectedSchool,
+  action
+) {
+  switch (action.type) {
+    case types.SET_ART_SELECTED_SCHOOL:
+      return action.payload;
+    default:
+      return artSelectedSchool;
   }
 }

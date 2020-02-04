@@ -4,28 +4,8 @@ import * as actionCreators from '../../store/Actions/actionCreators';
 import { Link } from 'react-router-dom';
 import { StyledModal, openModalStyling } from '../../Views/ArtViewModalStyling';
 import Message from '../../Assets/message.svg';
-import calculateDistance from '../../helpers/distance';
 
-function DisplayArt(props) {
-  let length;
-  const distance = () => {
-    const { userLocation } = props.loggedInUser;
-    const { userId } =
-      Object.keys(props.browseArtState.artInModal).length &&
-      props.browseArtState.artInModal.userId;
-    if (userId && userLocation) {
-      const buyer = {
-        lat: userLocation.latitude,
-        lng: userLocation.longitude
-      };
-      const school = {
-        lat: userId.userLocation.latitude,
-        lng: userId.userLocation.longitude
-      };
-      length = calculateDistance(buyer, school).toFixed(3);
-    }
-    return length;
-  };
+function DisplayArtSchoolPageModal(props) {
   return (
     <StyledModal>
       <div
@@ -77,13 +57,11 @@ function DisplayArt(props) {
                   {props.browseArtState.artInModal.height}cm x{' '}
                   {props.browseArtState.artInModal.width}cm
                 </h4>
-                {props.loggedInUser ? (
-                  props.loggedInUser.type === 'buyer' ? (
-                    props.loggedInUser.userLocation ? (
-                      <h5> {distance()}km away </h5>
-                    ) : null
-                  ) : null
-                ) : null}
+                {/* {props.loggedInUser ? props.loggedInUser.type === 'buyer' ? 
+                    props.loggedInUser.userLocation ? 
+                    <h5> {distance()}km away </h5> : 
+                    null : null: null
+                } */}
                 <h5>
                   Quantity:{' '}
                   {props.browseArtState.artInModal.quantity < 1 ||
@@ -121,4 +99,7 @@ function DisplayArt(props) {
   );
 }
 
-export default connect(state => state, actionCreators)(DisplayArt);
+export default connect(
+  state => state,
+  actionCreators
+)(DisplayArtSchoolPageModal);
