@@ -3,15 +3,15 @@ import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import * as actionCreators from "./store/Actions/actionCreators";
 import "./App.css";
-import firebase from "./config/firebaseConfig";
-
+import {firebase, messaging} from "./config/firebaseConfig";
+import messagingHelper from './config/messagingHelper';
 // global style
 import GlobalStyle from "./Styles/GlobalStyle";
 // import theme
 import theme from "./Styles/Theme";
-// import ResetPasswordForm from './Components/resetPassword/ResetPasswordForm';
 
 import "./App.css";
 import AppSpinner from "./Components/AppSpinner";
@@ -20,6 +20,7 @@ import StripePayment from './Views/StripePage/Payment';
   
 const Navbar = lazy(() => import("./Components/NavBar"));
 const LandingPage = lazy(() => import("./Views/LandingPage"));
+const AboutPage = lazy(() => import("./Views/About"));
 const Register = lazy(() => import("./Views/Register"));
 const ConfirmationSent = lazy(() => import("./Views/ConfirmationSent"));
 const ConfirmationSuccess = lazy(() => import("./Views/ConfirmationSuccess"));
@@ -36,11 +37,19 @@ const PasswordReset = lazy(() =>
   import("./Components/resetPassword/PasswordReset")
 );
 
+
 const db = firebase.firestore();
 
 function App(props) {
+  messaging.onMessage(()=>{
+    toast.info('you have a new message')
+  })
+  // navigator.serviceWorker.addEventListener("message", () => {
+  //   toast.info('you have a new message')
+  // });
   useEffect(() => {
     if (props.loggedInUser._id) {
+      messagingHelper(props) 
       const fetchMessages = async () => {
         try {
           const snapshot = await db
@@ -59,7 +68,7 @@ function App(props) {
           });
 
           props.setNotifications(notifications.length);
-          document.title = `artFunder - ${notifications.length} - `
+          document.title = notifications.length ? `artFunder - ${notifications.length} - ` : "artFunder"
         } catch (error) {
           props.retrieveInboxMessages([]);
           props.setNotifications(0);
@@ -78,6 +87,7 @@ function App(props) {
             <Route path="/browse" component={ArtViewModal} />
             <Route path='/' component={Navbar} />
             <Route exact path="/" component={LandingPage} />
+            <Route path='/about' component={AboutPage} />
             <Route path="/signup" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/browse" component={BrowseArt} />
@@ -96,6 +106,20 @@ function App(props) {
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={false}
+            style={{
+              "font-size": "1.5rem",
+              width: "400px",
+              "textAlign": "center"
+            }}
+      />
     </ThemeProvider>
   );
 }

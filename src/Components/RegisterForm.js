@@ -18,7 +18,8 @@ const initalSignupForm = {
   lastName: "",
   email: "",
   password: "",
-  userLocation: ""
+  userLocation: "",
+  location: ""
 };
 
 export function RegisterForm(props) {
@@ -37,9 +38,10 @@ export function RegisterForm(props) {
           lastname: values.lastName,
           email: values.email,
           password: values.password,
-          userLocation: JSON.parse(localStorage.getItem("address"))
+          userLocation: JSON.parse(localStorage.getItem("address")),
+          location: JSON.parse(localStorage.getItem("coordinates"))
         };
-        
+
         if (localStorage.getItem("address") === null) {
           toast.error("Location is required");
           actions.setSubmitting(false);
@@ -49,6 +51,7 @@ export function RegisterForm(props) {
         props.loadingStarted();
 
         actions.setSubmitting(true);
+
         axiosWithBase()
           .post("/signup", newUser)
           .then(() => {
@@ -56,7 +59,8 @@ export function RegisterForm(props) {
             actions.setSubmitting(false);
             props.loadingFinished();
             props.history.push("/confirmation");
-            localStorage.clear("address");
+            localStorage.removeItem("address");
+            localStorage.removeItem("coordinates");
           })
           .catch(err => {
             toast.error(err.response.statusText);
@@ -176,7 +180,7 @@ export function RegisterForm(props) {
           </div>
 
           <button className="abutton" type="submit" disabled={isSubmitting}>
-            Submit
+            Sign up
           </button>
           <ToastContainer
             position="top-center"
@@ -200,17 +204,19 @@ export function RegisterForm(props) {
 
 export default RegisterForm;
 
+const test = {
+  marginBottom: "1rem"
+};
+
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
   width: 90%;
 
   .inputField {
     display: flex;
     flex-direction: column;
-    // margin: 2px 0;
     width: 100%;
   }
   .has-error {
@@ -226,19 +232,21 @@ export const StyledForm = styled.form`
   }
 
   input {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     padding: 10px;
+    height: 50px;
+    border: none;
     border-radius: 5px;
-    border: solid 1px ${props => props.theme.lightGrey};
-    margin: 10px 0;
+    background-color: rgba(238, 243, 248, 0.5);
   }
 
   textarea {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 10px;
     border-radius: 5px;
-    border: solid 0.5px ${props => props.theme.lightGrey};
-    height: 80px;
+    border: none;
+    height: 145px;
+    background-color: rgba(238, 243, 248, 0.5);
   }
 
   .abutton {
@@ -247,7 +255,7 @@ export const StyledForm = styled.form`
     color: ${props => props.theme.white};
     border: none;
     border-radius: 5px;
-    font-size: 2rem;
+    font-size: 1.6rem;
     padding: 0.6rem 5rem;
     cursor: pointer;
 

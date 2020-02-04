@@ -40,14 +40,12 @@ const MissionContainer = styled.div`
         align-items: center;
         
         h2 {
-            font-family: 'Julius Sans One', sans-serif;
             font-size: 3.1rem;
             margin: 1rem 0 1.5rem 0;
             align-self: flex-start;
         }
 
         p {
-            font-family: 'Roboto', sans-serif;  
             font-size: 1.5rem;
             line-height: 1.5;
         }

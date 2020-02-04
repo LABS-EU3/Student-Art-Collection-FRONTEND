@@ -21,7 +21,6 @@ align-items: center;
 
     h1 {
         font-size: 2rem;
-        font-family: 'Roboto', sans-serif;
     }
 `
 

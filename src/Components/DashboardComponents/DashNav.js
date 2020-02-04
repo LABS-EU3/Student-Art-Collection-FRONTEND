@@ -9,17 +9,12 @@ const DashNavStyle = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    font-family: 'Roboto', sans-serif;  
     font-size: 1.5rem;
-    color: ${props => props.theme.lightGrey}
+    color: ${props => props.theme.lightGrey};
 
     @media(max-width: 500px) {
-        width: 150px;
+        width: 100%;
         font-size: 1.2rem;
-    }
-
-    @media(max-width: 330px) {
-        font-size: 1rem;
     }
     
     div {
@@ -28,6 +23,10 @@ const DashNavStyle = styled.div`
         border-right: 1px solid ${props => props.theme.veryLightGrey};  
         display: flex;
         align-items: center;
+
+        @media(max-width: 500px) {
+            font-size: 1.2rem;
+        }
     }
 
     nav {
@@ -38,6 +37,14 @@ const DashNavStyle = styled.div`
         align-items: center;
         justify-content: space-evenly;
 
+        @media(max-width: 500px) {
+            flex-direction: row;
+            height: 50px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
         a {
             width: 60%;
             color: ${props => props.theme.lightGrey};
@@ -46,8 +53,14 @@ const DashNavStyle = styled.div`
             transition: color 0.2s ease-in-out;
             border-bottom: 1px solid ${props => props.theme.white};
 
+            @media(max-width: 500px) {
+                width: 18%;
+                padding: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+
             &:hover {
-                color: r${props => props.theme.black};
+                color: ${props => props.theme.black};
                 transition: color 0.2s ease-in-out;
             }
         }

@@ -29,7 +29,6 @@ const ConfirmationContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
 
     h3 {
       width: 80%;

@@ -5,6 +5,7 @@ export const MainContainer = styled.section`
 	box-sizing: border-box;
 	width: 90%;
 	padding: 1rem;
+	border: 1px solid red;
 `;
 
 export const SchoolsCollectionContainer = styled.section`
@@ -33,7 +34,6 @@ export const CollectionItemContainer = styled.div`
 	border-radius: 10px;
 	display:inline-block;
 	border: 1px solid rgba(0, 0, 0, 0.02);
-	font-family: 'Roboto', sans-serif;
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 	&:hover {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -82,7 +82,6 @@ export const CustomButton = styled(NavLink)`
 	background: ${props => props.theme.white};
 	padding: 5px 15px;
 	font-size: 10pt;
-	font-family: 'Roboto';
 	margin-left: 0.5rem;
 	cursor: pointer;
 	&:hover {
