@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 // HELPERS
 import * as actionCreators from '../../store/Actions/actionCreators';
@@ -7,7 +8,13 @@ import * as actionCreators from '../../store/Actions/actionCreators';
 import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
 import { connect } from 'react-redux';
 
-const SchoolArtCard = ({ art, toggleViewModal, browseArtState, selectArt }) => {
+const SchoolArtCard = ({
+  art,
+  toggleViewModal,
+  browseArtState,
+  selectArt,
+  history
+}) => {
   const populateViewModal = () => {
     toggleViewModal(!browseArtState.artModalOpen);
 
@@ -15,6 +22,7 @@ const SchoolArtCard = ({ art, toggleViewModal, browseArtState, selectArt }) => {
     //     return x.public_picture_id === props.id;
     // })
     selectArt(art);
+    history.push('/browseartschool');
   };
   return (
     <StyledBox onClick={populateViewModal}>
@@ -29,4 +37,6 @@ const SchoolArtCard = ({ art, toggleViewModal, browseArtState, selectArt }) => {
   );
 };
 
-export default connect(state => state, actionCreators)(SchoolArtCard);
+export default withRouter(
+  connect(state => state, actionCreators)(SchoolArtCard)
+);

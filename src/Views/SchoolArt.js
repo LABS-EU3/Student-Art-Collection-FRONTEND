@@ -19,6 +19,7 @@ const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
     axiosWithBase()
       .get(`/art/school/art/${id}`)
       .then(res => {
+        debugger;
         setArtSelectedSchool(res.data);
       })
       .catch(error => {

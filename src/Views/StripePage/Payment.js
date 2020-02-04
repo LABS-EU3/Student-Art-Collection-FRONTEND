@@ -29,17 +29,19 @@ function Payment(props) {
       schoolId: artInModal.userId._id,
       stripeUserId: artInModal.userId.stripe_user_id,
       metadata: {
-        "quantity": 1
+        quantity: 1
       }
     };
     axiosWithBase()
       .post(`/payments/${artInModal._id}/paymentintent`, data)
       .then(res => {
+        debugger;
         // update payment intent to state here
         updatePaymentIntent(res.data.clientSecret);
         updateSpinner(false);
       })
-      .catch(() => {
+      .catch(error => {
+        debugger;
         updateSpinner(false);
       });
   }, []);
@@ -49,11 +51,11 @@ function Payment(props) {
       {spinner ? (
         <Spinner />
       ) : (
-        <StripeProvider 
-            // stripe={stripe}
-            apiKey={process.env.REACT_APP_STRIPE_API_KEY}
-            stripeAccount={artInModal.userId.stripe_user_id}
-            >
+        <StripeProvider
+          // stripe={stripe}
+          apiKey={process.env.REACT_APP_STRIPE_API_KEY}
+          stripeAccount={artInModal.userId.stripe_user_id}
+        >
           <Elements>
             <CheckoutForm payementIntent={payementIntent} />
           </Elements>
