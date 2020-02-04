@@ -104,7 +104,6 @@ const StyledError = styled(ErrorMessage)`
 `;
 
 const LoginForm = (props) => {
-  console.log(props)
   return (
     <StyledDiv>
         <StyledError name="email" component="h6" />
