@@ -7,14 +7,14 @@ import * as actionCreators from '../../store/Actions/actionCreators';
 import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
 import { connect } from 'react-redux';
 
-const SchoolArtCard = ({ art, toggleViewModal, browseArtState }) => {
+const SchoolArtCard = ({ art, toggleViewModal, browseArtState, selectArt }) => {
   const populateViewModal = () => {
     toggleViewModal(!browseArtState.artModalOpen);
 
     // const test = props.browseArtState.art.filter(x => {
     //     return x.public_picture_id === props.id;
     // })
-    // props.selectArt(test[0])
+    selectArt(art);
   };
   return (
     <StyledBox onClick={populateViewModal}>
