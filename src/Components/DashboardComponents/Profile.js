@@ -161,7 +161,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
     const [waiting, setWaiting] = useState(true);
     const [photo, setPhoto] = useState(null);
     const [element, setElement] = useState(null);
-    const [adreess, setAddress] = useState(null)    
+    const [adreess, setAddress] = useState(null);   
     const [location, setLocation] = useState({
         name: null,
         administrative: null,
@@ -180,7 +180,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
     const googleUserDetails = (x) => {
         const urlToken = x.token;
         const decodedUrlToken = jwt.decode(urlToken);
-        const googleID = decodedUrlToken.subject;
+        const googleID = !decodedUrlToken ? null : decodedUrlToken.subject;
         localStorage.setItem("authorization", urlToken);
         return googleID;
     }
@@ -195,6 +195,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
             name: editedUserDetails.name,
             description: editedUserDetails.description,
             userLocation: location,
+            location: location.location
         };
         axiosWithBase()
             .patch(`/updateProfile/${loggedInUser.userId}`, editedUser)
@@ -367,7 +368,7 @@ function Profile({ loggedInUser, setLoggedInUser, ...props }) {
                         <button onClick={cancel} id="cancel">
                             Cancel
                         </button>
-                        <button onClick={submit} id="save">
+                        <button onClick={submit} id="save" data-testid="saveBtn">
                             Save
                        </button>
                     </div>
