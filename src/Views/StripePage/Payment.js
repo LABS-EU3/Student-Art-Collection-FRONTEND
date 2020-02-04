@@ -35,13 +35,11 @@ function Payment(props) {
     axiosWithBase()
       .post(`/payments/${artInModal._id}/paymentintent`, data)
       .then(res => {
-        debugger;
         // update payment intent to state here
         updatePaymentIntent(res.data.clientSecret);
         updateSpinner(false);
       })
       .catch(error => {
-        debugger;
         updateSpinner(false);
       });
   }, []);

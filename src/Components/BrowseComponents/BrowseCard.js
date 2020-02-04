@@ -12,7 +12,6 @@ function BrowseCard(props) {
         const test = props.browseArtState.art.filter(x => {
             return x.public_picture_id === props.id;
         })
-        debugger
         props.selectArt(test[0])
     }
 

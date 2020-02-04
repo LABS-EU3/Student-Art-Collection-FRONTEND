@@ -32,7 +32,6 @@ function ArtContainer(props) {
         `/art/search?searchQuery=${browseArtState.searchQuery}&pagination=12&filter=${browseArtState.filter}&sortBy=${browseArtState.sortBy}&sortType=${browseArtState.sortType}&page=${page}`
       )
       .then(res => {
-        debugger;
         setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
         props.fetchArt(res.data.art);
         setSpinning(false);
