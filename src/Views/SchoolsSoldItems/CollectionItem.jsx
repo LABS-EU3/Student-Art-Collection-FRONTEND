@@ -19,4 +19,5 @@ const date = new Date(art.updatedAt).toLocaleDateString();
 	);
 }
 
+
 export default CollectionItem;

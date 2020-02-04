@@ -5,7 +5,6 @@ width: 100vw;
 height: 90vh;
 display: flex;
 align-items: center;
-font-family: 'Roboto', sans-serif;
 
     .contactContainer {
         width: 100vw;
@@ -67,7 +66,6 @@ export const StyledForm = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  font-family: ‘Roboto’, sans-serif;
 `;
 
 export const StyledSuccess = styled.div`

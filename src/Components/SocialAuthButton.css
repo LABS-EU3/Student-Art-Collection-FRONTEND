@@ -12,7 +12,6 @@
     cursor: pointer;
   }
   span.label {
-    font-family: serif;
     font-weight: normal;
     font-size: 1.5rem;
     padding: 1rem;
@@ -31,6 +30,4 @@
     padding-right: 42px;
     font-size: 14px;
     font-weight: bold;
-    /* Use the Roboto font that is loaded in the <head> */
-    font-family: 'Roboto', sans-serif;
   }

@@ -11,7 +11,6 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 color: ${props => props.theme.white};
-font-family: 'Roboto', sans-serif;
 
     h1 {
         font-size: 5rem;

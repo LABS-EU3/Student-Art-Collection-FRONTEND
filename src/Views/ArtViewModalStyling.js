@@ -40,11 +40,15 @@ display: none
 
       .cont {
         width: 80%;
-        height: auto;
-
+        
         @media(max-width:700px) {
+          width: 40%;
+          margin-top: 2rem;
+        }
+
+        @media(max-width:550px) {
           width: 60%;
-          margin-top: 20px;
+          margin-top: 2rem;
         }
         img {
           width: 100%;
@@ -58,7 +62,6 @@ display: none
       width: 50%;
       display: flex;
       align-items: center;
-      font-family: 'Roboto', sans-serif;
 
       @media(max-width:700px) {
         width: 100vw;
@@ -159,7 +162,11 @@ display: none
         border-radius: 5px;
         font-size: 2rem;
         padding: 0.6rem 5rem;
-        cursor: pointer;
+        cursor: pointer;  
+
+        @media(max-width: 900px){
+          font-size: 1.5rem;
+        }
 
         &:focus {
           outline: none;
@@ -199,7 +206,6 @@ width: 80vw;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
 
   .img-cont {
     width: 40%;
