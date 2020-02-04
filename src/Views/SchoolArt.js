@@ -5,6 +5,7 @@ import * as actionCreators from '../store/Actions/actionCreators';
 
 // COMPONENTS
 import SchoolArtCard from '../Components/SchoolComponents/SchoolArtCard';
+import SchoolPageHero from '../Components/SchoolComponents/SchoolPageHero';
 
 // HELPERS
 import { axiosWithBase } from '../AxiosCustom';
@@ -28,18 +29,20 @@ const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
     return <div>Loading...</div>;
   } else {
     return (
-      <StyledContainer>
-        <h1>Welcome to the school page!</h1>
-        <div className="grid-row">
-          {artSelectedSchool === 'No Art for this school at the moment' ? (
-            <div>Sorry, this school has no art</div>
-          ) : (
-            artSelectedSchool.map(art => {
-              return <SchoolArtCard art={art} key={art._id} />;
-            })
-          )}
-        </div>
-      </StyledContainer>
+      <>
+        <SchoolPageHero />
+        <StyledContainer>
+          <div className="grid-row">
+            {artSelectedSchool === 'No Art for this school at the moment' ? (
+              <div>Sorry, this school has no art</div>
+            ) : (
+              artSelectedSchool.map(art => {
+                return <SchoolArtCard art={art} key={art._id} />;
+              })
+            )}
+          </div>
+        </StyledContainer>
+      </>
     );
   }
 };
