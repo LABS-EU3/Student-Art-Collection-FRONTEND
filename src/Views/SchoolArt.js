@@ -9,6 +9,9 @@ import SchoolArtCard from '../Components/SchoolComponents/SchoolArtCard';
 // HELPERS
 import { axiosWithBase } from '../AxiosCustom';
 
+// STYLING
+import { StyledContainer } from '../Components/BrowseComponents/BrowseArtContainerStyling';
+
 const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
   const { id } = match.params;
   useEffect(() => {
@@ -25,16 +28,18 @@ const SchoolArt = ({ artSelectedSchool, setArtSelectedSchool, match }) => {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
+      <StyledContainer>
         <h1>Welcome to the school page!</h1>
-        {artSelectedSchool === 'No Art for this school at the moment' ? (
-          <div>Sorry, this school has no art</div>
-        ) : (
-          artSelectedSchool.map(art => {
-            return <SchoolArtCard art={art} key={art._id} />;
-          })
-        )}
-      </div>
+        <div className="grid-row">
+          {artSelectedSchool === 'No Art for this school at the moment' ? (
+            <div>Sorry, this school has no art</div>
+          ) : (
+            artSelectedSchool.map(art => {
+              return <SchoolArtCard art={art} key={art._id} />;
+            })
+          )}
+        </div>
+      </StyledContainer>
     );
   }
 };
