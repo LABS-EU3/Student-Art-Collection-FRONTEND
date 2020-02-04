@@ -1,12 +1,23 @@
 import React from 'react';
 
+// HELPERS
+import * as actionCreators from '../../store/Actions/actionCreators';
+
 // STYLES
 import { StyledBox } from '../BrowseComponents/BrowseCardStyling';
+import { connect } from 'react-redux';
 
-const SchoolArtCard = ({ art }) => {
-  debugger;
+const SchoolArtCard = ({ art, toggleViewModal, browseArtState }) => {
+  const populateViewModal = () => {
+    toggleViewModal(!browseArtState.artModalOpen);
+
+    // const test = props.browseArtState.art.filter(x => {
+    //     return x.public_picture_id === props.id;
+    // })
+    // props.selectArt(test[0])
+  };
   return (
-    <StyledBox>
+    <StyledBox onClick={populateViewModal}>
       <img src={art.picture} alt={art.name} />
       <div className="art-info">
         <h2>{art.name}</h2>
@@ -18,4 +29,4 @@ const SchoolArtCard = ({ art }) => {
   );
 };
 
-export default SchoolArtCard;
+export default connect(state => state, actionCreators)(SchoolArtCard);
