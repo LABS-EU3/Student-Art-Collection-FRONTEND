@@ -9,7 +9,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import store from './store';
 import { store, persistor } from './store/index';
-import sw from './helpers/sw'
+import sw from './helpers/sw';
+import ReactGA from 'react-ga';
+
+// react-ga config
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID)
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 sw();
 const app = (
