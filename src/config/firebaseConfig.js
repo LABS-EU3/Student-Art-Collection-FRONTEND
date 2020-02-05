@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import 'firebase/messaging';
+
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API,
@@ -16,8 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.firestore().settings({ });
 
-const messaging = firebase.messaging();
+const messaging = ''
 
-messaging.usePublicVapidKey(process.env.REACT_APP_FIREBASE_PUBLIC_KEY)
 
 export  {firebase, messaging};
