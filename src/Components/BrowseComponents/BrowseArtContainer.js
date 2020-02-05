@@ -23,6 +23,7 @@ function ArtContainer(props) {
         setPage(page - 1);
       }
     }
+<<<<<<< HEAD
   }
     const {browseArtState} = props
     useEffect(() => {
@@ -40,6 +41,33 @@ function ArtContainer(props) {
         props.toggleViewModal(false);
     }, [page, props.browseArtState.sortBy, props.browseArtState.searchQuery, props.browseArtState.sortBy, props.browseArtState.sortType,
         props.browseArtState.filter])
+=======
+  };
+  const { browseArtState } = props;
+  useEffect(() => {
+    axiosWithBase()
+      .get(
+        `/art/search?searchQuery=${browseArtState.searchQuery}&pagination=12&filter=${browseArtState.filter}&sortBy=${browseArtState.sortBy}&sortType=${browseArtState.sortType}&page=${page}`
+      )
+      .then(res => {
+        setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
+        props.fetchArt(res.data.art);
+        setSpinning(false);
+      })
+      .catch(() => {
+        props.fetchArt([]);
+        setSpinning(false);
+      });
+    props.toggleViewModal(false);
+  }, [
+    page,
+    props.browseArtState.sortBy,
+    props.browseArtState.searchQuery,
+    props.browseArtState.sortBy,
+    props.browseArtState.sortType,
+    props.browseArtState.filter
+  ]);
+>>>>>>> 93475271d576c97dd5f2dda89bc5ce190b0825b5
 
   if (spinning) {
     return (

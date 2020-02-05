@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -13,10 +14,26 @@ import Spinner from "../Components/Spinner";
 import LoginForm from "../Components/Login/LoginForm";
 import SocialAuthButton from "../Components/SocilaAuthButton";
 import { axiosWithBase, baseURL } from "../AxiosCustom";
+=======
+import React from 'react';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/Actions/actionCreators';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
+
+// COMPONENTS
+
+import LoginForm from '../Components/Login/LoginForm';
+import { axiosWithBase } from '../AxiosCustom';
+>>>>>>> 93475271d576c97dd5f2dda89bc5ce190b0825b5
 
 const initialValues = {
-  email: "",
-  password: ""
+  email: '',
+  password: ''
 };
 
 const validationSchema = yup.object().shape({
@@ -107,7 +124,7 @@ const Login = ({
     setSpinning(true);
     resetErrorLogin();
     axiosWithBase()
-      .post("/login", values)
+      .post('/login', values)
       .then(res => {
         setSpinning(false);
         loadingFinished();
@@ -115,8 +132,8 @@ const Login = ({
         resetErrorLogin();
         if (!res.data.token) {
           switch (res.data.message) {
-            case "please check your email address to confirm account":
-              history.push("/confirmation");
+            case 'please check your email address to confirm account':
+              history.push('/confirmation');
               break;
             default:
               return res.data.message;
@@ -125,16 +142,17 @@ const Login = ({
           setSpinning(false);
           localStorage.setItem("authorization", res.data.token);
           setLoggedInUser(res.data.user);
-          history.push("/");
+          history.push('/');
         }
       })
       .catch(error => {
+        debugger;
         loadingFinished();
         setSpinning(false);
         if (!error.response) {
-          errorLogin("Something went wrong. Please contact us so we can help.");
+          errorLogin('Something went wrong. Please contact us so we can help.');
           toast.error(
-            "Something went wrong. Please contact us so we can help."
+            'Something went wrong. Please contact us so we can help.'
           );
         } else {
           switch (error.response.status) {
@@ -148,10 +166,10 @@ const Login = ({
               break;
             default:
               errorLogin(
-                "Something went wrong. Please contact us so we can help."
+                'Something went wrong. Please contact us so we can help.'
               );
               toast.error(
-                "Something went wrong. Please contact us so we can help."
+                'Something went wrong. Please contact us so we can help.'
               );
           }
         }
