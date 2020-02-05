@@ -40,14 +40,8 @@ export function RegisterForm(props) {
           userLocation: JSON.parse(localStorage.getItem("address")),
           location: JSON.parse(localStorage.getItem("coordinates"))
         };
-<<<<<<< HEAD
-        if (localStorage.getItem("address") === null) {
-          toast.error("Location is required");
-=======
-
         if (localStorage.getItem('address') === null) {
           toast.error('Location is required');
->>>>>>> 93475271d576c97dd5f2dda89bc5ce190b0825b5
           actions.setSubmitting(false);
           props.loadingFinished();
           return;
