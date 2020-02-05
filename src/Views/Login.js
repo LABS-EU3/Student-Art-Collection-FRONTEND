@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -14,22 +13,6 @@ import Spinner from "../Components/Spinner";
 import LoginForm from "../Components/Login/LoginForm";
 import SocialAuthButton from "../Components/SocilaAuthButton";
 import { axiosWithBase, baseURL } from "../AxiosCustom";
-=======
-import React from 'react';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as actionCreators from '../store/Actions/actionCreators';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
-
-// COMPONENTS
-
-import LoginForm from '../Components/Login/LoginForm';
-import { axiosWithBase } from '../AxiosCustom';
->>>>>>> 93475271d576c97dd5f2dda89bc5ce190b0825b5
 
 const initialValues = {
   email: '',
