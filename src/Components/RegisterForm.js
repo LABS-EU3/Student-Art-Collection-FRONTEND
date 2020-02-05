@@ -251,8 +251,4 @@ export const StyledForm = styled.form`
       transition: opacity 0.1s ease-in-out;
     }
   }
-<<<<<<< HEAD
 `;
-=======
-`;
->>>>>>> 93475271d576c97dd5f2dda89bc5ce190b0825b5
