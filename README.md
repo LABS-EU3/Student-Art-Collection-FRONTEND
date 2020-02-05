@@ -1,6 +1,8 @@
 ## Student Art Collection Frontend
 [![Netlify Status](https://api.netlify.com/api/v1/badges/aec77a38-35ea-4299-ae5d-f08408c0a43f/deploy-status)](https://app.netlify.com/sites/artfunder-development/deploys)
 
+[![Build Status](https://travis-ci.org/LABS-EU3/Student-Art-Collection-FRONTEND.svg?branch=master)](https://travis-ci.org/LABS-EU3/Student-Art-Collection-FRONTEND)
+
 ## Table of Contents
 - [Scripts](#scripts)
   - [Installing](#installing)
@@ -110,6 +112,17 @@ user-event tries to simulate the real events that would happen in the browser as
 
 ### Testing-Libary
 Simple and complete React DOM testing utilities that encourage good testing practices. [View Dependency](https://github.com/testing-library/react-testing-library)
+
+### Firebase
+Firebase gives you functionality like analytics, databases, messaging and crash reporting so you can move quickly and focus on your users.
+Backed by Google, trusted by top apps
+Firebase is built on Google infrastructure and scales automatically, for even the largest apps.
+One platform, with products that work better together
+[View Dependency](https://firebase.google.com/)
+
+### react-ga
+This is a JavaScript module that can be used to include Google Analytics tracking code in a website or app that uses React for its front-end codebase.[View Dependency](https://github.com/react-ga/react-ga)
+
 
 
 

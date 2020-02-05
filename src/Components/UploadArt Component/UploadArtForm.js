@@ -12,7 +12,7 @@ import {
   Details
 } from "./UploadArtFormStyle";
 
-function UploadArtForm(props) {
+function UploadArtForm() {
   return (
     <StyledForm>
       <Title>

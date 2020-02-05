@@ -15,8 +15,8 @@ import SocialAuthButton from "../Components/SocilaAuthButton";
 import { axiosWithBase, baseURL } from "../AxiosCustom";
 
 const initialValues = {
-  email: "",
-  password: ""
+  email: '',
+  password: ''
 };
 
 const validationSchema = yup.object().shape({
@@ -81,6 +81,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     h2:after {
       margin: 0 -55% 0 .5em;
     }
+  }
 `;
 
 const StyledForm = styled.div`
@@ -106,7 +107,7 @@ const Login = ({
     setSpinning(true);
     resetErrorLogin();
     axiosWithBase()
-      .post("/login", values)
+      .post('/login', values)
       .then(res => {
         setSpinning(false);
         loadingFinished();
@@ -114,8 +115,8 @@ const Login = ({
         resetErrorLogin();
         if (!res.data.token) {
           switch (res.data.message) {
-            case "please check your email address to confirm account":
-              history.push("/confirmation");
+            case 'please check your email address to confirm account':
+              history.push('/confirmation');
               break;
             default:
               return res.data.message;
@@ -124,16 +125,17 @@ const Login = ({
           setSpinning(false);
           localStorage.setItem("authorization", res.data.token);
           setLoggedInUser(res.data.user);
-          history.push("/");
+          history.push('/');
         }
       })
       .catch(error => {
+        debugger;
         loadingFinished();
         setSpinning(false);
         if (!error.response) {
-          errorLogin("Something went wrong. Please contact us so we can help.");
+          errorLogin('Something went wrong. Please contact us so we can help.');
           toast.error(
-            "Something went wrong. Please contact us so we can help."
+            'Something went wrong. Please contact us so we can help.'
           );
         } else {
           switch (error.response.status) {
@@ -147,10 +149,10 @@ const Login = ({
               break;
             default:
               errorLogin(
-                "Something went wrong. Please contact us so we can help."
+                'Something went wrong. Please contact us so we can help.'
               );
               toast.error(
-                "Something went wrong. Please contact us so we can help."
+                'Something went wrong. Please contact us so we can help.'
               );
           }
         }
@@ -158,7 +160,7 @@ const Login = ({
   };
   if (spinning) {
     return (
-      <StyledBackground>
+      <StyledBackground data-testid="spinner">
         <div className="container">
           <div
             style={{

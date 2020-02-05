@@ -17,6 +17,7 @@ function Inbox(props) {
               key={message.id}
               id={message.id}
               type="received"
+              data-testId='message'
             />
           );
         })
