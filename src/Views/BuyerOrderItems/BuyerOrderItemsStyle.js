@@ -9,34 +9,34 @@ export const MainContainer = styled.section`
 `;
 
 export const MainContainer2 = styled.section`
-	width: 90%;
-	height: 90%;
+  width: 90%;
+  height: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   overflow-y: scroll;
 
-		.nothing {
-			width: 100%;
-			height: 100%;
-			display:flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 2rem;
-		}
+  .nothing {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
 `;
 
 export const StyledButtonContainer = styled.div`
-width: 100%;
-height: 10%;
-border-bottom: ${props => props.theme.veryLightGrey};
-display: flex;
-justify-content: space-evenly;
-align-items: flex-end;
+  width: 100%;
+  height: 10%;
+  border-bottom: ${props => props.theme.veryLightGrey};
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
 
-@media(max-width: 500px){
-  margin: 1.5rem 0;
-}
+  @media (max-width: 500px) {
+    margin: 1.5rem 0;
+  }
 `;
 
 export const StyledButton = styled(NavLink)`
@@ -59,22 +59,22 @@ export const StyledButton = styled(NavLink)`
 `;
 
 export const StyledOrderContainer = styled.div`
-width: 100%;
-height: 90%;
-overflow-y: scroll;
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
 
-	.nothing{
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 2rem;
-	}
-`
+  .nothing {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
+`;
 
 export const CollectionItemContainer = styled.div`
-  max-height: auto;
+  max-height: 400px;
   -ms-flex: auto;
   background: #ffffff;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
@@ -109,58 +109,54 @@ export const CollectionItemContainer = styled.div`
       border: none;
       padding: 0.5rem;
       cursor: pointer;
-		}
-		
-		.edit {
-			background-color: ${props => props.theme.white};
-			border: 1px solid ${props => props.theme.black};
-      color:${props => props.theme.black};
+    }
+
+    .edit {
+      background-color: ${props => props.theme.white};
+      border: 1px solid ${props => props.theme.black};
+      color: ${props => props.theme.black};
       transition: opacity 0.2s ease-in-out;
-			&:hover {
+      &:hover {
         opacity: 0.5;
         transition: opacity 0.2s ease-in-out;
       }
-		}
-		
-		.delete {
-			background-color: ${props => props.theme.buttonOrange};
-			color: white;
-			&:hover {
+    }
+
+    .delete {
+      background-color: ${props => props.theme.buttonOrange};
+      color: white;
+      &:hover {
         color: red;
         background: white;
       }
-		}
+    }
   }
 
-  @media (max-width: 1073px) {
+  @media (max-width: 100px) {
     flex-basis: 33.33%;
-    height: auto;
   }
 
   @media (max-width: 815px) {
     flex-basis: 50%;
-    height: auto;
   }
   @media (max-width: 375px) {
     flex-basis: 100%;
-    height: auto;
     margin-left: 14px;
   }
   @media (max-width: 340px) {
     flex-basis: 100%;
-    height: auto;
     margin-left: 0px;
   }
 
   h3 {
     opacity: 0.5;
     margin-bottom: 0.4rem;
-	font-size: 1.2rem;
-}
+    font-size: 1.2rem;
+  }
 
-h3:nth-child(4) {
-		color: ${props => props.theme.buttonOrange};
-	}
+  h3:nth-child(4) {
+    color: ${props => props.theme.buttonOrange};
+  }
 
   h3:nth-child(4) {
     color: green;
@@ -168,17 +164,17 @@ h3:nth-child(4) {
 `;
 
 export const SellingSection = styled.div`
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: space-between;
-	div {
-		display: flex;
-		justify-content: space-between;
-		align-items:center;
-		margin: 1rem 0;
-	span{
-		font-size: 1.5rem;
-	}
-	}
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: space-between;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    span {
+      font-size: 1.5rem;
+    }
+  }
 `;

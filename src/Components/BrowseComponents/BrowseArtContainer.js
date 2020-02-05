@@ -23,6 +23,7 @@ function ArtContainer(props) {
         setPage(page - 1);
       }
     }
+    return null;
   };
   const { browseArtState } = props;
   useEffect(() => {
@@ -62,7 +63,6 @@ function ArtContainer(props) {
       </StyledEmptyContainer>
     );
   }
-
     return (<>
         <StyledContainer data-testid="styledContainer">
             <div className="grid-row">
