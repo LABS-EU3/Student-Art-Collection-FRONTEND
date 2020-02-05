@@ -5,23 +5,6 @@ import Error from "../helpers/Error";
 import {
   validationSchemaSchool,
   validationSchemaBuyer
-<<<<<<< HEAD
-} from "../helpers/validationSchema";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { axiosWithBase } from "../AxiosCustom";
-import AlgoliaPlaces from "../helpers/algolia";
-const initalSignupForm = {
-  name: "",
-  description: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  userLocation: "",
-  location: ""
-};
-=======
 } from '../helpers/validationSchema';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,7 +21,6 @@ const initalSignupForm = {
   userLocation: ''
 };
 
->>>>>>> 93475271d576c97dd5f2dda89bc5ce190b0825b5
 export function RegisterForm(props) {
   return (
     <Formik
