@@ -129,7 +129,6 @@ const Login = ({
         }
       })
       .catch(error => {
-        debugger;
         loadingFinished();
         setSpinning(false);
         if (!error.response) {
