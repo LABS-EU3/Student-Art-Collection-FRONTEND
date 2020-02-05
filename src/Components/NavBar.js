@@ -9,7 +9,7 @@ import UserIcon from "../Assets/user.png";
 import NewMessage from "../Assets/newmessage.jpg";
 
 const NavContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 6rem;
 
   .navigation {

@@ -27,6 +27,7 @@ function ArtContainer(props) {
   };
   const { browseArtState } = props;
   useEffect(() => {
+    props.toggleViewModal(false);
     axiosWithBase()
       .get(
         `/art/search?searchQuery=${browseArtState.searchQuery}&pagination=12&filter=${browseArtState.filter}&sortBy=${browseArtState.sortBy}&sortType=${browseArtState.sortType}&page=${page}`
@@ -63,10 +64,9 @@ function ArtContainer(props) {
       </StyledEmptyContainer>
     );
   }
-
   return (
     <>
-      <StyledContainer>
+      <StyledContainer data-testid="styledContainer">
         <div className="grid-row">
           {props.browseArtState.artSorted
             ? props.browseArtState.artSorted.map(art => {

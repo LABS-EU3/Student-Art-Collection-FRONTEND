@@ -13,14 +13,14 @@ function DisplayArt(props) {
     const { userId } =
       Object.keys(props.browseArtState.artInModal).length &&
       props.browseArtState.artInModal.userId;
-    if (userId && userLocation) {
+    if (userId && userLocation.latitude) {
       const buyer = {
         lat: userLocation.latitude,
         lng: userLocation.longitude
       };
       const school = {
-        lat: userId.userLocation.latitude,
-        lng: userId.userLocation.longitude
+        lat: userId.userLocation.latitude || 1.0,
+        lng: userId.userLocation.longitude || 1.0
       };
       length = calculateDistance(buyer, school).toFixed(3);
     }
@@ -79,7 +79,7 @@ function DisplayArt(props) {
                 </h4>
                 {props.loggedInUser ? (
                   props.loggedInUser.type === 'buyer' ? (
-                    props.loggedInUser.userLocation ? (
+                    props.loggedInUser.userLocation.latitude ? (
                       <h5> {distance()}km away </h5>
                     ) : null
                   ) : null

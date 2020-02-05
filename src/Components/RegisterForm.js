@@ -5,21 +5,20 @@ import Error from "../helpers/Error";
 import {
   validationSchemaSchool,
   validationSchemaBuyer
-} from "../helpers/validationSchema";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { axiosWithBase } from "../AxiosCustom";
-import AlgoliaPlaces from "../helpers/algolia";
+} from '../helpers/validationSchema';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { axiosWithBase } from '../AxiosCustom';
+import AlgoliaPlaces from '../helpers/algolia';
 
 const initalSignupForm = {
-  name: "",
-  description: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  userLocation: "",
-  location: ""
+  name: '',
+  description: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  userLocation: ''
 };
 
 export function RegisterForm(props) {
@@ -41,17 +40,14 @@ export function RegisterForm(props) {
           userLocation: JSON.parse(localStorage.getItem("address")),
           location: JSON.parse(localStorage.getItem("coordinates"))
         };
-
-        if (localStorage.getItem("address") === null) {
-          toast.error("Location is required");
+        if (localStorage.getItem('address') === null) {
+          toast.error('Location is required');
           actions.setSubmitting(false);
           props.loadingFinished();
           return;
         }
         props.loadingStarted();
-
         actions.setSubmitting(true);
-
         axiosWithBase()
           .post("/signup", newUser)
           .then(() => {
@@ -146,7 +142,6 @@ export function RegisterForm(props) {
               <Error touched={touched.lastName} message={errors.lastName} />
             </div>
           )}
-
           <div data-testid="emailField" className="inputField">
             <input
               name="email"
@@ -178,8 +173,7 @@ export function RegisterForm(props) {
           <div data-testid="locationField" className="inputField">
             <Field name="userLocation" component={AlgoliaPlaces} />
           </div>
-
-          <button className="abutton" type="submit" disabled={isSubmitting}>
+          <button className="abutton" type="submit" disabled={isSubmitting} data-testid="submitButton">
             Sign up
           </button>
           <ToastContainer
@@ -201,19 +195,15 @@ export function RegisterForm(props) {
     </Formik>
   );
 }
-
 export default RegisterForm;
-
 const test = {
   marginBottom: "1rem"
 };
-
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
-
   .inputField {
     display: flex;
     flex-direction: column;
@@ -230,7 +220,6 @@ export const StyledForm = styled.form`
     font-size: 1rem;
     color: ${props => props.theme.buttonOrange};
   }
-
   input {
     font-size: 1.2rem;
     padding: 10px;
@@ -239,7 +228,6 @@ export const StyledForm = styled.form`
     border-radius: 5px;
     background-color: rgba(238, 243, 248, 0.5);
   }
-
   textarea {
     font-size: 1.2rem;
     padding: 10px;
@@ -248,7 +236,6 @@ export const StyledForm = styled.form`
     height: 145px;
     background-color: rgba(238, 243, 248, 0.5);
   }
-
   .abutton {
     margin: 20px;
     background-color: ${props => props.theme.buttonOrange};
@@ -258,11 +245,9 @@ export const StyledForm = styled.form`
     font-size: 1.6rem;
     padding: 0.6rem 5rem;
     cursor: pointer;
-
     &:hover {
       opacity: 0.7;
       transition: opacity 0.1s ease-in-out;
     }
   }
 `;
-

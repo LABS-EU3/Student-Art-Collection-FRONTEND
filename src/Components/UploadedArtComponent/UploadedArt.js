@@ -55,11 +55,11 @@ function ArtForSale(props) {
   const [artToDelete, setArtToDelete] = useState(null);
   const [artToEdit, setArtToEdit] = useState(null);
 
-  function openModal() {
+   function openModal() {
     setIsOpen(true);
   }
 
-  function closeModal() {
+   function closeModal() {
     setIsOpen(false);
   }
 
