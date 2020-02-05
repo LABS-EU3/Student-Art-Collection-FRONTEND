@@ -27,6 +27,7 @@ function ArtContainer(props) {
   };
   const { browseArtState } = props;
   useEffect(() => {
+    props.toggleViewModal(false);
     axiosWithBase()
       .get(
         `/art/search?searchQuery=${browseArtState.searchQuery}&pagination=12&filter=${browseArtState.filter}&sortBy=${browseArtState.sortBy}&sortType=${browseArtState.sortType}&page=${page}`
@@ -63,31 +64,36 @@ function ArtContainer(props) {
       </StyledEmptyContainer>
     );
   }
-    return (<>
-        <StyledContainer data-testid="styledContainer">
-            <div className="grid-row">
-                {props.browseArtState.artSorted ? props.browseArtState.artSorted.map(art => {
-                    return (
-                        <BrowseCard
-                            image={art.picture}
-                            alt={art.name}
-                            title={art.name}
-                            artistName={art.artistName}
-                            dimensions={`${art.height} x ${art.width}`}
-                            price={art.price}
-                            key={art.public_picture_id}
-                            id={art.public_picture_id}
-                        />
-                    )
-                })
-                    : null
-                }
-            </div>
-        </StyledContainer>
-        <StyledButtonContainer>
-            {page === 1 ? null : <button onClick={() => changePage('minus')}>Previous</button>}
-            {page !== upperPageLimit ? <button onClick={() => changePage('plus')}>Next</button> : null}
-        </StyledButtonContainer>
+  return (
+    <>
+      <StyledContainer data-testid="styledContainer">
+        <div className="grid-row">
+          {props.browseArtState.artSorted
+            ? props.browseArtState.artSorted.map(art => {
+                return (
+                  <BrowseCard
+                    image={art.picture}
+                    alt={art.name}
+                    title={art.name}
+                    artistName={art.artistName}
+                    dimensions={`${art.height} x ${art.width}`}
+                    price={art.price}
+                    key={art.public_picture_id}
+                    id={art.public_picture_id}
+                  />
+                );
+              })
+            : null}
+        </div>
+      </StyledContainer>
+      <StyledButtonContainer>
+        {page === 1 ? null : (
+          <button onClick={() => changePage('minus')}>Previous</button>
+        )}
+        {page !== upperPageLimit ? (
+          <button onClick={() => changePage('plus')}>Next</button>
+        ) : null}
+      </StyledButtonContainer>
     </>
   );
 }

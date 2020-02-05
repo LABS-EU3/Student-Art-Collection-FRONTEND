@@ -14,7 +14,8 @@ function ArtSchoolPageViewModal(props) {
 
   const closeModal = e => {
     if (e.target.className === 'close') {
-      props.toggleViewModal(!props.browseArtState.artModalOpen);
+      // props.toggleViewModal(!props.browseArtState.artModalOpen);
+      props.toggleViewModal(false);
       props.history.push('/schools');
     } else {
       return null;

@@ -59,7 +59,6 @@ export function RegisterForm(props) {
             localStorage.removeItem("coordinates");
           })
           .catch(err => {
-            debugger
             toast.error(err.response.statusText);
             actions.setSubmitting(false);
             props.loadingFinished();

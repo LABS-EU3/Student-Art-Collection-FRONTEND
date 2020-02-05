@@ -88,7 +88,6 @@ function DashNav(props) {
       setIsBuyer(false);
     }
   }, [props.loggedInUser.type]);
-  console.log(isBuyer);
   return (
     <DashNavStyle data-testid="dashboardNavBar">
       <div>

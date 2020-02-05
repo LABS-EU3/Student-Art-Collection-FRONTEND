@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/Actions/actionCreators';
+import styled from 'styled-components';
 
 // HELPER
 import { axiosWithBase } from '../../AxiosCustom';
@@ -16,6 +17,18 @@ import {
   StyledEmptyContainer,
   StyledButtonContainer
 } from '../BrowseComponents/BrowseArtContainerStyling';
+
+const StyledContainerEmpty = styled.div`
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.black};
+  h1 {
+    font-size: 2rem;
+  }
+`;
 
 function ArtSchoolContainer(props) {
   const [spinning, setSpinning] = useState(true);
@@ -57,9 +70,9 @@ function ArtSchoolContainer(props) {
   }
   if (props.browseSchoolState.length === 0) {
     return (
-      <StyledContainer>
+      <StyledContainerEmpty>
         <h1>Sorry, there are no schools near your location.</h1>
-      </StyledContainer>
+      </StyledContainerEmpty>
     );
   }
 

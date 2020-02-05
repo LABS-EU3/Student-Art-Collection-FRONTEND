@@ -98,7 +98,7 @@ function App(props) {
             <Route path="/login" component={Login} />
             <Route path="/browse" component={BrowseArt} />
             <Route exact path="/schools" component={Schools} />
-            <Route path="/schools/:id" component={SchoolArt} />
+            <Route exact path="/schools/:id" component={SchoolArt} />
             <Route path="/myaccount" component={Dashboard} />
 
             <Route path="/selling" component={Dashboard} />
