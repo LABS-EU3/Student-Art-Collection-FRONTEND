@@ -20,7 +20,7 @@ const ResetPassword = ({ isLoading }) => {
     return null;
   }
   return (
-    <StyledDiv>
+    <StyledDiv data-testid="resetpassword">
       <h2>
         Click{' '}
         <span>

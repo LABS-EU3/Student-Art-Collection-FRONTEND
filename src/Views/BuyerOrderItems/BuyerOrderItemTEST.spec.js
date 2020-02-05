@@ -40,7 +40,8 @@ describe('', () =>{
     });
 
     it('should return a h1 because no art exists', async(done) => {
-        axiosMock.mockResponse({data: []})
+
+      
         await rtl.waitForElement(() => wrapper.queryByText("Nothing here yet"));
         expect(wrapper.queryByText("Nothing here yet")).toBeInTheDocument();
         done()

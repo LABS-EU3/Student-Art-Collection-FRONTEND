@@ -33,16 +33,14 @@ afterEach((done) => {
 
 describe('', () =>{
     
-    it('should return have the nav items', () =>{
-        expect(wrapper.queryByText('All')).toBeInTheDocument()
-        expect(wrapper.queryByText('Pending')).toBeInTheDocument()
-        expect(wrapper.queryByText('Sent')).toBeInTheDocument();
+    it('should render', () =>{
+        expect(wrapper).toBeDefined();
     });
 
-    it('should return a h1 because no art exists', async(done) => {
+    it('should return a div because no art exists', async(done) => {
         axiosMock.mockResponse({data: []})
-        await rtl.waitForElement(() => wrapper.queryByText("You haven't ordered any art"));
-        expect(wrapper.queryByText("You haven't ordered any art")).toBeInTheDocument();
+        await rtl.waitForElement(() => wrapper.queryByText("Nothing here yet"));
+        expect(wrapper.queryByText("Nothing here yet")).toBeInTheDocument();
         done()
     })
   
