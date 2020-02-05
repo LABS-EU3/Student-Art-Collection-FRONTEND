@@ -26,9 +26,7 @@ const StyledContainerEmpty = styled.div`
   align-items: center;
   color: ${props => props.theme.black};
   h1 {
-    font-family: ${props => props.theme.heroFont};
-    font-size: 3.3rem;
-    letter-spacing: 5px;
+    font-size: 2rem;
   }
 `;
 
