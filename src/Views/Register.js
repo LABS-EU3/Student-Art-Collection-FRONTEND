@@ -128,12 +128,6 @@ function Register(props) {
             </button>
           </div>
           <RegisterForm {...props} isSchool={isSchool} />
-          {!isSchool ? (
-            <>
-              <h2>or</h2>
-              <SocialAuthButton url={baseURL + "/auth/google"} />
-            </>
-          ) : null}
         </div>
       </StyledBackground>
     );

@@ -9,11 +9,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import store from './store';
 import { store, persistor } from './store/index';
-import sw from './helpers/sw'
 import GoogleAnalytics from './config/googleAnalytics';
 
 GoogleAnalytics()
-sw();
+
 const app = (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

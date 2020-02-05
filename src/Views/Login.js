@@ -129,7 +129,6 @@ const Login = ({
         }
       })
       .catch(error => {
-        debugger;
         loadingFinished();
         setSpinning(false);
         if (!error.response) {
@@ -195,8 +194,6 @@ const Login = ({
             closeButton={false}
           />
         </StyledForm>
-        <h2>or</h2>
-        <SocialAuthButton url={baseURL + "/auth/google"} />
       </div>
     </StyledBackground>
   );
