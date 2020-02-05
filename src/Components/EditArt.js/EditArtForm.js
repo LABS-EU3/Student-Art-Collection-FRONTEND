@@ -44,7 +44,7 @@ const EditArtForm = ({ art, closeModal, editArtHandle }) => {
 
 function EditArtFormDetails(props) {
   return (
-    <StyledForm>
+    <StyledForm data-testId='editForm'>
       <Title>
         <StyledError name="name" component="div" />
         <StyledName name="name" type="text" placeholder="Name" />
