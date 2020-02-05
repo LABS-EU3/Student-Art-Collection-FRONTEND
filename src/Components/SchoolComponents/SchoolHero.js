@@ -12,7 +12,7 @@ export default function SchoolHero() {
 
 const StyledHero = styled.div`
   width: 100%;
-  height: 250px;
+  height: 30vh;
   background: url(${HeroImage});
   background-size: cover;
   display: flex;
