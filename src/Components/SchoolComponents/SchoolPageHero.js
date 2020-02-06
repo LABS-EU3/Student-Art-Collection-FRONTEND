@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeroImage from '../../Assets/hero.jpg';
+// import HeroImage from '../../Assets/hero.jpg';
+
+const HeroImage = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580990301/student-art/hero_zchion.jpg'
 
 const StyledHero = styled.div`
   width: 100%;
