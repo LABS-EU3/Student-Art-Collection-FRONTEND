@@ -3,10 +3,13 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import BrowseCard from './BrowseCard';
-import Painting from '../../Assets/painting.jpg'
-import Drawing from '../../Assets/drawing.jpg'
+// import Painting from '../../Assets/painting.jpg'
+// import Drawing from '../../Assets/drawing.jpg'
 import Photography from '../../Assets/photography.jpg'
 import Sculpture from '../../Assets/sculpture.jpg'
+
+const Painting = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580979255/student-art/painting_lxi3tk.jpg'
+const Drawing = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580979556/student-art/drawing_hkaiik.jpg'
 
 const BrowseContainer = styled.div` 
     margin: 6rem auto;

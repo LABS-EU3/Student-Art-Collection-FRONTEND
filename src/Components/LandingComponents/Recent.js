@@ -3,10 +3,13 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import RecentCard from './RecentCard';
-import Recent1 from '../../Assets/recent1.jpg'
-import Recent2 from '../../Assets/recent2.png'
+// import Recent1 from '../../Assets/recent1.jpg'
+// import Recent2 from '../../Assets/recent2.png'
 import Recent3 from '../../Assets/recent3.jpg'
-import Recent4 from '../../Assets/recent4.jpg'
+// import Recent4 from '../../Assets/recent4.jpg'
+const Recent1 = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580981489/student-art/recent1_vb32fc.jpg'
+const Recent2 = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580981474/student-art/recent2_it9vgj.png'
+const Recent4 = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580980853/student-art/recent4_e3wszd.jpg'
 
 const RecentContainer = styled.div` 
     margin: 6rem auto;
