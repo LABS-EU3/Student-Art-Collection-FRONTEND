@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import HeroImage from '../../Assets/hero.jpg';
-import HeroImage1 from '../../Assets/hero1.jpg';
+// import HeroImage1 from '../../Assets/hero1.jpg';
+
+const HeroImage1 = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580979584/student-art/hero1_ihf8i9.jpg'
 
 const HeroBanner = styled.div`
 width: 100%;

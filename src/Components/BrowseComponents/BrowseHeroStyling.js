@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import HeroImage from '../../Assets/browsehero.jpg';
+// import HeroImage from '../../Assets/browsehero.jpg';
+
+const HeroImage = 'https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580979444/student-art/browsehero_ss6ybi.jpg'
 
 export const StyledHero = styled.div`
 width: 100%;

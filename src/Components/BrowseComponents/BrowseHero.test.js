@@ -37,7 +37,7 @@ describe('renders component as expected', () => {
   });
   test('renders background image', () => {
     expect(wrapper.getByTestId('hero')).toHaveStyle(
-      'background: url(browsehero.jpg)'
+      'background: url(https://res.cloudinary.com/dwz7ogm5l/image/upload/v1580979444/student-art/browsehero_ss6ybi.jpg)'
     );
   });
 });
