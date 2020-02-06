@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import HeroImage from "../../Assets/browsehero.jpg";
+import HeroImage from "../../Assets/hero.jpg";
 
 export default function SchoolHero() {
   return (
@@ -12,9 +12,10 @@ export default function SchoolHero() {
 
 const StyledHero = styled.div`
   width: 100%;
-  height: 30vh;
+  height: 40vh;
   background: url(${HeroImage});
   background-size: cover;
+  background-position: 0 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
