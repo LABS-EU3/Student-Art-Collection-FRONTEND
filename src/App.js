@@ -44,9 +44,12 @@ const SchoolArt = lazy(() => import('./Views/SchoolArt'));
 const db = firebase.firestore();
 
 function App(props) {
-  messaging.onMessage(()=>{
-    alert('you have a new message')
-  })
+  const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+  if(!iOS) {
+    messaging.onMessage(()=>{
+      alert('you have a new message')
+    })
+  }
   // navigator.serviceWorker.addEventListener("message", () => {
   //   toast.info('you have a new message')
   // });
