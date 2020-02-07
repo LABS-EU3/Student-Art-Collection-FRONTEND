@@ -116,7 +116,7 @@ function App(props) {
             <Route path="/contact" component={ContactPage} />
 
             <Route path="/payment" component={StripePayment} />
-            <Route exact path="/404" component={ErrorPage} />
+//             <Route exact path="/404" component={ErrorPage} />
           </Suspense>
         </ErrorBoundary>
       </Switch>
