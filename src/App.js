@@ -1,8 +1,8 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import * as actionCreators from "./store/Actions/actionCreators";
 import "./App.css";
 import {firebase, messaging} from "./config/firebaseConfig";
@@ -16,6 +16,8 @@ import './App.css';
 import AppSpinner from './Components/AppSpinner';
 import ErrorBoundary from './Components/error-boundary/error-boundary.component';
 import StripePayment from './Views/StripePage/Payment';
+import ErrorPage from './Views/ErrorPage';
+import PrivateRoute from './Components/PrivateRoute';
 
 const Navbar = lazy(() => import('./Components/NavBar'));
 const LandingPage = lazy(() => import('./Views/LandingPage'));
@@ -104,7 +106,7 @@ function App(props) {
             <Route exact path="/schools/:id" component={SchoolArt} />
             <Route path="/myaccount" component={Dashboard} />
 
-            <Route path="/selling" component={Dashboard} />
+            <PrivateRoute path="/selling" component={Dashboard} />
             <Route path="/resetpassword" component={PasswordReset} />
             <Route path="/resetpasswordrequest" component={ResetPasswordForm} />
             <Route path="/resetpasswordsent" component={PasswordResetSent} />
@@ -114,9 +116,11 @@ function App(props) {
             <Route path="/contact" component={ContactPage} />
 
             <Route path="/payment" component={StripePayment} />
+            <Route exact path="/404" component={ErrorPage} />
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      <Redirect to="/404" />
     </ThemeProvider>
   );
 }

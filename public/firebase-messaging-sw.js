@@ -13,25 +13,28 @@ const firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
-
-messaging.setBackgroundMessageHandler(function(payload) {
-    const promiseChain = clients
-    .matchAll({
-      type: "window",
-      includeUncontrolled: true
-    })
-    .then(windowClients => {
-      for (let i = 0; i < windowClients.length; i++) {
-        const windowClient = windowClients[i];
-        windowClient.postMessage(payload);
-      }
-    })
-    .then(() => {
-      return registration.showNotification("you have a message in art-funder.com");
-    });
-  return promiseChain;
-});
-
-self.addEventListener('notificationclick', function(event) {
-});
+const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+if(!iOS) {
+  const messaging = firebase.messaging();
+  
+  messaging.setBackgroundMessageHandler(function(payload) {
+      const promiseChain = clients
+      .matchAll({
+        type: "window",
+        includeUncontrolled: true
+      })
+      .then(windowClients => {
+        for (let i = 0; i < windowClients.length; i++) {
+          const windowClient = windowClients[i];
+          windowClient.postMessage(payload);
+        }
+      })
+      .then(() => {
+        return registration.showNotification("you have a message in art-funder.com");
+      });
+    return promiseChain;
+  });
+  
+  self.addEventListener('notificationclick', function(event) {
+  });
+}

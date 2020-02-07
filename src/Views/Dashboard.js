@@ -17,6 +17,7 @@ import Reply from "../Components/MessagingComponents/Reply";
 import NewMessage from "../Components/MessagingComponents/NewMessage";
 import ConfirmDelete from "../Components/UploadedArtComponent/ConfirmDelete";
 import StripeCallBackPage from "./StripePage/CallBackPage";
+import PrivateRoute from "../Components/PrivateRoute";
 
 const DashboardContainer = styled.div`
   background-color: #ffffff;
@@ -61,35 +62,35 @@ function Dashboard() {
       <div className="dashboard">
         <div className="left-side">
           <Route path="/myaccount" component={DashNav} />
-          <Route path="/selling" component={SellingNav} />
+          <PrivateRoute path="/selling" component={SellingNav} />
         </div>
         <div className="right-side">
           <Route exact path="/myaccount" component={Profile} />
-          <Route path="/myaccount/orders" component={BuyerOrderItems} />
-          <Route path="/myaccount/messages" component={Messaging} />
-          <Route
+          <PrivateRoute path="/myaccount/orders" component={BuyerOrderItems} />
+          <PrivateRoute path="/myaccount/messages" component={Messaging} />
+          <PrivateRoute
             exact
             path="/myaccount/received/:id"
             component={InboxFullView}
           />
-          <Route exact path="/myaccount/reply/:id" component={Reply} />
-          <Route
+          <PrivateRoute exact path="/myaccount/reply/:id" component={Reply} />
+          <PrivateRoute
             exact
             path="/myaccount/newmessage/:id"
             component={NewMessage}
           />
-          <Route exact path="/myaccount/sent/:id" component={SentFullView} />
-          <Route exact path="/selling/sold" component={SchoolsSoldItems} />
-          <Route
+          <PrivateRoute exact path="/myaccount/sent/:id" component={SentFullView} />
+          <PrivateRoute exact path="/selling/sold" component={SchoolsSoldItems} />
+          <PrivateRoute
             exact
             path="/myaccount/stripe/registration"
             component={StripeCallBackPage}
           />
-          <Route
+          <PrivateRoute
             path="/selling/forsale"
             render={props => <UploadedArt {...props} />}
           />
-          <Route
+          <PrivateRoute
             path="/selling/forsale/delete/:id"
             render={props => <ConfirmDelete {...props} />}
           />
