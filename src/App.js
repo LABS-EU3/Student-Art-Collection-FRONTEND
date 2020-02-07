@@ -120,7 +120,7 @@ function App(props) {
           </Suspense>
         </ErrorBoundary>
       </Switch>
-      <Redirect to="/404" />
+//       <Redirect to="/404" />
     </ThemeProvider>
   );
 }
