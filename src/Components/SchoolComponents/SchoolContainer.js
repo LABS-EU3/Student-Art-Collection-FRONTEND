@@ -48,7 +48,7 @@ function ArtSchoolContainer(props) {
 
   useEffect(() => {
     axiosWithBase()
-      .get('/schools/location/1234')
+      .get('/schools/location')
       .then(res => {
         setUpperPageLimit(Math.ceil(res.data.totalCount / 12));
         props.fetchSchools(res.data);
